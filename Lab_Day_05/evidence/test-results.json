@@ -1,0 +1,31 @@
+{
+  "execution": "pytest with supplied ScriptedChatModel for model-dependent tests; no provider API calls",
+  "stages": {
+    "stage-00-chat": {
+      "passed": 17,
+      "failed": 0,
+      "seconds": 13.02,
+      "log": "evidence/stage-00-tests.txt"
+    },
+    "stage-01-files": {
+      "passed": 51,
+      "failed": 0,
+      "seconds": 13.21,
+      "log": "evidence/stage-01-tests.txt"
+    },
+    "stage-02-skills": {
+      "passed": 60,
+      "failed": 0,
+      "seconds": 13.52,
+      "log": "evidence/stage-02-tests.txt"
+    }
+  },
+  "total_passed": 128,
+  "direct_tool_checks": {
+    "stage-01-files": 9,
+    "stage-02-skills": 9
+  },
+  "skill_validation": "Skill is valid!",
+  "live_model_status": "11 completed runs through 9Router; stage 02 passes all 5 required scenarios; stage 01 missing-activation does not ask for clarification",
+  "live_model_name": "cc/claude-opus-5-5"
+}

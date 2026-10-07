@@ -1,0 +1,30 @@
+{
+  "mode": "live-provider",
+  "stage": "stage-01-files",
+  "case": "A-renamed",
+  "question": "Tôi mua ngày 28/09/2026, yêu cầu hoàn ngày 06/10/2026, chưa kích hoạt. Tôi có được hoàn không?",
+  "model": "cc/claude-opus-5-5",
+  "conversation_id": "fcf08678482b48fcbf28cd6678a38bc0",
+  "renamed_files": {
+    "policy-before-oct.md": "edition-31.md",
+    "policy-from-oct.md": "edition-32.md"
+  },
+  "trace": "20261007-192753_fcf08678_turn01_b5b300be.jsonl",
+  "status": "completed",
+  "answer": "**Không, bạn không được hoàn tiền**, vì đã quá hạn yêu cầu.\n\n- **Chính sách áp dụng:** Bạn mua ngày 28/09/2026, trước 01/10/2026, nên áp dụng `data/policies/edition-31.md`.\n- **Thời hạn:** Chính sách này chỉ cho yêu cầu hoàn trong 7 ngày kể từ ngày mua, tức hạn cuối là 05/10/2026. Yêu cầu của bạn vào 06/10/2026 là ngày thứ 8 nên đã quá hạn. Nếu tính ngày mua là ngày thứ nhất thì hạn cuối còn sớm hơn (04/10), nên kết quả vẫn vậy.\n- **Kích hoạt:** Sản phẩm chưa kích hoạt nên đạt điều kiện này, nhưng không bù được việc quá hạn.\n\nChính sách mới (`edition-32.md`) cho 14 ngày và không thu phí, nhưng chỉ áp dụng cho đơn mua từ 01/10/2026 trở đi, nên không dùng được cho đơn của bạn. Nếu được, bạn có thể hỏi bộ phận hỗ trợ xem có ngoại lệ không. Theo chính sách hiện tại thì yêu cầu này không hợp lệ.",
+  "inventory": {
+    "skills": [],
+    "resources": [
+      {
+        "path": "data/policies/edition-32.md",
+        "message_index": 8,
+        "tool_call_id": "toolu_01KH1BK4wjK2p9bM8Htbg3SD"
+      },
+      {
+        "path": "data/policies/edition-31.md",
+        "message_index": 9,
+        "tool_call_id": "toolu_01RLDPYhqGUDGJjX6zmdrZX3"
+      }
+    ]
+  }
+}

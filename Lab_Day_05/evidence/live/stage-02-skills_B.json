@@ -1,0 +1,41 @@
+{
+  "mode": "live-provider",
+  "stage": "stage-02-skills",
+  "case": "B",
+  "question": "Tôi mua ngày 02/10/2026, yêu cầu hoàn ngày 12/10/2026, chưa kích hoạt. Tôi có được hoàn không?",
+  "model": "cc/claude-opus-5-5",
+  "conversation_id": "ae5034d80022447799daa1b2dd42100d",
+  "renamed_files": {},
+  "trace": "20261007-192851_ae5034d8_turn01_b8dd6224.jsonl",
+  "status": "completed",
+  "answer": "Có, bạn **được hoàn tiền**, và không mất phí.\n\n- **Chính sách áp dụng:** Chính sách hoàn tiền từ tháng 10. Chính sách này áp dụng cho đơn mua từ ngày 01/10/2026 trở đi, tính cả ngày 01/10. Bạn mua ngày 02/10/2026 nên thuộc chính sách này.\n- **Số ngày đã qua:** Từ ngày mua 02/10/2026 đến ngày yêu cầu hoàn 12/10/2026 là **10 ngày**.\n- **Lý do được hoàn:**\n  - Bạn yêu cầu sau 10 ngày, vẫn trong hạn 14 ngày kể từ ngày mua.\n  - Sản phẩm chưa kích hoạt. Chính sách chỉ từ chối hoàn tiền khi sản phẩm đã kích hoạt.\n- **Phí:** Không thu phí hoàn tiền.\n- **Căn cứ:** `data/policies/policy-from-oct.md`",
+  "inventory": {
+    "skills": [
+      {
+        "path": "skills/refund-policy/SKILL.md",
+        "message_index": 2,
+        "tool_call_id": "toolu_01By6h9ddCiz3Wfbs8ysRnsV",
+        "skill": "refund-policy",
+        "chars": 1754,
+        "first_request": "Lượt 1, model call #2"
+      }
+    ],
+    "resources": [
+      {
+        "path": "skills/refund-policy/references/answer-template.md",
+        "message_index": 4,
+        "tool_call_id": "toolu_019uMqcy76Su9wVXHQ26xh17"
+      },
+      {
+        "path": "data/policies/policy-before-oct.md",
+        "message_index": 7,
+        "tool_call_id": "toolu_012KtsbhvViWwrTAJFQh9ax7"
+      },
+      {
+        "path": "data/policies/policy-from-oct.md",
+        "message_index": 8,
+        "tool_call_id": "toolu_01BG4RTciMZcWPSQ59NhHkG3"
+      }
+    ]
+  }
+}

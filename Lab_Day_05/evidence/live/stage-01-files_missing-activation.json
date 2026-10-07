@@ -1,0 +1,27 @@
+{
+  "mode": "live-provider",
+  "stage": "stage-01-files",
+  "case": "missing-activation",
+  "question": "Tôi mua ngày 02/10/2026, muốn hoàn ngày 12/10/2026.",
+  "model": "cc/claude-opus-5-5",
+  "conversation_id": "f8142432dd6c434ca705974f5259adeb",
+  "renamed_files": {},
+  "trace": "20261007-192822_f8142432_turn01_7721c346.jsonl",
+  "status": "completed",
+  "answer": "Bạn **đủ điều kiện hoàn tiền**, miễn là sản phẩm **chưa kích hoạt**.\n\n- **Chính sách áp dụng:** Bạn mua ngày 02/10/2026, tức từ 01/10/2026 trở đi, nên áp dụng `data/policies/policy-from-oct.md`.\n- **Thời hạn:** Bạn được yêu cầu hoàn tiền trong 14 ngày kể từ ngày mua. Từ 02/10 đến 12/10 là 10 ngày, nên vẫn trong hạn.\n- **Phí hoàn tiền:** Không mất phí.\n- **Điều kiện:** Không được hoàn tiền nếu sản phẩm đã kích hoạt.\n\nNếu sản phẩm đã kích hoạt rồi thì bạn không được hoàn tiền.",
+  "inventory": {
+    "skills": [],
+    "resources": [
+      {
+        "path": "data/policies/policy-before-oct.md",
+        "message_index": 8,
+        "tool_call_id": "toolu_01SRt77FK9BwWj8DwWTUynEk"
+      },
+      {
+        "path": "data/policies/policy-from-oct.md",
+        "message_index": 9,
+        "tool_call_id": "toolu_01M7vbw1K79nvntDhQUwYpgR"
+      }
+    ]
+  }
+}

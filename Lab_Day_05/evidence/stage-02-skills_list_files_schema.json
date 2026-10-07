@@ -1,0 +1,15 @@
+{
+  "name": "list_files",
+  "description": "Liệt kê các mục trực tiếp trong thư mục thuộc workspace, không duyệt đệ quy.\n\npath tương đối workspace; dùng . để liệt kê thư mục gốc.\nTrả JSON với ok, path, entries; mỗi mục có name, path tương đối workspace và type file hoặc directory.\nKết quả sắp xếp theo tên. Lỗi trả ok=false và error gồm code, message.",
+  "parameters": {
+    "properties": {
+      "path": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "path"
+    ],
+    "type": "object"
+  }
+}

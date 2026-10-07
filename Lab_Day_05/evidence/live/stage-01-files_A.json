@@ -1,0 +1,27 @@
+{
+  "mode": "live-provider",
+  "stage": "stage-01-files",
+  "case": "A",
+  "question": "Tôi mua ngày 28/09/2026, yêu cầu hoàn ngày 06/10/2026, chưa kích hoạt. Tôi có được hoàn không?",
+  "model": "cc/claude-opus-5-5",
+  "conversation_id": "26eae8b1286541b48cdd8eb114ace527",
+  "renamed_files": {},
+  "trace": "20261007-192725_26eae8b1_turn01_6ca6d8da.jsonl",
+  "status": "completed",
+  "answer": "**Không, bạn không được hoàn tiền.**\n\nTôi đã đọc hai file chính sách trong `data/policies/`. Chính sách được chọn theo **ngày mua**:\n\n- **Áp dụng chính sách trước tháng 10** (`policy-before-oct.md`), vì bạn mua ngày 28/09/2026, trước mốc 01/10/2026.\n- **Thời hạn:** chỉ được yêu cầu hoàn trong **7 ngày** kể từ ngày mua, tức hạn chót là **05/10/2026**.\n- **Yêu cầu của bạn:** gửi ngày 06/10/2026, là ngày thứ 8 sau ngày mua, nên đã **quá hạn 1 ngày**.\n- **Kích hoạt:** sản phẩm chưa kích hoạt nên đạt điều kiện này, nhưng vẫn bị loại vì quá thời hạn.\n\nChính sách mới cho phép hoàn trong 14 ngày và không thu phí, nhưng chỉ áp dụng cho đơn **mua từ 01/10/2026**. Ngày gửi yêu cầu không làm đổi chính sách, nên đơn của bạn không dùng được chính sách này.\n\nNếu đã gửi yêu cầu sớm hơn, trong hạn 05/10/2026, bạn sẽ được hoàn nhưng bị trừ **phí 10%** giá trị đơn hàng. Bạn có thể liên hệ bộ phận hỗ trợ để xin xem xét ngoại lệ, nhưng chính sách không quy định trường hợp này.",
+  "inventory": {
+    "skills": [],
+    "resources": [
+      {
+        "path": "data/policies/policy-before-oct.md",
+        "message_index": 8,
+        "tool_call_id": "toolu_01TVXyUUTcNQD7WExHUFczzQ"
+      },
+      {
+        "path": "data/policies/policy-from-oct.md",
+        "message_index": 9,
+        "tool_call_id": "toolu_018L21LNz7PGBHB8NXGDQP1p"
+      }
+    ]
+  }
+}

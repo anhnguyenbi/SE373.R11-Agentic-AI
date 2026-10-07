@@ -1,0 +1,104 @@
+{
+  "review_basis": "actual answers and trace events; manual review, not automatic grading from completed status",
+  "cases": [
+    {
+      "manifest": "stage-00-chat_A.json",
+      "stage": "stage-00-chat",
+      "case": "A",
+      "execution_completed": true,
+      "meets_case_requirement": true,
+      "trace": "20261007-192718_47ac88a4_turn01_30764364.jsonl",
+      "review_note": "Stage 00: observed capability limitation."
+    },
+    {
+      "manifest": "stage-01-files_A-renamed.json",
+      "stage": "stage-01-files",
+      "case": "A-renamed",
+      "execution_completed": true,
+      "meets_case_requirement": true,
+      "trace": "20261007-192753_fcf08678_turn01_b5b300be.jsonl",
+      "review_note": "Answer and actual tool/context evidence reviewed."
+    },
+    {
+      "manifest": "stage-01-files_A.json",
+      "stage": "stage-01-files",
+      "case": "A",
+      "execution_completed": true,
+      "meets_case_requirement": true,
+      "trace": "20261007-192725_26eae8b1_turn01_6ca6d8da.jsonl",
+      "review_note": "Answer and actual tool/context evidence reviewed."
+    },
+    {
+      "manifest": "stage-01-files_B-renamed.json",
+      "stage": "stage-01-files",
+      "case": "B-renamed",
+      "execution_completed": true,
+      "meets_case_requirement": true,
+      "trace": "20261007-192808_9ad4e594_turn01_3df2d5ed.jsonl",
+      "review_note": "Answer and actual tool/context evidence reviewed."
+    },
+    {
+      "manifest": "stage-01-files_B.json",
+      "stage": "stage-01-files",
+      "case": "B",
+      "execution_completed": true,
+      "meets_case_requirement": true,
+      "trace": "20261007-192740_2a41f480_turn01_8cd2cf16.jsonl",
+      "review_note": "Answer and actual tool/context evidence reviewed."
+    },
+    {
+      "manifest": "stage-01-files_missing-activation.json",
+      "stage": "stage-01-files",
+      "case": "missing-activation",
+      "execution_completed": true,
+      "meets_case_requirement": false,
+      "trace": "20261007-192822_f8142432_turn01_7721c346.jsonl",
+      "review_note": "Conditional conclusion without clarification."
+    },
+    {
+      "manifest": "stage-02-skills_A-renamed.json",
+      "stage": "stage-02-skills",
+      "case": "A-renamed",
+      "execution_completed": true,
+      "meets_case_requirement": true,
+      "trace": "20261007-192901_71584c29_turn01_038f7406.jsonl",
+      "review_note": "Answer and actual tool/context evidence reviewed."
+    },
+    {
+      "manifest": "stage-02-skills_A.json",
+      "stage": "stage-02-skills",
+      "case": "A",
+      "execution_completed": true,
+      "meets_case_requirement": true,
+      "trace": "20261007-192836_aead8b64_turn01_59399034.jsonl",
+      "review_note": "Answer and actual tool/context evidence reviewed."
+    },
+    {
+      "manifest": "stage-02-skills_B-renamed.json",
+      "stage": "stage-02-skills",
+      "case": "B-renamed",
+      "execution_completed": true,
+      "meets_case_requirement": true,
+      "trace": "20261007-192913_83d97ee4_turn01_dc818466.jsonl",
+      "review_note": "Answer and actual tool/context evidence reviewed."
+    },
+    {
+      "manifest": "stage-02-skills_B.json",
+      "stage": "stage-02-skills",
+      "case": "B",
+      "execution_completed": true,
+      "meets_case_requirement": true,
+      "trace": "20261007-192851_ae5034d8_turn01_b8dd6224.jsonl",
+      "review_note": "Answer and actual tool/context evidence reviewed."
+    },
+    {
+      "manifest": "stage-02-skills_missing-activation.json",
+      "stage": "stage-02-skills",
+      "case": "missing-activation",
+      "execution_completed": true,
+      "meets_case_requirement": true,
+      "trace": "20261007-192924_39cfe3d2_turn01_87dc31d9.jsonl",
+      "review_note": "Answer and actual tool/context evidence reviewed."
+    }
+  ]
+}

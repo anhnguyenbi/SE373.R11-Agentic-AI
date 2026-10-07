@@ -1,0 +1,20 @@
+{
+  "tests_passed": 128,
+  "live_runs_completed": 11,
+  "stage_02_required_cases_passed": 5,
+  "stage_01_missing_activation": "does not meet clarification requirement; preserved and reported",
+  "python_comments": 0,
+  "credential_scan": "passed: no actual secret values from local .env found in included files",
+  "excluded": [
+    ".env",
+    ".env.* except .env.example",
+    ".venv",
+    ".git",
+    "__pycache__",
+    ".pytest_cache",
+    "*.pyc",
+    "*.pyo",
+    "*.zip",
+    ".DS_Store"
+  ]
+}

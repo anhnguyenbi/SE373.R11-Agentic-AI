@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stage 00: Chat, giải thích tương tác</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+:root{
+  --bg0:#ffffff; --bg1:#f7f7f7; --bg2:#edebe9; --bg3:#d4cdc5; --bg4:#c5bdb3;
+  --fg:#1e3932; --red:#c8102e; --orange:#d97917; --yellow:#f2a900;
+  --green:#00704a; --green-dark:#006241; --brown:#6f4e37; --brown-light:#8b7355;
+  --grey:#666666; --green-soft:#e6f1ec; --yellow-soft:#fdf1d0; --red-soft:#fbe4e8;
+  --font:'IBM Plex Sans','Be Vietnam Pro','Segoe UI','Helvetica Neue',Arial,sans-serif;
+  --mono:'JetBrains Mono','SF Mono',Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{font-size:18px;scroll-behavior:smooth}
+body{margin:0;background:var(--bg1);color:var(--fg);font-family:var(--font);line-height:1.6;font-size:1rem}
+code,pre,.mono{font-family:var(--mono)}
+code{background:var(--bg2);padding:.05em .35em;border-radius:6px;font-size:.88em}
+header.hero{background:var(--green-dark);color:#fff;padding:2.2rem 1.5rem 2.6rem}
+.wrap{max-width:1180px;margin:0 auto}
+.hero .kicker{font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:#cfe8dc;font-weight:600}
+.hero h1{font-size:2.6rem;line-height:1.2;margin:.3rem 0 .6rem}
+.hero p{font-size:1.15rem;max-width:46em;margin:.3rem 0;color:#eaf5ef}
+.hero code{background:rgba(255,255,255,.2);color:#fff}
+.chips{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.2rem}
+.chip{background:rgba(255,255,255,.14);border:2px solid rgba(255,255,255,.35);border-radius:14px;padding:.5rem 1rem;font-weight:600;font-size:1rem}
+.chip b{font-size:1.5rem;display:block;line-height:1.1}
+nav{position:sticky;top:0;z-index:20;background:var(--bg0);border-bottom:2px solid var(--bg3)}
+nav .wrap{display:flex;gap:.3rem;overflow-x:auto;padding:.4rem 1rem}
+nav a{white-space:nowrap;color:var(--fg);text-decoration:none;font-weight:600;font-size:.9rem;padding:.4rem .8rem;border-radius:10px}
+nav a:hover,nav a.on{background:var(--green);color:#fff}
+section{padding:2.6rem 1.5rem 1rem}
+section h2{font-size:2rem;line-height:1.25;margin:0 0 .4rem;color:var(--green-dark)}
+section h2 .n{display:inline-block;background:var(--green);color:#fff;border-radius:50%;width:2.2rem;height:2.2rem;text-align:center;line-height:2.2rem;font-size:1.1rem;margin-right:.6rem;vertical-align:middle}
+.lead{font-size:1.15rem;color:var(--brown);margin:.2rem 0 1.2rem;max-width:52em}
+.card{background:var(--bg0);border:2px solid var(--bg3);border-radius:18px;padding:1.2rem 1.4rem;margin:1rem 0}
+.card h3{margin:.1rem 0 .6rem;font-size:1.3rem}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+@media(max-width:900px){.grid2,.grid3{grid-template-columns:1fr}html{font-size:16px}}
+button{font:inherit;font-weight:600;cursor:pointer;border:2px solid var(--green);background:var(--bg0);color:var(--green);border-radius:12px;padding:.45rem 1rem;transition:.15s}
+button:hover:not(:disabled){background:var(--green-soft)}
+button.primary{background:var(--green);color:#fff}
+button.primary:hover:not(:disabled){background:var(--green-dark)}
+button.danger{border-color:var(--red);color:var(--red)}
+button.danger:hover:not(:disabled){background:var(--red-soft)}
+button:disabled{opacity:.4;cursor:not-allowed}
+button.sel,button.sel:hover:not(:disabled){background:var(--green);color:#fff}
+button.sel:hover:not(:disabled){background:var(--green-dark)}
+button.sel .tag.real{background:#fff;color:var(--green-dark)}
+button.sel code,.sel code{background:rgba(255,255,255,.22);color:#fff}
+.row{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center}
+.note{background:var(--yellow-soft);border-left:6px solid var(--yellow);border-radius:10px;padding:.7rem 1rem;margin:.8rem 0;font-size:.95rem}
+.note.ok{background:var(--green-soft);border-color:var(--green)}
+.note.bad{background:var(--red-soft);border-color:var(--red)}
+.tag{display:inline-block;font-size:.75rem;font-weight:700;padding:.1rem .55rem;border-radius:20px;background:var(--bg2);color:var(--brown);vertical-align:middle}
+.tag.real{background:var(--green);color:#fff}
+.tag.sim{background:var(--yellow);color:#3a2b00}
+
+/* Architecture */
+.arch{display:grid;grid-template-columns:repeat(5,1fr);gap:.6rem;align-items:stretch;margin:1rem 0}
+.node{background:var(--bg0);border:3px solid var(--bg3);border-radius:16px;padding:.7rem .6rem;text-align:center;cursor:pointer;position:relative;font-weight:600;font-size:.95rem;transition:.15s}
+.node small{display:block;font-weight:400;color:var(--grey);font-family:var(--mono);font-size:.72rem;margin-top:.2rem}
+.node:hover{border-color:var(--green)}
+.node.on{border-color:var(--green);background:var(--green-soft);box-shadow:0 4px 0 var(--green)}
+.node .ico{font-size:1.6rem;display:block}
+.node.dim{opacity:.5;border-style:dashed}
+.arch .arrow{display:none}
+.archrow2{display:grid;grid-template-columns:repeat(5,1fr);gap:.6rem}
+.flowline{grid-column:1/-1;text-align:center;color:var(--grey);font-size:.9rem;margin:.1rem 0}
+#archDetail{min-height:7rem}
+#archDetail h4{margin:0 0 .3rem;font-size:1.2rem;color:var(--green-dark)}
+@media(max-width:900px){.arch,.archrow2{grid-template-columns:1fr 1fr}}
+
+/* Simulator */
+.stepper{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;margin:.8rem 0}
+.timeline{display:flex;gap:.4rem;margin:.8rem 0;flex-wrap:wrap}
+.tl{flex:1;min-width:150px;border:3px solid var(--bg3);background:var(--bg0);border-radius:14px;padding:.5rem .7rem;font-size:.85rem;cursor:pointer}
+.tl b{display:block;font-family:var(--mono);font-size:.85rem}
+.tl.done{border-color:var(--green);background:var(--green-soft)}
+.tl.cur{border-color:var(--orange);background:var(--yellow-soft);box-shadow:0 4px 0 var(--orange)}
+.badge{display:inline-block;padding:.2rem .9rem;border-radius:20px;font-weight:700;font-size:1rem;color:#fff;background:var(--grey)}
+.badge.ready{background:var(--grey)}.badge.model{background:var(--orange)}.badge.done{background:var(--green)}.badge.err{background:var(--red)}
+.counters{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin:.7rem 0}
+.counter{background:var(--bg1);border:2px solid var(--bg3);border-radius:12px;padding:.4rem .5rem;text-align:center;font-size:.78rem;line-height:1.25;color:var(--grey)}
+.counter b{display:block;font-size:1.8rem;color:var(--fg);line-height:1.1}
+.counter.hl{border-color:var(--green);background:var(--green-soft)}
+.counter.zero b{color:var(--red)}
+.chat{display:flex;flex-direction:column;gap:.5rem;margin:.5rem 0}
+.msg{padding:.6rem .9rem;border-radius:14px;max-width:92%;font-size:.95rem;white-space:pre-wrap}
+.msg.u{background:var(--green);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.msg.a{background:var(--bg2);align-self:flex-start;border-bottom-left-radius:4px}
+.msg.pending{opacity:.55;font-style:italic}
+pre{background:var(--bg2);border-radius:12px;padding:.7rem .9rem;overflow:auto;font-size:.8rem;line-height:1.5;margin:.4rem 0;white-space:pre-wrap;word-break:break-word}
+.evlog{font-family:var(--mono);font-size:.8rem}
+.ev{display:flex;gap:.6rem;padding:.3rem .5rem;border-bottom:1px solid var(--bg2);align-items:baseline}
+.ev:last-child{border:0}
+.ev .s{background:var(--green);color:#fff;border-radius:6px;padding:0 .4rem;font-weight:600}
+.ev.new{background:var(--yellow-soft)}
+details{margin:.4rem 0}
+summary{cursor:pointer;font-weight:600;padding:.2rem 0}
+.empty{color:var(--red);font-weight:700}
+.panelhead{display:flex;justify-content:space-between;align-items:center;gap:.5rem;flex-wrap:wrap}
+.invisible-hint{color:var(--grey);font-size:.9rem}
+
+/* context bar */
+.stack{display:flex;height:3.2rem;border-radius:12px;overflow:hidden;border:2px solid var(--bg3);margin:.6rem 0}
+.stack div{display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:.8rem;transition:width .3s;overflow:hidden;white-space:nowrap}
+.legend{display:flex;gap:1rem;flex-wrap:wrap;font-size:.9rem}
+.legend i{display:inline-block;width:1rem;height:1rem;border-radius:4px;margin-right:.35rem;vertical-align:-2px}
+.sp{background:var(--green)}.cp{background:var(--orange)}.um{background:var(--brown)}.hs{background:var(--brown-light)}
+.hl-base{background:#cfe8dc}.hl-cap{background:#fbe2bf}
+.prompt-view{font-family:var(--mono);font-size:.82rem;white-space:pre-wrap;background:var(--bg0);border:2px solid var(--bg3);border-radius:12px;padding:.8rem 1rem;line-height:1.55}
+
+/* history */
+.hist{display:flex;gap:.3rem;flex-wrap:wrap;margin:.6rem 0;min-height:3rem}
+.hm{border-radius:10px;padding:.25rem .6rem;font-size:.8rem;font-weight:600;color:#fff}
+.hm.s{background:var(--green)}.hm.u{background:var(--brown)}.hm.a{background:var(--brown-light)}
+.hm.gone{background:var(--red-soft);color:var(--red);text-decoration:line-through;border:2px dashed var(--red)}
+.bars{display:flex;align-items:flex-end;gap:.5rem;height:150px;margin:.6rem 0;border-bottom:3px solid var(--bg3);padding:0 .3rem}
+.bar{flex:1;background:var(--green);border-radius:8px 8px 0 0;position:relative;min-width:30px;transition:height .3s;max-width:90px}
+.bar span{position:absolute;top:-1.4rem;left:0;right:0;text-align:center;font-size:.8rem;font-weight:700;color:var(--fg)}
+.bar em{position:absolute;bottom:-1.5rem;left:0;right:0;text-align:center;font-size:.75rem;font-style:normal;color:var(--grey)}
+.bar.fail{background:var(--red)}
+
+/* loop */
+.slots{display:grid;grid-template-columns:repeat(8,1fr);gap:.4rem;margin:.8rem 0}
+.slot{border:3px solid var(--bg3);border-radius:12px;padding:.4rem .2rem;text-align:center;font-size:.8rem;background:var(--bg0);min-height:4.2rem}
+.slot b{display:block;font-size:1.1rem}
+.slot.m{border-color:var(--green);background:var(--green-soft)}
+.slot.t{border-color:var(--brown-light);background:var(--bg2)}
+.slot.cut{border-color:var(--red);background:var(--red-soft);color:var(--red)}
+input[type=range]{width:100%;accent-color:var(--green);height:2rem}
+.switch{display:inline-flex;border:2px solid var(--green);border-radius:12px;overflow:hidden}
+.switch button{border:0;border-radius:0}
+
+/* trace */
+.jl{font-family:var(--mono);font-size:.78rem;background:var(--bg0);border:2px solid var(--bg3);border-radius:12px;padding:.5rem .8rem;margin:.4rem 0;cursor:pointer;word-break:break-all;line-height:1.55}
+.jl:hover{border-color:var(--green)}
+.jl.on{border-color:var(--green);background:var(--green-soft)}
+.jl .k{color:var(--green-dark);font-weight:600}
+.jl .t{color:var(--red);font-weight:600}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+th,td{border-bottom:2px solid var(--bg2);padding:.5rem .6rem;text-align:left;vertical-align:top}
+th{color:var(--green-dark);background:var(--bg1)}
+.toggle{display:flex;align-items:center;gap:.6rem;font-weight:600;cursor:pointer;margin:.3rem 0}
+.toggle input{width:1.3rem;height:1.3rem;accent-color:var(--green)}
+.chatinput{display:flex;gap:.5rem;margin-top:.6rem}
+.chatinput input{flex:1;font:inherit;padding:.6rem .9rem;border-radius:12px;border:2px solid var(--bg3);background:var(--bg0)}
+.chatinput input:disabled{background:var(--bg2);cursor:not-allowed}
+footer{padding:2rem 1.5rem 3rem;color:var(--grey);font-size:.9rem}
+</style>
+</head>
+<body>
+
+<header class="hero"><div class="wrap">
+  <div class="kicker">Agent Tools &amp; Skills Lab</div>
+  <h1>Stage 00: Chat</h1>
+  <p>Đây là agent đơn giản nhất của lab: một LangChain agent chỉ chat với model, không có tool và không có skill. Agent không thể đọc file, ghi file hay chạy lệnh. Trang này giải thích cách app hoạt động qua các phần tương tác bên dưới.</p>
+  <div class="chips">
+    <div class="chip"><b>0</b>tool</div>
+    <div class="chip"><b>0</b>skill</div>
+    <div class="chip"><b>8</b>lần gọi model tối đa mỗi lượt</div>
+    <div class="chip"><b>50</b>recursion limit của LangGraph</div>
+  </div>
+</div></header>
+
+<nav><div class="wrap" id="nav">
+  <a href="#s1">Kiến trúc</a><a href="#s2">Một lượt chat</a><a href="#s3">Context</a>
+  <a href="#s4">Nhiều lượt</a><a href="#s5">Vòng lặp</a><a href="#s6">Trace</a><a href="#s7">Cấu hình</a>
+</div></nav>
+
+<!-- 1 -->
+<section id="s1"><div class="wrap">
+  <h2><span class="n">1</span>Kiến trúc</h2>
+  <p class="lead">Bấm vào từng khối để xem file tương ứng và nhiệm vụ của nó. Khối nét đứt là thành phần mà Stage 00 để trống, các stage sau mới bổ sung.</p>
+  <div class="arch" id="arch"></div>
+  <div class="card" id="archDetail"></div>
+</div></section>
+
+<!-- 2 -->
+<section id="s2"><div class="wrap">
+  <h2><span class="n">2</span>Một lượt chat</h2>
+  <p class="lead">Chọn một prompt rồi bấm <b>Bước tiếp</b> để xem từng event xảy ra theo thứ tự. Cột bên phải mô phỏng panel State &amp; Context trong app Streamlit.</p>
+  <div class="row" id="presets"></div>
+  <div class="note" id="simNote"></div>
+  <div class="stepper">
+    <button id="bPrev">← Lùi</button>
+    <button id="bNext" class="primary">Bước tiếp →</button>
+    <button id="bAuto">▶ Tự chạy</button>
+    <button id="bReset" class="danger">Làm lại</button>
+  </div>
+  <div class="timeline" id="timeline"></div>
+  <div class="grid2">
+    <div class="card">
+      <h3>💬 Cột chat</h3>
+      <div class="chat" id="simChat"></div>
+      <details open><summary>Các bước thực hiện (<span id="sumModel">0</span> model call, <span id="sumTool">0</span> tool call)</summary>
+        <div id="simSteps" class="invisible-hint">Chưa có bước nào.</div>
+      </details>
+    </div>
+    <div class="card">
+      <div class="panelhead"><h3>📊 State &amp; Context</h3><span class="badge ready" id="simBadge">Sẵn sàng</span></div>
+      <div class="counters">
+        <div class="counter" id="cTurn">Lượt chat<b>0</b></div>
+        <div class="counter" id="cModel">Model call<b>0</b></div>
+        <div class="counter" id="cSeq">Bước sự kiện<b>0</b></div>
+        <div class="counter zero" id="cTool">Tool calls<b>0</b></div>
+      </div>
+      <details open><summary>Tools được cấp</summary><div class="empty">[] (rỗng): model không có công cụ nào.</div></details>
+      <details open><summary>Skills trong catalog</summary><div class="empty">[] (rỗng)</div></details>
+      <details open><summary>Event log</summary><div class="evlog" id="simLog"></div></details>
+      <details><summary>Context gửi model (snapshot)</summary><div id="simSnap" class="invisible-hint">Chưa có event model_request.</div></details>
+    </div>
+  </div>
+</div></section>
+
+<!-- 3 -->
+<section id="s3"><div class="wrap">
+  <h2><span class="n">3</span>Context gửi cho model</h2>
+  <p class="lead">Mỗi lần gọi, model nhận ba thứ: system prompt, danh sách message và schema của các tool. Stage 00 không có tool, nên mọi thông tin về giới hạn của agent chỉ nằm trong system prompt.</p>
+  <div class="grid2">
+    <div class="card">
+      <h3>System prompt</h3>
+      <p class="invisible-hint">System prompt gồm hai đoạn ghép lại. Bỏ chọn một đoạn để xem prompt thay đổi.</p>
+      <label class="toggle"><input type="checkbox" id="tBase" checked> <span class="legend"><i class="sp"></i></span>BASE_PROMPT: vai trò và quy tắc chung</label>
+      <label class="toggle"><input type="checkbox" id="tCap" checked> <span class="legend"><i class="cp"></i></span>CAPABILITY_PROMPT: nói rõ không có tool</label>
+      <div class="note ok" id="ctxNote"></div>
+      <div class="prompt-view" id="promptView"></div>
+    </div>
+    <div class="card">
+      <h3>Kích thước tính bằng ký tự</h3>
+      <div class="row"><label>Tin nhắn của user: <input id="uText" value="hello" style="font:inherit;padding:.3rem .6rem;border-radius:8px;border:2px solid var(--bg3);width:14rem"></label></div>
+      <div class="stack" id="ctxStack"></div>
+      <div class="legend"><span><i class="sp"></i>BASE</span><span><i class="cp"></i>CAPABILITY</span><span><i class="um"></i>user</span></div>
+      <p id="ctxNums" class="mono" style="font-size:.85rem"></p>
+      <div class="note bad"><b>Số token không khớp số ký tự.</b> Trace thật của prompt <code>hello</code> ghi <code>system_prompt_chars=611</code> và <code>message_chars=5</code>, tổng 616 ký tự, nhưng provider báo <code>input_tokens=2178</code>. Phần chênh nhiều khả năng do chat template của endpoint thêm vào <span class="tag sim">suy luận</span>. Snapshot trong app chỉ chụp ở lớp LangChain, không phải payload thực sự gửi đi.</div>
+    </div>
+  </div>
+</div></section>
+
+<!-- 4 -->
+<section id="s4"><div class="wrap">
+  <h2><span class="n">4</span>Nhiều lượt và history</h2>
+  <p class="lead">Model không tự nhớ gì giữa các lượt. App gửi lại toàn bộ history ở mỗi lượt, nên số message tăng dần. Gửi vài lượt, rồi thử một lượt bị lỗi để xem history được xử lý ra sao.</p>
+  <div class="card">
+    <div class="row">
+      <button class="primary" id="hSend">Gửi lượt mới</button>
+      <button class="danger" id="hFail">Mô phỏng lượt bị lỗi</button>
+      <button id="hNew">Cuộc trò chuyện mới</button>
+    </div>
+    <div class="counters" style="grid-template-columns:repeat(3,1fr)">
+      <div class="counter">Số lượt đã chạy<b id="hTurn">0</b></div>
+      <div class="counter hl">Số message gửi ở lượt kế tiếp<b id="hMsgs">1</b></div>
+      <div class="counter">File trace trên đĩa<b id="hFiles">0</b></div>
+    </div>
+    <div class="legend"><span><i class="sp"></i>system</span><span><i class="um"></i>user</span><span><i class="hs"></i>assistant</span></div>
+    <div class="hist" id="hist"></div>
+    <div class="bars" id="hbars"></div>
+    <div class="note" id="hNote">Bấm "Gửi lượt mới" để bắt đầu.</div>
+  </div>
+</div></section>
+
+<!-- 5 -->
+<section id="s5"><div class="wrap">
+  <h2><span class="n">5</span>Vòng lặp và giới hạn</h2>
+  <p class="lead">Agent chạy theo vòng lặp: gọi model, nếu model yêu cầu tool thì chạy tool rồi gọi model lần nữa. Vì Stage 00 không có tool, vòng lặp luôn kết thúc sau đúng một lần gọi model. Chuyển sang chế độ giả định để xem giới hạn 8 lần gọi hoạt động thế nào khi có tool.</p>
+  <div class="card">
+    <div class="switch" id="loopMode">
+      <button class="sel" data-m="0">Stage 00 (tools = [])</button>
+      <button data-m="1">Giả định có tool (từ Stage 01)</button>
+    </div>
+    <div style="margin-top:.8rem" id="loopCtl">
+      <label>Số vòng liên tiếp model yêu cầu tool: <b id="loopN">3</b></label>
+      <input type="range" id="loopRange" min="0" max="10" value="3">
+    </div>
+    <div class="slots" id="slots"></div>
+    <div class="note" id="loopNote"></div>
+    <table>
+      <tr><th>Giới hạn</th><th>Giá trị</th><th>Ý nghĩa</th></tr>
+      <tr><td><code>MODEL_CALL_LIMIT</code></td><td>8</td><td>Số lần gọi model tối đa trong một lượt. Vượt giới hạn thì <code>exit_behavior="end"</code> kết thúc lượt.</td></tr>
+      <tr><td><code>RECURSION_LIMIT</code></td><td>50</td><td>Số bước tối đa của LangGraph. Đây không phải số tool call.</td></tr>
+    </table>
+  </div>
+</div></section>
+
+<!-- 6 -->
+<section id="s6"><div class="wrap">
+  <h2><span class="n">6</span>Trace JSONL</h2>
+  <p class="lead">Mỗi lượt chat ghi một file trong <code>traces/</code>, mỗi dòng là một event. Bên dưới là 4 dòng của lượt <code>hello</code> trong trace thật <span class="tag real">dữ liệu thật</span>, đã rút gọn một số trường. Bấm vào từng dòng để đọc giải thích.</p>
+  <div class="grid2">
+    <div id="jls"></div>
+    <div class="card" id="jlDetail"></div>
+  </div>
+</div></section>
+
+<!-- 7 -->
+<section id="s7"><div class="wrap">
+  <h2><span class="n">7</span>Cấu hình</h2>
+  <p class="lead">App đọc cấu hình từ file <code>.env</code>. Bật hoặc tắt từng biến để xem giao diện phản ứng thế nào khi thiếu cấu hình.</p>
+  <div class="grid2">
+    <div class="card">
+      <label class="toggle"><input type="checkbox" id="eKey" checked> <code>OPENAI_API_KEY</code> (bắt buộc)</label>
+      <label class="toggle"><input type="checkbox" id="eModel" checked> <code>MODEL_NAME</code> (bắt buộc)</label>
+      <label class="toggle"><input type="checkbox" id="eBase"> <code>OPENAI_BASE_URL</code> (tùy chọn)</label>
+      <div class="note" id="eNote"></div>
+      <div class="chatinput"><input id="eInput" placeholder="Nhắn cho agent…"><button class="primary" id="eSend">Gửi</button></div>
+    </div>
+    <div class="card">
+      <h3>Hàm <code>build_model()</code> tạo model như sau</h3>
+      <pre id="ePre"></pre>
+      <p class="invisible-hint">App không truyền <code>temperature</code> hay tham số nào khác. API key không được ghi vào trace hay log.</p>
+    </div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">Nguồn: <code>agent.py</code>, <code>config.py</code>, <code>prompts.py</code>, <code>observer.py</code>, <code>trace.py</code>, <code>README.md</code> và các file trace trong <code>traces/</code> của project này. Nhãn <span class="tag real">dữ liệu thật</span> là dữ liệu lấy từ code hoặc trace. Nhãn <span class="tag sim">minh hoạ</span> là phần mô phỏng.</div></footer>
+
+<script>
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+
+/* ---------- data from prompts.py ---------- */
+const BASE=`Bạn là trợ lý trong lab "Agent Tools & Skills". Trả lời bằng tiếng Việt, ngắn gọn, rõ ràng.
+
+Quy tắc:
+- Chỉ dùng các tool được cấp trong request để thao tác dữ liệu. Nếu không có tool phù hợp, nói rõ giới hạn thay vì đoán.
+- Chỉ nói đã đọc, ghi hoặc chạy một thứ khi đã nhận tool result thành công cho đúng thao tác đó.
+- Khi tool trả lỗi, báo lỗi cho người dùng và đề xuất cách xử lý; không bịa kết quả.`;
+const CAP=`Project này không cấp tool nào: bạn không đọc được file, không ghi được file và không chạy được lệnh.
+Nếu người dùng yêu cầu đọc file hoặc dữ liệu, nói rõ bạn không có quyền truy cập và không bịa nội dung.`;
+const SYSTEM=BASE+"\n\n"+CAP;
+
+/* ---------- 1. architecture ---------- */
+const NODES=[
+ {i:'👤',t:'Người dùng',f:'trình duyệt',d:'Nhập prompt vào ô chat. Mỗi lần gửi là một <b>lượt chat</b> (<code>chat_turn</code>).'},
+ {i:'🖥️',t:'Streamlit UI',f:'app.py',d:'Vẽ cột chat và cột State &amp; Context. Giữ <code>Observer</code> trong <code>st.session_state</code>, chạy agent với <code>stream_mode="custom"</code> và nhận event ở luồng UI. Thiếu cấu hình <code>.env</code> thì khóa ô chat.'},
+ {i:'🧠',t:'LangChain agent',f:'agent.py',d:'Tạo agent bằng <code>create_agent(model, tools=[], system_prompt, middleware=[…])</code>. Vì <code>TOOLS = []</code>, hàm <code>capabilities()</code> trả về <code>{"tools": [], "skills": []}</code>.'},
+ {i:'🧱',t:'Middleware',f:'ModelCallLimit và Observer',d:'<b>ModelCallLimitMiddleware</b> (<code>run_limit=8</code>, <code>exit_behavior="end"</code>) giới hạn số lần gọi model. <b>ObserverMiddleware</b> đứng cuối danh sách, sát model nhất: chụp request, đo thời gian và phát event. Nó không sửa request và chỉ gọi handler đúng một lần.'},
+ {i:'☁️',t:'ChatOpenAI và provider',f:'build_model()',d:'<code>ChatOpenAI(model, api_key[, base_url])</code> kết nối tới endpoint tương thích OpenAI. Endpoint cần hỗ trợ native tool calling dù Stage 00 chưa dùng tool. Trace thật dùng model <code>fit/Qwen-27B</code>.'},
+];
+const SIDE=[
+ {i:'🔧',t:'Tools',f:'tools=[]',dim:1,d:'<b>Rỗng ở Stage 00.</b> Stage 01 thêm <code>read_file</code> và <code>write_file</code>, Stage 03 thêm <code>bash</code>. Khi hỏi về file, agent không tool sẽ nói rõ là không đọc được thay vì bịa nội dung.'},
+ {i:'📚',t:'Skills',f:'skills=[]',dim:1,d:'<b>Rỗng ở Stage 00.</b> Stage 02 thêm skill: catalog chỉ chứa metadata, nội dung SKILL.md chỉ vào history khi agent <code>read_file</code> thành công.'},
+ {i:'🔭',t:'Observer',f:'observer.py',d:'Nhận event ở luồng UI, đánh số <b>sequence</b> và giữ counters, snapshots, message history (đều là bản sao JSON). Có 7 loại event: <code>user_submitted</code>, <code>model_request</code>, <code>model_response</code>, <code>tool_started</code>, <code>tool_finished</code>, <code>run_completed</code>, <code>run_failed</code>.'},
+ {i:'📝',t:'Trace writer',f:'trace.py',d:'Ghi mỗi event thành một dòng JSONL trong <code>traces/</code>. Exception bất ngờ được ghi thêm vào <code>traces/debug.log</code>. API key, headers và biến môi trường không bao giờ được ghi.'},
+ {i:'⚙️',t:'Config và prompts',f:'config.py, prompts.py',d:'<code>config.py</code> chứa các hằng số giới hạn và đọc <code>.env</code> (<code>OPENAI_API_KEY</code>, <code>MODEL_NAME</code>, <code>OPENAI_BASE_URL</code>). <code>prompts.py</code> ghép system prompt từ BASE_PROMPT và CAPABILITY_PROMPT.'},
+];
+function renderArch(){
+  const mk=(n,idx,g)=>`<div class="node ${n.dim?'dim':''}" data-g="${g}" data-i="${idx}"><span class="ico">${n.i}</span>${n.t}<small>${n.f}</small></div>`;
+  $('#arch').innerHTML=NODES.map((n,i)=>mk(n,i,'n')).join('')+'<div class="flowline" style="grid-column:1/-1">Hàng trên là luồng xử lý chính từ người dùng đến model. Hàng dưới là các thành phần phụ.</div>'+SIDE.map((n,i)=>mk(n,i,'s')).join('');
+  $$('#arch .node').forEach(el=>el.onclick=()=>pick(el));
+  pick($('#arch .node[data-i="2"]'));
+}
+function pick(el){
+  $$('#arch .node').forEach(n=>n.classList.remove('on')); el.classList.add('on');
+  const n=(el.dataset.g==='n'?NODES:SIDE)[+el.dataset.i];
+  $('#archDetail').innerHTML=`<h4>${n.i} ${n.t} <code>${n.f}</code></h4><div>${n.d}</div>`;
+}
+renderArch();
+
+/* ---------- 2. simulator ---------- */
+const SCEN=[
+ {id:'hello',label:'hello',real:true,user:'hello',ans:'(Câu trả lời dài 89 ký tự. Trace chỉ lưu độ dài, không lưu nội dung.)',ms:173,usage:{in:2178,out:26,tot:2204},
+  note:'Số thứ tự event, tên event, <code>elapsed_ms=173</code>, <code>usage</code> và <code>answer_chars=89</code> lấy từ file trace <code>20261004-222434</code>.'},
+ {id:'file',label:'Đọc data/weekly_notes.md',real:false,user:'Đọc data/weekly_notes.md và cho biết tuần này đã hoàn thành việc gì.',
+  ans:'Tôi không có tool để đọc file nên không thể mở data/weekly_notes.md. Bạn hãy dán nội dung vào đây, tôi sẽ tóm tắt giúp.',ms:null,usage:null,
+  note:'Prompt thử số 2 trong README. Câu trả lời là ví dụ cho hành vi đúng; thời gian và token không được mô phỏng. Điều cần chú ý: số tool call luôn bằng 0 và agent từ chối thay vì bịa nội dung file.'},
+ {id:'ls',label:'Chạy lệnh ls',real:false,user:'Chạy lệnh ls trong thư mục workspace giúp tôi.',
+  ans:'Tôi không có quyền chạy lệnh trong project này. Bạn hãy chạy ls rồi gửi kết quả, tôi sẽ phân tích tiếp.',ms:null,usage:null,
+  note:'Cùng cơ chế với prompt trên: không có tool bash nên không có bước nào chạy lệnh.'},
+];
+let sc=0, step=0, timer=null;
+const STEPS=['user_submitted','model_request','model_response','run_completed'];
+function stepInfo(s,k){ // k = number of events done
+  const evs=[];
+  if(k>=1) evs.push({s:1,t:'user_submitted',d:`text="${s.user.length>40?s.user.slice(0,40)+'…':s.user}", tools=[], skills=[]`});
+  if(k>=2) evs.push({s:2,t:'model_request',d:`model_call_index=1, messages=1, tools=[]`});
+  if(k>=3) evs.push({s:3,t:'model_response',d:`tool_calls_requested=[]`+(s.ms?`, elapsed_ms=${s.ms}`:'')+(s.usage?`, total_tokens=${s.usage.tot}`:'')});
+  if(k>=4) evs.push({s:4,t:'run_completed',d:`answer_chars=${s.real?89:s.ans.length}`});
+  return evs;
+}
+function renderSim(){
+  const s=SCEN[sc], k=step;
+  $('#presets').innerHTML=SCEN.map((x,i)=>`<button class="${i===sc?'sel':''}" data-i="${i}">${esc(x.label)} ${x.real?'<span class="tag real">thật</span>':'<span class="tag sim">minh hoạ</span>'}</button>`).join('');
+  $$('#presets button').forEach(b=>b.onclick=()=>{sc=+b.dataset.i;step=0;stop();renderSim()});
+  $('#simNote').innerHTML=s.note;
+  $('#timeline').innerHTML=STEPS.map((t,i)=>`<div class="tl ${k>i?'done':''} ${k===i?'cur':''}" data-i="${i}"><b>${i+1}. ${t}</b>${[
+    'Người dùng gửi tin nhắn, observer bắt đầu lượt','Chụp context ngay trước khi gọi model','Model trả lời, ghi lại usage','Lượt kết thúc, ghi trace'][i]}</div>`).join('');
+  $$('#timeline .tl').forEach(el=>el.onclick=()=>{step=+el.dataset.i+1;stop();renderSim()});
+  // chat
+  let chat='';
+  if(k>=1) chat+=`<div class="msg u">${esc(s.user)}</div>`;
+  if(k>=1&&k<4) chat+=`<div class="msg a pending">${k<3?'Đang gọi model…':'Đang hoàn tất…'}</div>`;
+  if(k>=4) chat+=`<div class="msg a">${esc(s.ans)}</div>`;
+  $('#simChat').innerHTML=chat||'<span class="invisible-hint">Chưa có tin nhắn.</span>';
+  const calls=k>=2?1:0;
+  $('#sumModel').textContent=calls;$('#sumTool').textContent=0;
+  $('#simSteps').innerHTML=k>=3?`<div><b>Model call #1</b> (${s.ms?s.ms+' ms':'chưa đo'}): model không yêu cầu tool nào, nên không có khung tool call.</div>`:(k>=2?'<div>Model call #1 đang chạy…</div>':'Chưa có bước nào.');
+  // state
+  const b=$('#simBadge');
+  const [txt,cls]= k===0?['Sẵn sàng','ready']:k<4?['Đang gọi model','model']:['Hoàn tất','done'];
+  b.textContent=txt;b.className='badge '+cls;
+  const set=(id,label,v,hl)=>{const e=$(id);e.innerHTML=`${label}<b>${v}</b>`;e.classList.toggle('hl',!!hl)};
+  set('#cTurn','Lượt chat',k?1:0,k===1);set('#cModel','Model call',calls,k===2);set('#cSeq','Bước sự kiện',k,k>0);set('#cTool','Tool calls',0);
+  const evs=stepInfo(s,k);
+  $('#simLog').innerHTML=evs.length?evs.map((e,i)=>`<div class="ev ${i===evs.length-1?'new':''}"><span class="s">#${e.s}</span><b>${e.t}</b><span>${esc(e.d)}</span></div>`).join(''):'<span class="invisible-hint">Chưa có event.</span>';
+  // snapshot
+  if(k>=2){
+    const msgs=[{role:'user',content:s.user}];
+    const snap={model_name:'fit/Qwen-27B',model_call_index:1,message_count:1,system_prompt_chars:SYSTEM.length,message_chars:s.user.length,tools:[],usage:k>=3&&s.usage?{input_tokens:s.usage.in,output_tokens:s.usage.out,total_tokens:s.usage.tot}:null,messages:msgs};
+    $('#simSnap').innerHTML=`<pre>${esc(JSON.stringify(snap,null,2))}</pre><details><summary>system_prompt</summary><pre>${esc(SYSTEM)}</pre></details>`;
+  } else $('#simSnap').innerHTML='<span class="invisible-hint">Chưa có event model_request. Trước lúc đó, panel hiện "Context cấu hình (chưa gửi)".</span>';
+  $('#bPrev').disabled=k===0;$('#bNext').disabled=k===4;
+  $('#bAuto').textContent=timer?'⏸ Dừng':'▶ Tự chạy';
+}
+function stop(){if(timer){clearInterval(timer);timer=null}}
+$('#bNext').onclick=()=>{if(step<4){step++;stop();renderSim()}};
+$('#bPrev').onclick=()=>{if(step>0){step--;stop();renderSim()}};
+$('#bReset').onclick=()=>{step=0;stop();renderSim()};
+$('#bAuto').onclick=()=>{
+  if(timer){stop();renderSim();return}
+  if(step>=4)step=0;
+  timer=setInterval(()=>{if(step<4){step++;renderSim()}else{stop();renderSim()}},1100);renderSim();
+};
+renderSim();
+
+/* ---------- 3. context ---------- */
+function renderCtx(){
+  const b=$('#tBase').checked,c=$('#tCap').checked,u=$('#uText').value;
+  const parts=[];
+  if(b)parts.push(`<span class="hl-base">${esc(BASE)}</span>`);
+  if(c)parts.push(`<span class="hl-cap">${esc(CAP)}</span>`);
+  $('#promptView').innerHTML=parts.join('\n\n')||'<span class="empty">(system prompt rỗng)</span>';
+  const bl=b?BASE.length:0,cl=c?CAP.length:0,sep=(b&&c)?2:0,sys=bl+cl+sep,tot=sys+u.length||1;
+  $('#ctxStack').innerHTML=`<div class="sp" style="width:${bl/tot*100}%">${bl?'BASE '+bl:''}</div><div class="cp" style="width:${(cl+sep)/tot*100}%">${cl?'CAP '+cl:''}</div><div class="um" style="width:${u.length/tot*100}%"></div>`;
+  $('#ctxNums').textContent=`system = ${bl} + ${sep} (xuống dòng) + ${cl} = ${sys}; user = ${u.length}; tổng = ${sys+u.length}`+(sys===611&&u==='hello'?' (khớp trace thật: 611 + 5)':'');
+  $('#ctxNote').innerHTML=c?'Có CAPABILITY: model được nói thẳng là không có tool, nên khi bị yêu cầu đọc file nó sẽ từ chối rõ ràng.':'<b>Không có CAPABILITY:</b> BASE chỉ nói "chỉ dùng tool được cấp", không nói là không có tool nào. Model có thể trả lời kém rõ ràng hơn <span class="tag sim">suy luận, chưa đo</span>.';
+}
+['#tBase','#tCap'].forEach(i=>$(i).onchange=renderCtx);$('#uText').oninput=renderCtx;renderCtx();
+
+/* ---------- 4. history ---------- */
+let H=[]; // each: 'u'|'a'
+let hTurn=0,hFiles=0,hBars=[],hGone=[],hLast='';
+function renderHist(){
+  $('#hTurn').textContent=hTurn;
+  $('#hMsgs').textContent=H.length+1;
+  $('#hFiles').textContent=hFiles;
+  $('#hist').innerHTML='<span class="hm s">system</span>'+H.map(x=>`<span class="hm ${x}">${x==='u'?'user':'assistant'}</span>`).join('')+hGone.map(x=>`<span class="hm gone">${x==='u'?'user':'assistant'}</span>`).join('');
+  $('#hbars').innerHTML=hBars.map((b,i)=>`<div class="bar ${b.fail?'fail':''}" style="height:${Math.max(14,b.n*13)}px"><span>${b.n}</span><em>lượt ${i+1}${b.fail?' ✗':''}</em></div>`).join('')||'<span class="invisible-hint">Biểu đồ: số message (không tính system) gửi ở mỗi lượt.</span>';
+  $('#hNote').innerHTML=hLast||'Bấm "Gửi lượt mới" để bắt đầu.';
+  $('#hNote').className='note'+(hLast.startsWith('<b>Lỗi')?' bad':'');
+}
+$('#hSend').onclick=()=>{hTurn++;hFiles++;hGone=[];const sent=H.length+1;H.push('u','a');hBars.push({n:sent});hLast=`Lượt ${hTurn}: model nhận <b>${sent}</b> message (toàn bộ history cộng tin nhắn mới của user) và trả về 1 message assistant. Mỗi lượt history tăng thêm 2 message vì không có tool message nào xen vào.`;renderHist()};
+$('#hFail').onclick=()=>{hTurn++;hFiles++;const sent=H.length+1;hBars.push({n:sent,fail:true});hGone=['u'];hLast=`<b>Lỗi provider ở lượt ${hTurn}.</b> UI hiện thông báo lỗi và file trace đã ghi vẫn được giữ. History được rollback về trạng thái trước lượt lỗi, nên message user bị bỏ. App không tự chạy lại lượt lỗi.`;renderHist()};
+$('#hNew').onclick=()=>{H=[];hTurn=0;hBars=[];hGone=[];hLast='History và các counter đã được xóa. Các file trong <code>traces/</code> vẫn còn trên đĩa nên số file trace không đổi.';renderHist()};
+renderHist();
+
+/* ---------- 5. loop ---------- */
+let loopTools=false;
+function renderLoop(){
+  const n=+$('#loopRange').value;$('#loopN').textContent=n;
+  $('#loopCtl').style.display=loopTools?'block':'none';
+  const want=loopTools?n:0; // number of tool-requesting responses
+  let tools=0,cut=false;
+  // simulate
+  const seq=[];
+  for(let c=1;c<=8;c++){
+    seq.push({k:'m',c});
+    if(c<=want){ if(c<8){seq.push({k:'t',c});tools++} else {cut=true} } else break;
+  }
+
+  const mc=seq.filter(x=>x.k==='m').length;
+  let h='';
+  for(let i=1;i<=8;i++){
+    if(i<=mc){const isCut=cut&&i===8;h+=`<div class="slot ${isCut?'cut':'m'}">🧠<b>model #${i}</b>${i<=want&&!isCut?'yêu cầu tool':(isCut?'bị cắt':'trả lời')}</div>`}
+    else h+=`<div class="slot" style="opacity:.4"><b>#${i}</b>chưa dùng</div>`;
+  }
+  $('#slots').innerHTML=h;
+  let note;
+  if(!loopTools) note=`<b>Stage 00:</b> vì <code>tools=[]</code> nên model không có tool nào để yêu cầu. Lượt chat luôn có 1 model call và 0 tool call, không bao giờ chạm giới hạn 8.`;
+  else if(cut) note=`<b>Chạm MODEL_CALL_LIMIT:</b> ở lần gọi #8 model vẫn muốn gọi tool nhưng đã hết số lần cho phép. <code>exit_behavior="end"</code> kết thúc lượt, ${tools} tool call đã chạy. <span class="tag sim">minh hoạ cho các stage sau</span>`;
+  else note=`${mc} model call và ${tools} tool call. Mỗi vòng: model yêu cầu tool, app chạy tool, rồi gọi model lại kèm kết quả. Lần gọi cuối model trả lời bình thường. <span class="tag sim">minh hoạ cho các stage sau</span>`;
+  $('#loopNote').innerHTML=note;
+  $('#loopNote').className='note'+(cut?' bad':(loopTools?'':' ok'));
+}
+$$('#loopMode button').forEach(b=>b.onclick=()=>{loopTools=b.dataset.m==='1';$$('#loopMode button').forEach(x=>x.classList.toggle('sel',x===b));renderLoop()});
+$('#loopRange').oninput=renderLoop;renderLoop();
+
+/* ---------- 6. trace ---------- */
+const JL=[
+ {t:'user_submitted',raw:{project_name:'stage-00-chat',chat_turn:1,sequence:1,type:'user_submitted',timestamp:'2026-10-04T15:24:34.534+00:00',text:'hello',tools:[],skills:[]},
+  d:'Observer bắt đầu lượt chat. <code>tools</code> và <code>skills</code> đều rỗng vì đây là Stage 00.'},
+ {t:'model_request',raw:{chat_turn:1,sequence:2,type:'model_request',timestamp:'2026-10-04T15:24:35.461+00:00',model_call_index:1,snapshot:{model_name:'fit/Qwen-27B',system_prompt:'Bạn là trợ lý trong lab … (611 ký tự)',messages:[{role:'user',content:'hello'}],tools:[],message_count:1,system_prompt_chars:611,message_chars:5,usage:null}},
+  d:'Snapshot được chụp ngay trước khi gọi model, với <code>tools: []</code>. Trường <code>usage</code> còn null vì model chưa trả lời.'},
+ {t:'model_response',raw:{chat_turn:1,sequence:3,type:'model_response',timestamp:'2026-10-04T15:24:35.634+00:00',model_call_index:1,elapsed_ms:173.0,tool_calls_requested:[],usage:{input_tokens:2178,output_tokens:26,total_tokens:2204}},
+  d:'<code>tool_calls_requested: []</code> nghĩa là model không yêu cầu tool, nên vòng lặp dừng. Model trả lời sau 173 ms. Chú ý <code>input_tokens</code> là 2178 trong khi chỉ có 616 ký tự được gửi (xem phần 3).'},
+ {t:'run_completed',raw:{chat_turn:1,sequence:4,type:'run_completed',timestamp:'2026-10-04T15:24:35.662+00:00',answer_chars:89},
+  d:'Lượt kết thúc. Trace chỉ ghi độ dài câu trả lời (89 ký tự), không ghi nội dung. Nếu lượt bị lỗi, dòng này được thay bằng event <code>run_failed</code>.'},
+];
+function fmtJson(o){return esc(JSON.stringify(o)).replace(/&quot;/g,'"').replace(/"([a-z_]+)":/g,'<span class="k">"$1"</span>:').replace(/"type":/,'"type":').replace(/(\[\])/g,'<span class="t">$1</span>')}
+function renderJl(i){
+  $('#jls').innerHTML=JL.map((x,j)=>`<div class="jl ${j===i?'on':''}" data-i="${j}">${fmtJson(x.raw)}</div>`).join('');
+  $$('#jls .jl').forEach(e=>e.onclick=()=>renderJl(+e.dataset.i));
+  const x=JL[i];$('#jlDetail').innerHTML=`<h3>${i+1}. ${x.t}</h3><p>${x.d}</p><p class="invisible-hint">Trong file thật, mỗi dòng còn có <code>conversation_id</code> và <code>run_id</code>; trang này đã bỏ hai trường đó cho gọn.</p>`;
+}
+renderJl(0);
+
+/* ---------- 7. config ---------- */
+function renderEnv(){
+  const k=$('#eKey').checked,m=$('#eModel').checked,b=$('#eBase').checked;
+  const miss=[!k&&'OPENAI_API_KEY',!m&&'MODEL_NAME'].filter(Boolean);
+  $('#eInput').disabled=$('#eSend').disabled=!!miss.length;
+  $('#eInput').placeholder=miss.length?'Ô chat bị khóa':'Nhắn cho agent…';
+  $('#eNote').className='note '+(miss.length?'bad':'ok');
+  $('#eNote').innerHTML=miss.length?`<b>Thiếu ${miss.join(', ')}.</b> UI hiện cảnh báo, khóa ô chat và app không gọi model.`:'Đã đủ các biến bắt buộc, ô chat được mở.';
+  $('#ePre').textContent=miss.length?'load_settings() trả về (None, '+JSON.stringify(miss)+')\n# không tạo model, không gọi provider':
+`load_settings() → Settings(...)
+ChatOpenAI(
+  model=MODEL_NAME,
+  api_key=OPENAI_API_KEY${b?',\n  base_url=OPENAI_BASE_URL':''}
+)`;
+}
+['#eKey','#eModel','#eBase'].forEach(i=>$(i).onchange=renderEnv);renderEnv();
+
+/* nav highlight */
+const links=$$('#nav a');
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-30% 0px -60% 0px'});
+$$('section').forEach(s=>io.observe(s));
+</script>
+</body>
+</html>

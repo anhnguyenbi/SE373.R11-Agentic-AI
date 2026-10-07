@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stage 02: Skills, giải thích tương tác</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+:root{
+  --bg0:#ffffff; --bg1:#f7f7f7; --bg2:#edebe9; --bg3:#d4cdc5; --bg4:#c5bdb3;
+  --fg:#1e3932; --red:#c8102e; --orange:#d97917; --yellow:#f2a900;
+  --green:#00704a; --green-dark:#006241; --brown:#6f4e37; --brown-light:#8b7355;
+  --grey:#666666; --green-soft:#e6f1ec; --yellow-soft:#fdf1d0; --red-soft:#fbe4e8;
+  --font:'IBM Plex Sans','Be Vietnam Pro','Segoe UI','Helvetica Neue',Arial,sans-serif;
+  --mono:'JetBrains Mono','SF Mono',Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{font-size:18px;scroll-behavior:smooth}
+body{margin:0;background:var(--bg1);color:var(--fg);font-family:var(--font);line-height:1.6;font-size:1rem}
+code,pre,.mono{font-family:var(--mono)}
+code{background:var(--bg2);padding:.05em .35em;border-radius:6px;font-size:.88em}
+header.hero{background:var(--green-dark);color:#fff;padding:2.2rem 1.5rem 2.6rem}
+.wrap{max-width:1180px;margin:0 auto}
+.hero .kicker{font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:#cfe8dc;font-weight:600}
+.hero h1{font-size:2.6rem;line-height:1.2;margin:.3rem 0 .6rem}
+.hero p{font-size:1.15rem;max-width:46em;margin:.3rem 0;color:#eaf5ef}
+.hero code{background:rgba(255,255,255,.2);color:#fff}
+.chips{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.2rem}
+.chip{background:rgba(255,255,255,.14);border:2px solid rgba(255,255,255,.35);border-radius:14px;padding:.5rem 1rem;font-weight:600;font-size:1rem}
+.chip b{font-size:1.5rem;display:block;line-height:1.1}
+nav{position:sticky;top:0;z-index:20;background:var(--bg0);border-bottom:2px solid var(--bg3)}
+nav .wrap{display:flex;gap:.3rem;overflow-x:auto;padding:.4rem 1rem}
+nav a{white-space:nowrap;color:var(--fg);text-decoration:none;font-weight:600;font-size:.9rem;padding:.4rem .8rem;border-radius:10px}
+nav a:hover,nav a.on{background:var(--green);color:#fff}
+section{padding:2.6rem 1.5rem 1rem}
+section h2{font-size:2rem;line-height:1.25;margin:0 0 .4rem;color:var(--green-dark)}
+section h2 .n{display:inline-block;background:var(--green);color:#fff;border-radius:50%;width:2.2rem;height:2.2rem;text-align:center;line-height:2.2rem;font-size:1.1rem;margin-right:.6rem;vertical-align:middle}
+.lead{font-size:1.15rem;color:var(--brown);margin:.2rem 0 1.2rem;max-width:52em}
+.card{background:var(--bg0);border:2px solid var(--bg3);border-radius:18px;padding:1.2rem 1.4rem;margin:1rem 0}
+.card h3{margin:.1rem 0 .6rem;font-size:1.3rem}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+@media(max-width:900px){.grid2,.grid3{grid-template-columns:1fr}html{font-size:16px}}
+button{font:inherit;font-weight:600;cursor:pointer;border:2px solid var(--green);background:var(--bg0);color:var(--green);border-radius:12px;padding:.45rem 1rem;transition:.15s}
+button:hover:not(:disabled){background:var(--green-soft)}
+button.primary{background:var(--green);color:#fff}
+button.primary:hover:not(:disabled){background:var(--green-dark)}
+button.danger{border-color:var(--red);color:var(--red)}
+button.danger:hover:not(:disabled){background:var(--red-soft)}
+button:disabled{opacity:.4;cursor:not-allowed}
+button.sel,button.sel:hover:not(:disabled){background:var(--green);color:#fff}
+button.sel:hover:not(:disabled){background:var(--green-dark)}
+button.sel .tag.real{background:#fff;color:var(--green-dark)}
+button.sel code,.sel code{background:rgba(255,255,255,.22);color:#fff}
+.row{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center}
+.note{background:var(--yellow-soft);border-left:6px solid var(--yellow);border-radius:10px;padding:.7rem 1rem;margin:.8rem 0;font-size:.95rem}
+.note.ok{background:var(--green-soft);border-color:var(--green)}
+.note.bad{background:var(--red-soft);border-color:var(--red)}
+.tag{display:inline-block;font-size:.75rem;font-weight:700;padding:.1rem .55rem;border-radius:20px;background:var(--bg2);color:var(--brown);vertical-align:middle}
+.tag.real{background:var(--green);color:#fff}
+.tag.sim{background:var(--yellow);color:#3a2b00}
+
+/* Architecture */
+.arch{display:grid;grid-template-columns:repeat(5,1fr);gap:.6rem;align-items:stretch;margin:1rem 0}
+.node{background:var(--bg0);border:3px solid var(--bg3);border-radius:16px;padding:.7rem .6rem;text-align:center;cursor:pointer;position:relative;font-weight:600;font-size:.95rem;transition:.15s}
+.node small{display:block;font-weight:400;color:var(--grey);font-family:var(--mono);font-size:.72rem;margin-top:.2rem}
+.node:hover{border-color:var(--green)}
+.node.on{border-color:var(--green);background:var(--green-soft);box-shadow:0 4px 0 var(--green)}
+.node .ico{font-size:1.6rem;display:block}
+.node.dim{opacity:.5;border-style:dashed}
+.arch .arrow{display:none}
+.archrow2{display:grid;grid-template-columns:repeat(5,1fr);gap:.6rem}
+.flowline{grid-column:1/-1;text-align:center;color:var(--grey);font-size:.9rem;margin:.1rem 0}
+#archDetail{min-height:7rem}
+#archDetail h4{margin:0 0 .3rem;font-size:1.2rem;color:var(--green-dark)}
+@media(max-width:900px){.arch,.archrow2{grid-template-columns:1fr 1fr}}
+
+/* Simulator */
+.stepper{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;margin:.8rem 0}
+.timeline{display:flex;gap:.4rem;margin:.8rem 0;flex-wrap:wrap}
+.tl{flex:1 1 150px;min-width:150px;overflow-wrap:anywhere;border:3px solid var(--bg3);background:var(--bg0);border-radius:14px;padding:.5rem .7rem;font-size:.85rem;cursor:pointer}
+.tl b{display:block;font-family:var(--mono);font-size:.85rem}
+.tl.done{border-color:var(--green);background:var(--green-soft)}
+.tl.cur{border-color:var(--orange);background:var(--yellow-soft);box-shadow:0 4px 0 var(--orange)}
+.badge{display:inline-block;padding:.2rem .9rem;border-radius:20px;font-weight:700;font-size:1rem;color:#fff;background:var(--grey)}
+.badge.ready{background:var(--grey)}.badge.model{background:var(--orange)}.badge.done{background:var(--green)}.badge.err{background:var(--red)}.badge.tool{background:var(--brown)}
+.counters{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin:.7rem 0}
+.counter{background:var(--bg1);border:2px solid var(--bg3);border-radius:12px;padding:.4rem .5rem;text-align:center;font-size:.78rem;line-height:1.25;color:var(--grey)}
+.counter b{display:block;font-size:1.8rem;color:var(--fg);line-height:1.1}
+.counter.hl{border-color:var(--green);background:var(--green-soft)}
+.counter.zero b{color:var(--red)}
+.chat{display:flex;flex-direction:column;gap:.5rem;margin:.5rem 0}
+.msg{padding:.6rem .9rem;border-radius:14px;max-width:92%;font-size:.95rem;white-space:pre-wrap}
+.msg.u{background:var(--green);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.msg.a{background:var(--bg2);align-self:flex-start;border-bottom-left-radius:4px}
+.msg.pending{opacity:.55;font-style:italic}
+pre{background:var(--bg2);border-radius:12px;padding:.7rem .9rem;overflow:auto;font-size:.8rem;line-height:1.5;margin:.4rem 0;white-space:pre-wrap;word-break:break-word}
+.evlog{font-family:var(--mono);font-size:.8rem}
+.ev{display:flex;gap:.6rem;padding:.3rem .5rem;border-bottom:1px solid var(--bg2);align-items:baseline}
+.ev:last-child{border:0}
+.ev .s{background:var(--green);color:#fff;border-radius:6px;padding:0 .4rem;font-weight:600}
+.ev.new{background:var(--yellow-soft)}
+details{margin:.4rem 0}
+summary{cursor:pointer;font-weight:600;padding:.2rem 0}
+.empty{color:var(--red);font-weight:700}
+.panelhead{display:flex;justify-content:space-between;align-items:center;gap:.5rem;flex-wrap:wrap}
+.invisible-hint{color:var(--grey);font-size:.9rem}
+
+/* context bar */
+.stack{display:flex;height:3.2rem;border-radius:12px;overflow:hidden;border:2px solid var(--bg3);margin:.6rem 0}
+.stack div{display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:.8rem;transition:width .3s;overflow:hidden;white-space:nowrap}
+.legend{display:flex;gap:1rem;flex-wrap:wrap;font-size:.9rem}
+.legend i{display:inline-block;width:1rem;height:1rem;border-radius:4px;margin-right:.35rem;vertical-align:-2px}
+.sp{background:var(--green)}.cp{background:var(--orange)}.um{background:var(--brown)}.hs{background:var(--brown-light)}
+.hl-base{background:#cfe8dc}.hl-cap{background:#fbe2bf}
+.prompt-view{font-family:var(--mono);font-size:.82rem;white-space:pre-wrap;background:var(--bg0);border:2px solid var(--bg3);border-radius:12px;padding:.8rem 1rem;line-height:1.55}
+
+/* history */
+.hist{display:flex;gap:.3rem;flex-wrap:wrap;margin:.6rem 0;min-height:3rem}
+.hm{border-radius:10px;padding:.25rem .6rem;font-size:.8rem;font-weight:600;color:#fff}
+.hm.s{background:var(--green)}.hm.u{background:var(--brown)}.hm.a{background:var(--brown-light)}
+.hm.gone{background:var(--red-soft);color:var(--red);text-decoration:line-through;border:2px dashed var(--red)}
+.bars{display:flex;align-items:flex-end;gap:.5rem;height:150px;margin:.6rem 0;border-bottom:3px solid var(--bg3);padding:0 .3rem}
+.bar{flex:1;background:var(--green);border-radius:8px 8px 0 0;position:relative;min-width:30px;transition:height .3s;max-width:90px}
+.bar span{position:absolute;top:-1.4rem;left:0;right:0;text-align:center;font-size:.8rem;font-weight:700;color:var(--fg)}
+.bar em{position:absolute;bottom:-1.5rem;left:0;right:0;text-align:center;font-size:.75rem;font-style:normal;color:var(--grey)}
+.bar.fail{background:var(--red)}
+
+/* loop */
+.slots{display:grid;grid-template-columns:repeat(8,1fr);gap:.4rem;margin:.8rem 0}
+.slot{border:3px solid var(--bg3);border-radius:12px;padding:.4rem .2rem;text-align:center;font-size:.8rem;background:var(--bg0);min-height:4.2rem}
+.slot b{display:block;font-size:1.1rem}
+.slot.m{border-color:var(--green);background:var(--green-soft)}
+.slot.t{border-color:var(--brown-light);background:var(--bg2)}
+.slot.cut{border-color:var(--red);background:var(--red-soft);color:var(--red)}
+input[type=range]{width:100%;accent-color:var(--green);height:2rem}
+.switch{display:inline-flex;border:2px solid var(--green);border-radius:12px;overflow:hidden}
+.switch button{border:0;border-radius:0}
+
+/* trace */
+.jl{font-family:var(--mono);font-size:.78rem;background:var(--bg0);border:2px solid var(--bg3);border-radius:12px;padding:.5rem .8rem;margin:.4rem 0;cursor:pointer;word-break:break-all;line-height:1.55}
+.jl:hover{border-color:var(--green)}
+.jl.on{border-color:var(--green);background:var(--green-soft)}
+.jl .k{color:var(--green-dark);font-weight:600}
+.jl .t{color:var(--red);font-weight:600}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+th,td{border-bottom:2px solid var(--bg2);padding:.5rem .6rem;text-align:left;vertical-align:top}
+th{color:var(--green-dark);background:var(--bg1)}
+.toggle{display:flex;align-items:center;gap:.6rem;font-weight:600;cursor:pointer;margin:.3rem 0}
+.toggle input{width:1.3rem;height:1.3rem;accent-color:var(--green)}
+.chatinput{display:flex;gap:.5rem;margin-top:.6rem}
+.chatinput input{flex:1;font:inherit;padding:.6rem .9rem;border-radius:12px;border:2px solid var(--bg3);background:var(--bg0)}
+.chatinput input:disabled{background:var(--bg2);cursor:not-allowed}
+footer{padding:2rem 1.5rem 3rem;color:var(--grey);font-size:.9rem}
+
+/* Stage 02 additions */
+.node.chg::after{content:'THAY ĐỔI';position:absolute;top:-.65rem;right:.5rem;background:var(--brown);color:#fff;font-size:.65rem;font-weight:700;padding:.05rem .5rem;border-radius:10px}
+.node.new::after{content:'MỚI';position:absolute;top:-.65rem;right:.5rem;background:var(--orange);color:#fff;font-size:.65rem;font-weight:700;padding:.05rem .5rem;border-radius:10px}
+.tree .tag{line-height:1.3;margin-left:.5rem;padding:.05rem .6rem}
+.tree{font-family:var(--mono);font-size:.85rem;line-height:1.9}
+.tree .tn{display:block;padding:0 .5rem;border-radius:8px;cursor:pointer;white-space:nowrap;border:2px solid transparent}
+.tree .tn.dir{color:var(--brown);cursor:default;font-weight:600}
+.tree .tn.file:hover{border-color:var(--green)}
+.tree .tn.on{background:var(--green-soft);border-color:var(--green);font-weight:600}
+.fm{background:#cfe8dc}.bd{background:#fbe2bf}
+.srcview{font-family:var(--mono);font-size:.8rem;white-space:pre-wrap;word-break:break-word;background:var(--bg0);border:2px solid var(--bg3);border-radius:12px;padding:.7rem .9rem;line-height:1.55;max-height:22rem;overflow:auto}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:.2rem .8rem;font-size:.92rem;margin:.4rem 0}
+.kv dt{font-weight:600;color:var(--brown)}.kv dd{margin:0}
+.pv-b{background:#cfe8dc}.pv-c{background:#b5dcc8}.pv-s{background:#fbe2bf}.pv-k{background:#fdf1d0;outline:2px solid var(--yellow)}
+.c-sysb{background:var(--green)}.c-skb{background:var(--yellow);color:#3a2b00!important}.c-user{background:var(--brown)}.c-asst{background:var(--brown-light)}.c-tsk{background:var(--orange)}.c-tot{background:var(--grey)}
+.vbars{display:flex;align-items:flex-end;gap:.7rem;height:230px;border-bottom:3px solid var(--bg3);padding:1.6rem .3rem 0;margin:.8rem 0 2rem}
+.vb{flex:1;max-width:110px;position:relative;display:flex;flex-direction:column-reverse;cursor:pointer;border:3px solid transparent;border-radius:8px;height:100%;justify-content:flex-start}
+.vb.on{border-color:var(--orange)}
+.vb .seg{width:100%;min-height:0}
+.vb .tot{position:absolute;top:-1.5rem;left:0;right:0;text-align:center;font-size:.8rem;font-weight:700}
+.vb .lab{position:absolute;bottom:-1.6rem;left:0;right:0;text-align:center;font-size:.75rem;color:var(--grey)}
+.tier{border:3px solid var(--bg3);border-radius:14px;padding:.7rem .9rem;background:var(--bg0)}
+.tier.on{border-color:var(--green);background:var(--green-soft)}
+.tier.off{opacity:.55;border-style:dashed}
+.tier h4{margin:0 0 .2rem;font-size:1.05rem}
+.st{display:inline-block;font-size:.75rem;font-weight:700;padding:.05rem .5rem;border-radius:10px;color:#fff;background:var(--grey)}
+.st.pass{background:var(--green)}.st.fail{background:var(--red)}.st.skip{background:var(--bg4);color:var(--fg)}
+.chk{display:flex;gap:.6rem;align-items:baseline;padding:.3rem .2rem;border-bottom:1px solid var(--bg2);font-size:.92rem}
+.chk:last-child{border:0}
+.chk .d{color:var(--grey);font-family:var(--mono);font-size:.78rem}
+.jl.hit{border-color:var(--orange);background:var(--yellow-soft)}
+.msgrow td{font-size:.82rem;padding:.3rem .5rem}
+.msgrow.skill td{background:#fbe2bf}
+.field{display:flex;flex-direction:column;gap:.2rem;margin:.4rem 0;font-size:.9rem;font-weight:600}
+.field input,.field textarea,.field select{font:inherit;font-weight:400;padding:.4rem .6rem;border-radius:10px;border:2px solid var(--bg3);background:var(--bg0)}
+.field textarea{font-family:var(--mono);font-size:.85rem}
+.case{display:flex;gap:.6rem;align-items:flex-start;padding:.4rem .2rem;border-bottom:1px solid var(--bg2);font-size:.92rem}
+.case input[type=checkbox]{margin-top:.35rem;width:1.2rem;height:1.2rem;accent-color:var(--green)}
+.diag{padding:.4rem .7rem;border-radius:10px;margin:.3rem 0;font-size:.88rem;font-family:var(--mono);word-break:break-word}
+.diag.skip{background:var(--red-soft);border-left:5px solid var(--red)}
+.diag.warn{background:var(--yellow-soft);border-left:5px solid var(--yellow)}
+.grid2>*,.grid3>*{min-width:0}
+.tree{overflow-x:auto}
+.field input,.field textarea,.field select{width:100%}
+img,svg{max-width:100%}
+@media(max-width:900px){table{display:block;overflow-x:auto}}
+</style>
+</head>
+<body>
+
+<header class="hero"><div class="wrap">
+  <div class="kicker">Agent Tools &amp; Skills Lab</div>
+  <h1>Stage 02: Skills</h1>
+  <p>Stage 02 giữ nguyên hai tool <code style="background:rgba(255,255,255,.18);color:#fff">read_file</code> và <code style="background:rgba(255,255,255,.18);color:#fff">write_file</code> của Stage 01 và thêm skill. Catalog skill (name, description, location) nằm trong system prompt. Nội dung SKILL.md chỉ vào history khi model gọi <code style="background:rgba(255,255,255,.18);color:#fff">read_file</code> thành công. Trang này giải thích từng bước qua các phần tương tác bên dưới.</p>
+  <div class="chips">
+    <div class="chip"><b>2</b>tool: read_file, write_file</div>
+    <div class="chip"><b>1</b>skill trong workspace</div>
+    <div class="chip"><b>8</b>lần gọi model tối đa mỗi lượt</div>
+    <div class="chip"><b>20</b>tool call tối đa mỗi lượt</div>
+    <div class="chip"><b>50</b>recursion limit của LangGraph</div>
+  </div>
+</div></header>
+
+<nav><div class="wrap" id="nav">
+  <a href="#s1">Kiến trúc</a><a href="#s2">Skill</a><a href="#s3">Catalog</a><a href="#s4">Một lượt chat</a>
+  <a href="#s5">Context</a><a href="#s6">Nạp theo tầng</a><a href="#s7">History</a><a href="#s8">File tool và sandbox</a>
+  <a href="#s9">Giới hạn</a><a href="#s10">Trace</a><a href="#s11">Workspace và cấu hình</a>
+</div></nav>
+
+<!-- 1 -->
+<section id="s1"><div class="wrap">
+  <h2><span class="n">1</span>Kiến trúc</h2>
+  <p class="lead">Bấm vào từng khối để xem file tương ứng và nhiệm vụ của nó. Nhãn MỚI đánh dấu file mới của Stage 02. Nhãn THAY ĐỔI đánh dấu file có sửa so với Stage 01. Các khối còn lại giống Stage 01.</p>
+  <div class="arch" id="arch"></div>
+  <div class="card" id="archDetail"></div>
+  <div class="card">
+    <h3>Điểm mới so với Stage 01 <span class="tag real">dữ liệu thật</span></h3>
+    <table>
+      <tr><th>File</th><th>Thay đổi trong Stage 02</th></tr>
+      <tr><td><code>skill_catalog.py</code></td><td>File mới. Quét <code>workspace/skills/*/SKILL.md</code>, đọc frontmatter, trả về catalog và diagnostics.</td></tr>
+      <tr><td><code>prompts.py</code></td><td>Thêm <code>SKILLS_PROMPT</code>. <code>build_system_prompt(catalog_block)</code> nhận khối catalog.</td></tr>
+      <tr><td><code>agent.py</code></td><td>Thêm <code>load_catalog()</code>. <code>system_prompt()</code> render catalog. <code>capabilities()</code> trả thêm metadata skill và diagnostics.</td></tr>
+      <tr><td><code>fixtures/skills/weekly-report/</code></td><td>Skill mẫu gồm <code>SKILL.md</code> và <code>references/report-template.md</code>, được copy vào <code>workspace/skills/</code>.</td></tr>
+      <tr><td><code>pyproject.toml</code></td><td>Thêm thư viện <code>pyyaml</code> để đọc frontmatter.</td></tr>
+    </table>
+    <p class="invisible-hint">Hai tool, middleware, observer, trace và giới hạn thực thi không đổi so với Stage 01. Không có tool nào dành riêng cho skill: skill được nạp bằng chính <code>read_file</code>.</p>
+  </div>
+</div></section>
+
+<!-- 2 -->
+<section id="s2"><div class="wrap">
+  <h2><span class="n">2</span>Skill</h2>
+  <p class="lead">Một skill là một thư mục trong <code>workspace/skills/</code> có file <code>SKILL.md</code>. Bấm vào một file trong cây thư mục để xem nội dung thật, ai đọc được file đó và file có nằm trong context ban đầu hay không.</p>
+  <div class="grid2">
+    <div class="card"><h3>Cây thư mục workspace <span class="tag real">dữ liệu thật</span></h3><div class="tree" id="tree"></div></div>
+    <div class="card" id="fileInfo"></div>
+  </div>
+</div></section>
+
+<!-- 3 -->
+<section id="s3"><div class="wrap">
+  <h2><span class="n">3</span>Catalog</h2>
+  <p class="lead">Ở mỗi lượt chat, <code>scan_skills()</code> quét lại thư mục skills và <code>render_catalog()</code> tạo khối <code>&lt;available_skills&gt;</code> cho system prompt. Bật hoặc tắt các thư mục skill bên dưới để xem catalog và diagnostics thay đổi. Skill lỗi bị bỏ qua và để lại một dòng diagnostic.</p>
+  <div class="grid2">
+    <div class="card">
+      <h3>Thư mục trong <code>skills/</code></h3>
+      <div id="cases"></div>
+      <details id="customBox"><summary>Tự tạo một skill <span class="tag sim">minh hoạ</span></summary>
+        <div class="field">Tên thư mục<input id="cuFolder" value="my-skill"></div>
+        <div class="field">name<input id="cuName" value="my-skill"></div>
+        <div class="field">description<textarea id="cuDesc" rows="3">Tóm tắt A & B khi <đủ> điều kiện.</textarea></div>
+        <div class="field">Frontmatter
+          <select id="cuFm">
+            <option value="ok">Hợp lệ</option>
+            <option value="noopen">Thiếu dòng --- mở đầu</option>
+            <option value="noclose">Thiếu dòng --- đóng</option>
+            <option value="yaml">YAML sai cú pháp</option>
+            <option value="notmap">Frontmatter không phải mapping</option>
+          </select></div>
+        <label class="toggle"><input type="checkbox" id="cuOn"> Đưa vào <code>skills/</code></label>
+      </details>
+    </div>
+    <div class="card">
+      <h3>Kết quả quét</h3>
+      <div class="counters" style="grid-template-columns:repeat(3,1fr)">
+        <div class="counter hl" id="kCat">Skills trong catalog<b>0</b></div>
+        <div class="counter" id="kDiag">Diagnostics<b>0</b></div>
+        <div class="counter" id="kChars">Ký tự khối catalog<b>0</b></div>
+      </div>
+      <h4 style="margin:.5rem 0 .2rem">Diagnostics (hiện trong UI, không vào system prompt)</h4>
+      <div id="diagList"></div>
+      <h4 style="margin:.8rem 0 .2rem">Khối catalog trong system prompt</h4>
+      <pre id="catXml"></pre>
+    </div>
+  </div>
+  <div class="note" id="scanNote"></div>
+  <div class="card">
+    <h3>Quy tắc của <code>scan_skills()</code> <span class="tag real">dữ liệu thật</span></h3>
+    <table>
+      <tr><th>Tình huống</th><th>Kết quả</th></tr>
+      <tr><td>Thiếu <code>---</code> mở đầu hoặc đóng, YAML sai, frontmatter không phải mapping</td><td>Bỏ qua skill, ghi diagnostic <code>Bỏ qua ...</code></td></tr>
+      <tr><td>Thiếu <code>name</code> hoặc <code>description</code></td><td>Bỏ qua skill, ghi diagnostic</td></tr>
+      <tr><td>Trùng <code>name</code></td><td>Ghi <code>Lỗi: trùng skill name</code>, giữ bản đầu theo thứ tự tên thư mục, bỏ bản sau</td></tr>
+      <tr><td><code>name</code> khác tên thư mục, <code>name</code> dài hơn 64 ký tự, <code>description</code> dài hơn 1024 ký tự</td><td>Ghi <code>Cảnh báo</code>, skill vẫn nằm trong catalog</td></tr>
+      <tr><td>Không có skill nào</td><td><code>render_catalog()</code> trả chuỗi rỗng, system prompt không có đoạn Skills</td></tr>
+    </table>
+  </div>
+</div></section>
+
+<!-- 4 -->
+<section id="s4"><div class="wrap">
+  <h2><span class="n">4</span>Một lượt chat</h2>
+  <p class="lead">Chọn một prompt rồi bấm <b>Bước tiếp</b> để xem từng event theo thứ tự. Cột bên phải mô phỏng panel State &amp; Context trong app Streamlit. Chú ý mục <b>Skill content đã vào history</b>: mục này chỉ có dữ liệu sau khi <code>read_file</code> đọc SKILL.md thành công.</p>
+  <div class="row" id="presets"></div>
+  <div class="note" id="simNote"></div>
+  <div class="stepper">
+    <button id="bPrev">Lùi</button>
+    <button id="bNext" class="primary">Bước tiếp</button>
+    <button id="bAuto">Tự chạy</button>
+    <button id="bReset" class="danger">Làm lại</button>
+    <span class="invisible-hint" id="stepLbl"></span>
+  </div>
+  <div class="timeline" id="timeline"></div>
+  <div class="grid2">
+    <div class="card">
+      <h3>Cột chat</h3>
+      <div class="chat" id="simChat"></div>
+      <details open><summary>Các bước thực hiện (<span id="sumModel">0</span> model call, <span id="sumTool">0</span> tool call)</summary>
+        <div id="simSteps" class="invisible-hint">Chưa có bước nào.</div>
+      </details>
+    </div>
+    <div class="card" id="simState">
+      <div class="panelhead"><h3>State &amp; Context</h3><span class="badge ready" id="simBadge">Sẵn sàng</span></div>
+      <div class="counters">
+        <div class="counter" id="cTurn">Lượt chat<b>0</b></div>
+        <div class="counter" id="cModel">Model call<b>0</b></div>
+        <div class="counter" id="cSeq">Bước sự kiện<b>0</b></div>
+        <div class="counter" id="cTool">Tool calls<b>0</b></div>
+      </div>
+      <div id="simPanels"></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- 5 -->
+<section id="s5"><div class="wrap">
+  <h2><span class="n">5</span>Context gửi cho model</h2>
+  <p class="lead">Mỗi lần gọi, model nhận ba thứ: system prompt, danh sách message và schema của các tool. System prompt được dựng lại ở mỗi lượt từ bốn đoạn. Hai đoạn cuối chỉ xuất hiện khi workspace có ít nhất một skill hợp lệ.</p>
+  <div class="grid2">
+    <div class="card">
+      <h3>System prompt <span class="tag real">dữ liệu thật</span></h3>
+      <div class="switch" id="ctxMode">
+        <button class="sel" data-m="1">Workspace có skill weekly-report</button>
+        <button data-m="0">Workspace không có skill</button>
+      </div>
+      <div class="legend" style="margin-top:.6rem"><span><i class="pv-b"></i>BASE_PROMPT</span><span><i class="pv-c"></i>CAPABILITY_PROMPT</span><span><i class="pv-s"></i>SKILLS_PROMPT</span><span><i class="pv-k"></i>Khối catalog</span></div>
+      <div class="note ok" id="ctxNote"></div>
+      <div class="prompt-view" id="promptView"></div>
+    </div>
+    <div>
+      <div class="card">
+        <h3>Kích thước tính bằng ký tự</h3>
+        <div class="stack" id="ctxStack"></div>
+        <p id="ctxNums" class="mono" style="font-size:.85rem"></p>
+      </div>
+      <div class="card">
+        <h3>Tool schema gửi kèm <span class="tag real">dữ liệu thật</span></h3>
+        <div class="row" id="toolBtns"></div>
+        <div id="toolDetail"></div>
+        <p class="invisible-hint">Tên và mô tả lấy từ docstring trong <code>tools/files.py</code>. Phần <code>parameters</code> được viết gọn theo chữ ký hàm <span class="tag">suy luận</span>.</p>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- 6 -->
+<section id="s6"><div class="wrap">
+  <h2><span class="n">6</span>Nạp theo tầng</h2>
+  <p class="lead">Skill được nạp theo ba tầng. Tầng 1 là catalog, luôn nằm trong system prompt. Tầng 2 là body của SKILL.md, vào history khi <code>read_file</code> đọc file này. Tầng 3 là file tham chiếu và dữ liệu, vào history khi model đọc tiếp. Chọn một model call trong biểu đồ để xem context của lần gọi đó gồm những gì. Kịch bản là prompt tạo báo cáo tuần <span class="tag sim">minh hoạ</span>, kích thước tính từ nội dung file thật.</p>
+  <div class="card">
+    <div class="vbars" id="vbars"></div>
+    <div class="legend" id="vlegend"></div>
+    <div class="grid3" style="margin-top:1rem" id="tiers"></div>
+    <div id="vdetail"></div>
+  </div>
+  <div class="card">
+    <h3>So sánh nạp dần với nạp hết ngay từ đầu <span class="tag sim">minh hoạ</span></h3>
+    <p class="invisible-hint">Giả định mỗi skill có cùng kích thước với weekly-report (SKILL.md và references). Nạp hết nghĩa là đưa toàn bộ SKILL.md và references vào system prompt, không có catalog. Đây là phép so sánh giả định, không phải một chế độ của app.</p>
+    <label>Số skill trong workspace: <b id="nSkillV">1</b></label>
+    <input type="range" id="nSkill" min="1" max="20" value="1">
+    <label>Số skill đã được model nạp trong lượt này: <b id="kSkillV">0</b></label>
+    <input type="range" id="kSkill" min="0" max="1" value="0">
+    <div id="scaleOut"></div>
+  </div>
+</div></section>
+
+<!-- 7 -->
+<section id="s7"><div class="wrap">
+  <h2><span class="n">7</span>History</h2>
+  <p class="lead">Model không tự nhớ gì giữa các lượt. App gửi lại toàn bộ history ở mỗi lượt, kể cả tool message chứa body SKILL.md. Gửi lần lượt vài lượt bên dưới, rồi bấm <b>Cuộc trò chuyện mới</b> để thấy skill đã nạp bị xóa khỏi history.</p>
+  <div class="card">
+    <div class="row">
+      <button class="primary" id="hA">Lượt: tạo báo cáo tuần</button>
+      <button id="hC" title="Cần có skill đã nạp trong history">Lượt: tóm tắt lại báo cáo</button>
+      <button id="hB">Lượt: 2 + 3</button>
+      <button class="danger" id="hFail">Mô phỏng lượt bị lỗi</button>
+      <button id="hNew">Cuộc trò chuyện mới</button>
+    </div>
+    <div class="counters" style="grid-template-columns:repeat(4,1fr)">
+      <div class="counter">Số lượt đã chạy<b id="hTurn">0</b></div>
+      <div class="counter hl">Số message gửi ở lượt kế tiếp<b id="hMsgs">1</b></div>
+      <div class="counter">Skill content đã vào history<b id="hSkills">0</b></div>
+      <div class="counter">Ký tự trong history<b id="hChars">0</b></div>
+    </div>
+    <div class="legend"><span><i class="sp"></i>system</span><span><i class="um"></i>user</span><span><i class="hs"></i>assistant</span><span><i style="background:var(--grey)"></i>tool</span><span><i style="background:var(--orange)"></i>tool chứa SKILL.md</span></div>
+    <div class="hist" id="hist"></div>
+    <div class="bars" id="hbars"></div>
+    <div class="note" id="hNote">Bấm một nút để bắt đầu. Các lượt là minh hoạ, kích thước tool message lấy từ file thật.</div>
+  </div>
+</div></section>
+
+<!-- 8 -->
+<section id="s8"><div class="wrap">
+  <h2><span class="n">8</span>File tool và sandbox</h2>
+  <p class="lead">Skill được nạp bằng <code>read_file</code>, nên sandbox của file tool cũng là ranh giới của skill. <code>read_file</code> đọc trong <code>workspace/</code>. <code>write_file</code> chỉ ghi dưới <code>workspace/output/</code>. Chọn tool, nhập đường dẫn hoặc bấm một ví dụ để xem từng bước kiểm tra trong <code>tools/files.py</code>. Lỗi dự kiến trả về cho model dưới dạng JSON, không phải exception.</p>
+  <div class="grid2">
+    <div class="card">
+      <div class="switch" id="sbTool"><button class="sel" data-t="read_file">read_file</button><button data-t="write_file">write_file</button></div>
+      <div class="field">path<input id="sbPath" value="skills/weekly-report/SKILL.md"></div>
+      <div class="field" id="sbContentBox" style="display:none">content<textarea id="sbContent" rows="3"># Tóm tắt</textarea></div>
+      <div class="row"><button class="primary" id="sbRun">Chạy tool</button><button id="sbReset">Đặt lại file ảo</button></div>
+      <p class="invisible-hint" style="margin-bottom:.2rem">Ví dụ:</p>
+      <div class="row" id="sbEx"></div>
+      <h4 style="margin:1rem 0 .2rem">File ảo <span class="tag sim">minh hoạ</span></h4>
+      <div class="tree" id="sbTree"></div>
+      <p class="invisible-hint">Các file <code>data/link.txt</code>, <code>data/big.txt</code>, <code>data/bin.dat</code>, <code>output/escape</code> và <code>/outside/secret.txt</code> là dữ liệu thử của <code>tests/test_files.py</code>, không có trong workspace thật.</p>
+    </div>
+    <div class="card">
+      <h3>Các bước kiểm tra</h3>
+      <div id="sbChecks"></div>
+      <h4 style="margin:1rem 0 .2rem">Tool result gửi lại cho model</h4>
+      <pre id="sbResult"></pre>
+    </div>
+  </div>
+  <div class="card">
+    <h3>Mã lỗi <span class="tag real">dữ liệu thật</span></h3>
+    <table>
+      <tr><th>Mã</th><th>Khi nào</th><th>Tool</th></tr>
+      <tr><td><code>INVALID_PATH</code></td><td>Path rỗng</td><td>cả hai</td></tr>
+      <tr><td><code>PATH_OUTSIDE_WORKSPACE</code></td><td>Đường dẫn tuyệt đối, bắt đầu bằng <code>~</code>, hoặc sau khi resolve (kể cả symlink) nằm ngoài workspace</td><td>cả hai</td></tr>
+      <tr><td><code>PATH_OUTSIDE_OUTPUT</code></td><td>Đường dẫn nằm trong workspace nhưng không dưới <code>output/</code>, hoặc chính là <code>output</code></td><td>write_file</td></tr>
+      <tr><td><code>FILE_NOT_FOUND</code></td><td>File không tồn tại</td><td>read_file</td></tr>
+      <tr><td><code>IS_A_DIRECTORY</code></td><td>Đích là thư mục</td><td>cả hai</td></tr>
+      <tr><td><code>FILE_TOO_LARGE</code></td><td>File lớn hơn <code>MAX_READ_BYTES</code> = 200_000 bytes, không đọc một phần</td><td>read_file</td></tr>
+      <tr><td><code>NOT_UTF8_TEXT</code></td><td>File không phải văn bản UTF-8</td><td>read_file</td></tr>
+    </table>
+    <p class="invisible-hint">Trong <code>_write()</code>, nếu <code>mkdir</code> gặp một file nằm trên đường đi thì Python ném exception. Hàm không có <code>try/except</code> cho trường hợp này và <code>tests/test_files.py</code> không kiểm tra nó. Observer ghi event <code>tool_finished</code> với <code>status="exception"</code> rồi ném lại exception.</p>
+  </div>
+</div></section>
+
+<!-- 9 -->
+<section id="s9"><div class="wrap">
+  <h2><span class="n">9</span>Giới hạn thực thi</h2>
+  <p class="lead">Mỗi lượt chat có ba giới hạn. Kéo hai thanh trượt để xem lượt chạy khi model liên tục yêu cầu tool. Hành vi khi vượt giới hạn lấy từ source của thư viện <code>langchain</code> cài trong <code>.venv</code> của project.</p>
+  <div class="card">
+    <label>Số lần model yêu cầu tool liên tiếp: <b id="limN">3</b></label>
+    <input type="range" id="limRange" min="0" max="10" value="3">
+    <label>Số tool call trong mỗi lần yêu cầu: <b id="limP">1</b></label>
+    <input type="range" id="limPer" min="1" max="8" value="1">
+    <div class="slots" id="limSlots" style="grid-template-columns:repeat(auto-fit,minmax(6rem,1fr))"></div>
+    <div class="counters" style="grid-template-columns:repeat(3,1fr)">
+      <div class="counter" id="limCM">Model call<b>0</b></div>
+      <div class="counter" id="limCT">Tool call chạy<b>0</b></div>
+      <div class="counter" id="limCB">Tool call bị chặn<b>0</b></div>
+    </div>
+    <div class="note" id="limNote"></div>
+    <table>
+      <tr><th>Giới hạn</th><th>Giá trị</th><th>Ý nghĩa</th></tr>
+      <tr><td><code>MODEL_CALL_LIMIT</code></td><td>8</td><td><code>ModelCallLimitMiddleware(run_limit=8, exit_behavior="end")</code>. Trước lần gọi model thứ 9, middleware kết thúc lượt và thêm một AI message <code>Model call limits exceeded: run limit (8/8)</code>.</td></tr>
+      <tr><td><code>TOOL_CALL_LIMIT</code></td><td>20</td><td><code>ToolCallLimitMiddleware(run_limit=20)</code> dùng <code>exit_behavior</code> mặc định là <code>continue</code>. Tool call vượt giới hạn bị chặn, nhận tool message lỗi và không chạy. Model vẫn được gọi tiếp.</td></tr>
+      <tr><td><code>RECURSION_LIMIT</code></td><td>50</td><td>Số bước tối đa của graph LangGraph. Đây không phải số tool call và không được mô phỏng ở trên.</td></tr>
+    </table>
+  </div>
+</div></section>
+
+<!-- 10 -->
+<section id="s10"><div class="wrap">
+  <h2><span class="n">10</span>Trace JSONL</h2>
+  <p class="lead">Mỗi lượt chat ghi một file <code>traces/&lt;thời gian&gt;_&lt;conversation&gt;_turnNN_&lt;run&gt;.jsonl</code>, mỗi dòng là một event. Thư mục <code>traces/</code> của Stage 02 chưa có file trace nào, nên các dòng dưới đây dựng từ lượt chat ở phần 4 <span class="tag sim">minh hoạ</span>. Trường <code>elapsed_ms</code> và <code>usage</code> chỉ có giá trị khi chạy với model thật nên được thay bằng chữ giữ chỗ. Bấm một dòng để đọc giải thích.</p>
+  <div class="card">
+    <h3>Tìm một đoạn văn bản trong trace</h3>
+    <p class="invisible-hint">Nhập một chuỗi hoặc bấm một ví dụ. Các dòng chứa chuỗi đó được tô màu. Tìm body của SKILL.md để biết nó xuất hiện từ event nào.</p>
+    <div class="row" id="srchBtns"></div>
+    <div class="field"><input id="srch" value="Phân loại từng ghi chú"></div>
+    <div class="note" id="srchNote"></div>
+  </div>
+  <div class="grid2">
+    <div id="jls"></div>
+    <div class="card" id="jlDetail" style="position:sticky;top:3.5rem;align-self:start"></div>
+  </div>
+</div></section>
+
+<!-- 11 -->
+<section id="s11"><div class="wrap">
+  <h2><span class="n">11</span>Workspace và cấu hình</h2>
+  <p class="lead">Agent chỉ làm việc trong <code>workspace/</code>. App tạo workspace từ <code>fixtures/</code> ở lần chạy đầu và không ghi đè ở các lần chạy sau. Chọn trạng thái của workspace rồi bấm một hành động để xem <code>reset_workspace.py</code> xử lý thế nào.</p>
+  <div class="grid2">
+    <div class="card">
+      <h3>Trạng thái workspace <span class="tag real">dữ liệu thật</span></h3>
+      <div class="switch" id="wsState" style="flex-wrap:wrap">
+        <button class="sel" data-s="marker">Có marker</button>
+        <button data-s="none">Chưa có</button>
+        <button data-s="foreign">Có dữ liệu, thiếu marker</button>
+        <button data-s="link">Là symlink</button>
+      </div>
+      <div class="row" style="margin-top:.8rem">
+        <button class="primary" id="wsEnsure">App khởi động: ensure_workspace()</button>
+        <button class="danger" id="wsReset">Chạy reset_workspace.py</button>
+      </div>
+      <div class="note" id="wsNote"></div>
+      <pre id="wsTree"></pre>
+    </div>
+    <div class="card">
+      <h3>Cấu hình model <span class="tag real">dữ liệu thật</span></h3>
+      <label class="toggle"><input type="checkbox" id="eKey" checked> <code>OPENAI_API_KEY</code> (bắt buộc)</label>
+      <label class="toggle"><input type="checkbox" id="eModel" checked> <code>MODEL_NAME</code> (bắt buộc)</label>
+      <label class="toggle"><input type="checkbox" id="eBase"> <code>OPENAI_BASE_URL</code> (tùy chọn)</label>
+      <div class="note" id="eNote"></div>
+      <div class="chatinput"><input id="eInput" placeholder="Nhắn cho agent"><button class="primary" id="eSend">Gửi</button></div>
+      <pre id="ePre"></pre>
+      <p class="invisible-hint">App không truyền <code>temperature</code> hay tham số nào khác. API key không được ghi vào trace hay log.</p>
+    </div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">Nguồn: <code>agent.py</code>, <code>config.py</code>, <code>prompts.py</code>, <code>skill_catalog.py</code>, <code>paths.py</code>, <code>observer.py</code>, <code>trace.py</code>, <code>reset_workspace.py</code>, <code>tools/files.py</code>, <code>tests/</code>, <code>workspace/</code> và <code>README.md</code> của project này, cùng source thư viện <code>langchain</code> trong <code>.venv</code> cho phần giới hạn. Nhãn <span class="tag real">dữ liệu thật</span> là dữ liệu lấy từ code, file hoặc README. Nhãn <span class="tag sim">minh hoạ</span> là phần mô phỏng. Nhãn <span class="tag">suy luận</span> là phần suy ra từ code, chưa đo.</div></footer>
+
+<script>
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const cp=s=>[...String(s)].length;
+const utf8=s=>new TextEncoder().encode(s).length;
+const trunc=(s,n)=>{s=String(s);const a=[...s];return a.length>n?a.slice(0,n).join('')+'…':s};
+function pyJson(v){
+  if(v===null||v===undefined) return 'null';
+  if(typeof v==='string') return JSON.stringify(v);
+  if(typeof v==='number'||typeof v==='boolean') return String(v);
+  if(Array.isArray(v)) return '['+v.map(pyJson).join(', ')+']';
+  return '{'+Object.entries(v).map(([k,x])=>JSON.stringify(k)+': '+pyJson(x)).join(', ')+'}';
+}
+const xesc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+const CPY=n=>n.toLocaleString('en-US').replace(/,/g,'.');
+
+/* ---------- real data (extracted from source files) ---------- */
+const R={"BASE": "Bạn là trợ lý trong lab \"Agent Tools & Skills\". Trả lời bằng tiếng Việt, ngắn gọn, rõ ràng.\n\nQuy tắc:\n- Chỉ dùng các tool được cấp trong request để thao tác dữ liệu. Nếu không có tool phù hợp, nói rõ giới hạn thay vì đoán.\n- Chỉ nói đã đọc, ghi hoặc chạy một thứ khi đã nhận tool result thành công cho đúng thao tác đó.\n- Khi tool trả lỗi, báo lỗi cho người dùng và đề xuất cách xử lý; không bịa kết quả.", "CAP": "Workspace:\n- Mọi đường dẫn file đều tương đối workspace, ví dụ data/weekly_notes.md.\n- read_file đọc được file trong workspace. write_file chỉ ghi được dưới output/, ví dụ output/summary.md.\n- Bạn không chạy được lệnh shell trong project này.", "SKILLS": "Skills:\nCác skill dưới đây chứa hướng dẫn chuyên biệt. Danh sách chỉ có metadata; nội dung skill chưa được nạp.\n- Khi task khớp description của một skill, dùng read_file đọc SKILL.md tại <location> trước khi làm, rồi làm theo hướng dẫn trong đó.\n- Đường dẫn tương đối trong SKILL.md được resolve từ thư mục chứa SKILL.md. Ví dụ references/x.md của skill tại skills/abc/SKILL.md là skills/abc/references/x.md.\n- Chỉ đọc tài nguyên cần cho task. Không load skill khi task không liên quan.", "BLOCK": "<available_skills>\n  <skill>\n    <name>weekly-report</name>\n    <description>Tạo báo cáo tiến độ tuần từ file ghi chú công việc trong workspace (ví dụ data/weekly_notes.md) và lưu thành file Markdown dưới output/. Dùng khi người dùng yêu cầu báo cáo tuần, tổng hợp tiến độ tuần hoặc weekly report.</description>\n    <location>skills/weekly-report/SKILL.md</location>\n  </skill>\n</available_skills>", "SYS": "Bạn là trợ lý trong lab \"Agent Tools & Skills\". Trả lời bằng tiếng Việt, ngắn gọn, rõ ràng.\n\nQuy tắc:\n- Chỉ dùng các tool được cấp trong request để thao tác dữ liệu. Nếu không có tool phù hợp, nói rõ giới hạn thay vì đoán.\n- Chỉ nói đã đọc, ghi hoặc chạy một thứ khi đã nhận tool result thành công cho đúng thao tác đó.\n- Khi tool trả lỗi, báo lỗi cho người dùng và đề xuất cách xử lý; không bịa kết quả.\n\nWorkspace:\n- Mọi đường dẫn file đều tương đối workspace, ví dụ data/weekly_notes.md.\n- read_file đọc được file trong workspace. write_file chỉ ghi được dưới output/, ví dụ output/summary.md.\n- Bạn không chạy được lệnh shell trong project này.\n\nSkills:\nCác skill dưới đây chứa hướng dẫn chuyên biệt. Danh sách chỉ có metadata; nội dung skill chưa được nạp.\n- Khi task khớp description của một skill, dùng read_file đọc SKILL.md tại <location> trước khi làm, rồi làm theo hướng dẫn trong đó.\n- Đường dẫn tương đối trong SKILL.md được resolve từ thư mục chứa SKILL.md. Ví dụ references/x.md của skill tại skills/abc/SKILL.md là skills/abc/references/x.md.\n- Chỉ đọc tài nguyên cần cho task. Không load skill khi task không liên quan.\n\n<available_skills>\n  <skill>\n    <name>weekly-report</name>\n    <description>Tạo báo cáo tiến độ tuần từ file ghi chú công việc trong workspace (ví dụ data/weekly_notes.md) và lưu thành file Markdown dưới output/. Dùng khi người dùng yêu cầu báo cáo tuần, tổng hợp tiến độ tuần hoặc weekly report.</description>\n    <location>skills/weekly-report/SKILL.md</location>\n  </skill>\n</available_skills>", "SKILL_META": {"name": "weekly-report", "description": "Tạo báo cáo tiến độ tuần từ file ghi chú công việc trong workspace (ví dụ data/weekly_notes.md) và lưu thành file Markdown dưới output/. Dùng khi người dùng yêu cầu báo cáo tuần, tổng hợp tiến độ tuần hoặc weekly report.", "location": "skills/weekly-report/SKILL.md"}, "DIAG": [], "SKILL_MD": "---\nname: weekly-report\ndescription: Tạo báo cáo tiến độ tuần từ file ghi chú công việc trong workspace (ví dụ data/weekly_notes.md) và lưu thành file Markdown dưới output/. Dùng khi người dùng yêu cầu báo cáo tuần, tổng hợp tiến độ tuần hoặc weekly report.\n---\n\n# Weekly report\n\nHướng dẫn tạo báo cáo tuần từ ghi chú công việc.\n\n## Các bước\n\n1. Đọc file nguồn người dùng chỉ định bằng `read_file` (mặc định `data/weekly_notes.md`). Nếu đọc lỗi, báo lỗi và dừng; không tự tạo nội dung.\n2. Đọc template `references/report-template.md` trong thư mục skill này, tức `skills/weekly-report/references/report-template.md`.\n3. Phân loại từng ghi chú theo đúng trạng thái ghi trong nguồn:\n   - `Hoàn thành` → **Đã hoàn thành**.\n   - `Đang làm` → **Đang thực hiện**, giữ tiến độ nếu nguồn có ghi (ví dụ 60%).\n   - `Chưa giải quyết`, `Bị chặn` hoặc mô tả lỗi chưa xử lý → **Vướng mắc**.\n   - `Kế hoạch` → **Kế hoạch tiếp theo**.\n   - Việc `Chưa bắt đầu` đưa vào mục phù hợp nhất (thường là Kế hoạch tiếp theo) và nêu rõ chưa bắt đầu.\n4. Không chuyển việc chưa xong thành hoàn thành. Không thêm việc, ngày hay người phụ trách không có trong nguồn.\n5. Mục **Thông tin cần bổ sung**: liệt kê dữ liệu thiếu thấy trong nguồn, ví dụ việc chưa có người phụ trách, chưa có deadline, lỗi chưa rõ nguyên nhân. Nếu không thiếu gì, ghi \"Không có\".\n6. Điền đúng các mục của template, ghi ngày nguồn khi có. Ghi file bằng `write_file` vào đường dẫn người dùng yêu cầu (mặc định `output/weekly-report.md`).\n7. Trả lời người dùng: đường dẫn file đã ghi (theo kết quả `write_file`) và tóm tắt 2–3 dòng. Nếu ghi lỗi, báo lỗi.\n", "TEMPLATE_MD": "# Báo cáo tuần: {Tuần/khoảng ngày theo nguồn}\n\nNguồn: `{đường dẫn file nguồn}`\n\n## Đã hoàn thành\n- {Việc}: {người phụ trách} ({ngày})\n\n## Đang thực hiện\n- {Việc} ({người phụ trách}): {tiến độ / phần còn lại}\n\n## Vướng mắc\n- {Vấn đề} ({người phụ trách}): {mô tả, tác động}\n\n## Thông tin cần bổ sung\n- {Thông tin còn thiếu và ai cần cung cấp}\n\n## Kế hoạch tiếp theo\n- {Việc dự kiến}\n", "NOTES_MD": "# Ghi chú công việc tuần 40 (dữ liệu giả cho lab)\n\n## 2026-09-28: Endpoint đăng nhập\n- Trạng thái: Hoàn thành\n- Phụ trách: Lan\n- Nội dung: Hoàn thành endpoint POST /auth/login, đã merge vào nhánh main, có unit test cho đăng nhập đúng và sai mật khẩu.\n\n## 2026-09-29: Refresh token\n- Trạng thái: Đang làm\n- Phụ trách: Minh\n- Nội dung: Đang implement refresh token rotation, xong khoảng 60%. Còn phần thu hồi refresh token cũ khi đăng xuất.\n\n## 2026-09-30: Lỗi test OAuth\n- Trạng thái: Chưa giải quyết\n- Phụ trách: Hoa\n- Nội dung: Test tích hợp đăng nhập OAuth với Google thất bại trên staging do redirect URI không khớp. Chưa xác định cấu hình nào sai.\n\n## 2026-10-01: Tài liệu API đăng nhập cho mobile\n- Trạng thái: Chưa bắt đầu\n- Phụ trách: (chưa có người phụ trách)\n- Nội dung: Team mobile cần tài liệu API đăng nhập và refresh token. Chưa có người nhận việc và chưa có deadline.\n\n## 2026-10-02: Kế hoạch tuần tới\n- Trạng thái: Kế hoạch\n- Phụ trách: Cả nhóm\n- Nội dung: Hoàn tất refresh token, tìm nguyên nhân lỗi OAuth trên staging, phân công người viết tài liệu API cho mobile.\n", "MARKER": "agent-tools-skills-lab workspace\n", "DOC_READ": "Đọc một file văn bản UTF-8 trong workspace và trả về JSON.\n\npath là đường dẫn tương đối workspace, ví dụ: data/weekly_notes.md, output/summary.md.\nDùng để đọc dữ liệu đầu vào, file SKILL.md của một skill và các file reference trong thư mục skill.\nThành công: {\"ok\": true, \"path\": ..., \"content\": ...}. Lỗi: {\"ok\": false, \"error\": {\"code\": ..., \"message\": ...}}.", "DOC_WRITE": "Ghi nội dung văn bản UTF-8 vào một file dưới output/ của workspace và trả về JSON.\n\npath là đường dẫn tương đối workspace và phải bắt đầu bằng output/, ví dụ output/summary.md.\nTự tạo thư mục con. Ghi đè nếu file đã tồn tại.\nThành công: {\"ok\": true, \"path\": ..., \"bytes\": ..., \"status\": \"created\" | \"updated\"}. Lỗi: {\"ok\": false, \"error\": {...}}.", "MAX_READ": 200000};
+const SKILL_RE=/^skills\/([^/]+)\/SKILL\.md$/;
+const SKILL_META=R.SKILL_META;
+function renderCatalog(skills){
+  if(!skills.length) return '';
+  const items=skills.map(s=>`  <skill>\n    <name>${xesc(s.name)}</name>\n    <description>${xesc(s.description)}</description>\n    <location>${xesc(s.location)}</location>\n  </skill>`).join('\n');
+  return `<available_skills>\n${items}\n</available_skills>`;
+}
+function buildSystem(block){
+  const parts=[R.BASE,R.CAP];
+  if(block) parts.push(R.SKILLS+'\n\n'+block);
+  return parts.join('\n\n');
+}
+const BLOCK=renderCatalog([SKILL_META]);
+const SYSTEM=buildSystem(BLOCK);
+const TOOL_DEFS=[
+  {name:'read_file',doc:R.DOC_READ,params:[['path','string']],required:['path']},
+  {name:'write_file',doc:R.DOC_WRITE,params:[['path','string'],['content','string']],required:['path','content']},
+];
+const toolSchema=t=>({name:t.name,description:t.doc,parameters:{type:'object',properties:Object.fromEntries(t.params.map(([k,ty])=>[k,{type:ty}])),required:t.required}});
+const TOOL_SCHEMAS=TOOL_DEFS.map(toolSchema);
+const jsonView=o=>esc(JSON.stringify(o)).replace(/"([a-zA-Z_]+)":/g,'<span class="k">"$1"</span>:');
+const tagReal='<span class="tag real">dữ liệu thật</span>', tagSim='<span class="tag sim">minh hoạ</span>', tagInf='<span class="tag">suy luận</span>';
+
+/* ---------- virtual file system (mirrors tools/files.py) ---------- */
+function freshVfs(){
+  const v={};
+  ['/ws','/ws/data','/ws/skills','/ws/skills/weekly-report','/ws/skills/weekly-report/references','/ws/output'].forEach(p=>v[p]={t:'dir'});
+  v['/ws/.lab-workspace']={t:'file',content:R.MARKER};
+  v['/ws/data/weekly_notes.md']={t:'file',content:R.NOTES_MD};
+  v['/ws/skills/weekly-report/SKILL.md']={t:'file',content:R.SKILL_MD};
+  v['/ws/skills/weekly-report/references/report-template.md']={t:'file',content:R.TEMPLATE_MD};
+  return v;
+}
+function addTestExtras(v){
+  v['/outside']={t:'dir'};
+  v['/outside/secret.txt']={t:'file',content:'secret'};
+  v['/ws/data/link.txt']={t:'link',target:'/outside/secret.txt'};
+  v['/ws/data/big.txt']={t:'file',size:R.MAX_READ+1,content:'a'.repeat(10)};
+  v['/ws/data/bin.dat']={t:'file',bin:true,content:''};
+  v['/ws/output/escape']={t:'link',target:'/outside'};
+}
+function vResolve(v,p){
+  const queue=p.split('/').filter(x=>x&&x!=='.');
+  let out=[],hops=0;
+  while(queue.length){
+    const part=queue.shift();
+    if(part==='..'){out.pop();continue}
+    const cand='/'+[...out,part].join('/'), n=v[cand];
+    if(n&&n.t==='link'&&hops++<40){out=[];queue.unshift(...n.target.split('/').filter(Boolean));continue}
+    out.push(part);
+  }
+  return '/'+out.join('/');
+}
+const inside=(t,root)=>t===root||t.startsWith(root+'/');
+const relOf=t=>t==='/ws'?'.':t.slice(4);
+const fileSize=n=>n.size!==undefined?n.size:utf8(n.content||'');
+const RL=['Path không rỗng','Không phải đường dẫn tuyệt đối hoặc ~','Resolve (kể cả symlink) vẫn nằm trong workspace','File tồn tại','Không phải thư mục','Dung lượng không quá 200.000 bytes','Đọc được dạng UTF-8'];
+const WL=['Path không rỗng','Không phải đường dẫn tuyệt đối hoặc ~','Resolve (kể cả symlink) vẫn nằm trong workspace','Nằm dưới output/ và không phải chính output','Đích không phải thư mục','Tạo thư mục cha (mkdir parents)','Thư mục cha vẫn nằm trong output sau mkdir','Ghi UTF-8'];
+function runTool(v,tool,path,content){
+  const labels=tool==='read_file'?RL:WL, checks=[]; let i=0;
+  const pass=d=>checks.push({label:labels[i++],st:'pass',d:d||''});
+  const fail=(code,message,exc)=>{
+    checks.push({label:labels[i++],st:'fail',d:code||'exception'});
+    while(i<labels.length) checks.push({label:labels[i++],st:'skip',d:''});
+    return {result:exc?{exception:message}:{ok:false,error:{code,message}},checks};
+  };
+  const raw=(path||'').trim();
+  if(!raw) return fail('INVALID_PATH','Path rỗng. Dùng đường dẫn tương đối workspace, ví dụ data/weekly_notes.md.');
+  pass();
+  if(raw.startsWith('/')||raw.startsWith('~')) return fail('PATH_OUTSIDE_WORKSPACE',`Không chấp nhận đường dẫn tuyệt đối: ${raw}. Dùng đường dẫn tương đối workspace.`);
+  pass();
+  const target=vResolve(v,'/ws/'+raw);
+  if(!inside(target,'/ws')) return fail('PATH_OUTSIDE_WORKSPACE',`Đường dẫn thoát ra ngoài workspace: ${raw}`);
+  pass('resolve thành '+(target==='/ws'?'workspace':'workspace'+target.slice(3)));
+  const rel=relOf(target), n=v[target];
+  if(tool==='read_file'){
+    if(!n) return fail('FILE_NOT_FOUND',`Không tìm thấy file: ${rel}`);
+    pass();
+    if(n.t==='dir') return fail('IS_A_DIRECTORY',`Đây là thư mục, không phải file: ${rel}`);
+    pass();
+    const size=fileSize(n);
+    if(size>R.MAX_READ) return fail('FILE_TOO_LARGE',`File ${rel} có ${size} bytes, vượt giới hạn ${R.MAX_READ} bytes. Không đọc một phần.`);
+    pass(size+' bytes');
+    if(n.bin) return fail('NOT_UTF8_TEXT',`File ${rel} không phải văn bản UTF-8.`);
+    pass();
+    return {result:{ok:true,path:rel,content:n.content},checks};
+  }
+  const outRoot=vResolve(v,'/ws/output');
+  if(!inside(target,outRoot)||target===outRoot) return fail('PATH_OUTSIDE_OUTPUT',`Chỉ được ghi file dưới output/ (ví dụ output/summary.md). Path nhận được: ${path}`);
+  pass();
+  if(n&&n.t==='dir') return fail('IS_A_DIRECTORY',`Đây là thư mục, không ghi đè được: ${rel}`);
+  pass();
+  const status=n?'updated':'created';
+  const parts=target.split('/').filter(Boolean);
+  for(let k=2;k<parts.length;k++){
+    const anc='/'+parts.slice(0,k).join('/'), a=v[anc];
+    if(a&&a.t==='file') return fail(null,'mkdir gặp một file trên đường đi (FileExistsError hoặc NotADirectoryError). Không có try/except trong _write().',true);
+  }
+  for(let k=2;k<parts.length;k++){const anc='/'+parts.slice(0,k).join('/'); if(!v[anc]) v[anc]={t:'dir'}}
+  pass();
+  pass();
+  v[target]={t:'file',content:content||''};
+  const bytes=utf8(content||'');
+  pass(bytes+' bytes');
+  return {result:{ok:true,path:rel,bytes,status},checks};
+}
+
+/* ---------- 1. architecture ---------- */
+const NODES=[
+ {i:'👤',t:'Người dùng',f:'trình duyệt',d:'Nhập prompt vào ô chat. Mỗi lần gửi là một <b>lượt chat</b>.'},
+ {i:'🖥️',t:'Streamlit UI',f:'app.py',d:'Vẽ cột chat và cột State &amp; Context. Ở mỗi lượt, <code>run_turn()</code> gọi <code>build_agent()</code>, nên system prompt và catalog được dựng lại. Thêm skill vào <code>workspace/skills/</code> thì lượt kế tiếp thấy ngay, không cần khởi động lại. Panel State &amp; Context có các mục <b>Skills trong catalog</b>, <b>Skill content đã vào history</b> và <b>Tài nguyên đã đọc</b>.'},
+ {i:'🧠',t:'LangChain agent',f:'agent.py',d:'<code>create_agent(model, tools=[read_file, write_file], system_prompt=system_prompt(), middleware=[…])</code>. <code>system_prompt()</code> gọi <code>load_catalog()</code> rồi <code>render_catalog()</code> và đưa kết quả vào <code>build_system_prompt()</code>. <code>capabilities()</code> trả về tên tool, metadata skill và <code>skill_diagnostics</code>.',n:'chg'},
+ {i:'🧱',t:'Middleware',f:'ModelCallLimit, ToolCallLimit, Observer',d:'<b>ModelCallLimitMiddleware</b> (<code>run_limit=8</code>, <code>exit_behavior="end"</code>), <b>ToolCallLimitMiddleware</b> (<code>run_limit=20</code>) và <b>ObserverMiddleware</b> đứng cuối danh sách, sát model và tool nhất. Observer chụp request, đo thời gian và phát event. Nó không sửa request.'},
+ {i:'☁️',t:'ChatOpenAI và provider',f:'build_model()',d:'<code>ChatOpenAI(model, api_key[, base_url])</code> kết nối tới endpoint tương thích OpenAI. Endpoint cần hỗ trợ native tool calling vì skill được nạp qua tool call.'},
+];
+const SIDE=[
+ {i:'🔧',t:'File tools',f:'tools/files.py',d:'<code>read_file(path)</code> đọc trong workspace. <code>write_file(path, content)</code> chỉ ghi dưới <code>output/</code>. Cả hai kiểm tra path sau khi resolve, kể cả symlink. Lỗi dự kiến trả về JSON <code>{"ok": false, "error": {...}}</code>. Phần 8 cho thử từng trường hợp.'},
+ {i:'📚',t:'Skill catalog',f:'skill_catalog.py',n:'new',d:'<code>scan_skills(workspace)</code> quét <code>skills/*/SKILL.md</code>, đọc frontmatter YAML và trả về <code>Catalog(skills, diagnostics)</code>. Mỗi skill chỉ giữ <code>name</code>, <code>description</code>, <code>location</code>. <code>render_catalog()</code> tạo khối <code>&lt;available_skills&gt;</code> hoặc chuỗi rỗng nếu không có skill. Phần 3 cho thử các trường hợp lỗi.'},
+ {i:'📝',t:'Prompts',f:'prompts.py',n:'chg',d:'Ba đoạn cố định: <code>BASE_PROMPT</code>, <code>CAPABILITY_PROMPT</code> (mô tả workspace và hai tool) và <code>SKILLS_PROMPT</code> mới. <code>SKILLS_PROMPT</code> yêu cầu model dùng <code>read_file</code> đọc SKILL.md tại <code>&lt;location&gt;</code> khi task khớp description. <code>build_system_prompt(catalog_block)</code> chỉ thêm đoạn Skills khi khối catalog không rỗng.'},
+ {i:'🗂️',t:'Workspace',f:'workspace/, fixtures/, reset_workspace.py',d:'<code>workspace/</code> chứa <code>data/</code>, <code>skills/</code>, <code>output/</code> và marker <code>.lab-workspace</code>. Lần chạy đầu app copy từ <code>fixtures/</code>. <code>reset_workspace.py</code> khôi phục dữ liệu gốc và giữ <code>traces/</code>. Phần 11 cho thử.'},
+ {i:'🔭',t:'Observer và trace',f:'observer.py, trace.py',d:'Observer đánh số sequence cho 7 loại event, giữ counters, snapshots, history và tính <code>inventory()</code> từ history: tool result <code>read_file</code> thành công trên đường dẫn <code>skills/&lt;tên&gt;/SKILL.md</code> được tính là skill content đã vào history, các file khác là tài nguyên đã đọc. Trace writer ghi mỗi event thành một dòng JSONL. File <code>observer.py</code> và <code>trace.py</code> giống hệt Stage 01.'},
+];
+function renderArch(){
+  const mk=(n,idx,g)=>`<div class="node ${n.n||''}" data-g="${g}" data-i="${idx}"><span class="ico">${n.i}</span>${n.t}<small>${n.f}</small></div>`;
+  $('#arch').innerHTML=NODES.map((n,i)=>mk(n,i,'n')).join('')+'<div class="flowline" style="grid-column:1/-1">Hàng trên là luồng xử lý chính từ người dùng đến model. Hàng dưới là các thành phần phụ.</div>'+SIDE.map((n,i)=>mk(n,i,'s')).join('');
+  $$('#arch .node').forEach(el=>el.onclick=()=>pick(el));
+  pick($('#arch .node[data-g="s"][data-i="1"]'));
+}
+function pick(el){
+  $$('#arch .node').forEach(n=>n.classList.remove('on')); el.classList.add('on');
+  const n=(el.dataset.g==='n'?NODES:SIDE)[+el.dataset.i];
+  $('#archDetail').innerHTML=`<h4>${n.i} ${n.t} <code>${n.f}</code> ${n.n==='new'?'<span class="tag" style="background:var(--orange);color:#fff">file mới ở Stage 02</span>':n.n==='chg'?'<span class="tag" style="background:var(--brown);color:#fff">có sửa so với Stage 01</span>':''}</h4><div>${n.d}</div>`;
+}
+renderArch();
+
+/* ---------- 2. skill tree ---------- */
+const TREE=[
+ {p:'workspace/',d:0,dir:1},
+ {p:'.lab-workspace',d:1,k:'marker'},
+ {p:'data/',d:1,dir:1},
+ {p:'weekly_notes.md',d:2,k:'data',full:'data/weekly_notes.md'},
+ {p:'skills/',d:1,dir:1},
+ {p:'weekly-report/',d:2,dir:1},
+ {p:'SKILL.md',d:3,k:'skill',full:'skills/weekly-report/SKILL.md'},
+ {p:'references/',d:3,dir:1},
+ {p:'report-template.md',d:4,k:'ref',full:'skills/weekly-report/references/report-template.md'},
+ {p:'output/',d:1,dir:1,k:'out'},
+];
+const FILES={
+ marker:{path:'.lab-workspace',content:R.MARKER,access:'read_file đọc được. write_file không ghi được (không nằm dưới output/).',prompt:'Không nằm trong context ban đầu.',role:'Marker xác nhận thư mục là workspace của lab. <code>reset_workspace.py</code> chỉ xóa thư mục có marker này (phần 11).'},
+ data:{path:'data/weekly_notes.md',content:R.NOTES_MD,access:'read_file đọc được. write_file không ghi được.',prompt:'Không nằm trong context ban đầu. Nội dung chỉ vào history khi model gọi read_file (tài nguyên đã đọc).',role:'Dữ liệu đầu vào của skill weekly-report: 5 ghi chú giả của tuần 40.'},
+ skill:{path:'skills/weekly-report/SKILL.md',content:R.SKILL_MD,access:'read_file đọc được. write_file không ghi được.',prompt:'Frontmatter được đọc lúc quét catalog: <code>name</code> và <code>description</code> vào system prompt, kèm <code>location</code> tính từ đường dẫn file. Phần body không vào context ban đầu.',role:'Tầng 2. Body vào history khi model gọi <code>read_file("skills/weekly-report/SKILL.md")</code> thành công.'},
+ ref:{path:'skills/weekly-report/references/report-template.md',content:R.TEMPLATE_MD,access:'read_file đọc được. write_file không ghi được.',prompt:'Không nằm trong context ban đầu và không có trong catalog (không có chuỗi report-template.md trong system prompt).',role:'Tầng 3. SKILL.md hướng dẫn model đọc file này; đường dẫn tương đối <code>references/...</code> được resolve từ thư mục chứa SKILL.md.'},
+ out:{path:'output/',content:null,access:'read_file đọc được. write_file chỉ ghi dưới thư mục này.',prompt:'Không nằm trong context ban đầu.',role:'Thư mục rỗng lúc đầu. Kết quả của skill được ghi vào đây, ví dụ <code>output/weekly-report.md</code>.'},
+};
+let fsel='skill';
+function renderTree(){
+  $('#tree').innerHTML=TREE.map(n=>{
+    const pad=`style="padding-left:${.5+n.d*1.1}rem"`;
+    if(n.dir&&n.p!=='output/') return `<span class="tn dir" ${pad}>${n.p}</span>`;
+    return `<span class="tn file ${n.k===fsel?'on':''}" data-k="${n.k||'out'}" ${pad}>${n.p}</span>`;
+  }).join('');
+  $$('#tree .tn.file').forEach(e=>e.onclick=()=>{fsel=e.dataset.k;renderTree();renderFileInfo()});
+}
+function renderFileInfo(){
+  const f=FILES[fsel];
+  let body='';
+  if(f.content===null) body='<p class="invisible-hint">Thư mục không có file nào lúc đầu.</p>';
+  else if(fsel==='skill'){
+    const lines=f.content.split('\n'); let close=-1;
+    for(let i=1;i<lines.length;i++){if(lines[i].trim()==='---'){close=i;break}}
+    const fmT=lines.slice(0,close+1).join('\n')+'\n', bdT=lines.slice(close+1).join('\n');
+    body=`<div class="legend" style="margin-bottom:.4rem"><span><i class="fm"></i>Frontmatter, ${cp(fmT)} ký tự</span><span><i class="bd"></i>Body, ${cp(bdT)} ký tự</span></div><div class="srcview"><span class="fm">${esc(fmT)}</span><span class="bd">${esc(bdT)}</span></div><div class="note ok">Catalog chỉ lấy hai trường <code>name</code> và <code>description</code> của vùng xanh, cộng <code>location</code>. Vùng cam chỉ vào context khi model đọc file.</div>`;
+  } else body=`<div class="srcview">${esc(f.content)}</div>`;
+  $('#fileInfo').innerHTML=`<h3><code>${f.path}</code> ${tagReal}</h3><dl class="kv"><dt>Vai trò</dt><dd>${f.role}</dd><dt>Truy cập</dt><dd>${f.access}</dd><dt>Context ban đầu</dt><dd>${f.prompt}</dd>${f.content!==null?`<dt>Kích thước</dt><dd>${cp(f.content)} ký tự, ${utf8(f.content)} bytes</dd>`:''}</dl>${body}`;
+}
+renderTree();renderFileInfo();
+
+/* ---------- 3. catalog scan ---------- */
+const longDesc='Mô tả rất dài. '.repeat(80);
+const CASES=[
+ {id:'wr',folder:'weekly-report',fm:'ok',name:SKILL_META.name,desc:SKILL_META.description,real:1,on:true,src:'workspace/skills/weekly-report/SKILL.md',tip:'Skill thật của workspace.'},
+ {id:'good',folder:'good',fm:'ok',name:'good',desc:'Một skill tốt',real:2,tip:'Từ tests/test_skill_catalog.py'},
+ {id:'bad-yaml',folder:'bad-yaml',fm:'yaml',raw:'---\nname: [bad\ndescription: x\n---\n',real:2,tip:'Từ tests/test_skill_catalog.py: YAML sai'},
+ {id:'no-desc',folder:'no-desc',fm:'ok',name:'no-desc',desc:'',real:2,tip:'Từ tests/test_skill_catalog.py: thiếu description'},
+ {id:'no-fm',folder:'no-frontmatter',fm:'noopen',raw:'# chỉ có body\n',real:2,tip:'Từ tests/test_skill_catalog.py: không có frontmatter'},
+ {id:'a-report',folder:'a-report',fm:'ok',name:'report',desc:'Bản A',real:2,tip:'Từ tests/test_skill_catalog.py: trùng name'},
+ {id:'b-report',folder:'b-report',fm:'ok',name:'report',desc:'Bản B',real:2,tip:'Từ tests/test_skill_catalog.py: trùng name'},
+ {id:'mis',folder:'tuan',fm:'ok',name:'weekly-summary',desc:'Skill có name khác tên thư mục',real:0,tip:'Ví dụ tự đặt cho nhánh cảnh báo name khác thư mục'},
+ {id:'long',folder:'long-desc',fm:'ok',name:'long-desc',desc:longDesc,real:0,tip:'Ví dụ tự đặt: description dài hơn 1024 ký tự'},
+ {id:'noclose',folder:'no-close',fm:'noclose',raw:'---\nname: no-close\ndescription: thiếu dòng đóng\n',real:0,tip:'Ví dụ tự đặt: thiếu --- đóng'},
+ {id:'notmap',folder:'not-map',fm:'notmap',raw:'---\n- một\n- hai\n---\n',real:0,tip:'Ví dụ tự đặt: frontmatter là danh sách'},
+];
+const FM_ERR={noopen:'thiếu frontmatter mở đầu bằng ---',noclose:'thiếu dòng --- đóng frontmatter',yaml:'YAML không hợp lệ: (thông báo lỗi do thư viện YAML sinh ra)',notmap:'frontmatter phải là YAML mapping'};
+function scan(cases){
+  const diag=[],skills=[],seen={};
+  [...cases].sort((a,b)=>a.folder<b.folder?-1:a.folder>b.folder?1:0).forEach(c=>{
+    const loc=`skills/${c.folder}/SKILL.md`;
+    if(FM_ERR[c.fm]){diag.push({k:'skip',t:`Bỏ qua ${loc}: ${FM_ERR[c.fm]}`});return}
+    if(typeof c.name!=='string'||!c.name.trim()){diag.push({k:'skip',t:`Bỏ qua ${loc}: thiếu name`});return}
+    if(typeof c.desc!=='string'||!c.desc.trim()){diag.push({k:'skip',t:`Bỏ qua ${loc}: thiếu description`});return}
+    const name=c.name.trim(), desc=c.desc.split(/\s+/).filter(Boolean).join(' ');
+    if(seen[name]){diag.push({k:'skip',t:`Lỗi: trùng skill name '${name}' ở ${loc}; giữ ${seen[name]}, bỏ qua bản sau.`});return}
+    if(name!==c.folder) diag.push({k:'warn',t:`Cảnh báo ${loc}: name '${name}' khác tên thư mục '${c.folder}'.`});
+    if(cp(name)>64) diag.push({k:'warn',t:`Cảnh báo ${loc}: name dài hơn 64 ký tự.`});
+    if(cp(desc)>1024) diag.push({k:'warn',t:`Cảnh báo ${loc}: description dài hơn 1024 ký tự.`});
+    seen[name]=loc; skills.push({name,description:desc,location:loc});
+  });
+  return {skills,diag};
+}
+function rawOf(c){
+  if(c.raw) return c.raw;
+  return `---\nname: ${c.name}\n`+(c.desc?`description: ${trunc(c.desc,120)}\n`:'')+'---\n(body)\n';
+}
+function customCase(){return {id:'cu',folder:$('#cuFolder').value.trim()||'(rỗng)',fm:$('#cuFm').value,name:$('#cuName').value,desc:$('#cuDesc').value,on:$('#cuOn').checked}}
+function renderCases(){
+  $('#cases').innerHTML=CASES.map(c=>`<div class="case"><input type="checkbox" data-id="${c.id}" ${c.on?'checked':''}><div><b class="mono">${c.folder}/</b> ${c.real===1?tagReal:c.real===2?'<span class="tag real">theo tests</span>':tagSim}<div class="invisible-hint">${c.tip}</div><details><summary style="font-weight:400;font-size:.85rem">Xem SKILL.md</summary><pre>${esc(rawOf(c))}</pre></details></div></div>`).join('');
+  $$('#cases input').forEach(i=>i.onchange=e=>{CASES.find(c=>c.id===i.dataset.id).on=i.checked;renderScan()});
+}
+function renderScan(){
+  const cs=CASES.filter(c=>c.on); const cu=customCase(); if(cu.on) cs.push(cu);
+  const {skills,diag}=scan(cs);
+  const block=renderCatalog(skills);
+  $('#kCat').innerHTML=`Skills trong catalog<b>${skills.length}</b>`;
+  $('#kDiag').innerHTML=`Diagnostics<b>${diag.length}</b>`;$('#kDiag').classList.toggle('hl',diag.length>0);
+  $('#kChars').innerHTML=`Ký tự khối catalog<b>${cp(block)}</b>`;
+  $('#diagList').innerHTML=diag.length?diag.map(d=>`<div class="diag ${d.k}">${esc(d.t)}</div>`).join(''):'<span class="invisible-hint">Không có diagnostic.</span>';
+  $('#catXml').textContent=block||'(rỗng: system prompt không có đoạn Skills)';
+  const total=cp(buildSystem(block));
+  $('#scanNote').className='note'+(skills.length?' ok':'');
+  $('#scanNote').innerHTML=skills.length?`System prompt của lượt kế tiếp dài <b>${total}</b> ký tự gồm BASE, CAPABILITY, SKILLS_PROMPT và catalog. Chỉ có tên, mô tả và vị trí file của ${skills.length} skill, không có body.`:`Catalog rỗng, nên <code>build_system_prompt("")</code> chỉ ghép BASE_PROMPT và CAPABILITY_PROMPT (${total} ký tự). Model không biết skill nào tồn tại.`;
+}
+['#cuFolder','#cuName','#cuDesc'].forEach(i=>$(i).oninput=renderScan);$('#cuFm').onchange=renderScan;$('#cuOn').onchange=renderScan;
+renderCases();renderScan();
+
+/* ---------- simulation engine (turns driven by README prompts) ---------- */
+const P1='Tạo báo cáo tuần từ data/weekly_notes.md, lưu vào output/weekly-report.md.';
+const P2='2 + 3 bằng bao nhiêu?';
+const REPORT=`# Báo cáo tuần: tuần 40 (2026-09-28 đến 2026-10-02)
+
+Nguồn: \`data/weekly_notes.md\`
+
+## Đã hoàn thành
+- Endpoint đăng nhập POST /auth/login: Lan (2026-09-28)
+
+## Đang thực hiện
+- Refresh token rotation (Minh): xong khoảng 60%, còn phần thu hồi refresh token cũ khi đăng xuất
+
+## Vướng mắc
+- Test tích hợp OAuth với Google trên staging (Hoa): redirect URI không khớp, chưa xác định cấu hình nào sai
+
+## Thông tin cần bổ sung
+- Tài liệu API đăng nhập cho mobile chưa có người phụ trách và chưa có deadline
+- Cấu hình gây lỗi OAuth trên staging chưa rõ
+
+## Kế hoạch tiếp theo
+- Hoàn tất refresh token
+- Tìm nguyên nhân lỗi OAuth trên staging
+- Phân công người viết tài liệu API cho mobile (chưa bắt đầu)
+`;
+const SCEN=[
+ {id:'report',label:'Tạo báo cáo tuần',user:P1,readme:true,
+  note:'Prompt số 1 trong README. Phản hồi của model là minh hoạ theo kỳ vọng trong README: đọc SKILL.md, đọc template, đọc dữ liệu, ghi output. Nội dung tool result của các lần đọc là nội dung file thật. Nội dung báo cáo được ghi là minh hoạ. Thời gian và token không được mô phỏng.',
+  rounds:[
+   {calls:[['read_file',{path:'skills/weekly-report/SKILL.md'}]]},
+   {calls:[['read_file',{path:'skills/weekly-report/references/report-template.md'}]]},
+   {calls:[['read_file',{path:'data/weekly_notes.md'}]]},
+   {calls:[['write_file',{path:'output/weekly-report.md',content:REPORT}]]},
+   {answer:'Tôi đã tạo báo cáo tuần từ data/weekly_notes.md và ghi vào output/weekly-report.md. Báo cáo có 1 việc đã hoàn thành, 1 việc đang thực hiện, 1 vướng mắc và 3 việc kế hoạch. Bạn hãy xem mục Thông tin cần bổ sung để biết những dữ liệu còn thiếu.'}]},
+ {id:'math',label:'2 + 3 (cuộc trò chuyện mới)',user:P2,readme:true,
+  note:'Prompt số 2 trong README, chạy trong một cuộc trò chuyện mới. Câu hỏi không khớp description của skill nào, nên model không cần đọc SKILL.md. Điều cần chú ý: catalog vẫn nằm trong system prompt nhưng mục Skill content đã vào history luôn bằng 0.',
+  rounds:[{answer:'Tôi tính được 2 + 3 = 5. Câu hỏi này không cần skill nên tôi không đọc file nào.'}]},
+ {id:'missing',label:'Đọc file không tồn tại',user:'Đọc data/khong-co.md và tóm tắt giúp tôi.',readme:false,
+  note:'Prompt tự đặt để minh hoạ khi read_file trả lỗi. Tool result là JSON lỗi nhưng vẫn là tool message hợp lệ. Lần đọc lỗi không được tính vào Tài nguyên đã đọc, vì observer chỉ tính read_file có ok=true và nội dung không rỗng.',
+  rounds:[{calls:[['read_file',{path:'data/khong-co.md'}]]},{answer:'Tôi không đọc được file vì tool báo: Không tìm thấy file: data/khong-co.md. Bạn hãy kiểm tra lại tên file hoặc cho tôi một đường dẫn khác.'}]},
+ {id:'outside',label:'Ghi ngoài output/',user:'Ghi dòng "xin chào" vào data/loi-chao.md.',readme:false,
+  note:'Prompt tự đặt để minh hoạ sandbox của write_file. Tool result là lỗi PATH_OUTSIDE_OUTPUT do chính tools/files.py trả về, không phải do model từ chối. File không được tạo.',
+  rounds:[{calls:[['write_file',{path:'data/loi-chao.md',content:'xin chào'}]]},{answer:'Tôi không ghi được vào data/loi-chao.md vì write_file chỉ cho phép ghi dưới output/. Bạn hãy cho tôi biết có muốn lưu vào output/loi-chao.md không.'}]},
+];
+const FOLLOW={id:'follow',label:'Tóm tắt lại báo cáo',user:'Tóm tắt lại báo cáo vừa tạo trong 1 câu.',rounds:[{answer:'Tôi tóm tắt: tuần 40 có 1 việc hoàn thành là endpoint đăng nhập, 1 việc đang làm là refresh token và 1 vướng mắc là lỗi OAuth trên staging.'}]};
+const contentChars=ms=>ms.reduce((a,m)=>a+cp(m.content)+(m.tool_calls||[]).reduce((b,c)=>b+cp(pyJson(c.args)),0),0);
+function toolInfo(m){
+  if(m.role!=='tool'||m.name!=='read_file') return null;
+  let r; try{r=JSON.parse(m.content)}catch(e){return null}
+  if(!r||r.ok!==true||!r.content) return null;
+  const sm=SKILL_RE.exec(r.path);
+  return {path:r.path,skill:sm?sm[1]:null,chars:cp(r.content)};
+}
+function inventory(msgs,snaps){
+  const skills=[],resources=[];
+  msgs.forEach((m,i)=>{
+    const t=toolInfo(m); if(!t) return;
+    const item={path:t.path,message_index:i,tool_call_id:m.tool_call_id};
+    if(t.skill){
+      item.skill=t.skill;item.chars=t.chars;item.first_request=null;
+      for(const s of snaps){if(s.messages.some(x=>x.role==='tool'&&x.tool_call_id===m.tool_call_id)){item.first_request=`Lượt ${s.chat_turn}, model call #${s.model_call_index}`;break}}
+      skills.push(item);
+    } else resources.push(item);
+  });
+  return {skills,resources};
+}
+function simulate(sc,start,ctx){
+  const v=freshVfs(), msgs=[...start,{role:'user',content:sc.user}];
+  const evs=[],phases=[],snaps=[]; let seq=0,mc=0,tc=0,status='Sẵn sàng';
+  const ph=(label,kind)=>phases.push({label,kind}) && phases.length-1;
+  const rec=(type,data,p)=>{seq++;const e={seq,type,data,ph:p};evs.push(e);return e};
+  const fin=e=>{e.state={msgs:msgs.slice(),mc,tc,status,seq,snapN:snaps.length}};
+  let e=rec('user_submitted',{text:sc.user,tools:['read_file','write_file'],skills:[SKILL_META]},ph('Người dùng','u')); fin(e);
+  let answer='';
+  sc.rounds.forEach(r=>{
+    const pm=ph(`Model #${mc+1}`,'m');
+    mc++; status='Đang gọi model';
+    const snap={chat_turn:ctx.turn,model_call_index:mc,messages:msgs.slice(),system_prompt_chars:cp(SYSTEM),message_chars:contentChars(msgs),message_count:msgs.length,usage:null};
+    snaps.push(snap);
+    e=rec('model_request',{model_call_index:mc,snapshot:snap},pm);fin(e);
+    if(r.calls){
+      const ai={role:'assistant',content:'',tool_calls:r.calls.map(([name,args])=>({id:'call_'+(++ctx.idc),name,args}))};
+      e=rec('model_response',{model_call_index:mc,tool_calls_requested:ai.tool_calls.map(c=>({id:c.id,name:c.name}))},pm);
+      msgs.push(ai);fin(e);
+      ai.tool_calls.forEach(c=>{
+        const pt=ph(`Tool #${tc+1}`,'t');
+        tc++;status='Đang chạy tool';
+        e=rec('tool_started',{tool_call_id:c.id,tool_name:c.name,arguments:c.args},pt);fin(e);
+        const {result}=runTool(v,c.name,c.args.path,c.args.content);
+        e=rec('tool_finished',{tool_call_id:c.id,tool_name:c.name,status:'success',result},pt);
+        msgs.push({role:'tool',name:c.name,tool_call_id:c.id,content:pyJson(result),status:'success'});fin(e);
+      });
+    } else {
+      e=rec('model_response',{model_call_index:mc,tool_calls_requested:[]},pm);
+      msgs.push({role:'assistant',content:r.answer,tool_calls:[]});answer=r.answer;fin(e);
+    }
+  });
+  status='Hoàn tất';
+  e=rec('run_completed',{answer_chars:cp(answer)},ph('Hoàn tất','d'));fin(e);
+  phases.forEach((p,i)=>{const es=evs.filter(x=>x.ph===i);p.start=es[0].seq-1;p.end=es[es.length-1].seq});
+  return {evs,phases,snaps,msgs,answer,mc,tc};
+}
+
+/* ---------- 4. simulator ---------- */
+let sc=0,step=0,timer=null,SIM=null,snapSel=null;
+const OPEN={};
+function loadSim(){SIM=simulate(SCEN[sc],[],{turn:1,idc:0});snapSel=null}
+loadSim();
+const det=(id,title,body,def)=>`<details data-id="${id}" ${(OPEN[id]??def)?'open':''}><summary>${title}</summary>${body}</details>`;
+$('#simState').addEventListener('toggle',e=>{const d=e.target;if(d.dataset&&d.dataset.id)OPEN[d.dataset.id]=d.open},true);
+function msgRows(msgs){
+  const rows=msgs.map((m,i)=>{
+    const t=toolInfo(m),isSkill=t&&t.skill;
+    const label=m.role==='tool'?`tool: ${m.name}`:m.role;
+    const ch=cp(m.content)+(m.tool_calls||[]).reduce((b,c)=>b+cp(pyJson(c.args)),0);
+    const pv=m.role==='assistant'&&m.tool_calls&&m.tool_calls.length?m.tool_calls.map(c=>`${c.name}(${pyJson(c.args).slice(0,60)})`).join(', '):trunc(m.content.replace(/\n/g,' '),50);
+    return `<tr class="msgrow ${isSkill?'skill':''}"><td>${i}</td><td>${label}</td><td>${ch}</td><td class="mono">${esc(pv)}</td></tr>`;
+  }).join('');
+  return `<table><tr><th>#</th><th>role</th><th>ký tự</th><th>nội dung</th></tr>${rows}</table>`;
+}
+function renderSim(){
+  const s=SCEN[sc],N=SIM.evs.length,k=step,st=k?SIM.evs[k-1].state:null,prev=k>1?SIM.evs[k-2].state:null;
+  $('#presets').innerHTML=SCEN.map((x,i)=>`<button class="${i===sc?'sel':''}" data-i="${i}">${esc(x.label)} ${x.readme?'<span class="tag real">prompt README</span>':'<span class="tag sim">minh hoạ</span>'}</button>`).join('');
+  $$('#presets button').forEach(b=>b.onclick=()=>{sc=+b.dataset.i;step=0;stop();loadSim();renderSim()});
+  $('#simNote').innerHTML=s.note;
+  $('#stepLbl').textContent=k?`Bước ${k}/${N}: ${SIM.evs[k-1].type}`:`Bước 0/${N}`;
+  const firstUndone=SIM.phases.findIndex(p=>k<p.end);
+  $('#timeline').innerHTML=SIM.phases.map((p,i)=>`<div class="tl ${k>=p.end?'done':''} ${i===firstUndone?'cur':''}" data-i="${i}"><b>${i+1}. ${p.label}</b>${{u:'user_submitted',m:'model_request, model_response',t:'tool_started, tool_finished',d:'run_completed'}[p.kind]}</div>`).join('');
+  $$('#timeline .tl').forEach(el=>el.onclick=()=>{step=SIM.phases[+el.dataset.i].end;stop();renderSim()});
+  // chat
+  const done=k===N;
+  let chat='';
+  if(k>=1) chat+=`<div class="msg u">${esc(s.user)}</div>`;
+  if(k>=1&&!done) chat+=`<div class="msg a pending">${st.status==='Đang chạy tool'?'Đang chạy tool…':'Đang xử lý…'}</div>`;
+  if(done) chat+=`<div class="msg a">${esc(SIM.answer)}</div>`;
+  $('#simChat').innerHTML=chat||'<span class="invisible-hint">Chưa có tin nhắn.</span>';
+  const evsDone=SIM.evs.slice(0,k);
+  $('#sumModel').textContent=st?st.mc:0;$('#sumTool').textContent=st?st.tc:0;
+  let steps='';
+  for(let mi=1;mi<=(st?st.mc:0);mi++){
+    const resp=evsDone.find(e=>e.type==='model_response'&&e.data.model_call_index===mi);
+    steps+=`<div style="margin:.4rem 0"><b>Model call #${mi}</b> ${resp?(resp.data.tool_calls_requested.length?`yêu cầu ${resp.data.tool_calls_requested.map(c=>c.name).join(', ')}`:'trả lời, không yêu cầu tool'):'đang chạy'}</div>`;
+    if(resp) resp.data.tool_calls_requested.forEach(c=>{
+      const fin=evsDone.find(e=>e.type==='tool_finished'&&e.data.tool_call_id===c.id);
+      const a=evsDone.find(e=>e.type==='tool_started'&&e.data.tool_call_id===c.id)||{data:{arguments:{}}};
+      const okv=fin?fin.data.result.ok:null;
+      const shown=fin?JSON.stringify(fin.data.result,(kk,vv)=>typeof vv==='string'&&cp(vv)>140?trunc(vv,140)+` (còn ${cp(vv)-140} ký tự)`:vv):'';
+      steps+=`<div class="card" style="padding:.6rem .9rem;margin:.3rem 0"><b class="mono">${c.name}</b> <span class="badge ${fin?(okv?'done':'err'):'tool'}" style="font-size:.75rem;padding:.05rem .6rem">${fin?(okv?'ok':'lỗi'):'đang chạy'}</span> <span class="invisible-hint">${c.id}</span><pre>${esc(JSON.stringify(a.data.arguments,(kk,vv)=>typeof vv==='string'&&cp(vv)>100?trunc(vv,100)+` (${cp(vv)} ký tự)`:vv))}</pre>${fin?`<pre>${esc(shown)}</pre>`:''}</div>`;
+    });
+  }
+  $('#simSteps').innerHTML=steps||'Chưa có bước nào.';
+  // state
+  const b=$('#simBadge'); const stat=st?st.status:'Sẵn sàng';
+  b.textContent=stat;b.className='badge '+({'Sẵn sàng':'ready','Đang gọi model':'model','Đang chạy tool':'tool','Hoàn tất':'done','Lỗi':'err'}[stat]);
+  const set=(id,label,v,pv)=>{const e=$(id);e.innerHTML=`${label}<b>${v}</b>`;e.classList.toggle('hl',v!==pv&&k>0)};
+  set('#cTurn','Lượt chat',k?1:0,0);set('#cModel','Model call',st?st.mc:0,prev?prev.mc:0);set('#cSeq','Bước sự kiện',st?st.seq:0,prev?prev.seq:0);set('#cTool','Tool calls',st?st.tc:0,prev?prev.tc:0);
+  const msgs=st?st.msgs:[{role:'user',content:s.user}];
+  const snapsNow=SIM.snaps.slice(0,st?st.snapN:0);
+  const inv=inventory(st?st.msgs:[],snapsNow);
+  let h='';
+  h+=det('tools','Tools được cấp (2)',TOOL_SCHEMAS.map(t=>`<div><b class="mono">${t.name}</b> <span class="invisible-hint">(${Object.keys(t.parameters.properties).join(', ')})</span></div>`).join(''),false);
+  h+=det('cat','Skills trong catalog (1)',`<div class="invisible-hint">Metadata nằm trong system prompt. Có trong catalog chưa có nghĩa là đã load.</div><div><b>${SKILL_META.name}</b> <code>${SKILL_META.location}</code></div><div style="font-size:.88rem">${esc(SKILL_META.description)}</div><div class="invisible-hint">Diagnostics: không có.</div>`,false);
+  h+=det('inv',`Skill content đã vào history (${inv.skills.length})`,inv.skills.length?inv.skills.map(x=>`<div class="note ok" style="margin:.3rem 0"><b>${x.skill}</b> <code>${x.path}</code><br>message_index=${x.message_index}, tool_call_id=${x.tool_call_id}, ${x.chars} ký tự<br>Lần đầu xuất hiện trong request: ${x.first_request||'chưa có request nào chứa message này'}</div>`).join('')+'<div class="invisible-hint">Ghi nhận từ tool result read_file thành công. Không khẳng định model đã hiểu hay làm theo.</div>':'<div class="invisible-hint">Chưa có skill nào được đọc trong conversation này.</div>',true);
+  h+=det('res',`Tài nguyên đã đọc (${inv.resources.length})`,inv.resources.length?inv.resources.map(x=>`<div><code>${x.path}</code> message_index=${x.message_index}, tool_call_id=${x.tool_call_id}</div>`).join(''):'<div class="invisible-hint">Chưa đọc tài nguyên nào.</div>',false);
+  h+=det('hist',`Message history hiện tại (${msgs.length})`,msgRows(msgs),true);
+  h+=det('log',`Event log (${k})`,`<div class="evlog">${evsDone.length?evsDone.map((e,i)=>`<div class="ev ${i===k-1?'new':''}"><span class="s">#${e.seq}</span><b>${e.type}</b><span>${esc(evBrief(e))}</span></div>`).join(''):'<span class="invisible-hint">Chưa có event.</span>'}</div>`,false);
+  // snapshot
+  let snapBody;
+  if(!snapsNow.length){
+    snapBody=`<div class="invisible-hint">Chưa có event model_request. Trước lúc đó, panel hiện Context cấu hình (chưa gửi).</div><details><summary>system prompt (${cp(SYSTEM)} ký tự)</summary><pre>${esc(SYSTEM)}</pre></details>`;
+  } else {
+    const idx=Math.min(snapSel??snapsNow.length-1,snapsNow.length-1), sn=snapsNow[idx];
+    snapBody=`<div class="row" style="margin:.3rem 0">${snapsNow.map((x,i)=>`<button class="${i===idx?'sel':''}" data-snap="${i}" style="padding:.15rem .6rem;font-size:.8rem">model call #${x.model_call_index}</button>`).join('')}</div><div class="invisible-hint">message_count=${sn.message_count}, system_prompt_chars=${sn.system_prompt_chars}, message_chars=${sn.message_chars}, usage=null (không mô phỏng)</div><details><summary>system prompt (có catalog)</summary><pre>${esc(SYSTEM)}</pre></details>${msgRows(sn.messages)}<div class="invisible-hint">tools: ${TOOL_SCHEMAS.map(t=>t.name).join(', ')}</div>`;
+  }
+  h+=det('snap','Context gửi model (snapshot)',snapBody,true);
+  $('#simPanels').innerHTML=h;
+  $$('#simPanels [data-snap]').forEach(bt=>bt.onclick=()=>{snapSel=+bt.dataset.snap;renderSim()});
+  $('#bPrev').disabled=k===0;$('#bNext').disabled=k===N;
+  $('#bAuto').textContent=timer?'Dừng':'Tự chạy';
+}
+function evBrief(e){
+  const d=e.data;
+  if(e.type==='user_submitted') return `text="${trunc(d.text,40)}", tools=[${d.tools.join(', ')}], skills=[${d.skills.map(s=>s.name).join(', ')}]`;
+  if(e.type==='model_request') return `model_call_index=${d.model_call_index}, messages=${d.snapshot.message_count}, message_chars=${d.snapshot.message_chars}`;
+  if(e.type==='model_response') return `tool_calls_requested=[${d.tool_calls_requested.map(c=>c.name).join(', ')}]`;
+  if(e.type==='tool_started') return `${d.tool_name} ${trunc(pyJson(d.arguments),70)}`;
+  if(e.type==='tool_finished') return `${d.tool_name} ok=${d.result.ok}`+(d.result.ok?'':`, ${d.result.error.code}`);
+  return `answer_chars=${d.answer_chars}`;
+}
+function stop(){if(timer){clearInterval(timer);timer=null}}
+$('#bNext').onclick=()=>{if(step<SIM.evs.length){step++;stop();renderSim()}};
+$('#bPrev').onclick=()=>{if(step>0){step--;stop();renderSim()}};
+$('#bReset').onclick=()=>{step=0;stop();renderSim()};
+$('#bAuto').onclick=()=>{
+  if(timer){stop();renderSim();return}
+  if(step>=SIM.evs.length)step=0;
+  timer=setInterval(()=>{if(step<SIM.evs.length){step++;renderSim()}else{stop();renderSim()}},900);renderSim();
+};
+renderSim();
+
+/* ---------- 5. context ---------- */
+let ctxHas=true;
+function renderCtx(){
+  const block=ctxHas?BLOCK:'';
+  const parts=[['b',R.BASE],['c',R.CAP]]; if(ctxHas) parts.push(['s',R.SKILLS],['k',BLOCK]);
+  $('#promptView').innerHTML=parts.map(([k,t])=>`<span class="pv-${k}">${esc(t)}</span>`).join('\n\n');
+  const lens=parts.map(([k,t])=>cp(t)), sep=2*(parts.length-1), tot=lens.reduce((a,b)=>a+b,0)+sep;
+  const names=['BASE','CAP','SKILLS','catalog'], col=['var(--green)','#4d9b7d','var(--orange)','var(--yellow)'];
+  $('#ctxStack').innerHTML=parts.map(([k,t],i)=>`<div style="width:${lens[i]/tot*100}%;background:${col[i]};${i===3?'color:#3a2b00':''}">${names[i]} ${lens[i]}</div>`).join('');
+  $('#ctxNums').textContent=`${lens.map((l,i)=>names[i]+' '+l).join(' + ')} + ${sep} (ngăn cách) = ${tot} ký tự`+(tot===cp(buildSystem(block))?'':' (lệch)');
+  $('#ctxNote').className='note '+(ctxHas?'ok':'');
+  $('#ctxNote').innerHTML=ctxHas?'Catalog có mặt, nên <code>build_system_prompt()</code> thêm hai đoạn cuối. Catalog chỉ có name, description, location. Không có body của SKILL.md và không có file references.':'Catalog rỗng, nên đoạn Skills bị bỏ hoàn toàn. Prompt này giống Stage 01. Model không có cách nào biết skill tồn tại.';
+}
+$$('#ctxMode button').forEach(b=>b.onclick=()=>{ctxHas=b.dataset.m==='1';$$('#ctxMode button').forEach(x=>x.classList.toggle('sel',x===b));renderCtx()});
+renderCtx();
+let toolSel=0;
+function renderTools(){
+  $('#toolBtns').innerHTML=TOOL_SCHEMAS.map((t,i)=>`<button class="${i===toolSel?'sel':''}" data-i="${i}">${t.name}</button>`).join('');
+  $$('#toolBtns button').forEach(b=>b.onclick=()=>{toolSel=+b.dataset.i;renderTools()});
+  const t=TOOL_SCHEMAS[toolSel];
+  $('#toolDetail').innerHTML=`<pre>${esc(t.description)}</pre><pre>${esc(JSON.stringify(t.parameters,null,2))}</pre>`;
+}
+renderTools();
+
+/* ---------- 6. progressive disclosure ---------- */
+const SEGS=[['sysb','Prompt nền (BASE, CAPABILITY)'],['skb','Khối skill (SKILLS_PROMPT, catalog)'],['user','user'],['asst','assistant (tool call)'],['tsk','tool: SKILL.md'],['tot','tool: tài nguyên khác']];
+const DEMO=simulate(SCEN[0],[],{turn:1,idc:0});
+const SYSB=cp(R.BASE)+2+cp(R.CAP), SKB=cp(SYSTEM)-SYSB;
+function compOf(msgs){
+  const c={sysb:SYSB,skb:SKB,user:0,asst:0,tsk:0,tot:0};
+  msgs.forEach(m=>{
+    if(m.role==='user') c.user+=cp(m.content);
+    else if(m.role==='assistant') c.asst+=cp(m.content)+(m.tool_calls||[]).reduce((a,x)=>a+cp(pyJson(x.args)),0);
+    else {const t=toolInfo(m); if(t&&t.skill) c.tsk+=cp(m.content); else c.tot+=cp(m.content)}
+  });
+  return c;
+}
+const DEMO_REQ=DEMO.snaps.map(s=>({idx:s.model_call_index,comp:compOf(s.messages),msgs:s.messages}));
+let vsel=1;
+function renderV(){
+  const max=Math.max(...DEMO_REQ.map(r=>Object.values(r.comp).reduce((a,b)=>a+b,0)));
+  const COL={sysb:'var(--green)',skb:'var(--yellow)',user:'var(--brown)',asst:'var(--brown-light)',tsk:'var(--orange)',tot:'var(--grey)'};
+  $('#vbars').innerHTML=DEMO_REQ.map(r=>{
+    const tot=Object.values(r.comp).reduce((a,b)=>a+b,0);
+    return `<div class="vb ${r.idx===vsel?'on':''}" data-i="${r.idx}"><div class="tot">${tot}</div>${SEGS.map(([k])=>r.comp[k]?`<div class="seg" style="height:${r.comp[k]/max*200}px;background:${COL[k]}" title="${k}: ${r.comp[k]}"></div>`:'').join('')}<div class="lab">call #${r.idx}</div></div>`;
+  }).join('');
+  $$('#vbars .vb').forEach(e=>e.onclick=()=>{vsel=+e.dataset.i;renderV()});
+  $('#vlegend').innerHTML=SEGS.map(([k,l])=>`<span><i style="background:${COL[k]}"></i>${l}</span>`).join('');
+  const r=DEMO_REQ[vsel-1], hasSkill=r.msgs.some(m=>{const t=toolInfo(m);return t&&t.skill}), hasRef=r.msgs.some(m=>{const t=toolInfo(m);return t&&/references\//.test(t.path)});
+  const hasData=r.msgs.some(m=>{const t=toolInfo(m);return t&&t.path==='data/weekly_notes.md'});
+  $('#tiers').innerHTML=`<div class="tier on"><h4>Tầng 1: catalog</h4>Có từ model call #1, nằm trong system prompt. <b>${SKB} ký tự</b> cho cả khối Skills.</div>
+    <div class="tier ${hasSkill?'on':'off'}"><h4>Tầng 2: SKILL.md</h4>${hasSkill?`Đã vào history dưới dạng tool message, <b>${r.comp.tsk} ký tự</b> (JSON của tool result).`:'Chưa nạp. Model chưa gọi read_file cho SKILL.md.'}</div>
+    <div class="tier ${hasRef||hasData?'on':'off'}"><h4>Tầng 3: tài nguyên</h4>${hasRef||hasData?`Đã đọc: ${[hasRef?'report-template.md':'',hasData?'weekly_notes.md':''].filter(Boolean).join(', ')}.`:'Chưa nạp tài nguyên nào.'}</div>`;
+  const tot=Object.values(r.comp).reduce((a,b)=>a+b,0), prev=vsel>1?Object.values(DEMO_REQ[vsel-2].comp).reduce((a,b)=>a+b,0):null;
+  $('#vdetail').innerHTML=`<div class="stack">${SEGS.map(([k])=>r.comp[k]?`<div class="c-${k}" style="width:${r.comp[k]/tot*100}%">${r.comp[k]}</div>`:'').join('')}</div>
+   <p class="mono" style="font-size:.85rem">Model call #${vsel}: ${r.msgs.length} message, tổng ${tot} ký tự (system ${SYSB+SKB} + messages ${tot-SYSB-SKB})${prev!==null?`, tăng ${tot-prev} ký tự so với call #${vsel-1}`:''}.</p>
+   <table><tr><th>Thành phần</th><th>Ký tự</th><th>Tỉ lệ</th></tr>${SEGS.map(([k,l])=>`<tr><td>${l}</td><td>${r.comp[k]}</td><td>${(r.comp[k]/tot*100).toFixed(1)}%</td></tr>`).join('')}</table>
+   <div class="note">${vsel===1?'Ở call #1 context chỉ có system prompt kèm catalog và câu hỏi của user. Chưa có chữ nào của SKILL.md.':vsel===2?'Call #2 là lần đầu context chứa body SKILL.md, vì model đã gọi read_file ở call #1. Đây cũng là điều README kỳ vọng ở snapshot call #2.':'Mỗi tool result mới cộng thêm vào history, nên context chỉ tăng dần trong một lượt.'}</div>`;
+}
+renderV();
+const ITEM=cp(BLOCK)-cp('<available_skills>\n')-cp('\n</available_skills>');
+const SKFULL=cp(R.SKILL_MD)+cp(R.TEMPLATE_MD);
+function renderScale(){
+  const n=+$('#nSkill').value; const kr=$('#kSkill'); kr.max=n; if(+kr.value>n) kr.value=n;
+  const k=+kr.value;
+  $('#nSkillV').textContent=n;$('#kSkillV').textContent=k;
+  const blk=cp('<available_skills>\n')+n*ITEM+(n-1)+cp('\n</available_skills>');
+  const lazyBase=cp(R.BASE)+cp(R.CAP)+cp(R.SKILLS)+blk+6, lazy=lazyBase+k*SKFULL;
+  const eager=cp(R.BASE)+cp(R.CAP)+n*SKFULL+2;
+  const m=Math.max(lazy,eager);
+  const bar=(l,v,c,sub)=>`<div style="margin:.6rem 0"><div style="display:flex;justify-content:space-between;font-size:.9rem"><b>${l}</b><span class="mono">${v} ký tự</span></div><div class="stack" style="height:1.6rem;margin:.2rem 0"><div style="width:${v/m*100}%;background:${c}"></div></div><div class="invisible-hint">${sub}</div></div>`;
+  $('#scaleOut').innerHTML=bar('Nạp dần (app này)',lazy,'var(--green)',`Prompt nền và catalog ${lazyBase} ký tự, cộng ${k} skill đã nạp × ${SKFULL} ký tự (SKILL.md và template)`)+bar('Nạp hết ngay từ đầu (giả định)',eager,'var(--brown)',`Prompt nền cộng ${n} skill × ${SKFULL} ký tự`)+`<div class="note ${lazy<=eager?'ok':'bad'}">${lazy<eager?`Nạp dần nhỏ hơn ${eager-lazy} ký tự trong lượt này.`:lazy===eager?'Hai cách bằng nhau.':`Nạp dần lớn hơn ${lazy-eager} ký tự vì skill đã nạp còn phải cộng thêm catalog và SKILLS_PROMPT.`} Catalog tăng ${ITEM+1} ký tự cho mỗi skill, trong khi nạp hết tăng ${SKFULL} ký tự cho mỗi skill. Khi mọi skill đều được nạp (k = n), nạp dần không còn lợi thế. Lợi thế đến từ việc phần lớn câu hỏi chỉ cần 0 hoặc 1 skill ${tagInf}.</div>`;
+}
+$('#nSkill').oninput=renderScale;$('#kSkill').oninput=renderScale;renderScale();
+
+/* ---------- 7. history ---------- */
+let HS={msgs:[],turn:0,idc:0,bars:[],gone:false,note:''};
+function histRender(){
+  const msgs=HS.msgs;
+  $('#hTurn').textContent=HS.turn;$('#hMsgs').textContent=msgs.length+1;
+  const inv=inventory(msgs,[]);
+  $('#hSkills').textContent=inv.skills.length;$('#hC').disabled=!inv.skills.length;$('#hChars').textContent=contentChars(msgs);
+  $('#hist').innerHTML='<span class="hm s">system</span>'+msgs.map((m,i)=>{
+    const t=toolInfo(m);
+    if(m.role==='tool') return `<span class="hm" style="background:${t&&t.skill?'var(--orange)':'var(--grey)'}" title="${esc(m.name)}">${t&&t.skill?'tool: SKILL.md':'tool'}</span>`;
+    return `<span class="hm ${m.role==='user'?'u':'a'}">${m.role==='user'?'user':'assistant'}</span>`;
+  }).join('')+(HS.gone?'<span class="hm gone">user</span>':'');
+  const mx=Math.max(1,...HS.bars.map(b=>b.n));
+  $('#hbars').innerHTML=HS.bars.map((b,i)=>`<div class="bar ${b.fail?'fail':''}" style="height:${Math.max(14,b.n/mx*130)}px"><span>${b.n}</span><em>lượt ${i+1}${b.fail?' (lỗi)':''}</em></div>`).join('')||'<span class="invisible-hint">Biểu đồ: số message (không tính system) gửi ở mỗi lượt.</span>';
+  $('#hNote').innerHTML=HS.note||'Bấm một nút để bắt đầu. Các lượt là minh hoạ, kích thước tool message lấy từ file thật.';
+  $('#hNote').className='note'+(HS.note.startsWith('<b>Lỗi')?' bad':'');
+}
+function histTurn(scn,text){
+  const sent=HS.msgs.length+1;
+  HS.turn++;HS.gone=false;
+  const before=HS.msgs.length;
+  const r=simulate(scn,HS.msgs,{turn:HS.turn,idc:HS.idc});
+  HS.idc+=r.tc;HS.msgs=r.msgs;HS.bars.push({n:sent});
+  const skills=inventory(HS.msgs,[]).skills.length;
+  HS.note=text(sent,r,skills,before);
+  histRender();
+}
+$('#hA').onclick=()=>histTurn(SCEN[0],(sent,r)=>`Lượt ${HS.turn}: model nhận <b>${sent}</b> message ban đầu. Trong lượt, history tăng ${r.msgs.length-sent+1} message gồm user, assistant và tool message. Message màu cam là tool result chứa body SKILL.md. Từ giờ nó nằm trong history của mọi lượt sau trong cuộc trò chuyện này.`);
+$('#hC').onclick=()=>histTurn(FOLLOW,(sent)=>`Lượt ${HS.turn}: model nhận <b>${sent}</b> message, trong đó có body SKILL.md đã nạp ở lượt trước. Nếu cần làm lại báo cáo, model có thể dùng ngay hướng dẫn này mà không phải đọc lại. Model có đọc lại hay không do model quyết định ${tagInf}.`);
+$('#hB').onclick=()=>histTurn(SCEN[1],(sent,r,skills)=>`Lượt ${HS.turn}: model nhận <b>${sent}</b> message. Câu hỏi này không cần skill nên history chỉ tăng 2 message. ${skills?'Body SKILL.md của lượt trước vẫn nằm trong history và vẫn được gửi lại.':'Chưa có skill nào trong history.'}`);
+$('#hFail').onclick=()=>{const sent=HS.msgs.length+1;HS.turn++;HS.bars.push({n:sent,fail:true});HS.gone=true;HS.note=`<b>Lỗi provider ở lượt ${HS.turn}.</b> UI hiện thông báo lỗi và file trace đã ghi vẫn được giữ. Model history rollback về trước lượt lỗi, nên message user của lượt này bị bỏ. App không tự chạy lại lượt lỗi. Rollback chỉ áp dụng cho history. App không xóa file mà <code>write_file</code> đã ghi trước khi lỗi.`;histRender()};
+$('#hNew').onclick=()=>{HS={msgs:[],turn:0,idc:0,bars:[],gone:false,note:'History, counters, snapshots và skill đã nạp của cuộc trò chuyện cũ đã bị xóa. Các file trong <code>traces/</code> và <code>workspace/output/</code> không bị xóa.'};histRender()};
+histRender();
+
+/* ---------- 8. sandbox ---------- */
+let sbTool='read_file',sbV=freshVfs();addTestExtras(sbV);
+const EX={
+ read_file:[['SKILL.md','skills/weekly-report/SKILL.md'],['Dữ liệu','data/weekly_notes.md'],['../secret.txt','../secret.txt'],['data/../../secret.txt','data/../../secret.txt'],['/etc/passwd','/etc/passwd'],['~/.ssh/id_rsa','~/.ssh/id_rsa'],['Path rỗng',''],['Không tồn tại','data/khong-ton-tai.md'],['Thư mục','data'],['Symlink thoát','data/link.txt'],['File quá lớn','data/big.txt'],['Không phải UTF-8','data/bin.dat']],
+ write_file:[['output/summary.md','output/summary.md'],['Thư mục con mới','output/reports/q3/summary.md'],['Ghi vào data/','data/note.md'],['Ở gốc workspace','summary.md'],['Chính output','output'],['output/../data/x.md','output/../data/x.md'],['../output/x.md','../output/x.md'],['Symlink thoát','output/escape/a.md'],['Đường dẫn tuyệt đối','/ws/output/a.md']],
+};
+function renderSbEx(){
+  $('#sbEx').innerHTML=EX[sbTool].map(([l,p],i)=>`<button data-i="${i}" style="padding:.2rem .6rem;font-size:.82rem">${esc(l)}</button>`).join('');
+  $$('#sbEx button').forEach(b=>b.onclick=()=>{$('#sbPath').value=EX[sbTool][+b.dataset.i][1];runSb()});
+  $('#sbContentBox').style.display=sbTool==='write_file'?'flex':'none';
+}
+function sbTreeRender(){
+  const keys=Object.keys(sbV).filter(k=>k!=='/ws').sort();
+  $('#sbTree').innerHTML=keys.map(k=>{
+    const n=sbV[k],depth=k.split('/').length-2;
+    const lab=n.t==='dir'?k.split('/').pop()+'/':n.t==='link'?k.split('/').pop()+'  (symlink tới '+n.target+')':k.split('/').pop()+(n.size?`  (${n.size} bytes)`:n.bin?'  (nhị phân)':'');
+    return `<span class="tn ${n.t==='dir'?'dir':''}" style="padding-left:${.3+depth*.9}rem;cursor:default">${esc(k.startsWith('/outside')?k:lab)}</span>`;
+  }).join('');
+}
+function runSb(){
+  const path=$('#sbPath').value, content=$('#sbContent').value;
+  const {result,checks}=runTool(sbV,sbTool,path,content);
+  $('#sbChecks').innerHTML=checks.map((c,i)=>`<div class="chk"><span class="st ${c.st}">${{pass:'đạt',fail:'chặn',skip:'bỏ qua'}[c.st]}</span><span>${i+1}. ${c.label}</span><span class="d">${esc(c.d)}</span></div>`).join('');
+  const shown=JSON.stringify(result,(k,v)=>typeof v==='string'&&cp(v)>200?trunc(v,200)+` (còn ${cp(v)-200} ký tự)`:v,2);
+  $('#sbResult').textContent=shown;
+  sbTreeRender();
+}
+function sbIdle(){
+  $('#sbChecks').innerHTML='<span class="invisible-hint">Bấm Chạy tool hoặc một ví dụ để xem từng bước kiểm tra.</span>';
+  $('#sbResult').textContent='(chưa chạy)';
+  sbTreeRender();
+}
+$$('#sbTool button').forEach(b=>b.onclick=()=>{sbTool=b.dataset.t;$$('#sbTool button').forEach(x=>x.classList.toggle('sel',x===b));$('#sbPath').value=EX[sbTool][0][1];renderSbEx();sbIdle()});
+$('#sbRun').onclick=runSb;
+$('#sbReset').onclick=()=>{sbV=freshVfs();addTestExtras(sbV);sbIdle()};
+renderSbEx();sbIdle();
+
+/* ---------- 9. limits ---------- */
+function renderLimits(){
+  const rounds=+$('#limRange').value, per=+$('#limPer').value;
+  $('#limN').textContent=rounds;$('#limP').textContent=per;
+  let cumRun=0,blockedTot=0,mc=0,html='',cut=false,lastTools=0;
+  for(let c=1;c<=8;c++){
+    if(c>rounds+1) break;
+    mc++;
+    if(c<=rounds){
+      const allowed=Math.max(0,Math.min(per,20-cumRun)), blocked=per-allowed;
+      cumRun+=allowed;blockedTot+=blocked;
+      html+=`<div class="slot ${blocked?'cut':'m'}">🧠<b>model #${c}</b>yêu cầu ${per} tool<br>chạy ${allowed}${blocked?`, chặn ${blocked}`:''}</div>`;
+    } else html+=`<div class="slot m">🧠<b>model #${c}</b>trả lời</div>`;
+  }
+  if(rounds>=8){cut=true;html+=`<div class="slot cut"><b>#9</b>bị chặn, lượt kết thúc</div>`}
+  else{for(let c=mc+1;c<=9;c++)html+=`<div class="slot" style="opacity:.4"><b>#${c}</b>chưa dùng</div>`}
+  $('#limSlots').innerHTML=html;
+  const set=(id,l,v,hl)=>{const e=$(id);e.innerHTML=`${l}<b>${v}</b>`;e.classList.toggle('hl',!!hl);e.classList.toggle('zero',false)};
+  set('#limCM','Model call',mc,false);set('#limCT','Tool call chạy',cumRun,cumRun>=20);set('#limCB','Tool call bị chặn',blockedTot,blockedTot>0);
+  let note,cls='note';
+  if(cut){note=`<b>Chạm MODEL_CALL_LIMIT.</b> Sau lần gọi thứ 8, tool call của lần đó vẫn chạy. Trước lần gọi thứ 9, <code>ModelCallLimitMiddleware</code> kết thúc lượt bằng AI message <code>Model call limits exceeded: run limit (8/8)</code>. Model không có cơ hội tổng hợp kết quả.${blockedTot?` Ngoài ra ${blockedTot} tool call vượt giới hạn 20 bị chặn.`:''}`;cls='note bad'}
+  else if(blockedTot){note=`<b>Chạm TOOL_CALL_LIMIT.</b> ${cumRun} tool call đã chạy, ${blockedTot} tool call vượt giới hạn 20 bị chặn và nhận tool message lỗi. Với <code>exit_behavior="continue"</code>, model vẫn được gọi tiếp và quyết định cách trả lời.`;cls='note bad'}
+  else if(rounds===0) note='Model trả lời ngay ở lần gọi đầu, không có tool call. Đây là trường hợp câu hỏi 2 + 3.';
+  else{note=`${mc} model call và ${cumRun} tool call. Mỗi vòng: model yêu cầu tool, app chạy tool, rồi gọi model lại kèm kết quả. Lần gọi cuối model trả lời bình thường. Lượt tạo báo cáo ở phần 4 dùng 5 model call và 4 tool call.`;cls='note ok'}
+  $('#limNote').className=cls;$('#limNote').innerHTML=note+' '+tagSim;
+}
+$('#limRange').oninput=renderLimits;$('#limPer').oninput=renderLimits;renderLimits();
+
+/* ---------- 10. trace ---------- */
+const TRACE=DEMO.evs.map(e=>{
+  const d=e.data;
+  const base={project_name:'stage-02-skills',chat_turn:1,sequence:e.seq,type:e.type};
+  if(e.type==='user_submitted') return {...base,text:d.text,tools:d.tools,skills:d.skills};
+  if(e.type==='model_request'){const s=d.snapshot;return {...base,model_call_index:d.model_call_index,snapshot:{label:'Context gửi model (lớp LangChain)',chat_turn:1,model_call_index:s.model_call_index,model_name:'<MODEL_NAME>',system_prompt:SYSTEM,messages:s.messages.map(m=>({role:m.role,content:m.content,...(m.tool_calls&&m.tool_calls.length?{tool_calls:m.tool_calls}:{}),...(m.tool_call_id?{tool_call_id:m.tool_call_id,name:m.name}:{})})),tools:TOOL_SCHEMAS,message_count:s.message_count,system_prompt_chars:s.system_prompt_chars,message_chars:s.message_chars,usage:null}}}
+  if(e.type==='model_response') return {...base,model_call_index:d.model_call_index,elapsed_ms:'<đo khi chạy thật>',tool_calls_requested:d.tool_calls_requested,usage:'<provider trả về khi chạy thật>'};
+  if(e.type==='tool_started') return {...base,tool_call_id:d.tool_call_id,tool_name:d.tool_name,arguments:d.arguments};
+  if(e.type==='tool_finished') return {...base,tool_call_id:d.tool_call_id,tool_name:d.tool_name,elapsed_ms:'<đo khi chạy thật>',status:'success',result:d.result};
+  return {...base,answer_chars:d.answer_chars};
+});
+function shorten(o){
+  if(typeof o==='string') return cp(o)>70?[...o].slice(0,50).join('')+` … (${cp(o)} ký tự)`:o;
+  if(Array.isArray(o)) return o.map(shorten);
+  if(o&&typeof o==='object') return Object.fromEntries(Object.entries(o).map(([k,v])=>[k,k==='tools'&&Array.isArray(v)&&v.length&&v[0].parameters?v.map(t=>t.name):shorten(v)]));
+  return o;
+}
+const EXPL={
+ user_submitted:'Observer bắt đầu lượt chat. Trường <code>skills</code> là metadata của catalog (name, description, location), không có body. Trường <code>tools</code> là tên hai tool.',
+ model_request:'Snapshot chụp ngay trước khi gọi model. Snapshot có system prompt (kèm catalog), danh sách message và schema tool. Ở trang này system prompt, tools và messages được rút gọn.',
+ model_response:'Danh sách <code>tool_calls_requested</code> cho biết model muốn gọi tool nào. Danh sách rỗng nghĩa là model trả lời cuối cùng và vòng lặp dừng.',
+ tool_started:'Observer ghi tool call sắp chạy cùng arguments. Mỗi tool call có <code>tool_call_id</code> riêng.',
+ tool_finished:'Kết quả của tool. Trường <code>result</code> là JSON do tool trả về. Một lỗi dự kiến vẫn có <code>status: "success"</code> vì tool trả về JSON lỗi thay vì ném exception.',
+ run_completed:'Lượt kết thúc. Trace chỉ ghi độ dài câu trả lời, không ghi nội dung.',
+};
+let jsel=0,srchQ='Phân loại từng ghi chú';
+function jlSpecial(i){
+  const e=DEMO.evs[i],t=TRACE[i];
+  if(e.type==='model_request'&&e.data.model_call_index===1) return 'Đây là request đầu tiên: system prompt có catalog, messages chỉ có câu của user. Tìm "Phân loại từng ghi chú" sẽ không thấy gì ở dòng này.';
+  if(e.type==='model_request'&&e.data.model_call_index===2) return 'Request này có thêm hai message: assistant yêu cầu read_file và tool message chứa body SKILL.md. Đây là lần đầu body xuất hiện trong snapshot, và nó nằm ở message index 2.';
+  if(e.type==='tool_finished'&&e.data.tool_name==='read_file'&&/SKILL\.md/.test(e.data.result.path||'')) return 'Dòng này có toàn bộ nội dung SKILL.md trong <code>result.content</code>. Observer dùng đúng loại tool result này để tính mục Skill content đã vào history. Mục đó được tính từ messages, không được ghi riêng vào trace.';
+  if(e.type==='tool_finished'&&e.data.result&&e.data.result.ok===false) return 'Tool trả về lỗi có cấu trúc. Model nhận lỗi này như một tool message và phải báo lại cho người dùng.';
+  return '';
+}
+function renderTrace(){
+  const q=srchQ.toLowerCase();
+  const hits=TRACE.map(t=>q&&JSON.stringify(t).toLowerCase().includes(q));
+  $('#jls').innerHTML=TRACE.map((t,i)=>`<div class="jl ${i===jsel?'on':''} ${hits[i]?'hit':''}" data-i="${i}">${jsonView(shorten(t))}</div>`).join('');
+  $$('#jls .jl').forEach(e=>e.onclick=()=>{jsel=+e.dataset.i;renderTrace()});
+  const hs=TRACE.filter((t,i)=>hits[i]).map(t=>'#'+t.sequence);
+  $('#srchNote').className='note'+(hs.length?' ok':'');
+  $('#srchNote').innerHTML=q?(hs.length?`Chuỗi xuất hiện trong ${hs.length} dòng: ${hs.join(', ')}.`:'Không có dòng nào chứa chuỗi này.'):'Nhập một chuỗi để tìm.';
+  const t=TRACE[jsel],sp=jlSpecial(jsel);
+  $('#jlDetail').innerHTML=`<h3>${t.sequence}. ${t.type}</h3><p>${EXPL[t.type]}</p>${sp?`<div class="note">${sp}</div>`:''}<p class="invisible-hint">Trong file thật, mỗi dòng còn có <code>conversation_id</code>, <code>run_id</code> và <code>timestamp</code>. Trang này đã bỏ ba trường đó cho gọn.</p>`;
+}
+const QS=[['Body SKILL.md','Phân loại từng ghi chú'],['Catalog','<available_skills>'],['Template','Tuần/khoảng ngày'],['Dữ liệu','Endpoint đăng nhập'],['Báo cáo đã ghi','Refresh token rotation']];
+$('#srchBtns').innerHTML=QS.map(([l,q],i)=>`<button data-i="${i}" style="padding:.25rem .7rem;font-size:.85rem">${l}</button>`).join('');
+$$('#srchBtns button').forEach(b=>b.onclick=()=>{srchQ=QS[+b.dataset.i][1];$('#srch').value=srchQ;renderTrace()});
+$('#srch').oninput=()=>{srchQ=$('#srch').value;renderTrace()};
+renderTrace();
+
+/* ---------- 11. workspace + config ---------- */
+let wsState='marker',wsMsg='',wsOut='';
+const WS_TREE_FULL='workspace/\n  .lab-workspace\n  data/weekly_notes.md\n  skills/weekly-report/SKILL.md\n  skills/weekly-report/references/report-template.md\n  output/ (rỗng)';
+const WS_TREES={marker:'workspace/\n  .lab-workspace\n  data/weekly_notes.md\n  skills/weekly-report/SKILL.md\n  skills/weekly-report/references/report-template.md\n  output/weekly-report.md (do agent ghi)',none:'(chưa có thư mục workspace/)',foreign:'workspace/\n  ghi-chu-cua-toi.txt (không thuộc lab, không có .lab-workspace)',link:'workspace/ là symlink tới một thư mục khác'};
+function wsRender(){
+  $$('#wsState button').forEach(b=>b.classList.toggle('sel',b.dataset.s===wsState));
+  $('#wsTree').textContent=wsOut||WS_TREES[wsState];
+  $('#wsNote').className='note'+(wsMsg.startsWith('ok')?' ok':wsMsg.startsWith('bad')?' bad':'');
+  $('#wsNote').innerHTML=wsMsg?wsMsg.replace(/^(ok|bad|info):/,''):'Chọn trạng thái ở trên rồi bấm một trong hai nút.';
+}
+$$('#wsState button').forEach(b=>b.onclick=()=>{wsState=b.dataset.s;wsMsg='';wsOut='';wsRender()});
+$('#wsEnsure').onclick=()=>{
+  wsOut='';
+  if(wsState==='marker') wsMsg='ok:Workspace có marker đúng nội dung, nên <code>ensure_workspace()</code> không làm gì. Rerun không ghi đè file agent đã tạo.';
+  else if(wsState==='none'){wsMsg='ok:Chưa có workspace, nên <code>ensure_workspace()</code> copy các thư mục trong <code>fixtures/</code> (<code>data/</code>, <code>skills/</code>), tạo <code>output/</code> rỗng và ghi marker <code>.lab-workspace</code>.';wsOut=WS_TREE_FULL;wsState='marker'}
+  else if(wsState==='foreign') wsMsg='bad:<code>WorkspaceError</code>: thư mục đã có dữ liệu nhưng thiếu marker <code>.lab-workspace</code>; không tự ghi đè.';
+  else wsMsg='info:<code>ensure_workspace()</code> không kiểm tra symlink riêng. Kết quả phụ thuộc vào việc thư mục mà symlink trỏ tới có marker hay không.';
+  wsRender();
+};
+$('#wsReset').onclick=()=>{
+  wsOut='';
+  if(wsState==='link') wsMsg='bad:Không reset: workspace là symlink; không reset. Lệnh thoát với mã 1.';
+  else if(wsState==='foreign') wsMsg='bad:Không reset: thiếu marker <code>.lab-workspace</code>; không xóa thư mục không thuộc lab. Lệnh thoát với mã 1.';
+  else if(wsState==='none'){wsMsg='ok:Chưa có workspace nên không có gì để xóa. Hàm tạo workspace từ <code>fixtures/</code> và ghi marker.';wsOut=WS_TREE_FULL;wsState='marker'}
+  else {wsMsg='ok:Xóa mọi thứ trong workspace (kể cả <code>output/</code> và file marker cũ), rồi copy lại từ <code>fixtures/</code> và ghi lại marker. Thư mục <code>traces/</code> nằm ngoài workspace nên được giữ nguyên. Lệnh in <code>Đã khôi phục workspace từ fixtures</code>.';wsOut=WS_TREE_FULL;wsState='marker'}
+  wsRender();
+};
+wsRender();
+function renderEnv(){
+  const k=$('#eKey').checked,m=$('#eModel').checked,b=$('#eBase').checked;
+  const miss=[!k&&'OPENAI_API_KEY',!m&&'MODEL_NAME'].filter(Boolean);
+  $('#eInput').disabled=$('#eSend').disabled=!!miss.length;
+  $('#eInput').placeholder=miss.length?'Ô chat bị khóa':'Nhắn cho agent';
+  $('#eNote').className='note '+(miss.length?'bad':'ok');
+  $('#eNote').innerHTML=miss.length?`<b>Thiếu ${miss.join(', ')}.</b> UI hiện cảnh báo, khóa ô chat và app không gọi model.`:'Đã đủ các biến bắt buộc, ô chat được mở.';
+  $('#ePre').textContent=miss.length?'load_settings() trả về (None, '+JSON.stringify(miss)+')\n# không tạo model, không gọi provider':
+`ChatOpenAI(
+  model=MODEL_NAME,
+  api_key=OPENAI_API_KEY${b?',\n  base_url=OPENAI_BASE_URL':''}
+)`;
+}
+['#eKey','#eModel','#eBase'].forEach(i=>$(i).onchange=renderEnv);renderEnv();
+
+/* nav highlight */
+const links=$$('#nav a');
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-30% 0px -60% 0px'});
+$$('section').forEach(s=>io.observe(s));
+</script>
+</body>
+</html>

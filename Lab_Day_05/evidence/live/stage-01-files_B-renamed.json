@@ -1,0 +1,30 @@
+{
+  "mode": "live-provider",
+  "stage": "stage-01-files",
+  "case": "B-renamed",
+  "question": "Tôi mua ngày 02/10/2026, yêu cầu hoàn ngày 12/10/2026, chưa kích hoạt. Tôi có được hoàn không?",
+  "model": "cc/claude-opus-5-5",
+  "conversation_id": "9ad4e5942f7345c684db90b8d775d891",
+  "renamed_files": {
+    "policy-before-oct.md": "edition-31.md",
+    "policy-from-oct.md": "edition-32.md"
+  },
+  "trace": "20261007-192808_9ad4e594_turn01_3df2d5ed.jsonl",
+  "status": "completed",
+  "answer": "**Có, bạn được hoàn tiền và không mất phí.**\n\nCăn cứ là file `data/policies/edition-32.md` (chính sách hoàn tiền từ tháng 10):\n\n- **Chính sách áp dụng:** Bạn mua ngày 02/10/2026. Chính sách này áp dụng cho đơn mua từ 01/10/2026, nên dùng chính sách này chứ không dùng bản cũ (edition-31).\n- **Thời hạn:** Được yêu cầu hoàn trong 14 ngày kể từ ngày mua. Bạn yêu cầu ngày 12/10/2026, tức sau 10 ngày, vẫn còn trong hạn.\n- **Kích hoạt:** Chính sách chỉ từ chối hoàn khi sản phẩm đã kích hoạt. Sản phẩm của bạn chưa kích hoạt nên đủ điều kiện.\n- **Phí hoàn:** Không thu phí.\n\nKết luận này dựa trên thông tin bạn cung cấp. Chính sách không nói rõ ngày mua được tính là ngày 0 hay ngày 1. Dù tính theo cách nào, 10 ngày vẫn nằm trong hạn 14 ngày.",
+  "inventory": {
+    "skills": [],
+    "resources": [
+      {
+        "path": "data/policies/edition-32.md",
+        "message_index": 8,
+        "tool_call_id": "toolu_01LS1dtAHuhp28XgWN7ghjoZ"
+      },
+      {
+        "path": "data/policies/edition-31.md",
+        "message_index": 9,
+        "tool_call_id": "toolu_01HhifqJ2bXKkzbwvdMjGo1u"
+      }
+    ]
+  }
+}

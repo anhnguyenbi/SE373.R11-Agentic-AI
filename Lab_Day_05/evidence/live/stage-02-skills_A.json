@@ -1,0 +1,41 @@
+{
+  "mode": "live-provider",
+  "stage": "stage-02-skills",
+  "case": "A",
+  "question": "Tôi mua ngày 28/09/2026, yêu cầu hoàn ngày 06/10/2026, chưa kích hoạt. Tôi có được hoàn không?",
+  "model": "cc/claude-opus-5-5",
+  "conversation_id": "aead8b6477994a79bd8ed8f78ae80d2d",
+  "renamed_files": {},
+  "trace": "20261007-192836_aead8b64_turn01_59399034.jsonl",
+  "status": "completed",
+  "answer": "Rất tiếc, bạn **không đủ điều kiện hoàn tiền**.\n\n- **Chính sách áp dụng:** Chính sách hoàn tiền trước tháng 10, áp dụng cho đơn mua trước 01/10/2026. Bạn mua ngày 28/09/2026 nên dùng chính sách này. Chính sách từ tháng 10 cho phép hoàn trong 14 ngày nhưng chỉ áp dụng cho đơn mua từ 01/10/2026, nên không áp dụng cho đơn của bạn.\n- **Số ngày đã qua:** từ 28/09/2026 đến 06/10/2026 là **8 ngày**.\n- **Lý do:** Sản phẩm chưa kích hoạt nên đạt điều kiện này. Tuy nhiên, chính sách chỉ cho yêu cầu hoàn tiền trong **7 ngày** kể từ ngày mua, và yêu cầu của bạn đã quá hạn 1 ngày.\n- **Phí:** Không áp dụng vì đơn không đủ điều kiện. Nếu đủ điều kiện, phí sẽ là 10% giá trị đơn hàng.\n- **Căn cứ:** `data/policies/policy-before-oct.md`, có đối chiếu thêm `data/policies/policy-from-oct.md`.",
+  "inventory": {
+    "skills": [
+      {
+        "path": "skills/refund-policy/SKILL.md",
+        "message_index": 2,
+        "tool_call_id": "toolu_013BL6JHXBJjLyaypf5VRNhr",
+        "skill": "refund-policy",
+        "chars": 1754,
+        "first_request": "Lượt 1, model call #2"
+      }
+    ],
+    "resources": [
+      {
+        "path": "skills/refund-policy/references/answer-template.md",
+        "message_index": 4,
+        "tool_call_id": "toolu_0191QVizLfPZHDjG1bqvSBJB"
+      },
+      {
+        "path": "data/policies/policy-before-oct.md",
+        "message_index": 7,
+        "tool_call_id": "toolu_01FCfxeRzFaiqHayTk2Jo34b"
+      },
+      {
+        "path": "data/policies/policy-from-oct.md",
+        "message_index": 8,
+        "tool_call_id": "toolu_018WYkh2SriRBx3Qk74fbycu"
+      }
+    ]
+  }
+}

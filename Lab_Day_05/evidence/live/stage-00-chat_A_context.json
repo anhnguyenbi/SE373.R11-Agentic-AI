@@ -1,0 +1,136 @@
+{
+  "label": "Context gửi model (lớp LangChain), không phải provider wire payload",
+  "conversation_id": "47ac88a4997f4244b4ca857b686091a0",
+  "counters": {
+    "Trạng thái": "Hoàn tất",
+    "Lượt chat": 1,
+    "Lần gọi model trong lượt": 1,
+    "Bước sự kiện trong lượt": 4,
+    "Tool calls trong lượt": 0
+  },
+  "messages": [
+    {
+      "role": "user",
+      "type": "human",
+      "content": "Tôi mua ngày 28/09/2026, yêu cầu hoàn ngày 06/10/2026, chưa kích hoạt. Tôi có được hoàn không?",
+      "id": "f391e66d-b8d7-4a1d-b48c-be5d60fdc504"
+    },
+    {
+      "role": "assistant",
+      "type": "ai",
+      "content": "Tôi chưa trả lời chắc chắn được vì **không có chính sách hoàn tiền** trong cuộc trò chuyện này. Tôi cũng không có quyền đọc file hay tra cứu dữ liệu nên không thể tự mở tài liệu chính sách.\n\n**Thông tin tính được từ dữ liệu bạn đưa:**\n- Từ 28/09/2026 đến 06/10/2026 là **8 ngày** (tháng 9 có 30 ngày).\n- Sản phẩm **chưa kích hoạt**.\n\n**Để kết luận, bạn hãy dán nội dung chính sách vào đây**, đặc biệt là các điểm sau:\n1. Thời hạn yêu cầu hoàn là bao nhiêu ngày (ví dụ 7, 14 hay 30 ngày).\n2. Thời hạn tính từ ngày mua hay ngày nhận hàng, và có tính cả ngày mua không.\n3. Điều kiện về kích hoạt hoặc sử dụng.\n4. Các ngoại lệ, ví dụ hàng khuyến mãi hoặc sản phẩm số.\n\nVí dụ: nếu chính sách cho hoàn trong **7 ngày** kể từ ngày mua thì 8 ngày đã quá hạn. Nếu thời hạn là **14 hoặc 30 ngày** và chỉ yêu cầu chưa kích hoạt thì bạn nhiều khả năng đủ điều kiện.",
+      "id": "lc_run--01a11655-18c6-79e1-9ecf-de48ba893382-0",
+      "tool_calls": [],
+      "usage_metadata": {
+        "input_tokens": 2420,
+        "output_tokens": 620,
+        "total_tokens": 3040,
+        "input_token_details": {},
+        "output_token_details": {}
+      }
+    }
+  ],
+  "snapshots": [
+    {
+      "label": "Context gửi model (lớp LangChain)",
+      "conversation_id": "47ac88a4997f4244b4ca857b686091a0",
+      "run_id": "30764364251c40c7b2a73052181b152c",
+      "chat_turn": 1,
+      "model_call_index": 1,
+      "event_sequence": 2,
+      "captured_at": "2026-10-07T12:27:18.086+00:00",
+      "model_name": "cc/claude-opus-5-5",
+      "system_prompt": "Bạn là trợ lý trong lab \"Agent Tools & Skills\". Trả lời bằng tiếng Việt, ngắn gọn, rõ ràng.\n\nQuy tắc:\n- Chỉ dùng các tool được cấp trong request để thao tác dữ liệu. Nếu không có tool phù hợp, nói rõ giới hạn thay vì đoán.\n- Chỉ nói đã đọc, ghi hoặc chạy một thứ khi đã nhận tool result thành công cho đúng thao tác đó.\n- Khi tool trả lỗi, báo lỗi cho người dùng và đề xuất cách xử lý; không bịa kết quả.\n\nProject này không cấp tool nào: bạn không đọc được file, không ghi được file và không chạy được lệnh.\nNếu người dùng yêu cầu đọc file hoặc dữ liệu, nói rõ bạn không có quyền truy cập và không bịa nội dung.",
+      "messages": [
+        {
+          "role": "user",
+          "type": "human",
+          "content": "Tôi mua ngày 28/09/2026, yêu cầu hoàn ngày 06/10/2026, chưa kích hoạt. Tôi có được hoàn không?",
+          "id": "f391e66d-b8d7-4a1d-b48c-be5d60fdc504"
+        }
+      ],
+      "tools": [],
+      "message_count": 1,
+      "system_prompt_chars": 611,
+      "message_chars": 94,
+      "usage": {
+        "input_tokens": 2420,
+        "output_tokens": 620,
+        "total_tokens": 3040,
+        "input_token_details": {},
+        "output_token_details": {}
+      }
+    }
+  ],
+  "events": [
+    {
+      "conversation_id": "47ac88a4997f4244b4ca857b686091a0",
+      "run_id": "30764364251c40c7b2a73052181b152c",
+      "chat_turn": 1,
+      "sequence": 1,
+      "type": "user_submitted",
+      "timestamp": "2026-10-07T12:27:18.049+00:00",
+      "content": "Tôi mua ngày 28/09/2026, yêu cầu hoàn ngày 06/10/2026, chưa kích hoạt. Tôi có được hoàn không?"
+    },
+    {
+      "conversation_id": "47ac88a4997f4244b4ca857b686091a0",
+      "run_id": "30764364251c40c7b2a73052181b152c",
+      "chat_turn": 1,
+      "sequence": 2,
+      "type": "model_request",
+      "timestamp": "2026-10-07T12:27:18.086+00:00",
+      "model_call_index": 1,
+      "snapshot": {
+        "label": "Context gửi model (lớp LangChain)",
+        "conversation_id": "47ac88a4997f4244b4ca857b686091a0",
+        "run_id": "30764364251c40c7b2a73052181b152c",
+        "chat_turn": 1,
+        "model_call_index": 1,
+        "event_sequence": 2,
+        "captured_at": "2026-10-07T12:27:18.086+00:00",
+        "model_name": "cc/claude-opus-5-5",
+        "system_prompt": "Bạn là trợ lý trong lab \"Agent Tools & Skills\". Trả lời bằng tiếng Việt, ngắn gọn, rõ ràng.\n\nQuy tắc:\n- Chỉ dùng các tool được cấp trong request để thao tác dữ liệu. Nếu không có tool phù hợp, nói rõ giới hạn thay vì đoán.\n- Chỉ nói đã đọc, ghi hoặc chạy một thứ khi đã nhận tool result thành công cho đúng thao tác đó.\n- Khi tool trả lỗi, báo lỗi cho người dùng và đề xuất cách xử lý; không bịa kết quả.\n\nProject này không cấp tool nào: bạn không đọc được file, không ghi được file và không chạy được lệnh.\nNếu người dùng yêu cầu đọc file hoặc dữ liệu, nói rõ bạn không có quyền truy cập và không bịa nội dung.",
+        "messages": [
+          {
+            "role": "user",
+            "type": "human",
+            "content": "Tôi mua ngày 28/09/2026, yêu cầu hoàn ngày 06/10/2026, chưa kích hoạt. Tôi có được hoàn không?",
+            "id": "f391e66d-b8d7-4a1d-b48c-be5d60fdc504"
+          }
+        ],
+        "tools": [],
+        "message_count": 1,
+        "system_prompt_chars": 611,
+        "message_chars": 94,
+        "usage": null
+      }
+    },
+    {
+      "conversation_id": "47ac88a4997f4244b4ca857b686091a0",
+      "run_id": "30764364251c40c7b2a73052181b152c",
+      "chat_turn": 1,
+      "sequence": 3,
+      "type": "model_response",
+      "timestamp": "2026-10-07T12:27:24.693+00:00",
+      "model_call_index": 1,
+      "elapsed_ms": 6606.8,
+      "tool_calls_requested": [],
+      "usage": {
+        "input_tokens": 2420,
+        "output_tokens": 620,
+        "total_tokens": 3040,
+        "input_token_details": {},
+        "output_token_details": {}
+      }
+    },
+    {
+      "conversation_id": "47ac88a4997f4244b4ca857b686091a0",
+      "run_id": "30764364251c40c7b2a73052181b152c",
+      "chat_turn": 1,
+      "sequence": 4,
+      "type": "run_completed",
+      "timestamp": "2026-10-07T12:27:24.695+00:00",
+      "answer": "Tôi chưa trả lời chắc chắn được vì **không có chính sách hoàn tiền** trong cuộc trò chuyện này. Tôi cũng không có quyền đọc file hay tra cứu dữ liệu nên không thể tự mở tài liệu chính sách.\n\n**Thông tin tính được từ dữ liệu bạn đưa:**\n- Từ 28/09/2026 đến 06/10/2026 là **8 ngày** (tháng 9 có 30 ngày).\n- Sản phẩm **chưa kích hoạt**.\n\n**Để kết luận, bạn hãy dán nội dung chính sách vào đây**, đặc biệt là các điểm sau:\n1. Thời hạn yêu cầu hoàn là bao nhiêu ngày (ví dụ 7, 14 hay 30 ngày).\n2. Thời hạn tính từ ngày mua hay ngày nhận hàng, và có tính cả ngày mua không.\n3. Điều kiện về kích hoạt hoặc sử dụng.\n4. Các ngoại lệ, ví dụ hàng khuyến mãi hoặc sản phẩm số.\n\nVí dụ: nếu chính sách cho hoàn trong **7 ngày** kể từ ngày mua thì 8 ngày đã quá hạn. Nếu thời hạn là **14 hoặc 30 ngày** và chỉ yêu cầu chưa kích hoạt thì bạn nhiều khả năng đủ điều kiện."
+    }
+  ]
+}
