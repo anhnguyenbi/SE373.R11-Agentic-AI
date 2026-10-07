@@ -1,0 +1,22 @@
+# Plan-then-Execute · het-cho · noise=0
+USER: Đặt vé HAN → PQC ngày 12/10/2026, bay trước 12:00, dưới 2 triệu, rẻ nhất.
+
+      [model:planner] in=573 out=208
+      [plan] {"steps": [{"tool": "search_flights", "leg": 1, "args": {"origin": "HAN", "destination": "PQC", "date": "2026-10-12"}, "purpose": "Tìm chuyến chặng 1", "foreach": false}, {"tool": "check_seat", "leg": 1, "args": {"flight
+      [plan_review] {"ok": true, "problems": []}
+V1   search_flights('HAN', 'PQC', '2026-10-12')      → ok · 3 chuyến
+      [model:executor] in=560 out=8
+V2   check_seat('VJ451')                             → ok · 1 ghế · 1.490.000đ
+      [model:executor] in=611 out=15
+V3   book_seat('VJ451', 'NGUYEN VAN A')              → sold_out {"flight_no": "VJ451", "seats_left": 0, "hint": "Chuyến đã hết chỗ, hãy chọn chuyến khác từ kết quả search."}
+      [HARNESS DỪNG] Cần con người · kế hoạch lỗi thời, không lập lại kế hoạch (plan_failed@3: bước book_seat(VJ451, NGUYEN VAN A) → sold_out)
+
+ANSWER:
+=== BÀN GIAO CHO NGƯỜI · Cần con người - kế hoạch lỗi thời, không lập lại kế hoạch (plan_failed@3: bước book_seat(VJ451, NGUYEN VAN A) → sold_out) ===
+Trạng thái:
+  - chặng 1 (HAN→PQC 2026-10-12 trước 12:00): tìm thấy 3 chuyến
+Tác dụng phụ đã xảy ra:
+  - không có
+Những gì đã thử:
+  - book_seat VJ451: sold_out
+Câu hỏi cụ thể: VJ451 vừa hết chỗ lúc giữ chỗ nên kế hoạch hết hiệu lực. Ứng viên hợp lệ còn lại: VN1233 08:45 1.720.000đ. Cho phép lập lại kế hoạch với ứng viên này?

@@ -1,0 +1,11 @@
+# ReAct · khong-co-ngay · noise=0
+USER: Đặt vé HAN → HUI đúng ngày 07/10/2026, không được đổi ngày, dưới 2 triệu.
+
+      [model:react] in=775 out=47
+V1   search_flights('HAN', 'HUI', '2026-10-07')      → ok · 0 chuyến · gần nhất ['2026-10-08']
+      [model:react] in=819 out=32
+      [answer_check] {"ok": true}
+      [HARNESS DỪNG] Cần con người · agent dừng và hỏi người dùng
+
+ANSWER:
+Không có chuyến HAN→HUI ngày 2026-10-07. Ngày gần nhất có chuyến: 2026-10-08. Bạn có muốn đổi ngày không? Mình chưa đặt vé nào.

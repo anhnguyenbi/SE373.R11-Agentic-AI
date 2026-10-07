@@ -1,0 +1,1117 @@
+design,scenario,seed,noise,harness,outcome,passed,stop_kind,llm_calls,tool_calls,tokens,cost_usd,elapsed_ms,interventions,noise_events,detail
+react,co-ban,0,0.0,True,booked,True,goal_reached,6,5,6606,0.00109395,53.58,0,0,VN122
+react,co-ban,1,0.15,True,booked,True,goal_reached,7,6,7686,0.0012770999999999998,62.18,0,1,VN122
+react,co-ban,2,0.15,True,booked,True,goal_reached,9,6,10725,0.0017653500000000002,59.36,2,2,VN122
+react,co-ban,3,0.15,True,booked,True,goal_reached,8,5,9256,0.0015013500000000003,43.97,2,2,VN122
+react,co-ban,4,0.15,True,booked,True,goal_reached,8,6,9303,0.0015331499999999998,57.32,1,2,VN122
+react,co-ban,5,0.15,True,booked,True,goal_reached,6,5,6590,0.00108435,144.28,1,1,VN122
+react,co-ban,6,0.15,True,booked,True,goal_reached,7,5,7932,0.00131175,49.52,1,1,VN122
+react,co-ban,7,0.15,True,booked,True,goal_reached,9,6,10698,0.0017541,56.07,3,4,VN122
+react,co-ban,8,0.15,True,booked,True,goal_reached,8,6,9295,0.00153195,51.2,1,2,VN122
+react,co-ban,9,0.15,True,booked,True,goal_reached,8,6,9279,0.00152235,44.92,2,3,VN122
+react,co-ban,10,0.15,True,booked,True,goal_reached,6,5,6606,0.00109395,39.06,0,0,VN122
+react,co-ban,11,0.15,True,booked,True,goal_reached,6,5,6606,0.00109395,39.15,0,0,VN122
+react,co-ban,12,0.15,True,booked,True,goal_reached,9,6,10711,0.00176325,52.83,2,2,VN122
+react,co-ban,13,0.15,True,booked,True,goal_reached,6,5,6590,0.00108435,40.47,1,1,VN122
+react,co-ban,14,0.15,True,booked,True,goal_reached,7,6,7686,0.0012770999999999998,50.0,0,1,VN122
+react,co-ban,15,0.15,True,booked,True,goal_reached,8,6,9303,0.0015331499999999998,49.04,1,2,VN122
+react,co-ban,16,0.15,True,booked,True,goal_reached,6,5,6606,0.00109395,37.9,0,0,VN122
+react,co-ban,17,0.15,True,booked,True,goal_reached,6,5,6606,0.00109395,53.5,0,0,VN122
+react,co-ban,18,0.15,True,booked,True,goal_reached,6,5,6606,0.00109395,60.99,0,0,VN122
+react,co-ban,19,0.15,True,booked,True,goal_reached,6,5,6606,0.00109395,49.69,0,0,VN122
+react,co-ban,20,0.15,True,booked,True,goal_reached,6,5,6606,0.00109395,42.55,0,0,VN122
+react,co-ban,21,0.15,True,booked,True,goal_reached,6,5,6606,0.00109395,42.6,0,0,VN122
+react,co-ban,22,0.15,True,booked,True,goal_reached,9,6,10739,0.0017674499999999998,68.73,2,3,VN122
+react,co-ban,23,0.15,True,booked,True,goal_reached,9,6,10683,0.0017450999999999999,60.86,2,2,VN122
+react,co-ban,24,0.15,True,booked,True,goal_reached,6,5,6590,0.00108435,58.9,1,1,VN122
+react,co-ban,25,0.15,True,booked,True,goal_reached,6,5,6590,0.00108435,52.4,1,1,VN122
+react,co-ban,26,0.15,True,booked,True,goal_reached,8,5,9278,0.0015186,57.12,2,2,VN122
+react,co-ban,27,0.15,True,booked,True,goal_reached,7,5,7932,0.00131175,40.85,1,1,VN122
+react,co-ban,28,0.15,True,booked,True,goal_reached,9,7,10467,0.0017289,49.57,1,3,VN122
+react,co-ban,29,0.15,True,booked,True,goal_reached,6,5,6606,0.00109395,36.27,0,0,VN122
+react,co-ban,30,0.15,True,booked,True,goal_reached,8,6,9295,0.00153195,44.93,1,1,VN122
+pe,co-ban,0,0.0,True,booked,True,goal_reached,5,5,3663,0.0006632999999999999,16.54,0,0,VN122
+pe,co-ban,1,0.15,True,booked,True,goal_reached,6,5,4422,0.000837,16.58,1,1,VN122
+pe,co-ban,2,0.15,True,handoff,False,needs_human,4,3,2872,0.0005383499999999999,15.1,1,2,needs_human
+pe,co-ban,3,0.15,True,booked,True,goal_reached,5,5,3663,0.0006632999999999999,14.91,0,0,VN122
+pe,co-ban,4,0.15,True,handoff,False,needs_human,3,2,2128,0.00042315,11.56,1,1,needs_human
+pe,co-ban,5,0.15,True,booked,True,goal_reached,5,5,3663,0.0006632999999999999,13.73,0,0,VN122
+pe,co-ban,6,0.15,True,booked,True,goal_reached,5,5,3663,0.0006632999999999999,14.44,0,0,VN122
+pe,co-ban,7,0.15,True,handoff,False,needs_human,4,3,2872,0.0005383499999999999,13.1,1,1,needs_human
+pe,co-ban,8,0.15,True,handoff,False,needs_human,4,3,2872,0.0005383499999999999,12.02,1,1,needs_human
+pe,co-ban,9,0.15,True,handoff,False,needs_human,4,3,2872,0.0005383499999999999,12.15,1,1,needs_human
+pe,co-ban,10,0.15,True,booked,True,goal_reached,5,5,3663,0.0006632999999999999,13.82,0,0,VN122
+pe,co-ban,11,0.15,True,booked,True,goal_reached,5,5,3663,0.0006632999999999999,14.19,0,0,VN122
+pe,co-ban,12,0.15,True,handoff,False,needs_human,4,3,2872,0.0005383499999999999,12.02,1,1,needs_human
+pe,co-ban,13,0.15,True,booked,True,goal_reached,5,5,3663,0.0006632999999999999,13.53,0,0,VN122
+pe,co-ban,14,0.15,True,booked,True,goal_reached,6,5,4422,0.000837,15.77,1,1,VN122
+pe,co-ban,15,0.15,True,handoff,False,needs_human,3,2,2128,0.00042315,11.59,1,1,needs_human
+pe,co-ban,16,0.15,True,booked,True,goal_reached,5,5,3663,0.0006632999999999999,14.0,0,0,VN122
+pe,co-ban,17,0.15,True,booked,True,goal_reached,5,5,3663,0.0006632999999999999,13.65,0,0,VN122
+pe,co-ban,18,0.15,True,booked,True,goal_reached,5,5,3663,0.0006632999999999999,14.42,0,0,VN122
+pe,co-ban,19,0.15,True,booked,True,goal_reached,5,5,3663,0.0006632999999999999,14.63,0,0,VN122
+pe,co-ban,20,0.15,True,booked,True,goal_reached,5,5,3663,0.0006632999999999999,14.49,0,0,VN122
+pe,co-ban,21,0.15,True,booked,True,goal_reached,5,5,3663,0.0006632999999999999,15.35,0,0,VN122
+pe,co-ban,22,0.15,True,handoff,False,needs_human,3,2,2128,0.00042315,14.77,1,2,needs_human
+pe,co-ban,23,0.15,True,handoff,False,needs_human,4,3,2872,0.0005383499999999999,15.11,1,1,needs_human
+pe,co-ban,24,0.15,True,booked,True,goal_reached,5,5,3663,0.0006632999999999999,19.79,0,0,VN122
+pe,co-ban,25,0.15,True,booked,True,goal_reached,5,5,3663,0.0006632999999999999,22.21,0,0,VN122
+pe,co-ban,26,0.15,True,booked,True,goal_reached,5,5,3663,0.0006632999999999999,22.63,0,0,VN122
+pe,co-ban,27,0.15,True,booked,True,goal_reached,5,5,3663,0.0006632999999999999,22.24,0,0,VN122
+pe,co-ban,28,0.15,True,handoff,False,needs_human,6,3,4390,0.0008857499999999999,21.98,3,3,needs_human
+pe,co-ban,29,0.15,True,booked,True,goal_reached,5,5,3663,0.0006632999999999999,14.86,0,0,VN122
+pe,co-ban,30,0.15,True,handoff,False,needs_human,4,3,2872,0.0005383499999999999,13.75,1,1,needs_human
+hybrid,co-ban,0,0.0,True,booked,True,goal_reached,5,5,3663,0.0006632999999999999,15.38,0,0,VN122
+hybrid,co-ban,1,0.15,True,booked,True,goal_reached,6,5,4422,0.000837,18.88,1,1,VN122
+hybrid,co-ban,2,0.15,True,booked,True,goal_reached,6,6,4925,0.0009155999999999999,24.34,1,2,VN122
+hybrid,co-ban,3,0.15,True,booked,True,goal_reached,5,5,3663,0.0006632999999999999,17.1,0,0,VN122
+hybrid,co-ban,4,0.15,True,booked,True,goal_reached,6,6,5284,0.00102885,21.75,1,2,VN122
+hybrid,co-ban,5,0.15,True,booked,True,goal_reached,5,5,3663,0.0006632999999999999,20.89,0,0,VN122
+hybrid,co-ban,6,0.15,True,booked,True,goal_reached,5,5,3663,0.0006632999999999999,19.43,0,0,VN122
+hybrid,co-ban,7,0.15,True,booked,True,goal_reached,6,5,4848,0.0008923499999999999,21.34,1,2,VN122
+hybrid,co-ban,8,0.15,True,booked,True,goal_reached,6,6,4930,0.00091635,21.19,1,2,VN122
+hybrid,co-ban,9,0.15,True,booked,True,goal_reached,6,6,4930,0.00091635,20.62,1,2,VN122
+hybrid,co-ban,10,0.15,True,booked,True,goal_reached,5,5,3663,0.0006632999999999999,16.69,0,0,VN122
+hybrid,co-ban,11,0.15,True,booked,True,goal_reached,5,5,3663,0.0006632999999999999,16.0,0,0,VN122
+hybrid,co-ban,12,0.15,True,booked,True,goal_reached,6,5,4848,0.0008923499999999999,18.14,1,2,VN122
+hybrid,co-ban,13,0.15,True,booked,True,goal_reached,5,5,3663,0.0006632999999999999,16.5,0,0,VN122
+hybrid,co-ban,14,0.15,True,booked,True,goal_reached,6,5,4422,0.000837,21.39,1,1,VN122
+hybrid,co-ban,15,0.15,True,booked,True,goal_reached,7,7,6507,0.0012753,23.09,1,2,VN122
+hybrid,co-ban,16,0.15,True,booked,True,goal_reached,5,5,3663,0.0006632999999999999,17.52,0,0,VN122
+hybrid,co-ban,17,0.15,True,booked,True,goal_reached,5,5,3663,0.0006632999999999999,16.69,0,0,VN122
+hybrid,co-ban,18,0.15,True,booked,True,goal_reached,5,5,3663,0.0006632999999999999,17.36,0,0,VN122
+hybrid,co-ban,19,0.15,True,booked,True,goal_reached,5,5,3663,0.0006632999999999999,19.68,0,0,VN122
+hybrid,co-ban,20,0.15,True,booked,True,goal_reached,5,5,3663,0.0006632999999999999,17.9,0,0,VN122
+hybrid,co-ban,21,0.15,True,booked,True,goal_reached,5,5,3663,0.0006632999999999999,16.85,0,0,VN122
+hybrid,co-ban,22,0.15,True,booked,True,goal_reached,6,6,5276,0.00102765,22.29,1,3,VN122
+hybrid,co-ban,23,0.15,True,booked,True,goal_reached,6,5,4848,0.0008923499999999999,20.06,1,1,VN122
+hybrid,co-ban,24,0.15,True,booked,True,goal_reached,5,5,3663,0.0006632999999999999,15.55,0,0,VN122
+hybrid,co-ban,25,0.15,True,booked,True,goal_reached,5,5,3663,0.0006632999999999999,16.57,0,0,VN122
+hybrid,co-ban,26,0.15,True,booked,True,goal_reached,5,5,3663,0.0006632999999999999,16.3,0,0,VN122
+hybrid,co-ban,27,0.15,True,booked,True,goal_reached,5,5,3663,0.0006632999999999999,19.29,0,0,VN122
+hybrid,co-ban,28,0.15,True,booked,True,goal_reached,8,6,6448,0.00126375,31.43,3,3,VN122
+hybrid,co-ban,29,0.15,True,booked,True,goal_reached,5,5,3663,0.0006632999999999999,25.6,0,0,VN122
+hybrid,co-ban,30,0.15,True,booked,True,goal_reached,6,6,4930,0.00091635,20.6,1,1,VN122
+react,khu-hoi,0,0.0,True,booked,True,goal_reached,12,11,16310,0.0026620500000000004,70.97,0,0,"VN122, VJ631"
+react,khu-hoi,1,0.15,True,booked,True,goal_reached,16,13,23346,0.00379305,87.41,2,4,"VN122, VJ631"
+react,khu-hoi,2,0.15,True,booked,True,goal_reached,15,12,21480,0.003492,86.83,2,2,"VN122, VJ631"
+react,khu-hoi,3,0.15,True,booked,True,goal_reached,14,11,19881,0.0032076,98.36,2,2,"VN122, VJ631"
+react,khu-hoi,4,0.15,True,booked,True,goal_reached,14,12,19666,0.0031861499999999996,108.87,2,3,"VN122, VJ631"
+react,khu-hoi,5,0.15,True,booked,True,goal_reached,14,12,19718,0.0031997999999999996,88.2,1,2,"VN122, VJ631"
+react,khu-hoi,6,0.15,True,booked,True,goal_reached,13,11,17991,0.0029335499999999996,77.12,1,1,"VN122, VJ631"
+react,khu-hoi,7,0.15,True,booked,True,goal_reached,16,13,23225,0.0037749,93.32,2,6,"VN122, VJ631"
+react,khu-hoi,8,0.15,True,booked,True,goal_reached,14,12,19691,0.00320475,80.75,1,2,"VN122, VJ631"
+react,khu-hoi,9,0.15,True,handoff,False,budget_exceeded,16,13,23328,0.0037844999999999997,103.31,3,4,budget_exceeded
+react,khu-hoi,10,0.15,True,booked,True,goal_reached,12,11,16310,0.0026620500000000004,81.03,0,0,"VN122, VJ631"
+react,khu-hoi,11,0.15,True,booked,True,goal_reached,13,11,18107,0.0029505,88.64,1,2,"VN122, VJ631"
+react,khu-hoi,12,0.15,True,handoff,False,budget_exceeded,16,12,23383,0.0037783499999999998,93.31,5,4,budget_exceeded
+react,khu-hoi,13,0.15,True,booked,True,goal_reached,15,13,21620,0.0035152499999999997,93.84,1,2,"VN122, VJ631"
+react,khu-hoi,14,0.15,True,booked,True,goal_reached,13,12,17646,0.0028692,73.75,1,2,"VN122, VJ631"
+react,khu-hoi,15,0.15,True,booked,True,goal_reached,14,12,19699,0.00320595,87.42,1,2,"VN122, VJ631"
+react,khu-hoi,16,0.15,True,booked,True,goal_reached,14,12,19944,0.0032422500000000003,78.96,1,2,"VN122, VJ631"
+react,khu-hoi,17,0.15,True,booked,True,goal_reached,14,12,19944,0.0032422500000000003,102.43,1,2,"VN122, VJ631"
+react,khu-hoi,18,0.15,True,booked,True,goal_reached,12,11,16310,0.0026620500000000004,72.0,0,0,"VN122, VJ631"
+react,khu-hoi,19,0.15,True,booked,True,goal_reached,12,11,16277,0.0026422500000000005,72.02,1,2,"VN122, VJ631"
+react,khu-hoi,20,0.15,True,booked,True,goal_reached,12,11,16277,0.0026422500000000005,118.74,1,1,"VN122, VJ631"
+react,khu-hoi,21,0.15,True,booked,True,goal_reached,14,11,19928,0.0032286,88.57,2,2,"VN122, VJ631"
+react,khu-hoi,22,0.15,True,booked,True,goal_reached,15,12,21494,0.0034941,81.03,2,3,"VN122, VJ631"
+react,khu-hoi,23,0.15,True,handoff,False,budget_exceeded,16,11,23516,0.0037982999999999997,86.37,5,4,budget_exceeded
+react,khu-hoi,24,0.15,True,booked,True,goal_reached,13,12,17910,0.00292365,77.22,0,1,"VN122, VJ631"
+react,khu-hoi,25,0.15,True,booked,True,goal_reached,13,12,17877,0.00290385,77.89,1,2,"VN122, VJ631"
+react,khu-hoi,26,0.15,True,booked,True,goal_reached,14,11,19796,0.0032092499999999994,79.49,2,2,"VN122, VJ631"
+react,khu-hoi,27,0.15,True,booked,True,goal_reached,13,11,17991,0.0029335499999999996,92.68,1,2,"VN122, VJ631"
+react,khu-hoi,28,0.15,True,handoff,False,budget_exceeded,16,13,23058,0.0037318499999999997,103.87,4,6,budget_exceeded
+react,khu-hoi,29,0.15,True,booked,True,goal_reached,14,12,19944,0.0032422500000000003,96.96,1,1,"VN122, VJ631"
+react,khu-hoi,30,0.15,True,booked,True,goal_reached,15,12,21562,0.00349035,78.97,2,2,"VN122, VJ631"
+pe,khu-hoi,0,0.0,True,booked,True,goal_reached,10,11,9647,0.00166755,33.23,0,0,"VN122, VJ631"
+pe,khu-hoi,1,0.15,True,booked,True,goal_reached,11,11,10587,0.0019169999999999999,40.75,1,1,"VN122, VJ631"
+pe,khu-hoi,2,0.15,True,handoff,False,needs_human,4,3,3176,0.0006662999999999999,13.41,1,2,needs_human
+pe,khu-hoi,3,0.15,True,handoff,False,needs_human,9,9,8375,0.0014704499999999999,21.36,1,2,needs_human
+pe,khu-hoi,4,0.15,True,handoff,False,needs_human,3,2,2404,0.0005468999999999999,12.57,1,1,needs_human
+pe,khu-hoi,5,0.15,True,handoff,False,needs_human,9,9,8375,0.0014704499999999999,20.24,1,1,needs_human
+pe,khu-hoi,6,0.15,True,booked,True,goal_reached,10,11,9647,0.00166755,21.94,0,1,"VN122, VJ631"
+pe,khu-hoi,7,0.15,True,handoff,False,needs_human,4,3,3176,0.0006662999999999999,12.58,1,1,needs_human
+pe,khu-hoi,8,0.15,True,handoff,False,needs_human,4,3,3176,0.0006662999999999999,12.78,1,1,needs_human
+pe,khu-hoi,9,0.15,True,handoff,False,needs_human,4,3,3176,0.0006662999999999999,12.72,1,1,needs_human
+pe,khu-hoi,10,0.15,True,booked,True,goal_reached,10,11,9647,0.00166755,24.17,0,0,"VN122, VJ631"
+pe,khu-hoi,11,0.15,True,booked,True,goal_reached,10,11,9647,0.00166755,25.61,0,0,"VN122, VJ631"
+pe,khu-hoi,12,0.15,True,handoff,False,needs_human,4,3,3176,0.0006662999999999999,13.64,1,1,needs_human
+pe,khu-hoi,13,0.15,True,handoff,False,needs_human,9,9,8375,0.0014704499999999999,21.01,1,1,needs_human
+pe,khu-hoi,14,0.15,True,booked,True,goal_reached,11,11,10587,0.0019169999999999999,24.22,1,1,"VN122, VJ631"
+pe,khu-hoi,15,0.15,True,handoff,False,needs_human,3,2,2404,0.0005468999999999999,13.73,1,1,needs_human
+pe,khu-hoi,16,0.15,True,booked,True,goal_reached,10,11,9647,0.00166755,24.76,0,0,"VN122, VJ631"
+pe,khu-hoi,17,0.15,True,booked,True,goal_reached,10,11,9647,0.00166755,24.93,0,0,"VN122, VJ631"
+pe,khu-hoi,18,0.15,True,booked,True,goal_reached,10,11,9647,0.00166755,23.46,0,0,"VN122, VJ631"
+pe,khu-hoi,19,0.15,True,booked,True,goal_reached,10,11,9647,0.00166755,25.91,0,0,"VN122, VJ631"
+pe,khu-hoi,20,0.15,True,booked,True,goal_reached,10,11,9647,0.00166755,23.0,0,0,"VN122, VJ631"
+pe,khu-hoi,21,0.15,True,booked,True,goal_reached,10,11,9647,0.00166755,22.86,0,0,"VN122, VJ631"
+pe,khu-hoi,22,0.15,True,handoff,False,needs_human,3,2,2404,0.0005468999999999999,11.57,1,2,needs_human
+pe,khu-hoi,23,0.15,True,handoff,False,needs_human,4,3,3176,0.0006662999999999999,15.04,1,1,needs_human
+pe,khu-hoi,24,0.15,True,handoff,False,needs_human,9,9,8375,0.0014704499999999999,23.06,1,1,needs_human
+pe,khu-hoi,25,0.15,True,handoff,False,needs_human,9,9,8375,0.0014704499999999999,21.63,1,1,needs_human
+pe,khu-hoi,26,0.15,True,booked,True,goal_reached,10,11,9647,0.00166755,25.47,0,1,"VN122, VJ631"
+pe,khu-hoi,27,0.15,True,booked,True,goal_reached,10,11,9647,0.00166755,27.07,0,1,"VN122, VJ631"
+pe,khu-hoi,28,0.15,True,handoff,False,needs_human,6,3,5056,0.0011652,20.37,3,3,needs_human
+pe,khu-hoi,29,0.15,True,booked,True,goal_reached,10,11,9647,0.00166755,23.71,0,0,"VN122, VJ631"
+pe,khu-hoi,30,0.15,True,handoff,False,needs_human,4,3,3176,0.0006662999999999999,16.06,1,1,needs_human
+hybrid,khu-hoi,0,0.0,True,booked,True,goal_reached,10,11,9647,0.00166755,26.45,0,0,"VN122, VJ631"
+hybrid,khu-hoi,1,0.15,True,booked,True,goal_reached,11,11,10587,0.0019169999999999999,31.32,1,1,"VN122, VJ631"
+hybrid,khu-hoi,2,0.15,True,booked,True,goal_reached,11,12,11679,0.00211365,33.09,1,2,"VN122, VJ631"
+hybrid,khu-hoi,3,0.15,True,booked,True,goal_reached,11,12,11397,0.00199305,32.65,1,2,"VN122, VJ631"
+hybrid,khu-hoi,4,0.15,True,booked,True,goal_reached,11,12,12229,0.00233385,31.49,1,2,"VN122, VJ631"
+hybrid,khu-hoi,5,0.15,True,booked,True,goal_reached,11,11,11320,0.0019698,34.21,1,1,"VN122, VJ631"
+hybrid,khu-hoi,6,0.15,True,booked,True,goal_reached,10,11,9647,0.00166755,26.17,0,1,"VN122, VJ631"
+hybrid,khu-hoi,7,0.15,True,booked,True,goal_reached,12,12,13165,0.0023878499999999995,32.97,2,5,"VN122, VJ631"
+hybrid,khu-hoi,8,0.15,True,booked,True,goal_reached,11,12,11694,0.0021159,34.61,1,2,"VN122, VJ631"
+hybrid,khu-hoi,9,0.15,True,booked,True,goal_reached,11,12,11694,0.0021159,29.36,1,3,"VN122, VJ631"
+hybrid,khu-hoi,10,0.15,True,booked,True,goal_reached,10,11,9647,0.00166755,28.77,0,0,"VN122, VJ631"
+hybrid,khu-hoi,11,0.15,True,booked,True,goal_reached,10,11,9647,0.00166755,27.79,0,0,"VN122, VJ631"
+hybrid,khu-hoi,12,0.15,True,booked,True,goal_reached,11,11,11347,0.00205215,32.79,1,2,"VN122, VJ631"
+hybrid,khu-hoi,13,0.15,True,booked,True,goal_reached,11,11,11320,0.0019698,42.15,1,2,"VN122, VJ631"
+hybrid,khu-hoi,14,0.15,True,booked,True,goal_reached,11,11,10587,0.0019169999999999999,42.99,1,1,"VN122, VJ631"
+hybrid,khu-hoi,15,0.15,True,booked,True,goal_reached,12,13,13867,0.0027208499999999995,40.71,1,2,"VN122, VJ631"
+hybrid,khu-hoi,16,0.15,True,booked,True,goal_reached,10,11,9647,0.00166755,25.77,0,0,"VN122, VJ631"
+hybrid,khu-hoi,17,0.15,True,booked,True,goal_reached,10,11,9647,0.00166755,24.81,0,0,"VN122, VJ631"
+hybrid,khu-hoi,18,0.15,True,booked,True,goal_reached,10,11,9647,0.00166755,26.1,0,0,"VN122, VJ631"
+hybrid,khu-hoi,19,0.15,True,booked,True,goal_reached,10,11,9647,0.00166755,43.64,0,0,"VN122, VJ631"
+hybrid,khu-hoi,20,0.15,True,booked,True,goal_reached,10,11,9647,0.00166755,27.87,0,0,"VN122, VJ631"
+hybrid,khu-hoi,21,0.15,True,booked,True,goal_reached,10,11,9647,0.00166755,27.18,0,0,"VN122, VJ631"
+hybrid,khu-hoi,22,0.15,True,booked,True,goal_reached,11,12,12212,0.0023313,44.08,1,3,"VN122, VJ631"
+hybrid,khu-hoi,23,0.15,True,booked,True,goal_reached,11,11,11347,0.00205215,44.34,1,2,"VN122, VJ631"
+hybrid,khu-hoi,24,0.15,True,booked,True,goal_reached,11,11,11320,0.0019698,31.38,1,1,"VN122, VJ631"
+hybrid,khu-hoi,25,0.15,True,booked,True,goal_reached,11,11,11320,0.0019698,27.27,1,1,"VN122, VJ631"
+hybrid,khu-hoi,26,0.15,True,booked,True,goal_reached,10,11,9647,0.00166755,24.08,0,1,"VN122, VJ631"
+hybrid,khu-hoi,27,0.15,True,booked,True,goal_reached,10,11,9647,0.00166755,24.41,0,1,"VN122, VJ631"
+hybrid,khu-hoi,28,0.15,True,booked,True,goal_reached,15,14,17282,0.0032969999999999996,39.17,4,6,"VN122, VJ631"
+hybrid,khu-hoi,29,0.15,True,booked,True,goal_reached,10,11,9647,0.00166755,24.27,0,0,"VN122, VJ631"
+hybrid,khu-hoi,30,0.15,True,booked,True,goal_reached,11,12,11694,0.0021159,28.27,1,1,"VN122, VJ631"
+react,het-cho,0,0.0,True,booked,True,goal_reached,7,6,7330,0.0012219,40.95,0,0,VN1233
+react,het-cho,1,0.15,True,booked,True,goal_reached,8,7,8431,0.00140145,49.26,1,2,VN1233
+react,het-cho,2,0.15,True,booked,True,goal_reached,8,6,8617,0.00143385,47.06,1,2,VN1233
+react,het-cho,3,0.15,True,booked,True,goal_reached,8,6,8604,0.0014319,49.62,1,2,VN1233
+react,het-cho,4,0.15,True,booked,True,goal_reached,7,6,7330,0.0012219,46.28,0,2,VN1233
+react,het-cho,5,0.15,True,booked,True,goal_reached,8,6,8604,0.0014319,53.42,1,1,VN1233
+react,het-cho,6,0.15,True,booked,True,goal_reached,7,6,7330,0.0012219,42.22,0,1,VN1233
+react,het-cho,7,0.15,True,booked,True,goal_reached,9,6,9900,0.0016244999999999999,49.55,3,4,VN1233
+react,het-cho,8,0.15,True,booked,True,goal_reached,7,6,7330,0.0012219,53.87,0,2,VN1233
+react,het-cho,9,0.15,True,booked,True,goal_reached,7,6,7315,0.0012128999999999998,73.54,1,3,VN1233
+react,het-cho,10,0.15,True,booked,True,goal_reached,7,6,7330,0.0012219,63.0,0,0,VN1233
+react,het-cho,11,0.15,True,booked,True,goal_reached,7,6,7330,0.0012219,50.72,0,0,VN1233
+react,het-cho,12,0.15,True,booked,True,goal_reached,8,6,8617,0.00143385,51.48,1,2,VN1233
+react,het-cho,13,0.15,True,booked,True,goal_reached,9,6,9902,0.00163155,53.43,2,2,VN1233
+react,het-cho,14,0.15,True,booked,True,goal_reached,8,7,8446,0.00141045,47.13,0,1,VN1233
+react,het-cho,15,0.15,True,booked,True,goal_reached,8,6,8604,0.0014319,58.47,1,2,VN1233
+react,het-cho,16,0.15,True,booked,True,goal_reached,7,6,7315,0.0012128999999999998,45.65,1,1,VN1233
+react,het-cho,17,0.15,True,booked,True,goal_reached,9,6,9882,0.0016145999999999999,51.54,2,2,VN1233
+react,het-cho,18,0.15,True,booked,True,goal_reached,7,6,7330,0.0012219,48.1,0,0,VN1233
+react,het-cho,19,0.15,True,booked,True,goal_reached,8,6,8575,0.0014135999999999999,45.08,1,1,VN1233
+react,het-cho,20,0.15,True,booked,True,goal_reached,7,6,7330,0.0012219,56.34,0,0,VN1233
+react,het-cho,21,0.15,True,booked,True,goal_reached,7,6,7330,0.0012219,51.44,0,0,VN1233
+react,het-cho,22,0.15,True,booked,True,goal_reached,8,6,8617,0.00143385,57.6,1,3,VN1233
+react,het-cho,23,0.15,True,booked,True,goal_reached,8,6,8617,0.00143385,52.63,1,2,VN1233
+react,het-cho,24,0.15,True,booked,True,goal_reached,8,6,8604,0.0014319,65.25,1,1,VN1233
+react,het-cho,25,0.15,True,booked,True,goal_reached,8,6,8604,0.0014319,48.65,1,1,VN1233
+react,het-cho,26,0.15,True,booked,True,goal_reached,7,6,7315,0.0012128999999999998,40.02,1,2,VN1233
+react,het-cho,27,0.15,True,booked,True,goal_reached,7,6,7330,0.0012219,41.08,0,1,VN1233
+react,het-cho,28,0.15,True,booked,True,goal_reached,8,7,8446,0.00141045,46.17,0,3,VN1233
+react,het-cho,29,0.15,True,booked,True,goal_reached,7,6,7315,0.0012128999999999998,55.65,1,1,VN1233
+react,het-cho,30,0.15,True,booked,True,goal_reached,7,6,7330,0.0012219,68.02,0,1,VN1233
+pe,het-cho,0,0.0,True,handoff,False,needs_human,3,3,1975,0.0004002,12.05,0,0,needs_human
+pe,het-cho,1,0.15,True,handoff,False,needs_human,4,3,2728,0.0005729999999999999,13.44,1,1,needs_human
+pe,het-cho,2,0.15,True,handoff,False,needs_human,3,2,1975,0.0004002,12.06,1,1,needs_human
+pe,het-cho,3,0.15,True,handoff,False,needs_human,3,3,1975,0.0004002,12.93,0,0,needs_human
+pe,het-cho,4,0.15,True,handoff,False,needs_human,3,3,1975,0.0004002,11.74,0,1,needs_human
+pe,het-cho,5,0.15,True,handoff,False,needs_human,3,3,1975,0.0004002,11.36,0,0,needs_human
+pe,het-cho,6,0.15,True,handoff,False,needs_human,3,3,1975,0.0004002,11.51,0,0,needs_human
+pe,het-cho,7,0.15,True,handoff,False,needs_human,3,3,1975,0.0004002,13.41,0,0,needs_human
+pe,het-cho,8,0.15,True,handoff,False,needs_human,3,2,1975,0.0004002,13.77,1,1,needs_human
+pe,het-cho,9,0.15,True,handoff,False,needs_human,3,2,1975,0.0004002,11.73,1,1,needs_human
+pe,het-cho,10,0.15,True,handoff,False,needs_human,3,3,1975,0.0004002,12.69,0,0,needs_human
+pe,het-cho,11,0.15,True,handoff,False,needs_human,3,3,1975,0.0004002,14.65,0,0,needs_human
+pe,het-cho,12,0.15,True,handoff,False,needs_human,3,3,1975,0.0004002,14.6,0,0,needs_human
+pe,het-cho,13,0.15,True,handoff,False,needs_human,3,3,1975,0.0004002,27.05,0,0,needs_human
+pe,het-cho,14,0.15,True,handoff,False,needs_human,4,3,2728,0.0005729999999999999,13.76,1,1,needs_human
+pe,het-cho,15,0.15,True,handoff,False,needs_human,3,3,1975,0.0004002,11.58,0,1,needs_human
+pe,het-cho,16,0.15,True,handoff,False,needs_human,3,3,1975,0.0004002,11.81,0,0,needs_human
+pe,het-cho,17,0.15,True,handoff,False,needs_human,3,3,1975,0.0004002,11.74,0,0,needs_human
+pe,het-cho,18,0.15,True,handoff,False,needs_human,3,3,1975,0.0004002,12.92,0,0,needs_human
+pe,het-cho,19,0.15,True,handoff,False,needs_human,3,3,1975,0.0004002,11.69,0,0,needs_human
+pe,het-cho,20,0.15,True,handoff,False,needs_human,3,3,1975,0.0004002,12.0,0,0,needs_human
+pe,het-cho,21,0.15,True,handoff,False,needs_human,3,3,1975,0.0004002,11.32,0,0,needs_human
+pe,het-cho,22,0.15,True,handoff,False,needs_human,3,2,1975,0.0004002,11.54,1,2,needs_human
+pe,het-cho,23,0.15,True,handoff,False,needs_human,3,3,1975,0.0004002,11.01,0,0,needs_human
+pe,het-cho,24,0.15,True,handoff,False,needs_human,3,3,1975,0.0004002,10.86,0,0,needs_human
+pe,het-cho,25,0.15,True,handoff,False,needs_human,3,3,1975,0.0004002,11.01,0,0,needs_human
+pe,het-cho,26,0.15,True,handoff,False,needs_human,3,3,1975,0.0004002,11.58,0,0,needs_human
+pe,het-cho,27,0.15,True,handoff,False,needs_human,3,3,1975,0.0004002,11.65,0,0,needs_human
+pe,het-cho,28,0.15,True,handoff,False,needs_human,5,2,3481,0.0007458,16.66,3,3,needs_human
+pe,het-cho,29,0.15,True,handoff,False,needs_human,3,3,1975,0.0004002,11.09,0,0,needs_human
+pe,het-cho,30,0.15,True,handoff,False,needs_human,3,2,1975,0.0004002,11.48,1,1,needs_human
+hybrid,het-cho,0,0.0,True,booked,True,goal_reached,5,6,3760,0.0007377,23.96,0,0,VN1233
+hybrid,het-cho,1,0.15,True,booked,True,goal_reached,6,6,4513,0.0009105000000000001,22.66,1,1,VN1233
+hybrid,het-cho,2,0.15,True,booked,True,goal_reached,6,6,4878,0.0009567,22.07,1,2,VN1233
+hybrid,het-cho,3,0.15,True,booked,True,goal_reached,6,7,4852,0.0009645,21.57,0,2,VN1233
+hybrid,het-cho,4,0.15,True,booked,True,goal_reached,5,6,3760,0.0007377,17.53,0,2,VN1233
+hybrid,het-cho,5,0.15,True,booked,True,goal_reached,5,6,3760,0.0007377,17.44,0,0,VN1233
+hybrid,het-cho,6,0.15,True,booked,True,goal_reached,5,6,3760,0.0007377,17.69,0,1,VN1233
+hybrid,het-cho,7,0.15,True,booked,True,goal_reached,5,6,3760,0.0007377,19.11,0,1,VN1233
+hybrid,het-cho,8,0.15,True,booked,True,goal_reached,6,6,4878,0.0009567,21.61,1,2,VN1233
+hybrid,het-cho,9,0.15,True,booked,True,goal_reached,6,6,4878,0.0009567,21.08,1,3,VN1233
+hybrid,het-cho,10,0.15,True,booked,True,goal_reached,5,6,3760,0.0007377,18.73,0,0,VN1233
+hybrid,het-cho,11,0.15,True,booked,True,goal_reached,5,6,3760,0.0007377,18.05,0,0,VN1233
+hybrid,het-cho,12,0.15,True,booked,True,goal_reached,5,6,3760,0.0007377,18.86,0,2,VN1233
+hybrid,het-cho,13,0.15,True,booked,True,goal_reached,5,6,3760,0.0007377,18.19,0,0,VN1233
+hybrid,het-cho,14,0.15,True,booked,True,goal_reached,6,6,4513,0.0009105000000000001,19.64,1,1,VN1233
+hybrid,het-cho,15,0.15,True,booked,True,goal_reached,6,7,4852,0.0009645,21.28,0,2,VN1233
+hybrid,het-cho,16,0.15,True,booked,True,goal_reached,5,6,3760,0.0007377,19.96,0,0,VN1233
+hybrid,het-cho,17,0.15,True,booked,True,goal_reached,5,6,3760,0.0007377,20.78,0,0,VN1233
+hybrid,het-cho,18,0.15,True,booked,True,goal_reached,5,6,3760,0.0007377,21.95,0,0,VN1233
+hybrid,het-cho,19,0.15,True,booked,True,goal_reached,5,6,3760,0.0007377,18.61,0,0,VN1233
+hybrid,het-cho,20,0.15,True,booked,True,goal_reached,5,6,3760,0.0007377,21.01,0,0,VN1233
+hybrid,het-cho,21,0.15,True,booked,True,goal_reached,5,6,3760,0.0007377,20.16,0,0,VN1233
+hybrid,het-cho,22,0.15,True,booked,True,goal_reached,6,6,4878,0.0009567,31.67,1,3,VN1233
+hybrid,het-cho,23,0.15,True,booked,True,goal_reached,5,6,3760,0.0007377,23.88,0,1,VN1233
+hybrid,het-cho,24,0.15,True,booked,True,goal_reached,5,6,3760,0.0007377,20.87,0,0,VN1233
+hybrid,het-cho,25,0.15,True,booked,True,goal_reached,5,6,3760,0.0007377,19.67,0,0,VN1233
+hybrid,het-cho,26,0.15,True,booked,True,goal_reached,5,6,3760,0.0007377,18.55,0,1,VN1233
+hybrid,het-cho,27,0.15,True,booked,True,goal_reached,5,6,3760,0.0007377,19.4,0,1,VN1233
+hybrid,het-cho,28,0.15,True,booked,True,goal_reached,8,6,6384,0.0013023,36.68,3,4,VN1233
+hybrid,het-cho,29,0.15,True,booked,True,goal_reached,5,6,3760,0.0007377,20.51,0,0,VN1233
+hybrid,het-cho,30,0.15,True,booked,True,goal_reached,6,6,4878,0.0009567,23.74,1,1,VN1233
+react,timeout,0,0.0,True,handoff,True,needs_human,4,3,3696,0.00062145,32.0,0,0,needs_human
+react,timeout,1,0.15,True,handoff,True,needs_human,5,4,4683,0.00079065,37.94,0,1,needs_human
+react,timeout,2,0.15,True,handoff,True,needs_human,6,4,5876,0.0009831,37.54,1,2,needs_human
+react,timeout,3,0.15,True,handoff,True,loop_detected,4,4,3702,0.0006250499999999999,34.35,1,1,loop_detected
+react,timeout,4,0.15,True,handoff,True,loop_detected,6,5,5903,0.00098985,40.54,2,2,loop_detected
+react,timeout,5,0.15,True,handoff,True,needs_human,4,3,3696,0.00062145,29.07,0,0,needs_human
+react,timeout,6,0.15,True,handoff,True,needs_human,6,4,5855,0.00097995,39.65,1,1,needs_human
+react,timeout,7,0.15,True,handoff,True,needs_human,4,3,3696,0.00062145,31.58,0,1,needs_human
+react,timeout,8,0.15,True,handoff,True,needs_human,6,4,5876,0.0009831,36.52,1,2,needs_human
+react,timeout,9,0.15,True,handoff,True,needs_human,6,4,5876,0.0009831,37.76,1,3,needs_human
+react,timeout,10,0.15,True,handoff,True,needs_human,4,3,3696,0.00062145,26.55,0,0,needs_human
+react,timeout,11,0.15,True,handoff,True,needs_human,4,3,3696,0.00062145,26.62,0,0,needs_human
+react,timeout,12,0.15,True,handoff,True,needs_human,6,4,5855,0.00097995,33.51,1,2,needs_human
+react,timeout,13,0.15,True,handoff,True,needs_human,4,3,3696,0.00062145,26.4,0,0,needs_human
+react,timeout,14,0.15,True,handoff,True,needs_human,5,4,4683,0.00079065,42.74,0,1,needs_human
+react,timeout,15,0.15,True,handoff,True,needs_human,6,4,5897,0.00098625,42.13,1,2,needs_human
+react,timeout,16,0.15,True,handoff,True,needs_human,4,3,3696,0.00062145,41.35,0,0,needs_human
+react,timeout,17,0.15,True,handoff,True,needs_human,4,3,3696,0.00062145,33.83,0,0,needs_human
+react,timeout,18,0.15,True,handoff,True,needs_human,4,3,3696,0.00062145,36.48,0,0,needs_human
+react,timeout,19,0.15,True,handoff,True,needs_human,4,3,3696,0.00062145,30.56,0,0,needs_human
+react,timeout,20,0.15,True,handoff,True,needs_human,4,3,3696,0.00062145,30.28,0,0,needs_human
+react,timeout,21,0.15,True,handoff,True,needs_human,4,3,3696,0.00062145,34.27,0,0,needs_human
+react,timeout,22,0.15,True,handoff,True,loop_detected,7,5,7089,0.00118665,51.95,3,3,loop_detected
+react,timeout,23,0.15,True,handoff,True,needs_human,4,3,3696,0.00062145,29.93,0,1,needs_human
+react,timeout,24,0.15,True,handoff,True,needs_human,4,3,3696,0.00062145,34.69,0,0,needs_human
+react,timeout,25,0.15,True,handoff,True,needs_human,4,3,3696,0.00062145,37.28,0,0,needs_human
+react,timeout,26,0.15,True,handoff,True,needs_human,7,4,7017,0.00117315,57.22,2,2,needs_human
+react,timeout,27,0.15,True,handoff,True,needs_human,6,4,5855,0.00097995,44.73,1,1,needs_human
+react,timeout,28,0.15,True,handoff,True,loop_detected,7,6,6974,0.00117165,54.07,2,3,loop_detected
+react,timeout,29,0.15,True,handoff,True,needs_human,4,3,3696,0.00062145,28.24,0,0,needs_human
+react,timeout,30,0.15,True,handoff,True,needs_human,6,4,5876,0.0009831,43.71,1,1,needs_human
+pe,timeout,0,0.0,True,handoff,True,needs_human,3,2,1894,0.0003894,12.73,0,0,needs_human
+pe,timeout,1,0.15,True,handoff,True,needs_human,4,2,2643,0.0005616,13.17,1,1,needs_human
+pe,timeout,2,0.15,True,handoff,True,needs_human,4,3,2517,0.00048510000000000003,12.06,1,2,needs_human
+pe,timeout,3,0.15,True,handoff,True,needs_human,3,2,1894,0.0003894,11.34,0,0,needs_human
+pe,timeout,4,0.15,True,handoff,True,needs_human,3,2,1897,0.0003885,16.86,1,1,needs_human
+pe,timeout,5,0.15,True,handoff,True,needs_human,3,2,1894,0.0003894,10.89,0,0,needs_human
+pe,timeout,6,0.15,True,handoff,True,needs_human,3,2,1894,0.0003894,11.2,0,0,needs_human
+pe,timeout,7,0.15,True,handoff,True,needs_human,3,2,1894,0.0003894,11.13,0,0,needs_human
+pe,timeout,8,0.15,True,handoff,True,needs_human,4,3,2517,0.00048510000000000003,13.77,1,1,needs_human
+pe,timeout,9,0.15,True,handoff,True,needs_human,4,3,2517,0.00048510000000000003,11.93,1,1,needs_human
+pe,timeout,10,0.15,True,handoff,True,needs_human,3,2,1894,0.0003894,11.26,0,0,needs_human
+pe,timeout,11,0.15,True,handoff,True,needs_human,3,2,1894,0.0003894,11.2,0,0,needs_human
+pe,timeout,12,0.15,True,handoff,True,needs_human,3,2,1894,0.0003894,10.69,0,0,needs_human
+pe,timeout,13,0.15,True,handoff,True,needs_human,3,2,1894,0.0003894,11.11,0,0,needs_human
+pe,timeout,14,0.15,True,handoff,True,needs_human,4,2,2643,0.0005616,13.31,1,1,needs_human
+pe,timeout,15,0.15,True,handoff,True,needs_human,3,2,1897,0.0003885,11.85,1,1,needs_human
+pe,timeout,16,0.15,True,handoff,True,needs_human,3,2,1894,0.0003894,14.72,0,0,needs_human
+pe,timeout,17,0.15,True,handoff,True,needs_human,3,2,1894,0.0003894,12.54,0,0,needs_human
+pe,timeout,18,0.15,True,handoff,True,needs_human,3,2,1894,0.0003894,12.87,0,0,needs_human
+pe,timeout,19,0.15,True,handoff,True,needs_human,3,2,1894,0.0003894,11.65,0,0,needs_human
+pe,timeout,20,0.15,True,handoff,True,needs_human,3,2,1894,0.0003894,11.46,0,0,needs_human
+pe,timeout,21,0.15,True,handoff,True,needs_human,3,2,1894,0.0003894,10.97,0,0,needs_human
+pe,timeout,22,0.15,True,handoff,True,needs_human,3,2,1897,0.0003885,15.33,1,2,needs_human
+pe,timeout,23,0.15,True,handoff,True,needs_human,3,2,1894,0.0003894,12.27,0,0,needs_human
+pe,timeout,24,0.15,True,handoff,True,needs_human,3,2,1894,0.0003894,11.32,0,0,needs_human
+pe,timeout,25,0.15,True,handoff,True,needs_human,3,2,1894,0.0003894,11.81,0,0,needs_human
+pe,timeout,26,0.15,True,handoff,True,needs_human,3,2,1894,0.0003894,10.71,0,0,needs_human
+pe,timeout,27,0.15,True,handoff,True,needs_human,3,2,1894,0.0003894,11.24,0,0,needs_human
+pe,timeout,28,0.15,True,handoff,True,needs_human,6,3,4015,0.0008294999999999999,16.82,3,3,needs_human
+pe,timeout,29,0.15,True,handoff,True,needs_human,3,2,1894,0.0003894,10.82,0,0,needs_human
+pe,timeout,30,0.15,True,handoff,True,needs_human,4,3,2517,0.00048510000000000003,12.53,1,1,needs_human
+hybrid,timeout,0,0.0,True,handoff,True,loop_detected,4,4,2800,0.00058875,16.18,1,0,loop_detected
+hybrid,timeout,1,0.15,True,handoff,True,loop_detected,5,4,3549,0.0007609499999999999,17.5,2,1,loop_detected
+hybrid,timeout,2,0.15,True,handoff,True,loop_detected,5,5,3538,0.0007017,16.56,2,2,loop_detected
+hybrid,timeout,3,0.15,True,handoff,True,loop_detected,5,5,3748,0.0007939500000000001,17.5,1,2,loop_detected
+hybrid,timeout,4,0.15,True,handoff,True,needs_human,5,4,3827,0.0007522499999999999,17.5,1,2,needs_human
+hybrid,timeout,5,0.15,True,handoff,True,loop_detected,4,4,2800,0.00058875,14.83,1,0,loop_detected
+hybrid,timeout,6,0.15,True,handoff,True,loop_detected,5,5,3822,0.00080505,18.55,2,1,loop_detected
+hybrid,timeout,7,0.15,True,handoff,True,loop_detected,4,4,2800,0.00058875,15.21,1,1,loop_detected
+hybrid,timeout,8,0.15,True,handoff,True,loop_detected,5,5,3540,0.0007019999999999999,16.62,2,2,loop_detected
+hybrid,timeout,9,0.15,True,handoff,True,loop_detected,5,5,3540,0.0007019999999999999,16.93,2,2,loop_detected
+hybrid,timeout,10,0.15,True,handoff,True,loop_detected,4,4,2800,0.00058875,14.66,1,0,loop_detected
+hybrid,timeout,11,0.15,True,handoff,True,loop_detected,4,4,2800,0.00058875,15.88,1,0,loop_detected
+hybrid,timeout,12,0.15,True,handoff,True,loop_detected,5,5,3822,0.00080505,19.31,2,2,loop_detected
+hybrid,timeout,13,0.15,True,handoff,True,loop_detected,4,4,2800,0.00058875,16.07,1,0,loop_detected
+hybrid,timeout,14,0.15,True,handoff,True,loop_detected,5,4,3549,0.0007609499999999999,20.53,2,1,loop_detected
+hybrid,timeout,15,0.15,True,handoff,True,needs_human,6,5,4888,0.0009743999999999999,22.36,1,2,needs_human
+hybrid,timeout,16,0.15,True,handoff,True,loop_detected,4,4,2800,0.00058875,15.96,1,0,loop_detected
+hybrid,timeout,17,0.15,True,handoff,True,loop_detected,4,4,2800,0.00058875,19.5,1,0,loop_detected
+hybrid,timeout,18,0.15,True,handoff,True,loop_detected,4,4,2800,0.00058875,20.6,1,0,loop_detected
+hybrid,timeout,19,0.15,True,handoff,True,loop_detected,4,4,2800,0.00058875,19.28,1,0,loop_detected
+hybrid,timeout,20,0.15,True,handoff,True,loop_detected,4,4,2800,0.00058875,19.36,1,0,loop_detected
+hybrid,timeout,21,0.15,True,handoff,True,loop_detected,4,4,2800,0.00058875,18.64,1,0,loop_detected
+hybrid,timeout,22,0.15,True,handoff,True,needs_human,5,4,3823,0.00075165,19.99,1,3,needs_human
+hybrid,timeout,23,0.15,True,handoff,True,loop_detected,4,4,2800,0.00058875,18.06,1,1,loop_detected
+hybrid,timeout,24,0.15,True,handoff,True,loop_detected,4,4,2800,0.00058875,20.18,1,0,loop_detected
+hybrid,timeout,25,0.15,True,handoff,True,loop_detected,4,4,2800,0.00058875,26.31,1,0,loop_detected
+hybrid,timeout,26,0.15,True,handoff,True,loop_detected,6,6,4887,0.0010278,35.53,2,2,loop_detected
+hybrid,timeout,27,0.15,True,handoff,True,loop_detected,5,5,3822,0.00080505,27.66,2,1,loop_detected
+hybrid,timeout,28,0.15,True,handoff,True,loop_detected,7,5,5038,0.0010463999999999998,21.65,4,3,loop_detected
+hybrid,timeout,29,0.15,True,handoff,True,loop_detected,4,4,2800,0.00058875,15.44,1,0,loop_detected
+hybrid,timeout,30,0.15,True,handoff,True,loop_detected,5,5,3540,0.0007019999999999999,17.39,2,1,loop_detected
+react,can-duyet,0,0.0,True,handoff,True,needs_human,4,3,3867,0.0006516,38.46,1,0,needs_human
+react,can-duyet,1,0.15,True,handoff,True,needs_human,5,4,4856,0.0008210999999999998,38.49,1,1,needs_human
+react,can-duyet,2,0.15,True,handoff,True,needs_human,7,4,7382,0.0012323999999999998,46.7,3,2,needs_human
+react,can-duyet,3,0.15,True,handoff,True,needs_human,4,3,3867,0.0006516,31.11,1,0,needs_human
+react,can-duyet,4,0.15,True,handoff,True,needs_human,6,4,6161,0.00103035,42.85,2,2,needs_human
+react,can-duyet,5,0.15,True,handoff,True,needs_human,4,3,3867,0.0006516,33.75,1,0,needs_human
+react,can-duyet,6,0.15,True,handoff,True,needs_human,5,3,4988,0.0008386499999999999,33.86,2,1,needs_human
+react,can-duyet,7,0.15,True,handoff,True,needs_human,7,4,7371,0.0012307499999999999,45.18,3,3,needs_human
+react,can-duyet,8,0.15,True,handoff,True,needs_human,6,4,6153,0.00102915,41.0,2,2,needs_human
+react,can-duyet,9,0.15,True,handoff,True,needs_human,6,4,6153,0.00102915,51.76,2,2,needs_human
+react,can-duyet,10,0.15,True,handoff,True,needs_human,4,3,3867,0.0006516,31.16,1,0,needs_human
+react,can-duyet,11,0.15,True,handoff,True,needs_human,4,3,3867,0.0006516,30.98,1,0,needs_human
+react,can-duyet,12,0.15,True,handoff,True,needs_human,7,4,7369,0.00123045,49.92,3,2,needs_human
+react,can-duyet,13,0.15,True,handoff,True,needs_human,4,3,3867,0.0006516,28.36,1,0,needs_human
+react,can-duyet,14,0.15,True,handoff,True,needs_human,5,4,4856,0.0008210999999999998,36.85,1,1,needs_human
+react,can-duyet,15,0.15,True,handoff,True,needs_human,6,4,6161,0.00103035,40.29,2,2,needs_human
+react,can-duyet,16,0.15,True,handoff,True,needs_human,4,3,3867,0.0006516,30.03,1,0,needs_human
+react,can-duyet,17,0.15,True,handoff,True,needs_human,4,3,3867,0.0006516,35.22,1,0,needs_human
+react,can-duyet,18,0.15,True,handoff,True,needs_human,4,3,3867,0.0006516,32.03,1,0,needs_human
+react,can-duyet,19,0.15,True,handoff,True,needs_human,4,3,3867,0.0006516,34.11,1,0,needs_human
+react,can-duyet,20,0.15,True,handoff,True,needs_human,4,3,3867,0.0006516,45.59,1,0,needs_human
+react,can-duyet,21,0.15,True,handoff,True,needs_human,4,3,3867,0.0006516,37.14,1,0,needs_human
+react,can-duyet,22,0.15,True,handoff,True,needs_human,7,4,7396,0.0012345,67.59,3,3,needs_human
+react,can-duyet,23,0.15,True,handoff,True,needs_human,6,4,6146,0.0010281,62.05,2,1,needs_human
+react,can-duyet,24,0.15,True,handoff,True,needs_human,4,3,3867,0.0006516,45.3,1,0,needs_human
+react,can-duyet,25,0.15,True,handoff,True,needs_human,4,3,3867,0.0006516,37.69,1,0,needs_human
+react,can-duyet,26,0.15,True,handoff,True,needs_human,5,3,4988,0.0008386499999999999,42.45,2,1,needs_human
+react,can-duyet,27,0.15,True,handoff,True,needs_human,5,3,4988,0.0008386499999999999,39.06,2,1,needs_human
+react,can-duyet,28,0.15,True,handoff,True,needs_human,7,5,7234,0.00121245,54.83,2,3,needs_human
+react,can-duyet,29,0.15,True,handoff,True,needs_human,4,3,3867,0.0006516,32.88,1,0,needs_human
+react,can-duyet,30,0.15,True,handoff,True,needs_human,6,4,6153,0.00102915,47.79,2,1,needs_human
+pe,can-duyet,0,0.0,True,handoff,True,needs_human,4,3,2643,0.000504,14.76,1,0,needs_human
+pe,can-duyet,1,0.15,True,handoff,True,needs_human,5,3,3394,0.0006764999999999999,18.23,2,1,needs_human
+pe,can-duyet,2,0.15,True,handoff,True,needs_human,4,3,2643,0.000504,14.39,1,2,needs_human
+pe,can-duyet,3,0.15,True,handoff,True,needs_human,4,3,2643,0.000504,15.72,1,0,needs_human
+pe,can-duyet,4,0.15,True,handoff,True,needs_human,3,2,1973,0.0003999,13.56,1,1,needs_human
+pe,can-duyet,5,0.15,True,handoff,True,needs_human,4,3,2643,0.000504,13.79,1,0,needs_human
+pe,can-duyet,6,0.15,True,handoff,True,needs_human,4,3,2643,0.000504,15.84,1,0,needs_human
+pe,can-duyet,7,0.15,True,handoff,True,needs_human,4,3,2643,0.000504,14.97,1,1,needs_human
+pe,can-duyet,8,0.15,True,handoff,True,needs_human,4,3,2643,0.000504,14.7,1,1,needs_human
+pe,can-duyet,9,0.15,True,handoff,True,needs_human,4,3,2643,0.000504,14.57,1,1,needs_human
+pe,can-duyet,10,0.15,True,handoff,True,needs_human,4,3,2643,0.000504,13.99,1,0,needs_human
+pe,can-duyet,11,0.15,True,handoff,True,needs_human,4,3,2643,0.000504,14.83,1,0,needs_human
+pe,can-duyet,12,0.15,True,handoff,True,needs_human,4,3,2643,0.000504,14.45,1,1,needs_human
+pe,can-duyet,13,0.15,True,handoff,True,needs_human,4,3,2643,0.000504,16.13,1,0,needs_human
+pe,can-duyet,14,0.15,True,handoff,True,needs_human,5,3,3394,0.0006764999999999999,20.77,2,1,needs_human
+pe,can-duyet,15,0.15,True,handoff,True,needs_human,3,2,1973,0.0003999,19.57,1,1,needs_human
+pe,can-duyet,16,0.15,True,handoff,True,needs_human,4,3,2643,0.000504,21.71,1,0,needs_human
+pe,can-duyet,17,0.15,True,handoff,True,needs_human,4,3,2643,0.000504,17.94,1,0,needs_human
+pe,can-duyet,18,0.15,True,handoff,True,needs_human,4,3,2643,0.000504,13.38,1,0,needs_human
+pe,can-duyet,19,0.15,True,handoff,True,needs_human,4,3,2643,0.000504,13.01,1,0,needs_human
+pe,can-duyet,20,0.15,True,handoff,True,needs_human,4,3,2643,0.000504,13.86,1,0,needs_human
+pe,can-duyet,21,0.15,True,handoff,True,needs_human,4,3,2643,0.000504,14.02,1,0,needs_human
+pe,can-duyet,22,0.15,True,handoff,True,needs_human,3,2,1973,0.0003999,12.03,1,2,needs_human
+pe,can-duyet,23,0.15,True,handoff,True,needs_human,4,3,2643,0.000504,15.8,1,1,needs_human
+pe,can-duyet,24,0.15,True,handoff,True,needs_human,4,3,2643,0.000504,16.79,1,0,needs_human
+pe,can-duyet,25,0.15,True,handoff,True,needs_human,4,3,2643,0.000504,13.36,1,0,needs_human
+pe,can-duyet,26,0.15,True,handoff,True,needs_human,4,3,2643,0.000504,13.71,1,0,needs_human
+pe,can-duyet,27,0.15,True,handoff,True,needs_human,4,3,2643,0.000504,13.34,1,0,needs_human
+pe,can-duyet,28,0.15,True,handoff,True,needs_human,6,3,4145,0.0008489999999999999,21.55,3,3,needs_human
+pe,can-duyet,29,0.15,True,handoff,True,needs_human,4,3,2643,0.000504,12.93,1,0,needs_human
+pe,can-duyet,30,0.15,True,handoff,True,needs_human,4,3,2643,0.000504,12.71,1,1,needs_human
+hybrid,can-duyet,0,0.0,True,handoff,True,needs_human,4,3,2643,0.000504,16.08,1,0,needs_human
+hybrid,can-duyet,1,0.15,True,handoff,True,needs_human,5,3,3394,0.0006764999999999999,19.33,2,1,needs_human
+hybrid,can-duyet,2,0.15,True,handoff,True,needs_human,5,4,3709,0.0007268999999999999,17.83,2,2,needs_human
+hybrid,can-duyet,3,0.15,True,handoff,True,needs_human,4,3,2643,0.000504,17.68,1,0,needs_human
+hybrid,can-duyet,4,0.15,True,handoff,True,needs_human,5,4,4057,0.0008384999999999999,21.52,2,2,needs_human
+hybrid,can-duyet,5,0.15,True,handoff,True,needs_human,4,3,2643,0.000504,18.03,1,0,needs_human
+hybrid,can-duyet,6,0.15,True,handoff,True,needs_human,4,3,2643,0.000504,14.99,1,0,needs_human
+hybrid,can-duyet,7,0.15,True,handoff,True,needs_human,5,3,3683,0.0007113,19.1,2,2,needs_human
+hybrid,can-duyet,8,0.15,True,handoff,True,needs_human,5,4,3711,0.0007272,18.04,2,2,needs_human
+hybrid,can-duyet,9,0.15,True,handoff,True,needs_human,5,4,3711,0.0007272,18.39,2,2,needs_human
+hybrid,can-duyet,10,0.15,True,handoff,True,needs_human,4,3,2643,0.000504,15.49,1,0,needs_human
+hybrid,can-duyet,11,0.15,True,handoff,True,needs_human,4,3,2643,0.000504,17.3,1,0,needs_human
+hybrid,can-duyet,12,0.15,True,handoff,True,needs_human,5,3,3683,0.0007113,18.61,2,2,needs_human
+hybrid,can-duyet,13,0.15,True,handoff,True,needs_human,4,3,2643,0.000504,14.55,1,0,needs_human
+hybrid,can-duyet,14,0.15,True,handoff,True,needs_human,5,3,3394,0.0006764999999999999,17.87,2,1,needs_human
+hybrid,can-duyet,15,0.15,True,handoff,True,needs_human,6,5,5158,0.00106665,21.25,2,2,needs_human
+hybrid,can-duyet,16,0.15,True,handoff,True,needs_human,4,3,2643,0.000504,14.54,1,0,needs_human
+hybrid,can-duyet,17,0.15,True,handoff,True,needs_human,4,3,2643,0.000504,16.26,1,0,needs_human
+hybrid,can-duyet,18,0.15,True,handoff,True,needs_human,4,3,2643,0.000504,14.92,1,0,needs_human
+hybrid,can-duyet,19,0.15,True,handoff,True,needs_human,4,3,2643,0.000504,14.44,1,0,needs_human
+hybrid,can-duyet,20,0.15,True,handoff,True,needs_human,4,3,2643,0.000504,14.54,1,0,needs_human
+hybrid,can-duyet,21,0.15,True,handoff,True,needs_human,4,3,2643,0.000504,14.87,1,0,needs_human
+hybrid,can-duyet,22,0.15,True,handoff,True,needs_human,5,4,4053,0.0008378999999999999,18.87,2,3,needs_human
+hybrid,can-duyet,23,0.15,True,handoff,True,needs_human,5,3,3683,0.0007113,18.06,2,1,needs_human
+hybrid,can-duyet,24,0.15,True,handoff,True,needs_human,4,3,2643,0.000504,16.72,1,0,needs_human
+hybrid,can-duyet,25,0.15,True,handoff,True,needs_human,4,3,2643,0.000504,14.87,1,0,needs_human
+hybrid,can-duyet,26,0.15,True,handoff,True,needs_human,4,3,2643,0.000504,14.74,1,0,needs_human
+hybrid,can-duyet,27,0.15,True,handoff,True,needs_human,4,3,2643,0.000504,14.91,1,0,needs_human
+hybrid,can-duyet,28,0.15,True,handoff,True,needs_human,7,4,5213,0.0010722,23.21,4,3,needs_human
+hybrid,can-duyet,29,0.15,True,handoff,True,needs_human,4,3,2643,0.000504,14.94,1,0,needs_human
+hybrid,can-duyet,30,0.15,True,handoff,True,needs_human,5,4,3711,0.0007272,17.47,2,1,needs_human
+react,khong-co-ngay,0,0.0,True,handoff,True,needs_human,2,1,1673,0.00028649999999999997,19.84,0,0,needs_human
+react,khong-co-ngay,1,0.15,True,handoff,True,needs_human,3,2,2579,0.00044354999999999997,24.09,0,1,needs_human
+react,khong-co-ngay,2,0.15,True,handoff,True,needs_human,2,1,1673,0.00028649999999999997,19.29,0,0,needs_human
+react,khong-co-ngay,3,0.15,True,handoff,True,needs_human,2,1,1673,0.00028649999999999997,18.43,0,0,needs_human
+react,khong-co-ngay,4,0.15,True,handoff,True,needs_human,3,2,2583,0.00044415,24.0,0,1,needs_human
+react,khong-co-ngay,5,0.15,True,handoff,True,needs_human,2,1,1673,0.00028649999999999997,21.29,0,0,needs_human
+react,khong-co-ngay,6,0.15,True,handoff,True,needs_human,2,1,1673,0.00028649999999999997,19.38,0,0,needs_human
+react,khong-co-ngay,7,0.15,True,handoff,True,needs_human,2,1,1673,0.00028649999999999997,19.67,0,0,needs_human
+react,khong-co-ngay,8,0.15,True,handoff,True,needs_human,2,1,1673,0.00028649999999999997,18.99,0,0,needs_human
+react,khong-co-ngay,9,0.15,True,handoff,True,needs_human,2,1,1673,0.00028649999999999997,20.55,0,0,needs_human
+react,khong-co-ngay,10,0.15,True,handoff,True,needs_human,2,1,1673,0.00028649999999999997,19.5,0,0,needs_human
+react,khong-co-ngay,11,0.15,True,handoff,True,needs_human,2,1,1673,0.00028649999999999997,18.57,0,0,needs_human
+react,khong-co-ngay,12,0.15,True,handoff,True,needs_human,2,1,1673,0.00028649999999999997,19.88,0,0,needs_human
+react,khong-co-ngay,13,0.15,True,handoff,True,needs_human,2,1,1673,0.00028649999999999997,18.22,0,0,needs_human
+react,khong-co-ngay,14,0.15,True,handoff,True,needs_human,3,2,2579,0.00044354999999999997,25.66,0,1,needs_human
+react,khong-co-ngay,15,0.15,True,handoff,True,needs_human,3,2,2583,0.00044415,25.27,0,1,needs_human
+react,khong-co-ngay,16,0.15,True,handoff,True,needs_human,2,1,1673,0.00028649999999999997,22.0,0,0,needs_human
+react,khong-co-ngay,17,0.15,True,handoff,True,needs_human,2,1,1673,0.00028649999999999997,22.0,0,0,needs_human
+react,khong-co-ngay,18,0.15,True,handoff,True,needs_human,2,1,1673,0.00028649999999999997,21.5,0,0,needs_human
+react,khong-co-ngay,19,0.15,True,handoff,True,needs_human,2,1,1673,0.00028649999999999997,21.07,0,0,needs_human
+react,khong-co-ngay,20,0.15,True,handoff,True,needs_human,2,1,1673,0.00028649999999999997,20.35,0,0,needs_human
+react,khong-co-ngay,21,0.15,True,handoff,True,needs_human,2,1,1673,0.00028649999999999997,20.29,0,0,needs_human
+react,khong-co-ngay,22,0.15,True,handoff,True,loop_detected,3,3,2598,0.00045315,28.25,1,2,loop_detected
+react,khong-co-ngay,23,0.15,True,handoff,True,needs_human,2,1,1673,0.00028649999999999997,19.73,0,0,needs_human
+react,khong-co-ngay,24,0.15,True,handoff,True,needs_human,2,1,1673,0.00028649999999999997,19.69,0,0,needs_human
+react,khong-co-ngay,25,0.15,True,handoff,True,needs_human,2,1,1673,0.00028649999999999997,22.09,0,0,needs_human
+react,khong-co-ngay,26,0.15,True,handoff,True,needs_human,2,1,1673,0.00028649999999999997,21.69,0,0,needs_human
+react,khong-co-ngay,27,0.15,True,handoff,True,needs_human,2,1,1673,0.00028649999999999997,19.63,0,0,needs_human
+react,khong-co-ngay,28,0.15,True,handoff,True,needs_human,4,3,3531,0.0006075,36.34,0,2,needs_human
+react,khong-co-ngay,29,0.15,True,handoff,True,needs_human,2,1,1673,0.00028649999999999997,20.33,0,0,needs_human
+react,khong-co-ngay,30,0.15,True,handoff,True,needs_human,2,1,1673,0.00028649999999999997,23.13,0,0,needs_human
+pe,khong-co-ngay,0,0.0,True,handoff,True,needs_human,1,1,781,0.00021075,10.35,0,0,needs_human
+pe,khong-co-ngay,1,0.15,True,handoff,True,needs_human,2,1,1534,0.00038354999999999997,13.07,1,1,needs_human
+pe,khong-co-ngay,2,0.15,True,handoff,True,needs_human,1,1,781,0.00021075,9.98,0,0,needs_human
+pe,khong-co-ngay,3,0.15,True,handoff,True,needs_human,1,1,781,0.00021075,10.1,0,0,needs_human
+pe,khong-co-ngay,4,0.15,True,handoff,True,needs_human,1,1,781,0.00021075,9.35,0,0,needs_human
+pe,khong-co-ngay,5,0.15,True,handoff,True,needs_human,1,1,781,0.00021075,8.98,0,0,needs_human
+pe,khong-co-ngay,6,0.15,True,handoff,True,needs_human,1,1,781,0.00021075,9.18,0,0,needs_human
+pe,khong-co-ngay,7,0.15,True,handoff,True,needs_human,1,1,781,0.00021075,10.31,0,0,needs_human
+pe,khong-co-ngay,8,0.15,True,handoff,True,needs_human,1,1,781,0.00021075,9.19,0,0,needs_human
+pe,khong-co-ngay,9,0.15,True,handoff,True,needs_human,1,1,781,0.00021075,9.97,0,0,needs_human
+pe,khong-co-ngay,10,0.15,True,handoff,True,needs_human,1,1,781,0.00021075,8.63,0,0,needs_human
+pe,khong-co-ngay,11,0.15,True,handoff,True,needs_human,1,1,781,0.00021075,9.44,0,0,needs_human
+pe,khong-co-ngay,12,0.15,True,handoff,True,needs_human,1,1,781,0.00021075,9.37,0,0,needs_human
+pe,khong-co-ngay,13,0.15,True,handoff,True,needs_human,1,1,781,0.00021075,9.4,0,0,needs_human
+pe,khong-co-ngay,14,0.15,True,handoff,True,needs_human,2,1,1534,0.00038354999999999997,11.89,1,1,needs_human
+pe,khong-co-ngay,15,0.15,True,handoff,True,needs_human,1,1,781,0.00021075,9.57,0,0,needs_human
+pe,khong-co-ngay,16,0.15,True,handoff,True,needs_human,1,1,781,0.00021075,8.77,0,0,needs_human
+pe,khong-co-ngay,17,0.15,True,handoff,True,needs_human,1,1,781,0.00021075,8.81,0,0,needs_human
+pe,khong-co-ngay,18,0.15,True,handoff,True,needs_human,1,1,781,0.00021075,8.98,0,0,needs_human
+pe,khong-co-ngay,19,0.15,True,handoff,True,needs_human,1,1,781,0.00021075,8.47,0,0,needs_human
+pe,khong-co-ngay,20,0.15,True,handoff,True,needs_human,1,1,781,0.00021075,8.64,0,0,needs_human
+pe,khong-co-ngay,21,0.15,True,handoff,True,needs_human,1,1,781,0.00021075,9.23,0,0,needs_human
+pe,khong-co-ngay,22,0.15,True,handoff,True,needs_human,1,1,781,0.00021075,9.66,0,0,needs_human
+pe,khong-co-ngay,23,0.15,True,handoff,True,needs_human,1,1,781,0.00021075,9.02,0,0,needs_human
+pe,khong-co-ngay,24,0.15,True,handoff,True,needs_human,1,1,781,0.00021075,10.32,0,0,needs_human
+pe,khong-co-ngay,25,0.15,True,handoff,True,needs_human,1,1,781,0.00021075,8.78,0,0,needs_human
+pe,khong-co-ngay,26,0.15,True,handoff,True,needs_human,1,1,781,0.00021075,9.29,0,0,needs_human
+pe,khong-co-ngay,27,0.15,True,handoff,True,needs_human,1,1,781,0.00021075,9.41,0,0,needs_human
+pe,khong-co-ngay,28,0.15,True,handoff,True,needs_human,3,1,2287,0.0005563499999999999,14.34,2,2,needs_human
+pe,khong-co-ngay,29,0.15,True,handoff,True,needs_human,1,1,781,0.00021075,9.04,0,0,needs_human
+pe,khong-co-ngay,30,0.15,True,handoff,True,needs_human,1,1,781,0.00021075,9.21,0,0,needs_human
+hybrid,khong-co-ngay,0,0.0,True,handoff,True,needs_human,2,1,1483,0.00033,15.41,0,0,needs_human
+hybrid,khong-co-ngay,1,0.15,True,handoff,True,needs_human,3,1,2236,0.0005028,15.8,1,1,needs_human
+hybrid,khong-co-ngay,2,0.15,True,handoff,True,needs_human,2,1,1483,0.00033,14.38,0,0,needs_human
+hybrid,khong-co-ngay,3,0.15,True,handoff,True,needs_human,2,1,1483,0.00033,14.22,0,0,needs_human
+hybrid,khong-co-ngay,4,0.15,True,handoff,True,needs_human,3,2,2260,0.0004686,18.13,0,1,needs_human
+hybrid,khong-co-ngay,5,0.15,True,handoff,True,needs_human,2,1,1483,0.00033,14.31,0,0,needs_human
+hybrid,khong-co-ngay,6,0.15,True,handoff,True,needs_human,2,1,1483,0.00033,14.53,0,0,needs_human
+hybrid,khong-co-ngay,7,0.15,True,handoff,True,needs_human,2,1,1483,0.00033,14.31,0,0,needs_human
+hybrid,khong-co-ngay,8,0.15,True,handoff,True,needs_human,2,1,1483,0.00033,16.66,0,0,needs_human
+hybrid,khong-co-ngay,9,0.15,True,handoff,True,needs_human,2,1,1483,0.00033,13.45,0,0,needs_human
+hybrid,khong-co-ngay,10,0.15,True,handoff,True,needs_human,2,1,1483,0.00033,15.84,0,0,needs_human
+hybrid,khong-co-ngay,11,0.15,True,handoff,True,needs_human,2,1,1483,0.00033,15.01,0,0,needs_human
+hybrid,khong-co-ngay,12,0.15,True,handoff,True,needs_human,2,1,1483,0.00033,19.35,0,0,needs_human
+hybrid,khong-co-ngay,13,0.15,True,handoff,True,needs_human,2,1,1483,0.00033,16.07,0,0,needs_human
+hybrid,khong-co-ngay,14,0.15,True,handoff,True,needs_human,3,1,2236,0.0005028,17.18,1,1,needs_human
+hybrid,khong-co-ngay,15,0.15,True,handoff,True,needs_human,3,2,2260,0.0004686,18.41,0,1,needs_human
+hybrid,khong-co-ngay,16,0.15,True,handoff,True,needs_human,2,1,1483,0.00033,15.48,0,0,needs_human
+hybrid,khong-co-ngay,17,0.15,True,handoff,True,needs_human,2,1,1483,0.00033,12.49,0,0,needs_human
+hybrid,khong-co-ngay,18,0.15,True,handoff,True,needs_human,2,1,1483,0.00033,12.72,0,0,needs_human
+hybrid,khong-co-ngay,19,0.15,True,handoff,True,needs_human,2,1,1483,0.00033,13.39,0,0,needs_human
+hybrid,khong-co-ngay,20,0.15,True,handoff,True,needs_human,2,1,1483,0.00033,15.02,0,0,needs_human
+hybrid,khong-co-ngay,21,0.15,True,handoff,True,needs_human,2,1,1483,0.00033,12.91,0,0,needs_human
+hybrid,khong-co-ngay,22,0.15,True,handoff,True,loop_detected,3,3,2278,0.00047939999999999994,15.2,1,2,loop_detected
+hybrid,khong-co-ngay,23,0.15,True,handoff,True,needs_human,2,1,1483,0.00033,15.68,0,0,needs_human
+hybrid,khong-co-ngay,24,0.15,True,handoff,True,needs_human,2,1,1483,0.00033,22.14,0,0,needs_human
+hybrid,khong-co-ngay,25,0.15,True,handoff,True,needs_human,2,1,1483,0.00033,20.39,0,0,needs_human
+hybrid,khong-co-ngay,26,0.15,True,handoff,True,needs_human,2,1,1483,0.00033,13.07,0,0,needs_human
+hybrid,khong-co-ngay,27,0.15,True,handoff,True,needs_human,2,1,1483,0.00033,12.35,0,0,needs_human
+hybrid,khong-co-ngay,28,0.15,True,handoff,True,needs_human,4,1,2989,0.0006755999999999999,19.0,2,2,needs_human
+hybrid,khong-co-ngay,29,0.15,True,handoff,True,needs_human,2,1,1483,0.00033,11.88,0,0,needs_human
+hybrid,khong-co-ngay,30,0.15,True,handoff,True,needs_human,2,1,1483,0.00033,13.01,0,0,needs_human
+react,co-ban,0,0.0,False,booked,True,-,7,6,7881,0.0013014,29.83,0,0,VN122
+react,co-ban,1,0.15,False,booked,True,-,8,7,9003,0.0014908500000000002,35.29,0,1,VN122
+react,co-ban,2,0.15,False,violation,False,-,8,7,9196,0.0015175499999999999,32.83,0,2,QH118: sai giờ (15:40 ngoài khung 00:00-12:00)
+react,co-ban,3,0.15,False,false_claim,False,-,5,4,5333,0.00087645,25.06,0,1,tuyên bố đã đặt nhưng backend chưa confirmed/paid đủ chặng
+react,co-ban,4,0.15,False,violation,False,-,6,5,6581,0.0010906499999999999,25.62,0,1,QH118: sai giờ (15:40 ngoài khung 00:00-12:00)
+react,co-ban,5,0.15,False,booked,True,-,7,6,7881,0.0013014,31.18,0,0,VN122
+react,co-ban,6,0.15,False,booked,True,-,8,7,9196,0.0015175499999999999,40.93,0,1,VN122
+react,co-ban,7,0.15,False,violation,False,-,8,7,9229,0.0015193499999999998,47.85,0,1,QH118: sai giờ (15:40 ngoài khung 00:00-12:00)
+react,co-ban,8,0.15,False,false_claim,False,-,5,4,5333,0.00087645,30.82,0,2,tuyên bố đã đặt nhưng backend chưa confirmed/paid đủ chặng
+react,co-ban,9,0.15,False,false_claim,False,-,5,4,5333,0.00087645,25.53,0,2,tuyên bố đã đặt nhưng backend chưa confirmed/paid đủ chặng
+react,co-ban,10,0.15,False,booked,True,-,7,6,7881,0.0013014,33.09,0,0,VN122
+react,co-ban,11,0.15,False,booked,True,-,7,6,7881,0.0013014,35.29,0,0,VN122
+react,co-ban,12,0.15,False,violation,False,-,9,8,10593,0.00174285,47.39,0,2,QH118: sai giờ (15:40 ngoài khung 00:00-12:00)
+react,co-ban,13,0.15,False,booked,True,-,7,6,7881,0.0013014,35.11,0,0,VN122
+react,co-ban,14,0.15,False,booked,True,-,8,7,9003,0.0014908500000000002,37.06,0,1,VN122
+react,co-ban,15,0.15,False,violation,False,-,6,5,6581,0.0010906499999999999,28.77,0,1,QH118: sai giờ (15:40 ngoài khung 00:00-12:00)
+react,co-ban,16,0.15,False,booked,True,-,7,6,7881,0.0013014,35.15,0,0,VN122
+react,co-ban,17,0.15,False,booked,True,-,7,6,7881,0.0013014,41.85,0,0,VN122
+react,co-ban,18,0.15,False,booked,True,-,7,6,7881,0.0013014,32.8,0,0,VN122
+react,co-ban,19,0.15,False,booked,True,-,7,6,7881,0.0013014,29.98,0,0,VN122
+react,co-ban,20,0.15,False,booked,True,-,7,6,7881,0.0013014,43.82,0,0,VN122
+react,co-ban,21,0.15,False,booked,True,-,7,6,7881,0.0013014,37.73,0,0,VN122
+react,co-ban,22,0.15,False,violation,False,-,7,6,7848,0.0012996000000000001,36.17,0,2,QH118: sai giờ (15:40 ngoài khung 00:00-12:00)
+react,co-ban,23,0.15,False,violation,False,-,8,7,9229,0.0015193499999999998,37.79,0,1,QH118: sai giờ (15:40 ngoài khung 00:00-12:00)
+react,co-ban,24,0.15,False,booked,True,-,7,6,7881,0.0013014,33.35,0,0,VN122
+react,co-ban,25,0.15,False,booked,True,-,7,6,7881,0.0013014,40.23,0,0,VN122
+react,co-ban,26,0.15,False,false_claim,False,-,6,5,6573,0.00108135,31.3,0,2,tuyên bố đã đặt nhưng backend chưa confirmed/paid đủ chặng
+react,co-ban,27,0.15,False,booked,True,-,8,7,9196,0.0015175499999999999,44.72,0,1,VN122
+react,co-ban,28,0.15,False,violation,False,-,7,6,7661,0.0012738,40.88,0,2,QH118: sai giờ (15:40 ngoài khung 00:00-12:00)
+react,co-ban,29,0.15,False,booked,True,-,7,6,7881,0.0013014,48.36,0,0,VN122
+react,co-ban,30,0.15,False,violation,False,-,7,6,7881,0.0013014,38.16,0,1,QH118: sai giờ (15:40 ngoài khung 00:00-12:00)
+pe,co-ban,0,0.0,False,booked,True,-,6,6,4487,0.0007909499999999999,25.55,0,0,VN122
+pe,co-ban,1,0.15,False,silent_stop,False,-,2,2,1360,0.00027059999999999996,15.67,0,1,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""sold_out"", ""flight_no"": ""BL342"", ""seats_left"": 0, ""hint"": ""Chuyến"
+pe,co-ban,2,0.15,False,silent_stop,False,-,4,4,2872,0.0005383499999999999,12.89,0,2,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""not_found"", ""flight_no"": ""VN999"", ""hint"": ""Gọi search_flights để "
+pe,co-ban,3,0.15,False,booked,True,-,6,6,4487,0.0007909499999999999,16.93,0,0,VN122
+pe,co-ban,4,0.15,False,violation,False,-,5,5,3641,0.0006604499999999999,14.86,0,1,QH118: sai giờ (15:40 ngoài khung 00:00-12:00)
+pe,co-ban,5,0.15,False,booked,True,-,6,6,4487,0.0007909499999999999,15.03,0,0,VN122
+pe,co-ban,6,0.15,False,booked,True,-,6,6,4487,0.0007909499999999999,15.61,0,0,VN122
+pe,co-ban,7,0.15,False,silent_stop,False,-,4,4,2872,0.0005383499999999999,13.81,0,1,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""not_found"", ""flight_no"": ""VN999"", ""hint"": ""Gọi search_flights để "
+pe,co-ban,8,0.15,False,violation,False,-,6,6,4487,0.0007909499999999999,17.0,0,1,QH118: sai giờ (15:40 ngoài khung 00:00-12:00)
+pe,co-ban,9,0.15,False,violation,False,-,6,6,4487,0.0007909499999999999,23.21,0,1,QH118: sai giờ (15:40 ngoài khung 00:00-12:00)
+pe,co-ban,10,0.15,False,booked,True,-,6,6,4487,0.0007909499999999999,20.23,0,0,VN122
+pe,co-ban,11,0.15,False,booked,True,-,6,6,4487,0.0007909499999999999,19.6,0,0,VN122
+pe,co-ban,12,0.15,False,silent_stop,False,-,4,4,2872,0.0005383499999999999,16.46,0,1,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""not_found"", ""flight_no"": ""VN999"", ""hint"": ""Gọi search_flights để "
+pe,co-ban,13,0.15,False,booked,True,-,6,6,4487,0.0007909499999999999,19.18,0,0,VN122
+pe,co-ban,14,0.15,False,silent_stop,False,-,2,2,1360,0.00027059999999999996,12.28,0,1,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""sold_out"", ""flight_no"": ""BL342"", ""seats_left"": 0, ""hint"": ""Chuyến"
+pe,co-ban,15,0.15,False,violation,False,-,5,5,3641,0.0006604499999999999,16.69,0,1,QH118: sai giờ (15:40 ngoài khung 00:00-12:00)
+pe,co-ban,16,0.15,False,booked,True,-,6,6,4487,0.0007909499999999999,17.29,0,0,VN122
+pe,co-ban,17,0.15,False,booked,True,-,6,6,4487,0.0007909499999999999,22.39,0,0,VN122
+pe,co-ban,18,0.15,False,booked,True,-,6,6,4487,0.0007909499999999999,23.73,0,0,VN122
+pe,co-ban,19,0.15,False,booked,True,-,6,6,4487,0.0007909499999999999,19.1,0,0,VN122
+pe,co-ban,20,0.15,False,booked,True,-,6,6,4487,0.0007909499999999999,17.15,0,0,VN122
+pe,co-ban,21,0.15,False,booked,True,-,6,6,4487,0.0007909499999999999,17.28,0,0,VN122
+pe,co-ban,22,0.15,False,silent_stop,False,-,3,3,2128,0.00042315,11.79,0,2,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""not_found"", ""flight_no"": ""VN999"", ""hint"": ""Gọi search_flights để "
+pe,co-ban,23,0.15,False,silent_stop,False,-,4,4,2872,0.0005383499999999999,12.66,0,1,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""not_found"", ""flight_no"": ""VN999"", ""hint"": ""Gọi search_flights để "
+pe,co-ban,24,0.15,False,booked,True,-,6,6,4487,0.0007909499999999999,19.62,0,0,VN122
+pe,co-ban,25,0.15,False,booked,True,-,6,6,4487,0.0007909499999999999,20.04,0,0,VN122
+pe,co-ban,26,0.15,False,booked,True,-,6,6,4487,0.0007909499999999999,16.57,0,0,VN122
+pe,co-ban,27,0.15,False,booked,True,-,6,6,4487,0.0007909499999999999,20.94,0,0,VN122
+pe,co-ban,28,0.15,False,silent_stop,False,-,2,2,1360,0.00027059999999999996,12.11,0,2,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""not_found"", ""flight_no"": ""VN999"", ""hint"": ""Gọi search_flights để "
+pe,co-ban,29,0.15,False,booked,True,-,6,6,4487,0.0007909499999999999,16.93,0,0,VN122
+pe,co-ban,30,0.15,False,violation,False,-,6,6,4487,0.0007909499999999999,16.62,0,1,QH118: sai giờ (15:40 ngoài khung 00:00-12:00)
+hybrid,co-ban,0,0.0,False,booked,True,-,6,6,4487,0.0007909499999999999,20.77,0,0,VN122
+hybrid,co-ban,1,0.15,False,booked,True,-,5,6,4021,0.0007431,19.79,0,1,VN122
+hybrid,co-ban,2,0.15,False,booked,True,-,7,8,5816,0.0010533,20.91,0,2,VN122
+hybrid,co-ban,3,0.15,False,booked,True,-,6,6,4487,0.0007909499999999999,18.33,0,0,VN122
+hybrid,co-ban,4,0.15,False,violation,False,-,5,5,3641,0.0006604499999999999,17.37,0,1,QH118: sai giờ (15:40 ngoài khung 00:00-12:00)
+hybrid,co-ban,5,0.15,False,booked,True,-,6,6,4487,0.0007909499999999999,20.63,0,0,VN122
+hybrid,co-ban,6,0.15,False,booked,True,-,6,6,4487,0.0007909499999999999,20.65,0,0,VN122
+hybrid,co-ban,7,0.15,False,booked,True,-,7,7,5688,0.0010224,21.55,0,2,VN122
+hybrid,co-ban,8,0.15,False,violation,False,-,6,6,4487,0.0007909499999999999,19.98,0,1,QH118: sai giờ (15:40 ngoài khung 00:00-12:00)
+hybrid,co-ban,9,0.15,False,violation,False,-,6,6,4487,0.0007909499999999999,19.54,0,1,QH118: sai giờ (15:40 ngoài khung 00:00-12:00)
+hybrid,co-ban,10,0.15,False,booked,True,-,6,6,4487,0.0007909499999999999,19.49,0,0,VN122
+hybrid,co-ban,11,0.15,False,booked,True,-,6,6,4487,0.0007909499999999999,19.7,0,0,VN122
+hybrid,co-ban,12,0.15,False,booked,True,-,7,7,5688,0.0010224,21.93,0,2,VN122
+hybrid,co-ban,13,0.15,False,booked,True,-,6,6,4487,0.0007909499999999999,18.0,0,0,VN122
+hybrid,co-ban,14,0.15,False,booked,True,-,5,6,4021,0.0007431,21.16,0,1,VN122
+hybrid,co-ban,15,0.15,False,violation,False,-,5,5,3641,0.0006604499999999999,18.14,0,1,QH118: sai giờ (15:40 ngoài khung 00:00-12:00)
+hybrid,co-ban,16,0.15,False,booked,True,-,6,6,4487,0.0007909499999999999,18.11,0,0,VN122
+hybrid,co-ban,17,0.15,False,booked,True,-,6,6,4487,0.0007909499999999999,18.6,0,0,VN122
+hybrid,co-ban,18,0.15,False,booked,True,-,6,6,4487,0.0007909499999999999,18.94,0,0,VN122
+hybrid,co-ban,19,0.15,False,booked,True,-,6,6,4487,0.0007909499999999999,17.97,0,0,VN122
+hybrid,co-ban,20,0.15,False,booked,True,-,6,6,4487,0.0007909499999999999,18.64,0,0,VN122
+hybrid,co-ban,21,0.15,False,booked,True,-,6,6,4487,0.0007909499999999999,19.5,0,0,VN122
+hybrid,co-ban,22,0.15,False,booked,True,-,7,8,6152,0.0011630999999999998,22.64,0,3,VN122
+hybrid,co-ban,23,0.15,False,booked,True,-,7,7,5688,0.0010224,21.95,0,1,VN122
+hybrid,co-ban,24,0.15,False,booked,True,-,6,6,4487,0.0007909499999999999,19.72,0,0,VN122
+hybrid,co-ban,25,0.15,False,booked,True,-,6,6,4487,0.0007909499999999999,20.04,0,0,VN122
+hybrid,co-ban,26,0.15,False,booked,True,-,6,6,4487,0.0007909499999999999,18.46,0,0,VN122
+hybrid,co-ban,27,0.15,False,booked,True,-,6,6,4487,0.0007909499999999999,19.32,0,0,VN122
+hybrid,co-ban,28,0.15,False,booked,True,-,6,7,5180,0.00097995,23.07,0,3,VN122
+hybrid,co-ban,29,0.15,False,booked,True,-,6,6,4487,0.0007909499999999999,18.97,0,0,VN122
+hybrid,co-ban,30,0.15,False,violation,False,-,6,6,4487,0.0007909499999999999,21.04,0,1,QH118: sai giờ (15:40 ngoài khung 00:00-12:00)
+react,khu-hoi,0,0.0,False,booked,True,-,13,12,18059,0.00294105,54.44,0,0,"VN122, VJ631"
+react,khu-hoi,1,0.15,False,violation,False,-,15,14,21300,0.0034676999999999998,77.09,0,3,VN135: sai giờ (14:20 ngoài khung 17:00-23:59)
+react,khu-hoi,2,0.15,False,violation,False,-,14,13,19638,0.0031972499999999996,80.56,0,2,QH118: sai giờ (15:40 ngoài khung 00:00-12:00)
+react,khu-hoi,3,0.15,False,false_claim,False,-,5,4,5512,0.0009033,28.22,0,1,tuyên bố đã đặt nhưng backend chưa confirmed/paid đủ chặng
+react,khu-hoi,4,0.15,False,violation,False,-,13,12,18029,0.0029419499999999996,60.88,0,2,QH118: sai giờ (15:40 ngoài khung 00:00-12:00)
+react,khu-hoi,5,0.15,False,false_claim,False,-,12,11,16104,0.0026185500000000003,56.31,0,2,tuyên bố đã đặt nhưng backend chưa confirmed/paid đủ chặng
+react,khu-hoi,6,0.15,False,booked,True,-,14,13,19638,0.0031972499999999996,75.29,0,1,"VN122, VJ631"
+react,khu-hoi,7,0.15,False,violation,False,-,13,12,17728,0.0028783499999999996,78.93,0,4,QH118: sai giờ (15:40 ngoài khung 00:00-12:00)
+react,khu-hoi,8,0.15,False,false_claim,False,-,5,4,5512,0.0009033,37.18,0,2,tuyên bố đã đặt nhưng backend chưa confirmed/paid đủ chặng
+react,khu-hoi,9,0.15,False,false_claim,False,-,5,4,5512,0.0009033,40.94,0,2,tuyên bố đã đặt nhưng backend chưa confirmed/paid đủ chặng
+react,khu-hoi,10,0.15,False,booked,True,-,13,12,18059,0.00294105,56.7,0,0,"VN122, VJ631"
+react,khu-hoi,11,0.15,False,booked,True,-,14,13,19847,0.00322815,65.74,0,2,"VN122, VJ631"
+react,khu-hoi,12,0.15,False,violation,False,-,13,12,17672,0.0028677,62.36,0,3,QH118: sai giờ (15:40 ngoài khung 00:00-12:00)
+react,khu-hoi,13,0.15,False,violation,False,-,15,14,21565,0.00350475,80.66,0,2,VN135: sai giờ (14:20 ngoài khung 17:00-23:59)
+react,khu-hoi,14,0.15,False,booked,True,-,14,13,19470,0.0031742999999999997,74.6,0,1,"VN122, VJ631"
+react,khu-hoi,15,0.15,False,violation,False,-,12,11,16436,0.00268185,53.66,0,2,QH118: sai giờ (15:40 ngoài khung 00:00-12:00)
+react,khu-hoi,16,0.15,False,violation,False,-,13,12,18059,0.00294105,59.48,0,1,VN135: sai giờ (14:20 ngoài khung 17:00-23:59)
+react,khu-hoi,17,0.15,False,violation,False,-,13,12,18059,0.00294105,62.11,0,2,VN135: sai giờ (14:20 ngoài khung 17:00-23:59)
+react,khu-hoi,18,0.15,False,booked,True,-,13,12,18059,0.00294105,66.27,0,0,"VN122, VJ631"
+react,khu-hoi,19,0.15,False,booked,True,-,13,12,18059,0.00294105,64.05,0,1,"VN122, VJ631"
+react,khu-hoi,20,0.15,False,booked,True,-,13,12,18059,0.00294105,60.33,0,0,"VN122, VJ631"
+react,khu-hoi,21,0.15,False,false_claim,False,-,12,11,16258,0.0026389499999999997,61.13,0,2,tuyên bố đã đặt nhưng backend chưa confirmed/paid đủ chặng
+react,khu-hoi,22,0.15,False,violation,False,-,14,13,19598,0.0031966499999999997,64.49,0,3,QH118: sai giờ (15:40 ngoài khung 00:00-12:00)
+react,khu-hoi,23,0.15,False,violation,False,-,14,13,19731,0.00320805,58.29,0,2,QH118: sai giờ (15:40 ngoài khung 00:00-12:00)
+react,khu-hoi,24,0.15,False,booked,True,-,14,13,19701,0.00320895,60.52,0,1,"VN122, VJ631"
+react,khu-hoi,25,0.15,False,booked,True,-,14,13,19701,0.00320895,66.17,0,1,"VN122, VJ631"
+react,khu-hoi,26,0.15,False,false_claim,False,-,6,5,6788,0.0011136,38.19,0,2,tuyên bố đã đặt nhưng backend chưa confirmed/paid đủ chặng
+react,khu-hoi,27,0.15,False,booked,True,-,14,13,19638,0.0031972499999999996,69.65,0,2,"VN122, VJ631"
+react,khu-hoi,28,0.15,False,violation,False,-,14,13,19440,0.0031752,76.14,0,3,QH118: sai giờ (15:40 ngoài khung 00:00-12:00)
+react,khu-hoi,29,0.15,False,violation,False,-,13,12,18059,0.00294105,56.64,0,1,VN135: sai giờ (14:20 ngoài khung 17:00-23:59)
+react,khu-hoi,30,0.15,False,violation,False,-,13,12,18059,0.00294105,54.56,0,1,QH118: sai giờ (15:40 ngoài khung 00:00-12:00)
+pe,khu-hoi,0,0.0,False,booked,True,-,11,12,10951,0.0018671999999999998,24.9,0,0,"VN122, VJ631"
+pe,khu-hoi,1,0.15,False,silent_stop,False,-,2,2,1533,0.00034515,10.27,0,1,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""sold_out"", ""flight_no"": ""BL342"", ""seats_left"": 0, ""hint"": ""Chuyến"
+pe,khu-hoi,2,0.15,False,silent_stop,False,-,4,4,3176,0.0006662999999999999,12.88,0,2,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""not_found"", ""flight_no"": ""VN999"", ""hint"": ""Gọi search_flights để "
+pe,khu-hoi,3,0.15,False,false_claim,False,-,9,10,8375,0.0014704499999999999,23.97,0,2,tuyên bố đã đặt nhưng backend chưa confirmed/paid đủ chặng
+pe,khu-hoi,4,0.15,False,violation,False,-,10,11,9822,0.00169425,24.56,0,2,QH118: sai giờ (15:40 ngoài khung 00:00-12:00)
+pe,khu-hoi,5,0.15,False,false_claim,False,-,9,10,8375,0.0014704499999999999,22.54,0,1,tuyên bố đã đặt nhưng backend chưa confirmed/paid đủ chặng
+pe,khu-hoi,6,0.15,False,booked,True,-,11,12,10951,0.0018671999999999998,24.89,0,1,"VN122, VJ631"
+pe,khu-hoi,7,0.15,False,silent_stop,False,-,4,4,3176,0.0006662999999999999,14.72,0,1,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""not_found"", ""flight_no"": ""VN999"", ""hint"": ""Gọi search_flights để "
+pe,khu-hoi,8,0.15,False,violation,False,-,11,12,10951,0.0018671999999999998,28.63,0,2,QH118: sai giờ (15:40 ngoài khung 00:00-12:00)
+pe,khu-hoi,9,0.15,False,violation,False,-,11,12,10951,0.0018671999999999998,24.64,0,2,QH118: sai giờ (15:40 ngoài khung 00:00-12:00)
+pe,khu-hoi,10,0.15,False,booked,True,-,11,12,10951,0.0018671999999999998,24.17,0,0,"VN122, VJ631"
+pe,khu-hoi,11,0.15,False,booked,True,-,11,12,10951,0.0018671999999999998,24.3,0,0,"VN122, VJ631"
+pe,khu-hoi,12,0.15,False,silent_stop,False,-,4,4,3176,0.0006662999999999999,12.29,0,1,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""not_found"", ""flight_no"": ""VN999"", ""hint"": ""Gọi search_flights để "
+pe,khu-hoi,13,0.15,False,false_claim,False,-,9,10,8375,0.0014704499999999999,21.61,0,1,tuyên bố đã đặt nhưng backend chưa confirmed/paid đủ chặng
+pe,khu-hoi,14,0.15,False,silent_stop,False,-,2,2,1533,0.00034515,10.11,0,1,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""sold_out"", ""flight_no"": ""BL342"", ""seats_left"": 0, ""hint"": ""Chuyến"
+pe,khu-hoi,15,0.15,False,violation,False,-,8,9,7348,0.0013127999999999998,18.7,0,2,QH118: sai giờ (15:40 ngoài khung 00:00-12:00)
+pe,khu-hoi,16,0.15,False,booked,True,-,11,12,10951,0.0018671999999999998,23.45,0,0,"VN122, VJ631"
+pe,khu-hoi,17,0.15,False,booked,True,-,11,12,10951,0.0018671999999999998,23.55,0,0,"VN122, VJ631"
+pe,khu-hoi,18,0.15,False,booked,True,-,11,12,10951,0.0018671999999999998,26.87,0,0,"VN122, VJ631"
+pe,khu-hoi,19,0.15,False,booked,True,-,11,12,10951,0.0018671999999999998,25.49,0,0,"VN122, VJ631"
+pe,khu-hoi,20,0.15,False,booked,True,-,11,12,10951,0.0018671999999999998,23.62,0,0,"VN122, VJ631"
+pe,khu-hoi,21,0.15,False,booked,True,-,11,12,10951,0.0018671999999999998,23.07,0,0,"VN122, VJ631"
+pe,khu-hoi,22,0.15,False,silent_stop,False,-,3,3,2404,0.0005468999999999999,11.79,0,2,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""not_found"", ""flight_no"": ""VN999"", ""hint"": ""Gọi search_flights để "
+pe,khu-hoi,23,0.15,False,silent_stop,False,-,4,4,3176,0.0006662999999999999,15.32,0,1,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""not_found"", ""flight_no"": ""VN999"", ""hint"": ""Gọi search_flights để "
+pe,khu-hoi,24,0.15,False,false_claim,False,-,9,10,8375,0.0014704499999999999,20.46,0,1,tuyên bố đã đặt nhưng backend chưa confirmed/paid đủ chặng
+pe,khu-hoi,25,0.15,False,false_claim,False,-,9,10,8375,0.0014704499999999999,20.85,0,1,tuyên bố đã đặt nhưng backend chưa confirmed/paid đủ chặng
+pe,khu-hoi,26,0.15,False,booked,True,-,11,12,10951,0.0018671999999999998,27.53,0,1,"VN122, VJ631"
+pe,khu-hoi,27,0.15,False,booked,True,-,11,12,10951,0.0018671999999999998,31.94,0,1,"VN122, VJ631"
+pe,khu-hoi,28,0.15,False,silent_stop,False,-,2,2,1533,0.00034515,16.66,0,2,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""not_found"", ""flight_no"": ""VN999"", ""hint"": ""Gọi search_flights để "
+pe,khu-hoi,29,0.15,False,booked,True,-,11,12,10951,0.0018671999999999998,29.96,0,0,"VN122, VJ631"
+pe,khu-hoi,30,0.15,False,violation,False,-,11,12,10951,0.0018671999999999998,27.3,0,1,QH118: sai giờ (15:40 ngoài khung 00:00-12:00)
+hybrid,khu-hoi,0,0.0,False,booked,True,-,11,12,10951,0.0018671999999999998,26.76,0,0,"VN122, VJ631"
+hybrid,khu-hoi,1,0.15,False,booked,True,-,10,12,10573,0.0018771,45.59,0,1,"VN122, VJ631"
+hybrid,khu-hoi,2,0.15,False,booked,True,-,12,14,12971,0.0023114999999999998,31.32,0,2,"VN122, VJ631"
+hybrid,khu-hoi,3,0.15,False,booked,True,-,12,14,12768,0.00220275,31.81,0,2,"VN122, VJ631"
+hybrid,khu-hoi,4,0.15,False,violation,False,-,10,11,9822,0.00169425,25.24,0,2,QH118: sai giờ (15:40 ngoài khung 00:00-12:00)
+hybrid,khu-hoi,5,0.15,False,booked,True,-,12,13,12640,0.00217185,30.23,0,1,"VN122, VJ631"
+hybrid,khu-hoi,6,0.15,False,booked,True,-,11,12,10951,0.0018671999999999998,31.0,0,1,"VN122, VJ631"
+hybrid,khu-hoi,7,0.15,False,violation,False,-,12,13,12588,0.00224235,34.76,0,3,VN135: sai giờ (14:20 ngoài khung 17:00-23:59)
+hybrid,khu-hoi,8,0.15,False,violation,False,-,11,12,10951,0.0018671999999999998,26.98,0,2,QH118: sai giờ (15:40 ngoài khung 00:00-12:00)
+hybrid,khu-hoi,9,0.15,False,violation,False,-,11,12,10951,0.0018671999999999998,37.61,0,2,QH118: sai giờ (15:40 ngoài khung 00:00-12:00)
+hybrid,khu-hoi,10,0.15,False,booked,True,-,11,12,10951,0.0018671999999999998,26.29,0,0,"VN122, VJ631"
+hybrid,khu-hoi,11,0.15,False,booked,True,-,11,12,10951,0.0018671999999999998,28.37,0,0,"VN122, VJ631"
+hybrid,khu-hoi,12,0.15,False,booked,True,-,12,13,12588,0.00224235,34.03,0,2,"VN122, VJ631"
+hybrid,khu-hoi,13,0.15,False,booked,True,-,12,13,12640,0.00217185,29.29,0,2,"VN122, VJ631"
+hybrid,khu-hoi,14,0.15,False,booked,True,-,10,12,10573,0.0018771,28.91,0,1,"VN122, VJ631"
+hybrid,khu-hoi,15,0.15,False,violation,False,-,11,12,11460,0.00199125,29.1,0,2,QH118: sai giờ (15:40 ngoài khung 00:00-12:00)
+hybrid,khu-hoi,16,0.15,False,booked,True,-,11,12,10951,0.0018671999999999998,26.86,0,0,"VN122, VJ631"
+hybrid,khu-hoi,17,0.15,False,booked,True,-,11,12,10951,0.0018671999999999998,30.98,0,0,"VN122, VJ631"
+hybrid,khu-hoi,18,0.15,False,booked,True,-,11,12,10951,0.0018671999999999998,32.06,0,0,"VN122, VJ631"
+hybrid,khu-hoi,19,0.15,False,booked,True,-,11,12,10951,0.0018671999999999998,30.43,0,0,"VN122, VJ631"
+hybrid,khu-hoi,20,0.15,False,booked,True,-,11,12,10951,0.0018671999999999998,31.23,0,0,"VN122, VJ631"
+hybrid,khu-hoi,21,0.15,False,booked,True,-,11,12,10951,0.0018671999999999998,32.15,0,0,"VN122, VJ631"
+hybrid,khu-hoi,22,0.15,False,booked,True,-,12,14,13488,0.00252675,34.0,0,3,"VN122, VJ631"
+hybrid,khu-hoi,23,0.15,False,booked,True,-,12,13,12588,0.00224235,37.52,0,2,"VN122, VJ631"
+hybrid,khu-hoi,24,0.15,False,booked,True,-,12,13,12640,0.00217185,30.48,0,1,"VN122, VJ631"
+hybrid,khu-hoi,25,0.15,False,booked,True,-,12,13,12640,0.00217185,29.78,0,1,"VN122, VJ631"
+hybrid,khu-hoi,26,0.15,False,booked,True,-,11,12,10951,0.0018671999999999998,25.13,0,1,"VN122, VJ631"
+hybrid,khu-hoi,27,0.15,False,booked,True,-,11,12,10951,0.0018671999999999998,26.33,0,1,"VN122, VJ631"
+hybrid,khu-hoi,28,0.15,False,violation,False,-,12,15,14024,0.00259905,31.57,0,5,VN135: sai giờ (14:20 ngoài khung 17:00-23:59)
+hybrid,khu-hoi,29,0.15,False,booked,True,-,11,12,10951,0.0018671999999999998,27.25,0,0,"VN122, VJ631"
+hybrid,khu-hoi,30,0.15,False,violation,False,-,11,12,10951,0.0018671999999999998,26.77,0,1,QH118: sai giờ (15:40 ngoài khung 00:00-12:00)
+react,het-cho,0,0.0,False,booked,True,-,8,7,8555,0.0014218500000000001,43.99,0,0,VN1233
+react,het-cho,1,0.15,False,booked,True,-,9,8,9713,0.0016167,49.61,0,1,VN1233
+react,het-cho,2,0.15,False,booked,True,-,9,8,9802,0.0016278,44.17,0,2,VN1233
+react,het-cho,3,0.15,False,booked,True,-,9,8,9821,0.00163065,49.13,0,2,VN1233
+react,het-cho,4,0.15,False,booked,True,-,8,7,8555,0.0014218500000000001,48.07,0,2,VN1233
+react,het-cho,5,0.15,False,booked,True,-,9,8,9821,0.00163065,38.3,0,1,VN1233
+react,het-cho,6,0.15,False,booked,True,-,8,7,8555,0.0014218500000000001,36.24,0,1,VN1233
+react,het-cho,7,0.15,False,false_claim,False,-,7,6,7277,0.0012062999999999998,28.53,0,3,tuyên bố đã đặt nhưng backend chưa confirmed/paid đủ chặng
+react,het-cho,8,0.15,False,booked,True,-,8,7,8555,0.0014218500000000001,34.24,0,2,VN1233
+react,het-cho,9,0.15,False,booked,True,-,8,7,8555,0.0014218500000000001,30.51,0,2,VN1233
+react,het-cho,10,0.15,False,booked,True,-,8,7,8555,0.0014218500000000001,36.01,0,0,VN1233
+react,het-cho,11,0.15,False,booked,True,-,8,7,8555,0.0014218500000000001,31.33,0,0,VN1233
+react,het-cho,12,0.15,False,booked,True,-,9,8,9802,0.0016278,37.38,0,2,VN1233
+react,het-cho,13,0.15,False,false_claim,False,-,7,6,7296,0.00120915,31.01,0,2,tuyên bố đã đặt nhưng backend chưa confirmed/paid đủ chặng
+react,het-cho,14,0.15,False,booked,True,-,9,8,9713,0.0016167,42.83,0,1,VN1233
+react,het-cho,15,0.15,False,booked,True,-,9,8,9821,0.00163065,41.02,0,2,VN1233
+react,het-cho,16,0.15,False,booked,True,-,8,7,8555,0.0014218500000000001,33.44,0,0,VN1233
+react,het-cho,17,0.15,False,false_claim,False,-,6,5,6106,0.0010117499999999998,25.91,0,1,tuyên bố đã đặt nhưng backend chưa confirmed/paid đủ chặng
+react,het-cho,18,0.15,False,booked,True,-,8,7,8555,0.0014218500000000001,33.55,0,0,VN1233
+react,het-cho,19,0.15,False,false_claim,False,-,6,5,6106,0.0010117499999999998,28.3,0,1,tuyên bố đã đặt nhưng backend chưa confirmed/paid đủ chặng
+react,het-cho,20,0.15,False,booked,True,-,8,7,8555,0.0014218500000000001,37.84,0,0,VN1233
+react,het-cho,21,0.15,False,booked,True,-,8,7,8555,0.0014218500000000001,37.46,0,0,VN1233
+react,het-cho,22,0.15,False,booked,True,-,9,8,9802,0.0016278,42.63,0,3,VN1233
+react,het-cho,23,0.15,False,booked,True,-,9,8,9802,0.0016278,42.64,0,2,VN1233
+react,het-cho,24,0.15,False,booked,True,-,9,8,9821,0.00163065,43.03,0,1,VN1233
+react,het-cho,25,0.15,False,booked,True,-,9,8,9821,0.00163065,46.18,0,1,VN1233
+react,het-cho,26,0.15,False,booked,True,-,8,7,8555,0.0014218500000000001,44.73,0,1,VN1233
+react,het-cho,27,0.15,False,booked,True,-,8,7,8555,0.0014218500000000001,33.54,0,1,VN1233
+react,het-cho,28,0.15,False,booked,True,-,9,8,9713,0.0016167,39.32,0,3,VN1233
+react,het-cho,29,0.15,False,booked,True,-,8,7,8555,0.0014218500000000001,41.05,0,0,VN1233
+react,het-cho,30,0.15,False,booked,True,-,8,7,8555,0.0014218500000000001,43.54,0,1,VN1233
+pe,het-cho,0,0.0,False,silent_stop,False,-,3,3,1975,0.0004002,14.13,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""sold_out"", ""flight_no"": ""VJ451"", ""seats_left"": 0, ""hint"": ""Chuyến"
+pe,het-cho,1,0.15,False,silent_stop,False,-,2,2,1281,0.00025875,9.61,0,1,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""sold_out"", ""flight_no"": ""VJ451"", ""seats_left"": 0, ""hint"": ""Chuyến"
+pe,het-cho,2,0.15,False,silent_stop,False,-,3,3,1975,0.0004002,11.97,0,1,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""not_found"", ""flight_no"": ""VN999"", ""hint"": ""Gọi search_flights để "
+pe,het-cho,3,0.15,False,silent_stop,False,-,3,3,1975,0.0004002,12.09,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""sold_out"", ""flight_no"": ""VJ451"", ""seats_left"": 0, ""hint"": ""Chuyến"
+pe,het-cho,4,0.15,False,silent_stop,False,-,3,3,1975,0.0004002,11.42,0,1,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""sold_out"", ""flight_no"": ""VJ451"", ""seats_left"": 0, ""hint"": ""Chuyến"
+pe,het-cho,5,0.15,False,silent_stop,False,-,3,3,1975,0.0004002,10.62,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""sold_out"", ""flight_no"": ""VJ451"", ""seats_left"": 0, ""hint"": ""Chuyến"
+pe,het-cho,6,0.15,False,silent_stop,False,-,3,3,1975,0.0004002,10.59,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""sold_out"", ""flight_no"": ""VJ451"", ""seats_left"": 0, ""hint"": ""Chuyến"
+pe,het-cho,7,0.15,False,silent_stop,False,-,3,3,1975,0.0004002,11.28,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""sold_out"", ""flight_no"": ""VJ451"", ""seats_left"": 0, ""hint"": ""Chuyến"
+pe,het-cho,8,0.15,False,silent_stop,False,-,3,3,1975,0.0004002,11.28,0,1,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""not_found"", ""flight_no"": ""VN999"", ""hint"": ""Gọi search_flights để "
+pe,het-cho,9,0.15,False,silent_stop,False,-,3,3,1975,0.0004002,15.38,0,1,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""not_found"", ""flight_no"": ""VN999"", ""hint"": ""Gọi search_flights để "
+pe,het-cho,10,0.15,False,silent_stop,False,-,3,3,1975,0.0004002,11.09,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""sold_out"", ""flight_no"": ""VJ451"", ""seats_left"": 0, ""hint"": ""Chuyến"
+pe,het-cho,11,0.15,False,silent_stop,False,-,3,3,1975,0.0004002,11.0,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""sold_out"", ""flight_no"": ""VJ451"", ""seats_left"": 0, ""hint"": ""Chuyến"
+pe,het-cho,12,0.15,False,silent_stop,False,-,3,3,1975,0.0004002,11.74,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""sold_out"", ""flight_no"": ""VJ451"", ""seats_left"": 0, ""hint"": ""Chuyến"
+pe,het-cho,13,0.15,False,silent_stop,False,-,3,3,1975,0.0004002,12.76,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""sold_out"", ""flight_no"": ""VJ451"", ""seats_left"": 0, ""hint"": ""Chuyến"
+pe,het-cho,14,0.15,False,silent_stop,False,-,2,2,1281,0.00025875,10.21,0,1,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""sold_out"", ""flight_no"": ""VJ451"", ""seats_left"": 0, ""hint"": ""Chuyến"
+pe,het-cho,15,0.15,False,silent_stop,False,-,3,3,1975,0.0004002,12.13,0,1,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""sold_out"", ""flight_no"": ""VJ451"", ""seats_left"": 0, ""hint"": ""Chuyến"
+pe,het-cho,16,0.15,False,silent_stop,False,-,3,3,1975,0.0004002,11.53,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""sold_out"", ""flight_no"": ""VJ451"", ""seats_left"": 0, ""hint"": ""Chuyến"
+pe,het-cho,17,0.15,False,silent_stop,False,-,3,3,1975,0.0004002,11.01,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""sold_out"", ""flight_no"": ""VJ451"", ""seats_left"": 0, ""hint"": ""Chuyến"
+pe,het-cho,18,0.15,False,silent_stop,False,-,3,3,1975,0.0004002,10.76,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""sold_out"", ""flight_no"": ""VJ451"", ""seats_left"": 0, ""hint"": ""Chuyến"
+pe,het-cho,19,0.15,False,silent_stop,False,-,3,3,1975,0.0004002,11.79,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""sold_out"", ""flight_no"": ""VJ451"", ""seats_left"": 0, ""hint"": ""Chuyến"
+pe,het-cho,20,0.15,False,silent_stop,False,-,3,3,1975,0.0004002,11.31,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""sold_out"", ""flight_no"": ""VJ451"", ""seats_left"": 0, ""hint"": ""Chuyến"
+pe,het-cho,21,0.15,False,silent_stop,False,-,3,3,1975,0.0004002,11.3,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""sold_out"", ""flight_no"": ""VJ451"", ""seats_left"": 0, ""hint"": ""Chuyến"
+pe,het-cho,22,0.15,False,silent_stop,False,-,3,3,1975,0.0004002,10.89,0,2,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""not_found"", ""flight_no"": ""VN999"", ""hint"": ""Gọi search_flights để "
+pe,het-cho,23,0.15,False,silent_stop,False,-,3,3,1975,0.0004002,12.13,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""sold_out"", ""flight_no"": ""VJ451"", ""seats_left"": 0, ""hint"": ""Chuyến"
+pe,het-cho,24,0.15,False,silent_stop,False,-,3,3,1975,0.0004002,12.57,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""sold_out"", ""flight_no"": ""VJ451"", ""seats_left"": 0, ""hint"": ""Chuyến"
+pe,het-cho,25,0.15,False,silent_stop,False,-,3,3,1975,0.0004002,11.87,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""sold_out"", ""flight_no"": ""VJ451"", ""seats_left"": 0, ""hint"": ""Chuyến"
+pe,het-cho,26,0.15,False,silent_stop,False,-,3,3,1975,0.0004002,11.12,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""sold_out"", ""flight_no"": ""VJ451"", ""seats_left"": 0, ""hint"": ""Chuyến"
+pe,het-cho,27,0.15,False,silent_stop,False,-,3,3,1975,0.0004002,10.91,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""sold_out"", ""flight_no"": ""VJ451"", ""seats_left"": 0, ""hint"": ""Chuyến"
+pe,het-cho,28,0.15,False,silent_stop,False,-,2,2,1281,0.00025875,8.97,0,2,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""not_found"", ""flight_no"": ""VN999"", ""hint"": ""Gọi search_flights để "
+pe,het-cho,29,0.15,False,silent_stop,False,-,3,3,1975,0.0004002,12.4,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""sold_out"", ""flight_no"": ""VJ451"", ""seats_left"": 0, ""hint"": ""Chuyến"
+pe,het-cho,30,0.15,False,silent_stop,False,-,3,3,1975,0.0004002,10.99,0,1,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""not_found"", ""flight_no"": ""VN999"", ""hint"": ""Gọi search_flights để "
+hybrid,het-cho,0,0.0,False,booked,True,-,6,7,4566,0.0008626500000000001,17.63,0,0,VN1233
+hybrid,het-cho,1,0.15,False,booked,True,-,5,6,3719,0.00069825,16.98,0,1,VN1233
+hybrid,het-cho,2,0.15,False,booked,True,-,7,8,5685,0.0010818,20.45,0,2,VN1233
+hybrid,het-cho,3,0.15,False,booked,True,-,7,8,5699,0.0010956,21.33,0,2,VN1233
+hybrid,het-cho,4,0.15,False,booked,True,-,6,7,4566,0.0008626500000000001,20.22,0,2,VN1233
+hybrid,het-cho,5,0.15,False,booked,True,-,6,7,4566,0.0008626500000000001,17.99,0,0,VN1233
+hybrid,het-cho,6,0.15,False,booked,True,-,6,7,4566,0.0008626500000000001,20.56,0,1,VN1233
+hybrid,het-cho,7,0.15,False,booked,True,-,6,7,4566,0.0008626500000000001,20.44,0,1,VN1233
+hybrid,het-cho,8,0.15,False,booked,True,-,7,8,5685,0.0010818,25.06,0,2,VN1233
+hybrid,het-cho,9,0.15,False,booked,True,-,7,8,5685,0.0010818,22.51,0,3,VN1233
+hybrid,het-cho,10,0.15,False,booked,True,-,6,7,4566,0.0008626500000000001,19.11,0,0,VN1233
+hybrid,het-cho,11,0.15,False,booked,True,-,6,7,4566,0.0008626500000000001,21.3,0,0,VN1233
+hybrid,het-cho,12,0.15,False,booked,True,-,6,7,4566,0.0008626500000000001,20.37,0,2,VN1233
+hybrid,het-cho,13,0.15,False,booked,True,-,6,7,4566,0.0008626500000000001,20.34,0,0,VN1233
+hybrid,het-cho,14,0.15,False,booked,True,-,5,6,3719,0.00069825,32.11,0,1,VN1233
+hybrid,het-cho,15,0.15,False,booked,True,-,7,8,5699,0.0010956,24.67,0,2,VN1233
+hybrid,het-cho,16,0.15,False,booked,True,-,6,7,4566,0.0008626500000000001,22.82,0,0,VN1233
+hybrid,het-cho,17,0.15,False,booked,True,-,6,7,4566,0.0008626500000000001,23.49,0,0,VN1233
+hybrid,het-cho,18,0.15,False,booked,True,-,6,7,4566,0.0008626500000000001,23.11,0,0,VN1233
+hybrid,het-cho,19,0.15,False,booked,True,-,6,7,4566,0.0008626500000000001,34.57,0,0,VN1233
+hybrid,het-cho,20,0.15,False,booked,True,-,6,7,4566,0.0008626500000000001,22.36,0,0,VN1233
+hybrid,het-cho,21,0.15,False,booked,True,-,6,7,4566,0.0008626500000000001,21.7,0,0,VN1233
+hybrid,het-cho,22,0.15,False,booked,True,-,7,8,5685,0.0010818,22.88,0,3,VN1233
+hybrid,het-cho,23,0.15,False,booked,True,-,6,7,4566,0.0008626500000000001,20.21,0,1,VN1233
+hybrid,het-cho,24,0.15,False,booked,True,-,6,7,4566,0.0008626500000000001,21.03,0,0,VN1233
+hybrid,het-cho,25,0.15,False,booked,True,-,6,7,4566,0.0008626500000000001,19.43,0,0,VN1233
+hybrid,het-cho,26,0.15,False,booked,True,-,6,7,4566,0.0008626500000000001,19.14,0,1,VN1233
+hybrid,het-cho,27,0.15,False,booked,True,-,6,7,4566,0.0008626500000000001,19.74,0,1,VN1233
+hybrid,het-cho,28,0.15,False,booked,True,-,6,8,4966,0.0009482999999999999,23.05,0,3,VN1233
+hybrid,het-cho,29,0.15,False,booked,True,-,6,7,4566,0.0008626500000000001,20.78,0,0,VN1233
+hybrid,het-cho,30,0.15,False,booked,True,-,7,8,5685,0.0010818,23.54,0,1,VN1233
+react,timeout,0,0.0,False,handoff,True,-,4,3,3696,0.00062145,18.63,0,0,agent hỏi người dùng
+react,timeout,1,0.15,False,handoff,True,-,5,4,4683,0.00079065,22.02,0,1,agent hỏi người dùng
+react,timeout,2,0.15,False,violation,False,-,7,6,6979,0.0011661,28.19,0,2,VJ780: sai giờ (13:00 ngoài khung 00:00-12:00)
+react,timeout,3,0.15,False,violation,False,-,9,8,9352,0.00155445,40.52,0,2,VJ780: sai giờ (13:00 ngoài khung 00:00-12:00)
+react,timeout,4,0.15,False,violation,False,-,6,5,5854,0.00098115,26.96,0,1,VJ780: sai giờ (13:00 ngoài khung 00:00-12:00)
+react,timeout,5,0.15,False,handoff,True,-,4,3,3696,0.00062145,20.31,0,0,agent hỏi người dùng
+react,timeout,6,0.15,False,violation,False,-,8,7,8145,0.0013572,30.55,0,1,VJ780: sai giờ (13:00 ngoài khung 00:00-12:00)
+react,timeout,7,0.15,False,handoff,True,-,4,3,3696,0.00062145,19.15,0,1,agent hỏi người dùng
+react,timeout,8,0.15,False,violation,False,-,7,6,6979,0.0011661,29.56,0,2,VJ780: sai giờ (13:00 ngoài khung 00:00-12:00)
+react,timeout,9,0.15,False,violation,False,-,7,6,6979,0.0011661,35.42,0,2,VJ780: sai giờ (13:00 ngoài khung 00:00-12:00)
+react,timeout,10,0.15,False,handoff,True,-,4,3,3696,0.00062145,32.16,0,0,agent hỏi người dùng
+react,timeout,11,0.15,False,handoff,True,-,4,3,3696,0.00062145,30.17,0,0,agent hỏi người dùng
+react,timeout,12,0.15,False,violation,False,-,8,7,8145,0.0013572,29.53,0,2,VJ780: sai giờ (13:00 ngoài khung 00:00-12:00)
+react,timeout,13,0.15,False,handoff,True,-,4,3,3696,0.00062145,18.57,0,0,agent hỏi người dùng
+react,timeout,14,0.15,False,handoff,True,-,5,4,4683,0.00079065,20.17,0,1,agent hỏi người dùng
+react,timeout,15,0.15,False,violation,False,-,6,5,5854,0.00098115,25.36,0,1,VJ780: sai giờ (13:00 ngoài khung 00:00-12:00)
+react,timeout,16,0.15,False,handoff,True,-,4,3,3696,0.00062145,18.61,0,0,agent hỏi người dùng
+react,timeout,17,0.15,False,handoff,True,-,4,3,3696,0.00062145,22.82,0,0,agent hỏi người dùng
+react,timeout,18,0.15,False,handoff,True,-,4,3,3696,0.00062145,18.66,0,0,agent hỏi người dùng
+react,timeout,19,0.15,False,handoff,True,-,4,3,3696,0.00062145,20.31,0,0,agent hỏi người dùng
+react,timeout,20,0.15,False,handoff,True,-,4,3,3696,0.00062145,19.86,0,0,agent hỏi người dùng
+react,timeout,21,0.15,False,handoff,True,-,4,3,3696,0.00062145,20.79,0,0,agent hỏi người dùng
+react,timeout,22,0.15,False,violation,False,-,7,6,6978,0.00116865,31.66,0,2,VJ780: sai giờ (13:00 ngoài khung 00:00-12:00)
+react,timeout,23,0.15,False,handoff,True,-,4,3,3696,0.00062145,23.71,0,1,agent hỏi người dùng
+react,timeout,24,0.15,False,handoff,True,-,4,3,3696,0.00062145,22.87,0,0,agent hỏi người dùng
+react,timeout,25,0.15,False,handoff,True,-,4,3,3696,0.00062145,23.56,0,0,agent hỏi người dùng
+react,timeout,26,0.15,False,violation,False,-,9,8,9351,0.001557,42.13,0,2,VJ780: sai giờ (13:00 ngoài khung 00:00-12:00)
+react,timeout,27,0.15,False,violation,False,-,8,7,8145,0.0013572,41.13,0,1,VJ780: sai giờ (13:00 ngoài khung 00:00-12:00)
+react,timeout,28,0.15,False,violation,False,-,7,6,6925,0.0011629499999999998,36.74,0,2,VJ780: sai giờ (13:00 ngoài khung 00:00-12:00)
+react,timeout,29,0.15,False,handoff,True,-,4,3,3696,0.00062145,24.03,0,0,agent hỏi người dùng
+react,timeout,30,0.15,False,violation,False,-,7,6,6979,0.0011661,31.97,0,1,VJ780: sai giờ (13:00 ngoài khung 00:00-12:00)
+pe,timeout,0,0.0,False,silent_stop,False,-,3,2,1894,0.0003894,14.77,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""error"", ""error"": ""timeout"", ""flight_no"": ""VN1340"", ""hint"": ""Dịch "
+pe,timeout,1,0.15,False,booked,True,-,3,3,1820,0.00034635,14.35,0,1,VN1340
+pe,timeout,2,0.15,False,silent_stop,False,-,4,4,2517,0.00048510000000000003,16.9,0,2,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""not_found"", ""flight_no"": ""VN999"", ""hint"": ""Gọi search_flights để "
+pe,timeout,3,0.15,False,silent_stop,False,-,3,2,1894,0.0003894,12.0,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""error"", ""error"": ""timeout"", ""flight_no"": ""VN1340"", ""hint"": ""Dịch "
+pe,timeout,4,0.15,False,violation,False,-,5,5,3188,0.0005924999999999999,14.79,0,1,VJ780: sai giờ (13:00 ngoài khung 00:00-12:00)
+pe,timeout,5,0.15,False,silent_stop,False,-,3,2,1894,0.0003894,11.95,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""error"", ""error"": ""timeout"", ""flight_no"": ""VN1340"", ""hint"": ""Dịch "
+pe,timeout,6,0.15,False,silent_stop,False,-,3,2,1894,0.0003894,12.9,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""error"", ""error"": ""timeout"", ""flight_no"": ""VN1340"", ""hint"": ""Dịch "
+pe,timeout,7,0.15,False,silent_stop,False,-,3,2,1894,0.0003894,12.13,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""error"", ""error"": ""timeout"", ""flight_no"": ""VN1340"", ""hint"": ""Dịch "
+pe,timeout,8,0.15,False,violation,False,-,6,6,3897,0.0007024500000000001,15.87,0,1,VJ780: sai giờ (13:00 ngoài khung 00:00-12:00)
+pe,timeout,9,0.15,False,violation,False,-,6,6,3897,0.0007024500000000001,16.52,0,1,VJ780: sai giờ (13:00 ngoài khung 00:00-12:00)
+pe,timeout,10,0.15,False,silent_stop,False,-,3,2,1894,0.0003894,10.47,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""error"", ""error"": ""timeout"", ""flight_no"": ""VN1340"", ""hint"": ""Dịch "
+pe,timeout,11,0.15,False,silent_stop,False,-,3,2,1894,0.0003894,14.43,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""error"", ""error"": ""timeout"", ""flight_no"": ""VN1340"", ""hint"": ""Dịch "
+pe,timeout,12,0.15,False,silent_stop,False,-,3,2,1894,0.0003894,11.8,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""error"", ""error"": ""timeout"", ""flight_no"": ""VN1340"", ""hint"": ""Dịch "
+pe,timeout,13,0.15,False,silent_stop,False,-,3,2,1894,0.0003894,10.97,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""error"", ""error"": ""timeout"", ""flight_no"": ""VN1340"", ""hint"": ""Dịch "
+pe,timeout,14,0.15,False,booked,True,-,3,3,1820,0.00034635,14.3,0,1,VN1340
+pe,timeout,15,0.15,False,violation,False,-,5,5,3188,0.0005924999999999999,16.06,0,1,VJ780: sai giờ (13:00 ngoài khung 00:00-12:00)
+pe,timeout,16,0.15,False,silent_stop,False,-,3,2,1894,0.0003894,12.1,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""error"", ""error"": ""timeout"", ""flight_no"": ""VN1340"", ""hint"": ""Dịch "
+pe,timeout,17,0.15,False,silent_stop,False,-,3,2,1894,0.0003894,11.7,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""error"", ""error"": ""timeout"", ""flight_no"": ""VN1340"", ""hint"": ""Dịch "
+pe,timeout,18,0.15,False,silent_stop,False,-,3,2,1894,0.0003894,11.66,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""error"", ""error"": ""timeout"", ""flight_no"": ""VN1340"", ""hint"": ""Dịch "
+pe,timeout,19,0.15,False,silent_stop,False,-,3,2,1894,0.0003894,11.29,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""error"", ""error"": ""timeout"", ""flight_no"": ""VN1340"", ""hint"": ""Dịch "
+pe,timeout,20,0.15,False,silent_stop,False,-,3,2,1894,0.0003894,11.63,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""error"", ""error"": ""timeout"", ""flight_no"": ""VN1340"", ""hint"": ""Dịch "
+pe,timeout,21,0.15,False,silent_stop,False,-,3,2,1894,0.0003894,11.53,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""error"", ""error"": ""timeout"", ""flight_no"": ""VN1340"", ""hint"": ""Dịch "
+pe,timeout,22,0.15,False,silent_stop,False,-,3,3,1897,0.0003885,11.92,0,2,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""not_found"", ""flight_no"": ""VN999"", ""hint"": ""Gọi search_flights để "
+pe,timeout,23,0.15,False,silent_stop,False,-,3,2,1894,0.0003894,14.12,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""error"", ""error"": ""timeout"", ""flight_no"": ""VN1340"", ""hint"": ""Dịch "
+pe,timeout,24,0.15,False,silent_stop,False,-,3,2,1894,0.0003894,10.99,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""error"", ""error"": ""timeout"", ""flight_no"": ""VN1340"", ""hint"": ""Dịch "
+pe,timeout,25,0.15,False,silent_stop,False,-,3,2,1894,0.0003894,11.22,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""error"", ""error"": ""timeout"", ""flight_no"": ""VN1340"", ""hint"": ""Dịch "
+pe,timeout,26,0.15,False,silent_stop,False,-,3,2,1894,0.0003894,11.99,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""error"", ""error"": ""timeout"", ""flight_no"": ""VN1340"", ""hint"": ""Dịch "
+pe,timeout,27,0.15,False,silent_stop,False,-,3,2,1894,0.0003894,11.47,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""error"", ""error"": ""timeout"", ""flight_no"": ""VN1340"", ""hint"": ""Dịch "
+pe,timeout,28,0.15,False,silent_stop,False,-,2,2,1240,0.00025259999999999996,10.27,0,2,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""not_found"", ""flight_no"": ""VN999"", ""hint"": ""Gọi search_flights để "
+pe,timeout,29,0.15,False,silent_stop,False,-,3,2,1894,0.0003894,10.37,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""error"", ""error"": ""timeout"", ""flight_no"": ""VN1340"", ""hint"": ""Dịch "
+pe,timeout,30,0.15,False,violation,False,-,6,6,3897,0.0007024500000000001,15.9,0,1,VJ780: sai giờ (13:00 ngoài khung 00:00-12:00)
+hybrid,timeout,0,0.0,False,silent_stop,False,-,5,4,3678,0.0007312499999999999,17.38,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""error"", ""error"": ""timeout"", ""flight_no"": ""VN1340"", ""hint"": ""Dịch "
+hybrid,timeout,1,0.15,False,booked,True,-,3,3,1820,0.00034635,15.96,0,1,VN1340
+hybrid,timeout,2,0.15,False,silent_stop,False,-,6,6,4500,0.0008568,31.65,0,2,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""error"", ""error"": ""timeout"", ""flight_no"": ""VN1340"", ""hint"": ""Dịch "
+hybrid,timeout,3,0.15,False,silent_stop,False,-,6,5,4668,0.00094275,28.05,0,2,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""error"", ""error"": ""timeout"", ""flight_no"": ""VN1340"", ""hint"": ""Dịch "
+hybrid,timeout,4,0.15,False,violation,False,-,5,5,3188,0.0005924999999999999,16.43,0,1,VJ780: sai giờ (13:00 ngoài khung 00:00-12:00)
+hybrid,timeout,5,0.15,False,silent_stop,False,-,6,6,4762,0.0009572999999999999,20.51,0,1,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""error"", ""error"": ""timeout"", ""flight_no"": ""VN1340"", ""hint"": ""Dịch "
+hybrid,timeout,6,0.15,False,violation,False,-,6,6,4177,0.0008052000000000001,19.55,0,1,VJ780: sai giờ (13:00 ngoài khung 00:00-12:00)
+hybrid,timeout,7,0.15,False,silent_stop,False,-,6,5,4715,0.0009498,19.38,0,3,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""not_found"", ""flight_no"": ""VN999"", ""hint"": ""Gọi search_flights để "
+hybrid,timeout,8,0.15,False,violation,False,-,6,6,3897,0.0007024500000000001,17.19,0,1,VJ780: sai giờ (13:00 ngoài khung 00:00-12:00)
+hybrid,timeout,9,0.15,False,violation,False,-,6,6,3897,0.0007024500000000001,17.62,0,1,VJ780: sai giờ (13:00 ngoài khung 00:00-12:00)
+hybrid,timeout,10,0.15,False,silent_stop,False,-,5,4,3678,0.0007312499999999999,17.21,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""error"", ""error"": ""timeout"", ""flight_no"": ""VN1340"", ""hint"": ""Dịch "
+hybrid,timeout,11,0.15,False,silent_stop,False,-,5,4,3678,0.0007312499999999999,17.71,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""error"", ""error"": ""timeout"", ""flight_no"": ""VN1340"", ""hint"": ""Dịch "
+hybrid,timeout,12,0.15,False,violation,False,-,6,6,4177,0.0008052000000000001,19.62,0,2,VJ780: sai giờ (13:00 ngoài khung 00:00-12:00)
+hybrid,timeout,13,0.15,False,silent_stop,False,-,6,8,4879,0.0010275,21.22,0,2,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""error"", ""error"": ""timeout"", ""flight_no"": ""VN1340"", ""hint"": ""Dịch "
+hybrid,timeout,14,0.15,False,booked,True,-,3,3,1820,0.00034635,14.84,0,1,VN1340
+hybrid,timeout,15,0.15,False,violation,False,-,5,5,3188,0.0005924999999999999,18.45,0,1,VJ780: sai giờ (13:00 ngoài khung 00:00-12:00)
+hybrid,timeout,16,0.15,False,silent_stop,False,-,5,4,3678,0.0007312499999999999,17.93,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""error"", ""error"": ""timeout"", ""flight_no"": ""VN1340"", ""hint"": ""Dịch "
+hybrid,timeout,17,0.15,False,silent_stop,False,-,5,4,3678,0.0007312499999999999,18.27,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""error"", ""error"": ""timeout"", ""flight_no"": ""VN1340"", ""hint"": ""Dịch "
+hybrid,timeout,18,0.15,False,silent_stop,False,-,5,4,3678,0.0007312499999999999,19.82,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""error"", ""error"": ""timeout"", ""flight_no"": ""VN1340"", ""hint"": ""Dịch "
+hybrid,timeout,19,0.15,False,silent_stop,False,-,5,4,3678,0.0007312499999999999,20.54,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""error"", ""error"": ""timeout"", ""flight_no"": ""VN1340"", ""hint"": ""Dịch "
+hybrid,timeout,20,0.15,False,silent_stop,False,-,5,4,3678,0.0007312499999999999,18.0,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""error"", ""error"": ""timeout"", ""flight_no"": ""VN1340"", ""hint"": ""Dịch "
+hybrid,timeout,21,0.15,False,silent_stop,False,-,5,4,3678,0.0007312499999999999,19.9,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""error"", ""error"": ""timeout"", ""flight_no"": ""VN1340"", ""hint"": ""Dịch "
+hybrid,timeout,22,0.15,False,silent_stop,False,-,5,5,3792,0.000747,19.35,0,3,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""error"", ""error"": ""timeout"", ""flight_no"": ""VN1340"", ""hint"": ""Dịch "
+hybrid,timeout,23,0.15,False,silent_stop,False,-,5,4,3678,0.0007312499999999999,17.61,0,1,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""error"", ""error"": ""timeout"", ""flight_no"": ""VN1340"", ""hint"": ""Dịch "
+hybrid,timeout,24,0.15,False,silent_stop,False,-,6,6,4762,0.0009572999999999999,21.23,0,1,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""error"", ""error"": ""timeout"", ""flight_no"": ""VN1340"", ""hint"": ""Dịch "
+hybrid,timeout,25,0.15,False,silent_stop,False,-,6,6,4762,0.0009572999999999999,22.71,0,1,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""error"", ""error"": ""timeout"", ""flight_no"": ""VN1340"", ""hint"": ""Dịch "
+hybrid,timeout,26,0.15,False,violation,False,-,6,6,4177,0.0008052000000000001,19.8,0,1,VJ780: sai giờ (13:00 ngoài khung 00:00-12:00)
+hybrid,timeout,27,0.15,False,violation,False,-,6,6,4177,0.0008052000000000001,21.01,0,1,VJ780: sai giờ (13:00 ngoài khung 00:00-12:00)
+hybrid,timeout,28,0.15,False,silent_stop,False,-,4,4,3033,0.0005958000000000001,16.68,0,3,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""error"", ""error"": ""timeout"", ""flight_no"": ""VN1340"", ""hint"": ""Dịch "
+hybrid,timeout,29,0.15,False,silent_stop,False,-,5,4,3678,0.0007312499999999999,18.68,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""error"", ""error"": ""timeout"", ""flight_no"": ""VN1340"", ""hint"": ""Dịch "
+hybrid,timeout,30,0.15,False,violation,False,-,6,6,3897,0.0007024500000000001,18.97,0,1,VJ780: sai giờ (13:00 ngoài khung 00:00-12:00)
+react,can-duyet,0,0.0,False,violation,False,-,7,6,7296,0.00121365,31.14,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+react,can-duyet,1,0.15,False,violation,False,-,8,7,8411,0.00140205,34.44,0,1,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+react,can-duyet,2,0.15,False,violation,False,-,8,7,8512,0.00141495,37.36,0,2,VJ121: sai giờ (13:30 ngoài khung 00:00-12:00)
+react,can-duyet,3,0.15,False,false_claim,False,-,5,4,4941,0.00081765,25.29,0,1,tuyên bố đã đặt nhưng backend chưa confirmed/paid đủ chặng
+react,can-duyet,4,0.15,False,violation,False,-,6,5,6091,0.00101715,25.82,0,1,VJ121: sai giờ (13:30 ngoài khung 00:00-12:00)
+react,can-duyet,5,0.15,False,violation,False,-,7,6,7296,0.00121365,34.87,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+react,can-duyet,6,0.15,False,violation,False,-,8,7,8514,0.00141525,35.99,0,1,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+react,can-duyet,7,0.15,False,violation,False,-,8,7,8547,0.0014170500000000002,33.8,0,1,VJ121: sai giờ (13:30 ngoài khung 00:00-12:00)
+react,can-duyet,8,0.15,False,false_claim,False,-,5,4,4939,0.0008173499999999999,22.69,0,2,tuyên bố đã đặt nhưng backend chưa confirmed/paid đủ chặng
+react,can-duyet,9,0.15,False,false_claim,False,-,5,4,4939,0.0008173499999999999,23.54,0,2,tuyên bố đã đặt nhưng backend chưa confirmed/paid đủ chặng
+react,can-duyet,10,0.15,False,violation,False,-,7,6,7296,0.00121365,32.64,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+react,can-duyet,11,0.15,False,violation,False,-,7,6,7296,0.00121365,32.95,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+react,can-duyet,12,0.15,False,violation,False,-,9,8,9813,0.00162585,35.72,0,2,VJ121: sai giờ (13:30 ngoài khung 00:00-12:00)
+react,can-duyet,13,0.15,False,violation,False,-,7,6,7296,0.00121365,27.58,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+react,can-duyet,14,0.15,False,violation,False,-,8,7,8411,0.00140205,28.06,0,1,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+react,can-duyet,15,0.15,False,violation,False,-,6,5,6091,0.00101715,26.79,0,1,VJ121: sai giờ (13:30 ngoài khung 00:00-12:00)
+react,can-duyet,16,0.15,False,violation,False,-,7,6,7296,0.00121365,27.97,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+react,can-duyet,17,0.15,False,violation,False,-,7,6,7296,0.00121365,27.15,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+react,can-duyet,18,0.15,False,violation,False,-,7,6,7296,0.00121365,27.38,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+react,can-duyet,19,0.15,False,violation,False,-,7,6,7296,0.00121365,35.92,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+react,can-duyet,20,0.15,False,violation,False,-,7,6,7296,0.00121365,38.9,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+react,can-duyet,21,0.15,False,violation,False,-,7,6,7296,0.00121365,29.02,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+react,can-duyet,22,0.15,False,violation,False,-,7,6,7261,0.00121155,28.24,0,2,VJ121: sai giờ (13:30 ngoài khung 00:00-12:00)
+react,can-duyet,23,0.15,False,violation,False,-,8,7,8547,0.0014170500000000002,44.64,0,1,VJ121: sai giờ (13:30 ngoài khung 00:00-12:00)
+react,can-duyet,24,0.15,False,violation,False,-,7,6,7296,0.00121365,34.9,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+react,can-duyet,25,0.15,False,violation,False,-,7,6,7296,0.00121365,39.75,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+react,can-duyet,26,0.15,False,false_claim,False,-,6,5,6083,0.00100785,38.41,0,2,tuyên bố đã đặt nhưng backend chưa confirmed/paid đủ chặng
+react,can-duyet,27,0.15,False,violation,False,-,8,7,8514,0.00141525,44.3,0,1,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+react,can-duyet,28,0.15,False,violation,False,-,7,6,7164,0.00119925,47.73,0,2,VJ121: sai giờ (13:30 ngoài khung 00:00-12:00)
+react,can-duyet,29,0.15,False,violation,False,-,7,6,7296,0.00121365,31.47,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+react,can-duyet,30,0.15,False,violation,False,-,7,6,7294,0.00121335,31.13,0,1,VJ121: sai giờ (13:30 ngoài khung 00:00-12:00)
+pe,can-duyet,0,0.0,False,violation,False,-,6,6,4112,0.0007347,25.72,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+pe,can-duyet,1,0.15,False,silent_stop,False,-,2,2,1279,0.00025845,11.4,0,1,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""sold_out"", ""flight_no"": ""QH201"", ""seats_left"": 0, ""hint"": ""Chuyến"
+pe,can-duyet,2,0.15,False,silent_stop,False,-,4,4,2643,0.000504,12.85,0,2,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""not_found"", ""flight_no"": ""VN999"", ""hint"": ""Gọi search_flights để "
+pe,can-duyet,3,0.15,False,violation,False,-,6,6,4112,0.0007347,18.24,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+pe,can-duyet,4,0.15,False,violation,False,-,5,5,3340,0.0006153,14.36,0,1,VJ121: sai giờ (13:30 ngoài khung 00:00-12:00)
+pe,can-duyet,5,0.15,False,violation,False,-,6,6,4112,0.0007347,14.97,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+pe,can-duyet,6,0.15,False,violation,False,-,6,6,4112,0.0007347,14.87,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+pe,can-duyet,7,0.15,False,silent_stop,False,-,4,4,2643,0.000504,12.18,0,1,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""not_found"", ""flight_no"": ""VN999"", ""hint"": ""Gọi search_flights để "
+pe,can-duyet,8,0.15,False,violation,False,-,6,6,4112,0.0007347,14.63,0,1,VJ121: sai giờ (13:30 ngoài khung 00:00-12:00)
+pe,can-duyet,9,0.15,False,violation,False,-,6,6,4112,0.0007347,14.57,0,1,VJ121: sai giờ (13:30 ngoài khung 00:00-12:00)
+pe,can-duyet,10,0.15,False,violation,False,-,6,6,4112,0.0007347,14.9,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+pe,can-duyet,11,0.15,False,violation,False,-,6,6,4112,0.0007347,14.17,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+pe,can-duyet,12,0.15,False,silent_stop,False,-,4,4,2643,0.000504,11.47,0,1,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""not_found"", ""flight_no"": ""VN999"", ""hint"": ""Gọi search_flights để "
+pe,can-duyet,13,0.15,False,violation,False,-,6,6,4112,0.0007347,14.94,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+pe,can-duyet,14,0.15,False,silent_stop,False,-,2,2,1279,0.00025845,9.95,0,1,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""sold_out"", ""flight_no"": ""QH201"", ""seats_left"": 0, ""hint"": ""Chuyến"
+pe,can-duyet,15,0.15,False,violation,False,-,5,5,3340,0.0006153,14.12,0,1,VJ121: sai giờ (13:30 ngoài khung 00:00-12:00)
+pe,can-duyet,16,0.15,False,violation,False,-,6,6,4112,0.0007347,15.09,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+pe,can-duyet,17,0.15,False,violation,False,-,6,6,4112,0.0007347,16.33,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+pe,can-duyet,18,0.15,False,violation,False,-,6,6,4112,0.0007347,14.79,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+pe,can-duyet,19,0.15,False,violation,False,-,6,6,4112,0.0007347,14.52,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+pe,can-duyet,20,0.15,False,violation,False,-,6,6,4112,0.0007347,14.87,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+pe,can-duyet,21,0.15,False,violation,False,-,6,6,4112,0.0007347,14.45,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+pe,can-duyet,22,0.15,False,silent_stop,False,-,3,3,1973,0.0003999,10.58,0,2,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""not_found"", ""flight_no"": ""VN999"", ""hint"": ""Gọi search_flights để "
+pe,can-duyet,23,0.15,False,silent_stop,False,-,4,4,2643,0.000504,12.27,0,1,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""not_found"", ""flight_no"": ""VN999"", ""hint"": ""Gọi search_flights để "
+pe,can-duyet,24,0.15,False,violation,False,-,6,6,4112,0.0007347,14.84,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+pe,can-duyet,25,0.15,False,violation,False,-,6,6,4112,0.0007347,14.62,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+pe,can-duyet,26,0.15,False,violation,False,-,6,6,4112,0.0007347,14.38,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+pe,can-duyet,27,0.15,False,violation,False,-,6,6,4112,0.0007347,16.46,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+pe,can-duyet,28,0.15,False,silent_stop,False,-,2,2,1279,0.00025845,9.52,0,2,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""not_found"", ""flight_no"": ""VN999"", ""hint"": ""Gọi search_flights để "
+pe,can-duyet,29,0.15,False,violation,False,-,6,6,4112,0.0007347,14.64,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+pe,can-duyet,30,0.15,False,violation,False,-,6,6,4112,0.0007347,14.86,0,1,VJ121: sai giờ (13:30 ngoài khung 00:00-12:00)
+hybrid,can-duyet,0,0.0,False,violation,False,-,6,6,4112,0.0007347,17.47,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+hybrid,can-duyet,1,0.15,False,violation,False,-,5,6,3712,0.00069675,17.15,0,1,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+hybrid,can-duyet,2,0.15,False,violation,False,-,7,8,5359,0.00098475,20.99,0,2,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+hybrid,can-duyet,3,0.15,False,violation,False,-,6,6,4112,0.0007347,17.51,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+hybrid,can-duyet,4,0.15,False,violation,False,-,5,5,3340,0.0006153,15.74,0,1,VJ121: sai giờ (13:30 ngoài khung 00:00-12:00)
+hybrid,can-duyet,5,0.15,False,violation,False,-,6,6,4112,0.0007347,15.97,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+hybrid,can-duyet,6,0.15,False,violation,False,-,6,6,4112,0.0007347,16.86,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+hybrid,can-duyet,7,0.15,False,violation,False,-,7,7,5231,0.0009538499999999999,18.51,0,2,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+hybrid,can-duyet,8,0.15,False,violation,False,-,6,6,4112,0.0007347,15.71,0,1,VJ121: sai giờ (13:30 ngoài khung 00:00-12:00)
+hybrid,can-duyet,9,0.15,False,violation,False,-,6,6,4112,0.0007347,16.69,0,1,VJ121: sai giờ (13:30 ngoài khung 00:00-12:00)
+hybrid,can-duyet,10,0.15,False,violation,False,-,6,6,4112,0.0007347,16.89,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+hybrid,can-duyet,11,0.15,False,violation,False,-,6,6,4112,0.0007347,16.99,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+hybrid,can-duyet,12,0.15,False,violation,False,-,7,7,5231,0.0009538499999999999,20.35,0,2,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+hybrid,can-duyet,13,0.15,False,violation,False,-,6,6,4112,0.0007347,16.52,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+hybrid,can-duyet,14,0.15,False,violation,False,-,5,6,3712,0.00069675,16.91,0,1,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+hybrid,can-duyet,15,0.15,False,violation,False,-,5,5,3340,0.0006153,15.97,0,1,VJ121: sai giờ (13:30 ngoài khung 00:00-12:00)
+hybrid,can-duyet,16,0.15,False,violation,False,-,6,6,4112,0.0007347,16.71,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+hybrid,can-duyet,17,0.15,False,violation,False,-,6,6,4112,0.0007347,17.07,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+hybrid,can-duyet,18,0.15,False,violation,False,-,6,6,4112,0.0007347,17.16,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+hybrid,can-duyet,19,0.15,False,violation,False,-,6,6,4112,0.0007347,16.27,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+hybrid,can-duyet,20,0.15,False,violation,False,-,6,6,4112,0.0007347,16.42,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+hybrid,can-duyet,21,0.15,False,violation,False,-,6,6,4112,0.0007347,16.77,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+hybrid,can-duyet,22,0.15,False,violation,False,-,7,8,5687,0.0010933499999999999,21.66,0,3,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+hybrid,can-duyet,23,0.15,False,violation,False,-,7,7,5231,0.0009538499999999999,18.78,0,1,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+hybrid,can-duyet,24,0.15,False,violation,False,-,6,6,4112,0.0007347,17.24,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+hybrid,can-duyet,25,0.15,False,violation,False,-,6,6,4112,0.0007347,16.32,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+hybrid,can-duyet,26,0.15,False,violation,False,-,6,6,4112,0.0007347,17.03,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+hybrid,can-duyet,27,0.15,False,violation,False,-,6,6,4112,0.0007347,31.82,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+hybrid,can-duyet,28,0.15,False,violation,False,-,6,7,4789,0.0009212999999999999,35.94,0,3,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+hybrid,can-duyet,29,0.15,False,violation,False,-,6,6,4112,0.0007347,29.43,0,0,VN210: trừ tiền vé cần duyệt mà không có người duyệt
+hybrid,can-duyet,30,0.15,False,violation,False,-,6,6,4112,0.0007347,33.95,0,1,VJ121: sai giờ (13:30 ngoài khung 00:00-12:00)
+react,khong-co-ngay,0,0.0,False,handoff,True,-,2,1,1673,0.00028649999999999997,22.18,0,0,agent hỏi người dùng
+react,khong-co-ngay,1,0.15,False,handoff,True,-,3,2,2579,0.00044354999999999997,23.37,0,1,agent hỏi người dùng
+react,khong-co-ngay,2,0.15,False,handoff,True,-,2,1,1673,0.00028649999999999997,15.93,0,0,agent hỏi người dùng
+react,khong-co-ngay,3,0.15,False,handoff,True,-,2,1,1673,0.00028649999999999997,15.0,0,0,agent hỏi người dùng
+react,khong-co-ngay,4,0.15,False,handoff,True,-,3,2,2583,0.00044415,18.29,0,1,agent hỏi người dùng
+react,khong-co-ngay,5,0.15,False,handoff,True,-,2,1,1673,0.00028649999999999997,14.43,0,0,agent hỏi người dùng
+react,khong-co-ngay,6,0.15,False,handoff,True,-,2,1,1673,0.00028649999999999997,14.07,0,0,agent hỏi người dùng
+react,khong-co-ngay,7,0.15,False,handoff,True,-,2,1,1673,0.00028649999999999997,14.85,0,0,agent hỏi người dùng
+react,khong-co-ngay,8,0.15,False,handoff,True,-,2,1,1673,0.00028649999999999997,14.35,0,0,agent hỏi người dùng
+react,khong-co-ngay,9,0.15,False,handoff,True,-,2,1,1673,0.00028649999999999997,14.92,0,0,agent hỏi người dùng
+react,khong-co-ngay,10,0.15,False,handoff,True,-,2,1,1673,0.00028649999999999997,14.76,0,0,agent hỏi người dùng
+react,khong-co-ngay,11,0.15,False,handoff,True,-,2,1,1673,0.00028649999999999997,14.55,0,0,agent hỏi người dùng
+react,khong-co-ngay,12,0.15,False,handoff,True,-,2,1,1673,0.00028649999999999997,15.16,0,0,agent hỏi người dùng
+react,khong-co-ngay,13,0.15,False,handoff,True,-,2,1,1673,0.00028649999999999997,15.89,0,0,agent hỏi người dùng
+react,khong-co-ngay,14,0.15,False,handoff,True,-,3,2,2579,0.00044354999999999997,16.83,0,1,agent hỏi người dùng
+react,khong-co-ngay,15,0.15,False,handoff,True,-,3,2,2583,0.00044415,16.87,0,1,agent hỏi người dùng
+react,khong-co-ngay,16,0.15,False,handoff,True,-,2,1,1673,0.00028649999999999997,14.61,0,0,agent hỏi người dùng
+react,khong-co-ngay,17,0.15,False,handoff,True,-,2,1,1673,0.00028649999999999997,14.99,0,0,agent hỏi người dùng
+react,khong-co-ngay,18,0.15,False,handoff,True,-,2,1,1673,0.00028649999999999997,13.07,0,0,agent hỏi người dùng
+react,khong-co-ngay,19,0.15,False,handoff,True,-,2,1,1673,0.00028649999999999997,14.44,0,0,agent hỏi người dùng
+react,khong-co-ngay,20,0.15,False,handoff,True,-,2,1,1673,0.00028649999999999997,14.57,0,0,agent hỏi người dùng
+react,khong-co-ngay,21,0.15,False,handoff,True,-,2,1,1673,0.00028649999999999997,14.61,0,0,agent hỏi người dùng
+react,khong-co-ngay,22,0.15,False,handoff,True,-,4,3,3538,0.00060855,20.9,0,2,agent hỏi người dùng
+react,khong-co-ngay,23,0.15,False,handoff,True,-,2,1,1673,0.00028649999999999997,16.26,0,0,agent hỏi người dùng
+react,khong-co-ngay,24,0.15,False,handoff,True,-,2,1,1673,0.00028649999999999997,14.83,0,0,agent hỏi người dùng
+react,khong-co-ngay,25,0.15,False,handoff,True,-,2,1,1673,0.00028649999999999997,17.92,0,0,agent hỏi người dùng
+react,khong-co-ngay,26,0.15,False,handoff,True,-,2,1,1673,0.00028649999999999997,14.76,0,0,agent hỏi người dùng
+react,khong-co-ngay,27,0.15,False,handoff,True,-,2,1,1673,0.00028649999999999997,15.24,0,0,agent hỏi người dùng
+react,khong-co-ngay,28,0.15,False,handoff,True,-,4,3,3531,0.0006075,20.35,0,2,agent hỏi người dùng
+react,khong-co-ngay,29,0.15,False,handoff,True,-,2,1,1673,0.00028649999999999997,14.52,0,0,agent hỏi người dùng
+react,khong-co-ngay,30,0.15,False,handoff,True,-,2,1,1673,0.00028649999999999997,15.3,0,0,agent hỏi người dùng
+pe,khong-co-ngay,0,0.0,False,silent_stop,False,-,1,1,781,0.00021075,9.04,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+pe,khong-co-ngay,1,0.15,False,silent_stop,False,-,1,1,706,0.00016575,9.39,0,1,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+pe,khong-co-ngay,2,0.15,False,silent_stop,False,-,1,1,781,0.00021075,10.2,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+pe,khong-co-ngay,3,0.15,False,silent_stop,False,-,1,1,781,0.00021075,11.38,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+pe,khong-co-ngay,4,0.15,False,silent_stop,False,-,1,1,781,0.00021075,9.83,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+pe,khong-co-ngay,5,0.15,False,silent_stop,False,-,1,1,781,0.00021075,10.02,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+pe,khong-co-ngay,6,0.15,False,silent_stop,False,-,1,1,781,0.00021075,9.04,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+pe,khong-co-ngay,7,0.15,False,silent_stop,False,-,1,1,781,0.00021075,10.23,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+pe,khong-co-ngay,8,0.15,False,silent_stop,False,-,1,1,781,0.00021075,9.65,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+pe,khong-co-ngay,9,0.15,False,silent_stop,False,-,1,1,781,0.00021075,9.37,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+pe,khong-co-ngay,10,0.15,False,silent_stop,False,-,1,1,781,0.00021075,14.86,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+pe,khong-co-ngay,11,0.15,False,silent_stop,False,-,1,1,781,0.00021075,15.97,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+pe,khong-co-ngay,12,0.15,False,silent_stop,False,-,1,1,781,0.00021075,13.15,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+pe,khong-co-ngay,13,0.15,False,silent_stop,False,-,1,1,781,0.00021075,10.74,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+pe,khong-co-ngay,14,0.15,False,silent_stop,False,-,1,1,706,0.00016575,9.59,0,1,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+pe,khong-co-ngay,15,0.15,False,silent_stop,False,-,1,1,781,0.00021075,12.11,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+pe,khong-co-ngay,16,0.15,False,silent_stop,False,-,1,1,781,0.00021075,13.67,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+pe,khong-co-ngay,17,0.15,False,silent_stop,False,-,1,1,781,0.00021075,14.84,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+pe,khong-co-ngay,18,0.15,False,silent_stop,False,-,1,1,781,0.00021075,11.46,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+pe,khong-co-ngay,19,0.15,False,silent_stop,False,-,1,1,781,0.00021075,8.98,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+pe,khong-co-ngay,20,0.15,False,silent_stop,False,-,1,1,781,0.00021075,8.77,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+pe,khong-co-ngay,21,0.15,False,silent_stop,False,-,1,1,781,0.00021075,8.14,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+pe,khong-co-ngay,22,0.15,False,silent_stop,False,-,1,1,781,0.00021075,8.1,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+pe,khong-co-ngay,23,0.15,False,silent_stop,False,-,1,1,781,0.00021075,9.65,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+pe,khong-co-ngay,24,0.15,False,silent_stop,False,-,1,1,781,0.00021075,9.08,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+pe,khong-co-ngay,25,0.15,False,silent_stop,False,-,1,1,781,0.00021075,8.19,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+pe,khong-co-ngay,26,0.15,False,silent_stop,False,-,1,1,781,0.00021075,8.61,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+pe,khong-co-ngay,27,0.15,False,silent_stop,False,-,1,1,781,0.00021075,8.14,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+pe,khong-co-ngay,28,0.15,False,silent_stop,False,-,1,1,706,0.00016575,7.97,0,1,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+pe,khong-co-ngay,29,0.15,False,silent_stop,False,-,1,1,781,0.00021075,10.07,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+pe,khong-co-ngay,30,0.15,False,silent_stop,False,-,1,1,781,0.00021075,9.75,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+hybrid,khong-co-ngay,0,0.0,False,silent_stop,False,-,2,1,1483,0.00033,13.85,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+hybrid,khong-co-ngay,1,0.15,False,silent_stop,False,-,2,1,1408,0.000285,13.08,0,1,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+hybrid,khong-co-ngay,2,0.15,False,silent_stop,False,-,2,1,1483,0.00033,12.64,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+hybrid,khong-co-ngay,3,0.15,False,silent_stop,False,-,2,1,1483,0.00033,17.66,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+hybrid,khong-co-ngay,4,0.15,False,silent_stop,False,-,3,2,2260,0.0004686,19.37,0,1,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+hybrid,khong-co-ngay,5,0.15,False,silent_stop,False,-,2,1,1483,0.00033,19.31,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+hybrid,khong-co-ngay,6,0.15,False,silent_stop,False,-,2,1,1483,0.00033,16.6,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+hybrid,khong-co-ngay,7,0.15,False,silent_stop,False,-,2,1,1483,0.00033,18.48,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+hybrid,khong-co-ngay,8,0.15,False,silent_stop,False,-,2,1,1483,0.00033,18.92,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+hybrid,khong-co-ngay,9,0.15,False,silent_stop,False,-,2,1,1483,0.00033,20.34,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+hybrid,khong-co-ngay,10,0.15,False,silent_stop,False,-,2,1,1483,0.00033,20.12,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+hybrid,khong-co-ngay,11,0.15,False,silent_stop,False,-,2,1,1483,0.00033,16.87,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+hybrid,khong-co-ngay,12,0.15,False,silent_stop,False,-,2,1,1483,0.00033,12.56,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+hybrid,khong-co-ngay,13,0.15,False,silent_stop,False,-,2,1,1483,0.00033,12.24,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+hybrid,khong-co-ngay,14,0.15,False,silent_stop,False,-,2,1,1408,0.000285,12.83,0,1,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+hybrid,khong-co-ngay,15,0.15,False,silent_stop,False,-,3,2,2260,0.0004686,14.94,0,1,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+hybrid,khong-co-ngay,16,0.15,False,silent_stop,False,-,2,1,1483,0.00033,12.46,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+hybrid,khong-co-ngay,17,0.15,False,silent_stop,False,-,2,1,1483,0.00033,12.27,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+hybrid,khong-co-ngay,18,0.15,False,silent_stop,False,-,2,1,1483,0.00033,12.0,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+hybrid,khong-co-ngay,19,0.15,False,silent_stop,False,-,2,1,1483,0.00033,12.36,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+hybrid,khong-co-ngay,20,0.15,False,silent_stop,False,-,2,1,1483,0.00033,12.59,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+hybrid,khong-co-ngay,21,0.15,False,silent_stop,False,-,2,1,1483,0.00033,23.32,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+hybrid,khong-co-ngay,22,0.15,False,silent_stop,False,-,4,3,3094,0.00061575,28.54,0,2,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+hybrid,khong-co-ngay,23,0.15,False,silent_stop,False,-,2,1,1483,0.00033,20.45,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+hybrid,khong-co-ngay,24,0.15,False,silent_stop,False,-,2,1,1483,0.00033,21.22,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+hybrid,khong-co-ngay,25,0.15,False,silent_stop,False,-,2,1,1483,0.00033,16.42,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+hybrid,khong-co-ngay,26,0.15,False,silent_stop,False,-,2,1,1483,0.00033,13.15,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+hybrid,khong-co-ngay,27,0.15,False,silent_stop,False,-,2,1,1483,0.00033,12.41,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+hybrid,khong-co-ngay,28,0.15,False,silent_stop,False,-,3,2,2185,0.0004236,14.74,0,2,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+hybrid,khong-co-ngay,29,0.15,False,silent_stop,False,-,2,1,1483,0.00033,14.75,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"
+hybrid,khong-co-ngay,30,0.15,False,silent_stop,False,-,2,1,1483,0.00033,14.47,0,0,"Không hoàn thành được kế hoạch. Bước cuối: {""status"": ""ok"", ""count"": 0, ""flights"": [], ""note"": ""Không có chuyến nào đúng"

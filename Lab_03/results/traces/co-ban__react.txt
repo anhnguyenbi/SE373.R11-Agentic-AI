@@ -1,0 +1,19 @@
+# ReAct · co-ban · noise=0
+USER: Đặt giúp tôi vé SGN → DAD sáng 07/10/2026, cất cánh trước 12:00, dưới 2 triệu, chọn chuyến rẻ nhất.
+
+      [model:react] in=781 out=47
+V1   search_flights('SGN', 'DAD', '2026-10-07')      → ok · 5 chuyến
+      [model:react] in=1027 out=35
+V2   check_seat('BL342')                             → ok · 0 ghế · 1.320.000đ
+      [model:react] in=1074 out=35
+V3   check_seat('VN122')                             → ok · 3 ghế · 1.450.000đ
+      [model:react] in=1122 out=42
+V4   book_seat('VN122', 'NGUYEN VAN A')              → ok · 0D4D · held · 1.450.000đ
+      [model:react] in=1159 out=38
+V5   pay('0D4D', 'corp_card')                        → ok · paid
+      [HARNESS DỪNG] Đạt mục tiêu · is_done() = True (get_booking confirmed · paid · đúng ràng buộc)
+      [model:react] in=1214 out=32
+      [answer_check] {"ok": true}
+
+ANSWER:
+Đặt vé thành công (harness đã kiểm chứng trạng thái booking) - chặng 1: VN122 SGN→DAD 2026-10-07 08:10, mã 0D4D, giá 1.450.000đ

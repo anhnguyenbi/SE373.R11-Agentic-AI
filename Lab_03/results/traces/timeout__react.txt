@@ -1,0 +1,15 @@
+# ReAct · timeout · noise=0
+USER: Đặt vé SGN → CXR ngày 15/10/2026, trước 12:00, dưới 2 triệu.
+
+      [model:react] in=772 out=47
+V1   search_flights('SGN', 'CXR', '2026-10-15')      → ok · 2 chuyến
+      [model:react] in=884 out=36
+V2   check_seat('VN1340')                            → error {"error": "timeout", "flight_no": "VN1340", "hint": "Dịch vụ kiểm tra ghế lỗi, thử lại sau."}
+      [model:react] in=925 out=36
+V3   check_seat('VN1340')                            → error {"error": "timeout", "flight_no": "VN1340", "hint": "Dịch vụ kiểm tra ghế lỗi, thử lại sau."}
+      [model:react] in=966 out=30
+      [answer_check] {"ok": true}
+      [HARNESS DỪNG] Cần con người · agent dừng và hỏi người dùng
+
+ANSWER:
+Dịch vụ check_seat bị timeout liên tục cho chặng SGN→CXR. Mình chưa đặt vé; bạn muốn thử lại sau hay chọn phương án khác?

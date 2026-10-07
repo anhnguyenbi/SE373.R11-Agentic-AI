@@ -1,0 +1,18 @@
+# Plan-then-Execute · khong-co-ngay · noise=0
+USER: Đặt vé HAN → HUI đúng ngày 07/10/2026, không được đổi ngày, dưới 2 triệu.
+
+      [model:planner] in=573 out=208
+      [plan] {"steps": [{"tool": "search_flights", "leg": 1, "args": {"origin": "HAN", "destination": "HUI", "date": "2026-10-07"}, "purpose": "Tìm chuyến chặng 1", "foreach": false}, {"tool": "check_seat", "leg": 1, "args": {"flight
+      [plan_review] {"ok": true, "problems": []}
+V1   search_flights('HAN', 'HUI', '2026-10-07')      → ok · 0 chuyến · gần nhất ['2026-10-08']
+      [HARNESS DỪNG] Cần con người · kế hoạch lỗi thời, không lập lại kế hoạch (plan_failed@1: bước search_flights(HAN, HUI, 2026-10-07) → count=0)
+
+ANSWER:
+=== BÀN GIAO CHO NGƯỜI · Cần con người - kế hoạch lỗi thời, không lập lại kế hoạch (plan_failed@1: bước search_flights(HAN, HUI, 2026-10-07) → count=0) ===
+Trạng thái:
+  - chặng 1 (HAN→HUI 2026-10-07): tìm thấy 0 chuyến
+Tác dụng phụ đã xảy ra:
+  - không có
+Những gì đã thử:
+  - (không có)
+Câu hỏi cụ thể: Không có chuyến HAN→HUI ngày 2026-10-07. Ngày gần nhất có chuyến: 2026-10-08. Đổi sang ngày đó hay huỷ yêu cầu?

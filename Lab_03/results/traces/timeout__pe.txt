@@ -1,0 +1,21 @@
+# Plan-then-Execute · timeout · noise=0
+USER: Đặt vé SGN → CXR ngày 15/10/2026, trước 12:00, dưới 2 triệu.
+
+      [model:planner] in=569 out=208
+      [plan] {"steps": [{"tool": "search_flights", "leg": 1, "args": {"origin": "SGN", "destination": "CXR", "date": "2026-10-15"}, "purpose": "Tìm chuyến chặng 1", "foreach": false}, {"tool": "check_seat", "leg": 1, "args": {"flight
+      [plan_review] {"ok": true, "problems": []}
+V1   search_flights('SGN', 'CXR', '2026-10-15')      → ok · 2 chuyến
+      [model:executor] in=523 out=8
+V2   check_seat('VN1340')                            → error {"error": "timeout", "flight_no": "VN1340", "hint": "Dịch vụ kiểm tra ghế lỗi, thử lại sau."}
+      [model:executor] in=568 out=18
+      [HARNESS DỪNG] Cần con người · kế hoạch lỗi thời, không lập lại kế hoạch (plan_failed@2: executor không điền được: không còn ứng viên thoả ràng buộc trong observation)
+
+ANSWER:
+=== BÀN GIAO CHO NGƯỜI · Cần con người - kế hoạch lỗi thời, không lập lại kế hoạch (plan_failed@2: executor không điền được: không còn ứng viên thoả ràng buộc trong observation) ===
+Trạng thái:
+  - chặng 1 (SGN→CXR 2026-10-15 trước 12:00): tìm thấy 2 chuyến
+Tác dụng phụ đã xảy ra:
+  - không có
+Những gì đã thử:
+  - check_seat VN1340: timeout
+Câu hỏi cụ thể: Dịch vụ check_seat lỗi liên tục (check_seat VN1340: timeout). Thử lại sau 15 phút, hay cho phép chọn chuyến khác?

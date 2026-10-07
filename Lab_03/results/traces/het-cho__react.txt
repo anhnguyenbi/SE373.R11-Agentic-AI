@@ -1,0 +1,21 @@
+# ReAct · het-cho · noise=0
+USER: Đặt vé HAN → PQC ngày 12/10/2026, bay trước 12:00, dưới 2 triệu, rẻ nhất.
+
+      [model:react] in=775 out=47
+V1   search_flights('HAN', 'PQC', '2026-10-12')      → ok · 3 chuyến
+      [model:react] in=931 out=35
+V2   check_seat('VJ451')                             → ok · 1 ghế · 1.490.000đ
+      [model:react] in=979 out=42
+V3   book_seat('VJ451', 'NGUYEN VAN A')              → sold_out {"flight_no": "VJ451", "seats_left": 0, "hint": "Chuyến đã hết chỗ, hãy chọn chuyến khác từ kết quả search."}
+      [model:react] in=1025 out=36
+V4   check_seat('VN1233')                            → ok · 5 ghế · 1.720.000đ
+      [model:react] in=1073 out=42
+V5   book_seat('VN1233', 'NGUYEN VAN A')             → ok · D49C · held · 1.720.000đ
+      [model:react] in=1110 out=38
+V6   pay('D49C', 'corp_card')                        → ok · paid
+      [HARNESS DỪNG] Đạt mục tiêu · is_done() = True (get_booking confirmed · paid · đúng ràng buộc)
+      [model:react] in=1165 out=32
+      [answer_check] {"ok": true}
+
+ANSWER:
+Đặt vé thành công (harness đã kiểm chứng trạng thái booking) - chặng 1: VN1233 HAN→PQC 2026-10-12 08:45, mã D49C, giá 1.720.000đ

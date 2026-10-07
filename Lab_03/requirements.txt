@@ -1,0 +1,11 @@
+langchain>=1.0
+langchain-core>=1.0
+langgraph>=1.0
+pydantic>=2.6
+python-dotenv>=1.0
+matplotlib>=3.8      # chỉ cần cho `python lab03.py bench` (vẽ biểu đồ)
+
+# Tuỳ chọn - chạy với model thật thay cho model giả lập:
+# langchain-openai>=1.0
+# langchain-anthropic>=1.0
+# langchain-google-genai>=3.0

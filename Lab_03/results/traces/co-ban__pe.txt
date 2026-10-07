@@ -1,0 +1,19 @@
+# Plan-then-Execute · co-ban · noise=0
+USER: Đặt giúp tôi vé SGN → DAD sáng 07/10/2026, cất cánh trước 12:00, dưới 2 triệu, chọn chuyến rẻ nhất.
+
+      [model:planner] in=579 out=208
+      [plan] {"steps": [{"tool": "search_flights", "leg": 1, "args": {"origin": "SGN", "destination": "DAD", "date": "2026-10-07"}, "purpose": "Tìm chuyến chặng 1", "foreach": false}, {"tool": "check_seat", "leg": 1, "args": {"flight
+      [plan_review] {"ok": true, "problems": []}
+V1   search_flights('SGN', 'DAD', '2026-10-07')      → ok · 5 chuyến
+      [model:executor] in=634 out=8
+V2   check_seat('BL342')                             → ok · 0 ghế · 1.320.000đ
+      [model:executor] in=685 out=8
+V3   check_seat('VN122')                             → ok · 3 ghế · 1.450.000đ
+      [model:executor] in=735 out=15
+V4   book_seat('VN122', 'NGUYEN VAN A')              → ok · 0D4D · held · 1.450.000đ
+      [model:executor] in=777 out=14
+V5   pay('0D4D', 'corp_card')                        → ok · paid
+      [HARNESS DỪNG] Đạt mục tiêu · is_done() = True (get_booking confirmed · paid · đúng ràng buộc)
+
+ANSWER:
+Đặt vé thành công - chặng 1: VN122 SGN→DAD 2026-10-07 08:10, mã 0D4D, 1.450.000đ, confirmed & đã thanh toán

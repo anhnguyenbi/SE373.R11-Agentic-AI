@@ -1,0 +1,31 @@
+# ReAct · khu-hoi · noise=0
+USER: Đặt khứ hồi: SGN → DAD ngày 07/10/2026 trước 12:00 và DAD → SGN ngày 09/10/2026 sau 17:00, mỗi chặng dưới 2 triệu, chọn rẻ nhất.
+
+      [model:react] in=817 out=47
+V1   search_flights('SGN', 'DAD', '2026-10-07')      → ok · 5 chuyến
+      [model:react] in=1062 out=35
+V2   check_seat('BL342')                             → ok · 0 ghế · 1.320.000đ
+      [model:react] in=1110 out=35
+V3   check_seat('VN122')                             → ok · 3 ghế · 1.450.000đ
+      [model:react] in=1158 out=42
+V4   book_seat('VN122', 'NGUYEN VAN A')              → ok · 0D4D · held · 1.450.000đ
+      [model:react] in=1195 out=38
+V5   pay('0D4D', 'corp_card')                        → ok · paid
+      [model:react] in=1224 out=36
+V6   get_booking('0D4D')                             → confirmed · paid=True · 1.450.000đ
+      [model:react] in=1300 out=47
+V7   search_flights('DAD', 'SGN', '2026-10-09')      → ok · 4 chuyến
+      [model:react] in=1500 out=35
+V8   check_seat('BL343')                             → ok · 0 ghế · 990.000đ
+      [model:react] in=1548 out=35
+V9   check_seat('VJ631')                             → ok · 4 ghế · 1.290.000đ
+      [model:react] in=1596 out=42
+V10  book_seat('VJ631', 'NGUYEN VAN A')              → ok · D347 · held · 1.290.000đ
+      [model:react] in=1633 out=38
+V11  pay('D347', 'corp_card')                        → ok · paid
+      [HARNESS DỪNG] Đạt mục tiêu · is_done() = True (get_booking confirmed · paid · đúng ràng buộc)
+      [model:react] in=1688 out=49
+      [answer_check] {"ok": true}
+
+ANSWER:
+Đặt vé thành công (harness đã kiểm chứng trạng thái booking) - chặng 1: VN122 SGN→DAD 2026-10-07 08:10, mã 0D4D, giá 1.450.000đ | chặng 2: VJ631 DAD→SGN 2026-10-09 18:05, mã D347, giá 1.290.000đ

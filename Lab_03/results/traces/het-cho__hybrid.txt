@@ -1,0 +1,21 @@
+# Lai (ReAct + Plan) · het-cho · noise=0
+USER: Đặt vé HAN → PQC ngày 12/10/2026, bay trước 12:00, dưới 2 triệu, rẻ nhất.
+
+      [model:planner] in=573 out=208
+      [plan] {"steps": [{"tool": "search_flights", "leg": 1, "args": {"origin": "HAN", "destination": "PQC", "date": "2026-10-12"}, "purpose": "Tìm chuyến chặng 1", "foreach": false}, {"tool": "check_seat", "leg": 1, "args": {"flight
+      [plan_review] {"ok": true, "problems": []}
+V1   search_flights('HAN', 'PQC', '2026-10-12')      → ok · 3 chuyến
+      [model:executor] in=560 out=8
+V2   check_seat('VJ451')                             → ok · 1 ghế · 1.490.000đ
+      [model:executor] in=611 out=15
+V3   book_seat('VJ451', 'NGUYEN VAN A')              → sold_out {"flight_no": "VJ451", "seats_left": 0, "hint": "Chuyến đã hết chỗ, hãy chọn chuyến khác từ kết quả search."}
+      [model:replanner] in=869 out=141
+      [replan] {"action": "continue", "reason": "đổi hướng theo observation mới", "steps": ["check_seat", "book_seat", "pay", "get_booking"]}
+V4   check_seat('VN1233')                            → ok · 5 ghế · 1.720.000đ
+V5   book_seat('VN1233', 'NGUYEN VAN A')             → ok · D49C · held · 1.720.000đ
+      [model:executor] in=761 out=14
+V6   pay('D49C', 'corp_card')                        → ok · paid
+      [HARNESS DỪNG] Đạt mục tiêu · is_done() = True (get_booking confirmed · paid · đúng ràng buộc)
+
+ANSWER:
+Đặt vé thành công - chặng 1: VN1233 HAN→PQC 2026-10-12 08:45, mã D49C, 1.720.000đ, confirmed & đã thanh toán

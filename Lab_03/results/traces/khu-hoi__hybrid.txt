@@ -1,0 +1,30 @@
+# Lai (ReAct + Plan) · khu-hoi · noise=0
+USER: Đặt khứ hồi: SGN → DAD ngày 07/10/2026 trước 12:00 và DAD → SGN ngày 09/10/2026 sau 17:00, mỗi chặng dưới 2 triệu, chọn rẻ nhất.
+
+      [model:planner] in=615 out=391
+      [plan] {"steps": [{"tool": "search_flights", "leg": 1, "args": {"origin": "SGN", "destination": "DAD", "date": "2026-10-07"}, "purpose": "Tìm chuyến chặng 1", "foreach": false}, {"tool": "check_seat", "leg": 1, "args": {"flight
+      [plan_review] {"ok": true, "problems": []}
+V1   search_flights('SGN', 'DAD', '2026-10-07')      → ok · 5 chuyến
+      [model:executor] in=662 out=8
+V2   check_seat('BL342')                             → ok · 0 ghế · 1.320.000đ
+      [model:executor] in=713 out=8
+V3   check_seat('VN122')                             → ok · 3 ghế · 1.450.000đ
+      [model:executor] in=764 out=15
+V4   book_seat('VN122', 'NGUYEN VAN A')              → ok · 0D4D · held · 1.450.000đ
+      [model:executor] in=806 out=14
+V5   pay('0D4D', 'corp_card')                        → ok · paid
+      [model:executor] in=844 out=9
+V6   get_booking('0D4D')                             → confirmed · paid=True · 1.450.000đ
+V7   search_flights('DAD', 'SGN', '2026-10-09')      → ok · 4 chuyến
+      [model:executor] in=1114 out=8
+V8   check_seat('BL343')                             → ok · 0 ghế · 990.000đ
+      [model:executor] in=1165 out=8
+V9   check_seat('VJ631')                             → ok · 4 ghế · 1.290.000đ
+      [model:executor] in=1216 out=15
+V10  book_seat('VJ631', 'NGUYEN VAN A')              → ok · D347 · held · 1.290.000đ
+      [model:executor] in=1258 out=14
+V11  pay('D347', 'corp_card')                        → ok · paid
+      [HARNESS DỪNG] Đạt mục tiêu · is_done() = True (get_booking confirmed · paid · đúng ràng buộc)
+
+ANSWER:
+Đặt vé thành công - chặng 1: VN122 SGN→DAD 2026-10-07 08:10, mã 0D4D, 1.450.000đ, confirmed & đã thanh toán | chặng 2: VJ631 DAD→SGN 2026-10-09 18:05, mã D347, 1.290.000đ, confirmed & đã thanh toán
