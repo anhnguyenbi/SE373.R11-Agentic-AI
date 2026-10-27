@@ -22,6 +22,12 @@
       "input_tokens_last_call": 37048,
       "llm_calls": 8,
       "estimated": true,
+      "usage": {
+        "input_tokens": 130337,
+        "output_tokens": 326,
+        "calls": 8,
+        "estimated": true
+      },
       "raw_log_in_context": true,
       "answer": "E5000: 58\nE2003: 52\nE2210: 51",
       "trace": [
@@ -94,6 +100,12 @@
       "input_tokens_last_call": 431,
       "llm_calls": 2,
       "estimated": true,
+      "usage": {
+        "input_tokens": 701,
+        "output_tokens": 150,
+        "calls": 2,
+        "estimated": true
+      },
       "raw_log_in_context": false,
       "answer": "E5000: 58\nE2003: 52\nE2210: 51",
       "trace": [

@@ -21,7 +21,7 @@ Chạy với model thật (endpoint OpenAI-compatible có tool calling):
 
 ```bash
 cp .env.example .env             # điền OPENAI_API_KEY, MODEL_NAME, (tùy chọn) OPENAI_BASE_URL
-python check_live.py             # thử 1 câu chat + 1 lần tool calling, báo lỗi rõ ràng nếu có
+python check_live.py             # 4 bước: chat, tool calling, usage có tăng theo context không, tool output có bị cắt không
 python challenge_a_memory/demo.py --live
 python challenge_b_context/b1_compact/demo_b1.py --live
 python challenge_b_context/b2_code_mode/demo_b2.py --live
@@ -33,6 +33,12 @@ gì nằm trong context, nên vẫn kiểm chứng được phần harness: memo
 raw log có lọt vào context không. Token ở chế độ offline là **ước lượng** (≈ 4 ký tự/token) và được gắn cờ `estimated: true`.
 Chế độ `--live` lấy input tokens từ `usage.prompt_tokens` mà provider trả về. Thiếu usage thì dừng chứ không tự ước lượng.
 Minh chứng được lưu ở `evidence/offline/` hoặc `evidence/live/` trong từng thư mục challenge.
+
+**Lưu ý khi chạy qua router (ví dụ 9Router).** Số đo của Lab 07 chỉ đúng khi router chuyển nguyên văn context tới model
+và báo đúng `usage`. Hãy tắt các tính năng nén của router, ví dụ 9Router → Token Saver → *Compress tool output (RTK)*.
+Tính năng này cắt log còn khoảng 10 dòng, làm B2 trả lời sai và B1 mất bằng chứng. `check_live.py` tự kiểm tra hai điều kiện này:
+input tokens phải tăng khi prompt dài thêm khoảng 6.000 token, và model phải đọc được dòng cuối của một tool output 200 dòng.
+Usage gốc của provider được lưu trong `raw_usage` của mỗi `report.json`.
 
 ## Cấu trúc
 
@@ -111,9 +117,9 @@ Câu trả lời được chấm theo 8 dữ kiện:
 
 | Context | Input tokens (offline, ước lượng) | Dữ kiện còn giữ |
 |---|---:|---:|
-| full (không compact) | 36.540 | 8/8 |
-| **compacted** (checkpoint + 2 lượt cuối) | **14.029** (−61,6%) | **8/8** |
-| truncated (chỉ cắt đầu, không checkpoint) | 2.531 | 2/8 |
+| full (không compact) | 36.559 | 8/8 |
+| **compacted** (checkpoint + 2 lượt cuối) | **14.048** (−61,6%) | **8/8** |
+| truncated (chỉ cắt đầu, không checkpoint) | 2.549 | 2/8 |
 
 Cắt bỏ đơn thuần rẻ nhất nhưng làm mất ràng buộc và các cách đã thử. Khi đó agent dễ thử lại cách cũ hoặc đổi API public.
 

@@ -117,6 +117,6 @@
  },
  {
   "role": "user",
-  "content": "Tiếp tục công việc. Trước khi làm, hãy nêu ngắn gọn: (1) lỗi đang điều tra và nguyên nhân đã tìm ra, (2) những cách đã thử và kết quả từng cách, (3) ràng buộc phải tuân thủ, (4) bước tiếp theo cụ thể."
+  "content": "Tiếp tục công việc. Ở bước này KHÔNG gọi tool; chỉ dựa vào thông tin đang có trong hội thoại. Trước khi làm, hãy nêu ngắn gọn: (1) lỗi đang điều tra và nguyên nhân đã tìm ra, (2) những cách đã thử và kết quả từng cách, (3) ràng buộc phải tuân thủ, (4) bước tiếp theo cụ thể."
  }
 ]

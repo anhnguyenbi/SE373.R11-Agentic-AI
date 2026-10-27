@@ -86,14 +86,26 @@ def main() -> int:
     for name, context in contexts.items():
         messages = context + [{"role": "user", "content": CONTINUE_QUESTION}]
         result = llm.chat(messages, TOOLS, tool_choice="none")
+        usage = result.usage
+        retried = False
+        if result.message.get("tool_calls"):
+            # một số router bỏ qua tool_choice="none": trả tool result "bị tắt" rồi hỏi lại đúng một lần
+            retried = True
+            messages = messages + [result.message] + [
+                {"role": "tool", "tool_call_id": c["id"],
+                 "content": "Tool bị tắt ở bước này. Hãy trả lời ngay từ thông tin đang có."}
+                for c in result.message["tool_calls"]]
+            result = llm.chat(messages, TOOLS, tool_choice="none")
+            usage.add(result.usage)
         answer = result.message.get("content") or ""
         facts = score(answer)
-        report["runs"][name] = {"input_tokens": result.usage.input_tokens, "estimated": result.usage.estimated,
+        report["runs"][name] = {"input_tokens": usage.input_tokens, "estimated": usage.estimated,
+                                "usage": usage.to_dict(), "retried_after_tool_call": retried,
                                 "messages": len(messages), "facts": facts, "facts_kept": sum(facts.values()),
                                 "facts_total": len(facts), "answer": answer}
         (out / f"{name}.input.json").write_text(json.dumps(messages, ensure_ascii=False, indent=1), encoding="utf-8")
-        print(f"\n===== {name}: input_tokens={result.usage.input_tokens}"
-              f"{' (ước lượng)' if result.usage.estimated else ''}, giữ {sum(facts.values())}/{len(facts)} dữ kiện")
+        print(f"\n===== {name}: input_tokens={usage.input_tokens}"
+              f"{' (ước lượng)' if usage.estimated else ''}, giữ {sum(facts.values())}/{len(facts)} dữ kiện")
         print(answer)
 
     full_t, comp_t = report["runs"]["full"]["input_tokens"], report["runs"]["compacted"]["input_tokens"]

@@ -130,5 +130,6 @@ def build_turns(seed: int = 7, noise: int = 220) -> list[list[dict]]:
     return turns
 
 
-CONTINUE_QUESTION = ("Tiếp tục công việc. Trước khi làm, hãy nêu ngắn gọn: (1) lỗi đang điều tra và nguyên nhân đã tìm ra, "
+CONTINUE_QUESTION = ("Tiếp tục công việc. Ở bước này KHÔNG gọi tool; chỉ dựa vào thông tin đang có trong hội thoại. "
+                     "Trước khi làm, hãy nêu ngắn gọn: (1) lỗi đang điều tra và nguyên nhân đã tìm ra, "
                      "(2) những cách đã thử và kết quả từng cách, (3) ràng buộc phải tuân thủ, (4) bước tiếp theo cụ thể.")

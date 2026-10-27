@@ -125,6 +125,7 @@ def main() -> int:
             "input_tokens_last_call": run.trace[-1]["input_tokens"],
             "llm_calls": run.usage.calls,
             "estimated": run.usage.estimated,
+            "usage": run.usage.to_dict(),
             "raw_log_in_context": contains_raw_log(context_text),
             "answer": run.answer,
             "trace": run.trace,

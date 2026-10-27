@@ -27,24 +27,53 @@ LAB_DIR = Path(__file__).resolve().parent.parent
 
 @dataclass
 class Usage:
-    input_tokens: int = 0
+    input_tokens: int = 0       # tổng input tokens, gồm cả phần đọc/ghi cache nếu provider tách riêng
     output_tokens: int = 0
     calls: int = 0
     estimated: bool = False
+    cached_input_tokens: int = 0
+    raw: list = field(default_factory=list)  # usage nguyên bản provider trả về, để kiểm tra lại
 
     def add(self, other: "Usage") -> None:
         self.input_tokens += other.input_tokens
         self.output_tokens += other.output_tokens
         self.calls += other.calls
         self.estimated = self.estimated or other.estimated
+        self.cached_input_tokens += other.cached_input_tokens
+        self.raw.extend(other.raw)
 
     def to_dict(self) -> dict:
-        return {
+        data = {
             "input_tokens": self.input_tokens,
             "output_tokens": self.output_tokens,
             "calls": self.calls,
             "estimated": self.estimated,
         }
+        if not self.estimated:
+            data["cached_input_tokens"] = self.cached_input_tokens
+            data["raw_usage"] = self.raw
+        return data
+
+
+def usage_from_provider(usage: dict) -> "Usage":
+    """Chuẩn hoá usage của provider.
+
+    - Chuẩn OpenAI: prompt_tokens ĐÃ gồm prompt_tokens_details.cached_tokens.
+    - Kiểu Anthropic (một số router chuyển tiếp nguyên): input_tokens KHÔNG gồm
+      cache_read_input_tokens / cache_creation_input_tokens, nên phải cộng thêm.
+    """
+    prompt = int(usage.get("prompt_tokens", usage.get("input_tokens", 0)) or 0)
+    cache_read = int(usage.get("cache_read_input_tokens", 0) or 0)
+    cache_write = int(usage.get("cache_creation_input_tokens", 0) or 0)
+    details_cached = int((usage.get("prompt_tokens_details") or {}).get("cached_tokens", 0) or 0)
+    if cache_read or cache_write:
+        total, cached = prompt + cache_read + cache_write, cache_read
+    elif details_cached > prompt:  # cached nằm ngoài prompt_tokens: router không theo chuẩn OpenAI
+        total, cached = prompt + details_cached, details_cached
+    else:
+        total, cached = prompt, details_cached
+    return Usage(total, int(usage.get("completion_tokens", usage.get("output_tokens", 0)) or 0), 1,
+                 estimated=False, cached_input_tokens=cached, raw=[usage])
 
 
 def estimate_tokens(obj: Any) -> int:
@@ -202,13 +231,13 @@ class OpenAIChat:
             raise ProviderError(0, f"Không kết nối được {self.settings.base_url}: {exc.reason}. "
                                    "Router/endpoint đã chạy chưa?") from None
         usage = data.get("usage") or {}
-        if "prompt_tokens" not in usage:
+        if "prompt_tokens" not in usage and "input_tokens" not in usage:
             raise RuntimeError("Provider không trả usage.prompt_tokens nên không đo được input tokens.")
         message = data["choices"][0]["message"]
         message.setdefault("content", None)
         return ChatResult(
             message={k: v for k, v in message.items() if k in ("role", "content", "tool_calls")},
-            usage=Usage(usage["prompt_tokens"], usage.get("completion_tokens", 0), 1, estimated=False),
+            usage=usage_from_provider(usage),
         )
 
 
