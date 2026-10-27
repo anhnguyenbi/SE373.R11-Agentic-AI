@@ -37,7 +37,7 @@ Minh chứng được lưu ở `evidence/offline/` hoặc `evidence/live/` trong
 **Lưu ý khi chạy qua router (ví dụ 9Router).** Số đo của Lab 07 chỉ đúng khi router chuyển nguyên văn context tới model
 và báo đúng `usage`. Hãy tắt các tính năng nén của router, ví dụ 9Router → Token Saver → *Compress tool output (RTK)*.
 Tính năng này cắt log còn khoảng 10 dòng, làm B2 trả lời sai và B1 mất bằng chứng. `check_live.py` tự kiểm tra hai điều kiện này:
-input tokens phải tăng khi prompt dài thêm khoảng 6.000 token, và model phải đọc được dòng cuối của một tool output 200 dòng.
+input tokens phải tăng khi prompt dài thêm vài nghìn token, và model phải đọc được dòng cuối của một tool output 200 dòng.
 Usage gốc của provider được lưu trong `raw_usage` của mỗi `report.json`.
 
 ## Cấu trúc

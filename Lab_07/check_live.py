@@ -5,7 +5,7 @@
 4 bước:
   1. Chat thường.
   2. Tool calling.
-  3. Usage có phản ánh kích thước context không: gửi prompt ngắn và prompt dài ~6.000 token,
+  3. Usage có phản ánh kích thước context không: gửi prompt ngắn và prompt dài vài nghìn token,
      input tokens báo về phải tăng tương ứng. Nếu không, số đo token của Lab 07 không dùng được.
   4. Tool output có tới model nguyên vẹn không: tool trả 200 dòng, đáp án nằm ở dòng cuối.
      Một số router (ví dụ 9Router bật "Compress tool output") cắt bớt output, làm sai B1/B2.
@@ -36,14 +36,14 @@ def main() -> int:
         if not used_tool:
             problems.append("Model không gọi tool: chọn model khác có hỗ trợ tool calling.")
 
-        filler = " ".join(f"mục-{i:04d} dữ liệu đệm" for i in range(3000))  # ~6.000+ token
+        filler = " ".join(f"mục-{i:04d} dữ liệu đệm" for i in range(600))  # vài nghìn token
         long = llm.chat([{"role": "user", "content": filler + "\n\nBỏ qua phần trên, trả lời đúng một từ: OK"}])
         grew = long.usage.input_tokens - short.usage.input_tokens
         print(f"[3/4] Usage theo kích thước: ngắn={short.usage.input_tokens}, dài={long.usage.input_tokens} "
               f"(tăng {grew})")
         print(f"      usage gốc (dài): {json.dumps(long.usage.raw[0], ensure_ascii=False)}")
         if grew < 3000:
-            problems.append("Input tokens router báo về gần như không đổi khi prompt dài thêm ~6.000 token. "
+            problems.append("Input tokens router báo về gần như không đổi khi prompt dài thêm vài nghìn token. "
                             "Router không báo đúng usage (có thể do nén prompt hoặc tách phần cache), "
                             "nên số đo token của B1/B2 sẽ sai. Tắt các tính năng nén/Token Saver hoặc dùng provider khác.")
 
