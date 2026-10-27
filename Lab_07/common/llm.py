@@ -103,6 +103,49 @@ class ChatResult:
     usage: Usage
 
 
+def _parse_sse(text: str) -> dict:
+    """Ghép các chunk SSE (`data: {...}`) của Chat Completions thành một response thường."""
+    content, tool_calls, usage, role = [], {}, None, "assistant"
+    for line in text.splitlines():
+        line = line.strip()
+        if not line.startswith("data:"):
+            continue
+        payload = line[5:].strip()
+        if not payload or payload == "[DONE]":
+            continue
+        chunk = json.loads(payload)
+        usage = chunk.get("usage") or usage
+        for choice in chunk.get("choices") or []:
+            delta = choice.get("delta") or choice.get("message") or {}
+            role = delta.get("role") or role
+            if delta.get("content"):
+                content.append(delta["content"])
+            for call in delta.get("tool_calls") or []:
+                slot = tool_calls.setdefault(call.get("index", len(tool_calls)),
+                                             {"id": "", "type": "function", "function": {"name": "", "arguments": ""}})
+                slot["id"] = call.get("id") or slot["id"]
+                fn = call.get("function") or {}
+                slot["function"]["name"] += fn.get("name") or ""
+                slot["function"]["arguments"] += fn.get("arguments") or ""
+    message: dict[str, Any] = {"role": role, "content": "".join(content) or None}
+    if tool_calls:
+        message["tool_calls"] = [tool_calls[i] for i in sorted(tool_calls)]
+    return {"choices": [{"message": message}], "usage": usage or {}}
+
+
+def parse_response_body(text: str) -> dict:
+    """Đọc response JSON thường; nếu provider trả stream SSE thì tự ghép lại."""
+    stripped = text.strip()
+    if not stripped:
+        raise ProviderError(200, "Provider trả về body rỗng.")
+    if stripped.startswith("data:") or "\ndata:" in stripped[:2000]:
+        return _parse_sse(stripped)
+    try:
+        return json.loads(stripped)
+    except json.JSONDecodeError:
+        raise ProviderError(200, "Response không phải JSON. 300 ký tự đầu: " + stripped[:300]) from None
+
+
 _HINTS = {
     400: "Request bị từ chối: thường do MODEL_NAME sai hoặc model không hỗ trợ tool calling.",
     401: "Sai hoặc thiếu OPENAI_API_KEY.",
@@ -138,7 +181,7 @@ class OpenAIChat:
 
     def chat(self, messages: list[dict], tools: list[dict] | None = None,
              tool_choice: str | None = None) -> ChatResult:
-        body: dict[str, Any] = {"model": self.settings.model, "messages": messages}
+        body: dict[str, Any] = {"model": self.settings.model, "messages": messages, "stream": False}
         if tools:
             body["tools"] = tools
             if tool_choice:
@@ -152,7 +195,7 @@ class OpenAIChat:
         )
         try:
             with urllib.request.urlopen(request, timeout=self.timeout) as response:
-                data = json.loads(response.read().decode("utf-8"))
+                data = parse_response_body(response.read().decode("utf-8", "replace"))
         except urllib.error.HTTPError as exc:
             raise ProviderError(exc.code, self._error_detail(exc)) from None
         except urllib.error.URLError as exc:

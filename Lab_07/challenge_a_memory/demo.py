@@ -23,6 +23,7 @@ sys.path.insert(0, str(HERE.parent))
 
 from agent import offline_policy, run_session  # noqa: E402
 from common.llm import make_llm  # noqa: E402
+import memory_store  # noqa: E402
 from memory_store import SUPERSEDED, MemoryStore  # noqa: E402
 
 TASK = ("Viết JSON response mẫu cho API GET /users/{id}, gồm id, họ tên đầy đủ và thời điểm tạo. "
@@ -78,6 +79,9 @@ def main() -> int:
     out.mkdir(parents=True)
 
     llm = make_llm(args.live, offline_policy)
+    if not args.live:
+        # offline: dùng thời gian cố định để file minh chứng không đổi giữa các lần chạy
+        memory_store._now = lambda: "2026-10-27T00:00:00+00:00"
     store = MemoryStore(out / "memory.json")
     results = {}
     for session_id, text, use_memory in SESSIONS:

@@ -9,7 +9,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from common.llm import OpenAIChat, ProviderError, Settings, Tool, run_agent  # noqa: E402
+from common.llm import OpenAIChat, ProviderError, Settings, Tool, parse_response_body, run_agent  # noqa: E402
 
 
 class FakeProvider(BaseHTTPRequestHandler):
@@ -75,6 +75,30 @@ class OpenAIChatTest(unittest.TestCase):
         self.assertEqual(ctx.exception.status, 503)
         self.assertIn("No active connection", str(ctx.exception))
         self.assertNotIn("sk-test", str(ctx.exception))
+
+
+class ParseBodyTest(unittest.TestCase):
+    def test_sse_stream_is_assembled(self):
+        chunks = [
+            {"choices": [{"delta": {"role": "assistant", "tool_calls": [
+                {"index": 0, "id": "c1", "function": {"name": "add", "arguments": "{\"a\": 2"}}]}}]},
+            {"choices": [{"delta": {"tool_calls": [{"index": 0, "function": {"arguments": ", \"b\": 3}"}}]}}]},
+            {"choices": [{"delta": {"content": "Xong"}}]},
+            {"choices": [], "usage": {"prompt_tokens": 55, "completion_tokens": 4}},
+        ]
+        text = "\n\n".join("data: " + json.dumps(c) for c in chunks) + "\n\ndata: [DONE]\n"
+        data = parse_response_body(text)
+        msg = data["choices"][0]["message"]
+        self.assertEqual(msg["content"], "Xong")
+        self.assertEqual(msg["tool_calls"][0]["function"], {"name": "add", "arguments": '{"a": 2, "b": 3}'})
+        self.assertEqual(data["usage"]["prompt_tokens"], 55)
+
+    def test_empty_and_non_json_bodies_raise_clear_errors(self):
+        with self.assertRaises(ProviderError):
+            parse_response_body("   ")
+        with self.assertRaises(ProviderError) as ctx:
+            parse_response_body("<html>oops</html>")
+        self.assertIn("<html>", str(ctx.exception))
 
 
 if __name__ == "__main__":
