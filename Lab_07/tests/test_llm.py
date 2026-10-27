@@ -9,7 +9,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from common.llm import OpenAIChat, Settings, Tool, run_agent  # noqa: E402
+from common.llm import OpenAIChat, ProviderError, Settings, Tool, run_agent  # noqa: E402
 
 
 class FakeProvider(BaseHTTPRequestHandler):
@@ -17,6 +17,13 @@ class FakeProvider(BaseHTTPRequestHandler):
 
     def do_POST(self):
         body = json.loads(self.rfile.read(int(self.headers["Content-Length"])))
+        if body["model"] == "down-model":
+            data = b'{"error":{"message":"No active connection for model, key sk-test"}}'
+            self.send_response(503)
+            self.send_header("Content-Length", str(len(data)))
+            self.end_headers()
+            self.wfile.write(data)
+            return
         FakeProvider.requests.append({"path": self.path, "auth": self.headers.get("Authorization"), "body": body})
         has_tool_result = any(m["role"] == "tool" for m in body["messages"])
         if has_tool_result:
@@ -60,6 +67,14 @@ class OpenAIChatTest(unittest.TestCase):
         self.assertEqual(FakeProvider.requests[0]["auth"], "Bearer sk-test")
         self.assertEqual(FakeProvider.requests[1]["body"]["messages"][-1],
                          {"role": "tool", "tool_call_id": "c1", "content": "5"})
+
+    def test_http_error_is_explained_and_key_redacted(self):
+        llm = OpenAIChat(Settings("sk-test", "down-model", f"http://127.0.0.1:{self.server.server_port}/v1"))
+        with self.assertRaises(ProviderError) as ctx:
+            llm.chat([{"role": "user", "content": "hi"}])
+        self.assertEqual(ctx.exception.status, 503)
+        self.assertIn("No active connection", str(ctx.exception))
+        self.assertNotIn("sk-test", str(ctx.exception))
 
 
 if __name__ == "__main__":

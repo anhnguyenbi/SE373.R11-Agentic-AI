@@ -14,13 +14,14 @@ Chỉ dùng thư viện chuẩn của Python (3.10+), không cần cài package.
 
 ```bash
 cd Lab_07
-python run_all.py                # 20 unit test + 3 demo, offline, không cần API key
+python run_all.py                # 21 unit test + 3 demo, offline, không cần API key
 ```
 
 Chạy với model thật (endpoint OpenAI-compatible có tool calling):
 
 ```bash
 cp .env.example .env             # điền OPENAI_API_KEY, MODEL_NAME, (tùy chọn) OPENAI_BASE_URL
+python check_live.py             # thử 1 câu chat + 1 lần tool calling, báo lỗi rõ ràng nếu có
 python challenge_a_memory/demo.py --live
 python challenge_b_context/b1_compact/demo_b1.py --live
 python challenge_b_context/b2_code_mode/demo_b2.py --live
@@ -48,6 +49,7 @@ Lab_07/
 │   ├── b2_code_mode/                 # log_fixture.py, code_runtime.py, demo_b2.py
 │   └── tests/
 ├── tests/test_llm.py                 # kiểm thử client với provider giả chạy local
+├── check_live.py                     # kiểm tra kết nối model thật
 └── run_all.py
 ```
 
@@ -143,7 +145,7 @@ tìm dòng có định dạng log (`contains_raw_log`).
 
 | Bộ test | Nội dung |
 |---|---|
-| `tests/test_llm.py` | Client gọi đúng `/chat/completions`, gửi `Authorization`, chạy vòng tool, lấy input tokens từ `usage.prompt_tokens` |
+| `tests/test_llm.py` | Client gọi đúng `/chat/completions`, gửi `Authorization`, chạy vòng tool, lấy input tokens từ `usage.prompt_tokens`; lỗi HTTP được giải thích và che key |
 | `challenge_a_memory/tests` | Persist qua instance mới, supersede giữ lịch sử, context chỉ có quy ước đang hiệu lực, chống ghi trùng, `replaces_id` sai bị chặn, demo PASS |
 | `challenge_b_context/tests` | Ngưỡng compact, giữ lượt mới nhất + archive phần cũ, không cắt cặp tool call, checkpoint gộp đủ 3 cách đã thử, runtime xoá env / timeout / cắt output, đáp án fixture đúng, demo B1/B2 PASS |
 

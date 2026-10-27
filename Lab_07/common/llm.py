@@ -13,6 +13,7 @@ from __future__ import annotations
 import json
 import math
 import os
+import urllib.error
 import urllib.request
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -102,8 +103,33 @@ class ChatResult:
     usage: Usage
 
 
+_HINTS = {
+    400: "Request bị từ chối: thường do MODEL_NAME sai hoặc model không hỗ trợ tool calling.",
+    401: "Sai hoặc thiếu OPENAI_API_KEY.",
+    403: "Key không có quyền dùng model/endpoint này.",
+    404: "Sai OPENAI_BASE_URL (cần kết thúc bằng /v1) hoặc sai MODEL_NAME.",
+    429: "Bị giới hạn tốc độ/quota ở upstream, đợi một lúc rồi chạy lại.",
+    503: "Router không có kết nối upstream khả dụng cho model này (tài khoản hết quota, bị tắt, "
+         "hoặc model không được tài khoản hỗ trợ). Kiểm tra Providers / Console Log trên dashboard.",
+}
+
+
+class ProviderError(RuntimeError):
+    def __init__(self, status: int, detail: str):
+        hint = _HINTS.get(status, "")
+        super().__init__(f"HTTP {status} từ provider. {hint}\nChi tiết: {detail}")
+        self.status = status
+
+
 class OpenAIChat:
     """Client tối giản cho /chat/completions (OpenAI-compatible)."""
+
+    def _error_detail(self, exc) -> str:
+        try:
+            text = exc.read().decode("utf-8", "replace")[:600]
+        except Exception:
+            text = ""
+        return text.replace(self.settings.api_key, "***") or "(không có nội dung)"
 
     def __init__(self, settings: Settings | None = None, timeout: float = 120.0):
         self.settings = settings or load_settings()
@@ -124,8 +150,14 @@ class OpenAIChat:
                      "Authorization": f"Bearer {self.settings.api_key}"},
             method="POST",
         )
-        with urllib.request.urlopen(request, timeout=self.timeout) as response:
-            data = json.loads(response.read().decode("utf-8"))
+        try:
+            with urllib.request.urlopen(request, timeout=self.timeout) as response:
+                data = json.loads(response.read().decode("utf-8"))
+        except urllib.error.HTTPError as exc:
+            raise ProviderError(exc.code, self._error_detail(exc)) from None
+        except urllib.error.URLError as exc:
+            raise ProviderError(0, f"Không kết nối được {self.settings.base_url}: {exc.reason}. "
+                                   "Router/endpoint đã chạy chưa?") from None
         usage = data.get("usage") or {}
         if "prompt_tokens" not in usage:
             raise RuntimeError("Provider không trả usage.prompt_tokens nên không đo được input tokens.")

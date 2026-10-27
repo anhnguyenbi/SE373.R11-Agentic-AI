@@ -27,7 +27,15 @@ def main() -> int:
         steps.append((name + " (offline)", [sys.executable, "-B", str(LAB / script)], LAB))
         if live:
             steps.append((name + " (live)", [sys.executable, "-B", str(LAB / script), "--live"], LAB))
-    failed = []
+    if live:
+        print("\n########## Kiểm tra kết nối model thật", flush=True)
+        if subprocess.run([sys.executable, "-B", str(LAB / "check_live.py")], cwd=LAB).returncode != 0:
+            print("Bỏ qua các demo --live vì chưa kết nối được model (xem lỗi ở trên).")
+            steps = [s for s in steps if not s[0].endswith("(live)")]
+            live_failed = True
+        else:
+            live_failed = False
+    failed = ["Kết nối model thật"] if live and live_failed else []
     for name, cmd, cwd in steps:
         print(f"\n########## {name}", flush=True)
         if subprocess.run(cmd, cwd=cwd).returncode != 0:
