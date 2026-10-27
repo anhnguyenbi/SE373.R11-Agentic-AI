@@ -24,7 +24,7 @@ sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(HERE.parents[1]))
 
 from code_runtime import run_python  # noqa: E402
-from common.llm import Tool, make_llm, run_agent, tool_call  # noqa: E402
+from common.llm import Tool, make_llm, pick_token_source, run_agent, tool_call  # noqa: E402
 from log_fixture import QUESTION, contains_raw_log, generate_logs  # noqa: E402
 
 SYSTEM = {
@@ -113,11 +113,13 @@ def main() -> int:
     report = {"mode": "live" if args.live else "offline", "expected": expected["top3"],
               "log_bytes": sum(p.stat().st_size for p in logs.glob("*.log")), "runs": {}}
 
+    usages = {}
     for mode in ("raw", "code"):
         llm = make_llm(args.live, offline_policy(mode))
         report["model"] = llm.name
         messages = [{"role": "system", "content": SYSTEM[mode]}, {"role": "user", "content": QUESTION}]
         run = run_agent(llm, messages, build_tools(mode, logs), max_steps=expected["files"] + 6)
+        usages[mode] = run.usage
         context_text = "\n".join(m.get("content") or "" for m in run.messages)
         report["runs"][mode] = {
             "correct": grade(run.answer, expected),
@@ -138,13 +140,17 @@ def main() -> int:
               f"đúng: {r['correct']}")
         print(run.answer)
 
-    raw_t, code_t = report["runs"]["raw"]["input_tokens_total"], report["runs"]["code"]["input_tokens_total"]
+    tokens, source = pick_token_source(usages)
+    report["token_source"] = source
+    for name, value in tokens.items():
+        report["runs"][name]["compared_input_tokens"] = value
+    raw_t, code_t = tokens["raw"], tokens["code"]
     report["reduction_percent"] = round(100 * (1 - code_t / raw_t), 2)
     report["passed"] = (report["runs"]["code"]["correct"] and not report["runs"]["code"]["raw_log_in_context"]
                         and code_t < raw_t)
     (out / "report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"\nĐáp án đúng: {expected['top3']}")
-    print(f"Tổng input tokens: raw {raw_t} → code {code_t} (giảm {report['reduction_percent']}%)")
+    print(f"Tổng input tokens ({source}): raw {raw_t} → code {code_t} (giảm {report['reduction_percent']}%)")
     print(f"{'PASS' if report['passed'] else 'FAIL'} — minh chứng: {out}")
     return 0 if report["passed"] else 1
 

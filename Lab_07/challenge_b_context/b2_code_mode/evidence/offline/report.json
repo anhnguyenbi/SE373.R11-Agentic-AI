@@ -92,7 +92,8 @@
           "input_tokens": 37048,
           "tool_calls": []
         }
-      ]
+      ],
+      "compared_input_tokens": 130337
     },
     "code": {
       "correct": true,
@@ -122,10 +123,12 @@
           "input_tokens": 431,
           "tool_calls": []
         }
-      ]
+      ],
+      "compared_input_tokens": 701
     }
   },
   "model": "scripted-offline",
+  "token_source": "ước lượng offline",
   "reduction_percent": 99.46,
   "passed": true
 }

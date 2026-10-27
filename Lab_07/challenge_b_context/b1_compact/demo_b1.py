@@ -21,7 +21,7 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(HERE.parents[1]))
 
-from common.llm import make_llm  # noqa: E402
+from common.llm import make_llm, pick_token_source  # noqa: E402
 from compaction import CompactingSession, extract_state, llm_summarizer, rule_summarizer  # noqa: E402
 from session_fixture import CONTINUE_QUESTION, FACTS, SYSTEM, TOOLS, build_turns  # noqa: E402
 
@@ -83,6 +83,7 @@ def main() -> int:
               "compactions": session.events, "summarizer_usage": session.summarizer_usage.to_dict(), "runs": {}}
     (out / "checkpoint.json").write_text(json.dumps(session.checkpoint, ensure_ascii=False, indent=2), encoding="utf-8")
 
+    usages = {}
     for name, context in contexts.items():
         messages = context + [{"role": "user", "content": CONTINUE_QUESTION}]
         result = llm.chat(messages, TOOLS, tool_choice="none")
@@ -98,6 +99,7 @@ def main() -> int:
             result = llm.chat(messages, TOOLS, tool_choice="none")
             usage.add(result.usage)
         answer = result.message.get("content") or ""
+        usages[name] = usage
         facts = score(answer)
         report["runs"][name] = {"input_tokens": usage.input_tokens, "estimated": usage.estimated,
                                 "usage": usage.to_dict(), "retried_after_tool_call": retried,
@@ -108,12 +110,16 @@ def main() -> int:
               f"{' (ước lượng)' if usage.estimated else ''}, giữ {sum(facts.values())}/{len(facts)} dữ kiện")
         print(answer)
 
-    full_t, comp_t = report["runs"]["full"]["input_tokens"], report["runs"]["compacted"]["input_tokens"]
+    tokens, source = pick_token_source(usages)
+    report["token_source"] = source
+    for name, value in tokens.items():
+        report["runs"][name]["compared_input_tokens"] = value
+    full_t, comp_t = tokens["full"], tokens["compacted"]
     report["reduction_percent"] = round(100 * (1 - comp_t / full_t), 2)
     report["passed"] = (all(report["runs"]["compacted"]["facts"].values()) and comp_t < full_t
                         and len(session.events) > 0)
     (out / "report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"\nInput tokens: full {full_t} → compacted {comp_t} (giảm {report['reduction_percent']}%). "
+    print(f"\nInput tokens ({source}): full {full_t} → compacted {comp_t} (giảm {report['reduction_percent']}%). "
           f"Truncated giữ {report['runs']['truncated']['facts_kept']}/{len(FACTS)} dữ kiện.")
     print(f"{'PASS' if report['passed'] else 'FAIL'} — minh chứng: {out}")
     return 0 if report["passed"] else 1

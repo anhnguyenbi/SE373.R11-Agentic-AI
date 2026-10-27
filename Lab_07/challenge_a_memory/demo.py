@@ -45,20 +45,28 @@ CAMEL = re.compile(r"\b(fullName|createdAt)\b")
 CONVENTIONAL = re.compile(r"\b(feat|fix|chore|refactor|docs|test)(\([^)]*\))?!?:", re.I)
 
 
+def json_part(text: str) -> str:
+    """Chỉ chấm phần JSON trong câu trả lời; lời giải thích có thể nhắc cả hai kiểu đặt tên."""
+    blocks = re.findall(r"```(?:json)?\s*(\{.*?\})\s*```", text, re.S)
+    return "\n".join(blocks) if blocks else text
+
+
 def check(results: dict, store: MemoryStore) -> dict:
-    s2, s4, s5 = results["s2"]["answer"], results["s4"]["answer"], results["s5"]["answer"]
+    s5 = results["s5"]["answer"]
+    s2_full, s4_full = results["s2"]["answer"], results["s4"]["answer"]
+    s2, s4 = json_part(s2_full), json_part(s4_full)
     history = store.history("api.json_case")
     checks = {
         "proof1_new_session_uses_snake_case": bool(SNAKE.search(s2)) and not CAMEL.search(s2),
-        "proof1_new_session_uses_conventional_commit": bool(CONVENTIONAL.search(s2)),
+        "proof1_new_session_uses_conventional_commit": bool(CONVENTIONAL.search(s2_full)),
         "proof2_after_change_uses_camel_case": bool(CAMEL.search(s4)) and not SNAKE.search(s4),
-        "proof2_other_conventions_kept": bool(CONVENTIONAL.search(s4)),
+        "proof2_other_conventions_kept": bool(CONVENTIONAL.search(s4_full)),
         "old_convention_superseded_not_deleted": any(e.status == SUPERSEDED for e in history),
         "only_new_convention_injected_in_s4": "camelcase" in results["s4"]["injected_memory"].lower()
                                               and "snake_case" not in results["s4"]["injected_memory"],
         "history_answer_mentions_both": "snake" in s5.lower() and "camel" in s5.lower(),
     }
-    control = results["control"]["answer"]
+    control = json_part(results["control"]["answer"])
     return {
         "checks": checks,
         "passed": all(checks.values()),

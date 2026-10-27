@@ -33,6 +33,12 @@ class Usage:
     estimated: bool = False
     cached_input_tokens: int = 0
     raw: list = field(default_factory=list)  # usage nguyên bản provider trả về, để kiểm tra lại
+    estimated_input_tokens: int = 0          # ước lượng của chính client trên payload gửi đi
+    undercounted_calls: int = 0              # số lần provider báo thấp hơn nhiều so với payload thật
+
+    @property
+    def provider_reliable(self) -> bool:
+        return self.undercounted_calls == 0
 
     def add(self, other: "Usage") -> None:
         self.input_tokens += other.input_tokens
@@ -41,6 +47,8 @@ class Usage:
         self.estimated = self.estimated or other.estimated
         self.cached_input_tokens += other.cached_input_tokens
         self.raw.extend(other.raw)
+        self.estimated_input_tokens += other.estimated_input_tokens
+        self.undercounted_calls += other.undercounted_calls
 
     def to_dict(self) -> dict:
         data = {
@@ -51,8 +59,24 @@ class Usage:
         }
         if not self.estimated:
             data["cached_input_tokens"] = self.cached_input_tokens
+            data["estimated_input_tokens"] = self.estimated_input_tokens
+            data["provider_usage_reliable"] = self.provider_reliable
             data["raw_usage"] = self.raw
         return data
+
+
+def pick_token_source(usages: dict[str, "Usage"]) -> tuple[dict[str, int], str]:
+    """Chọn MỘT nguồn số đo chung cho mọi mode để so sánh công bằng.
+
+    Dùng usage của provider nếu mọi lần gọi đều đáng tin; nếu có lần nào provider báo thiếu
+    (ví dụ bỏ phần cache), dùng ước lượng của client cho TẤT CẢ các mode.
+    """
+    if all(not u.estimated and u.provider_reliable for u in usages.values()):
+        return {k: u.input_tokens for k, u in usages.items()}, "provider usage"
+    if all(u.estimated for u in usages.values()):
+        return {k: u.input_tokens for k, u in usages.items()}, "ước lượng offline"
+    return {k: u.estimated_input_tokens for k, u in usages.items()}, \
+        "ước lượng của client (provider báo thiếu phần context được cache)"
 
 
 def usage_from_provider(usage: dict) -> "Usage":
@@ -235,9 +259,15 @@ class OpenAIChat:
             raise RuntimeError("Provider không trả usage.prompt_tokens nên không đo được input tokens.")
         message = data["choices"][0]["message"]
         message.setdefault("content", None)
+        parsed = usage_from_provider(usage)
+        # Một số router (ví dụ 9Router + Claude Code) bỏ phần context đã cache khỏi usage trả về.
+        # Ghi thêm ước lượng của client để phát hiện và vẫn so sánh được.
+        parsed.estimated_input_tokens = estimate_tokens({"messages": messages, "tools": tools or []})
+        if parsed.estimated_input_tokens > 3000 and parsed.input_tokens < 0.5 * parsed.estimated_input_tokens:
+            parsed.undercounted_calls = 1
         return ChatResult(
             message={k: v for k, v in message.items() if k in ("role", "content", "tool_calls")},
-            usage=usage_from_provider(usage),
+            usage=parsed,
         )
 
 
@@ -261,8 +291,8 @@ class ScriptedLLM:
         message = self.policy(messages, None if tool_choice == "none" else tools)
         message.setdefault("role", "assistant")
         message.setdefault("content", None)
-        usage = Usage(estimate_tokens({"messages": messages, "tools": tools or []}),
-                      estimate_tokens(message), 1, estimated=True)
+        size = estimate_tokens({"messages": messages, "tools": tools or []})
+        usage = Usage(size, estimate_tokens(message), 1, estimated=True, estimated_input_tokens=size)
         return ChatResult(message=message, usage=usage)
 
 

@@ -9,7 +9,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from common.llm import OpenAIChat, ProviderError, Settings, Tool, parse_response_body, run_agent  # noqa: E402
+from common.llm import (OpenAIChat, ProviderError, Settings, Tool, Usage, parse_response_body,  # noqa: E402
+                        pick_token_source, run_agent)
 
 
 class FakeProvider(BaseHTTPRequestHandler):
@@ -31,8 +32,9 @@ class FakeProvider(BaseHTTPRequestHandler):
         else:
             message = {"role": "assistant", "content": None, "tool_calls": [
                 {"id": "c1", "type": "function", "function": {"name": "add", "arguments": '{"a": 2, "b": 3}'}}]}
+        prompt_tokens = 2000 if body["model"] == "cache-model" else 100 + len(body["messages"])
         payload = {"choices": [{"message": message}],
-                   "usage": {"prompt_tokens": 100 + len(body["messages"]), "completion_tokens": 7}}
+                   "usage": {"prompt_tokens": prompt_tokens, "completion_tokens": 7}}
         data = json.dumps(payload).encode()
         self.send_response(200)
         self.send_header("Content-Type", "application/json")
@@ -75,6 +77,16 @@ class OpenAIChatTest(unittest.TestCase):
         self.assertEqual(ctx.exception.status, 503)
         self.assertIn("No active connection", str(ctx.exception))
         self.assertNotIn("sk-test", str(ctx.exception))
+
+    def test_undercounted_usage_falls_back_to_client_estimate(self):
+        llm = OpenAIChat(Settings("sk-test", "cache-model", f"http://127.0.0.1:{self.server.server_port}/v1"))
+        big = llm.chat([{"role": "user", "content": "x " * 40000}]).usage   # ~20k token nhưng router báo 2000
+        small = llm.chat([{"role": "user", "content": "hi"}]).usage
+        self.assertFalse(big.provider_reliable)
+        self.assertTrue(small.provider_reliable)
+        tokens, source = pick_token_source({"big": big, "small": small})
+        self.assertIn("client", source)
+        self.assertGreater(tokens["big"], 10 * tokens["small"])
 
 
 class ParseBodyTest(unittest.TestCase):

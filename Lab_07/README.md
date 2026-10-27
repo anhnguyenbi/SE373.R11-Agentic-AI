@@ -14,14 +14,14 @@ Chỉ dùng thư viện chuẩn của Python (3.10+), không cần cài package.
 
 ```bash
 cd Lab_07
-python run_all.py                # 21 unit test + 3 demo, offline, không cần API key
+python run_all.py                # 24 unit test + 3 demo, offline, không cần API key
 ```
 
 Chạy với model thật (endpoint OpenAI-compatible có tool calling):
 
 ```bash
 cp .env.example .env             # điền OPENAI_API_KEY, MODEL_NAME, (tùy chọn) OPENAI_BASE_URL
-python check_live.py             # 4 bước: chat, tool calling, usage có tăng theo context không, tool output có bị cắt không
+python check_live.py             # 5 bước: chat, tool calling, usage theo kích thước, tool output có bị cắt không, usage nhiều lượt
 python challenge_a_memory/demo.py --live
 python challenge_b_context/b1_compact/demo_b1.py --live
 python challenge_b_context/b2_code_mode/demo_b2.py --live
@@ -39,6 +39,11 @@ và báo đúng `usage`. Hãy tắt các tính năng nén của router, ví dụ
 Tính năng này cắt log còn khoảng 10 dòng, làm B2 trả lời sai và B1 mất bằng chứng. `check_live.py` tự kiểm tra hai điều kiện này:
 input tokens phải tăng khi prompt dài thêm vài nghìn token, và model phải đọc được dòng cuối của một tool output 200 dòng.
 Usage gốc của provider được lưu trong `raw_usage` của mỗi `report.json`.
+
+Một số router không tính phần context đã cache vào `usage` trả về. Ví dụ, qua 9Router + Claude Code, một request B2 raw
+được dashboard ghi khoảng 80.000 input tokens, nhưng response chỉ báo khoảng 2.000. Vì vậy client luôn ghi thêm ước lượng
+của chính nó (`estimated_input_tokens`). Nếu provider báo thấp hơn một nửa ước lượng, B1/B2 so sánh **tất cả** các mode bằng
+ước lượng của client, và ghi nguồn số đo vào trường `token_source` của `report.json`.
 
 ## Cấu trúc
 
