@@ -1,0 +1,114 @@
+{
+  "session": "s1",
+  "injected_memory": "## Project memory (quy ước đang hiệu lực)\n(chưa có quy ước nào được lưu)",
+  "user": "Quy ước dự án: tên field JSON dùng snake_case; test viết bằng pytest; commit message theo Conventional Commits.",
+  "answer": "Đã ghi nhớ: Tên field JSON dùng snake_case (ví dụ full_name).; Test viết bằng pytest, đặt trong thư mục tests/.; Commit message theo Conventional Commits (feat:, fix:, ...).",
+  "trace": [
+    {
+      "step": 1,
+      "input_tokens": 440,
+      "tool_calls": [
+        "remember_convention"
+      ],
+      "tool_output_chars": 26
+    },
+    {
+      "step": 2,
+      "input_tokens": 524,
+      "tool_calls": [
+        "remember_convention"
+      ],
+      "tool_output_chars": 30
+    },
+    {
+      "step": 3,
+      "input_tokens": 611,
+      "tool_calls": [
+        "remember_convention"
+      ],
+      "tool_output_chars": 29
+    },
+    {
+      "step": 4,
+      "input_tokens": 700,
+      "tool_calls": []
+    }
+  ],
+  "usage": {
+    "input_tokens": 2275,
+    "output_tokens": 247,
+    "calls": 4,
+    "estimated": true
+  },
+  "messages": [
+    {
+      "role": "system",
+      "content": "Bạn là trợ lý lập trình cho dự án web \"TaskBoard\" (backend Python).\nMỗi session là một cuộc trò chuyện mới, bạn KHÔNG nhớ gì từ session trước ngoài phần Project memory bên dưới.\n\nQuy tắc dùng memory:\n1. Khi người dùng nêu một quy ước dự án mới, hoặc đổi một quy ước cũ, hãy gọi `remember_convention`\n   cho TỪNG quy ước. Dùng topic ngắn dạng `nhom.ten` (ví dụ `api.json_case`, `testing.framework`,\n   `git.commit_style`). Nếu là thay đổi quy ước đã có trong memory, dùng lại đúng topic đó và truyền `replaces_id`.\n2. Khi viết code, JSON hay commit message, phải tuân theo các quy ước trong Project memory.\n   Nếu memory chưa có quy ước liên quan, nói rõ là chưa có quy ước thay vì tự đoán.\n3. Project memory chỉ chứa quy ước đang hiệu lực. Khi được hỏi quy ước TRƯỚC ĐÂY, gọi `memory_history`.\n\n## Project memory (quy ước đang hiệu lực)\n(chưa có quy ước nào được lưu)"
+    },
+    {
+      "role": "user",
+      "content": "Quy ước dự án: tên field JSON dùng snake_case; test viết bằng pytest; commit message theo Conventional Commits."
+    },
+    {
+      "role": "assistant",
+      "content": null,
+      "tool_calls": [
+        {
+          "id": "call_1",
+          "type": "function",
+          "function": {
+            "name": "remember_convention",
+            "arguments": "{\"topic\": \"api.json_case\", \"content\": \"Tên field JSON dùng snake_case (ví dụ full_name).\"}"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_1",
+      "content": "Đã lưu m1 `api.json_case`."
+    },
+    {
+      "role": "assistant",
+      "content": null,
+      "tool_calls": [
+        {
+          "id": "call_2",
+          "type": "function",
+          "function": {
+            "name": "remember_convention",
+            "arguments": "{\"topic\": \"testing.framework\", \"content\": \"Test viết bằng pytest, đặt trong thư mục tests/.\"}"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_2",
+      "content": "Đã lưu m2 `testing.framework`."
+    },
+    {
+      "role": "assistant",
+      "content": null,
+      "tool_calls": [
+        {
+          "id": "call_3",
+          "type": "function",
+          "function": {
+            "name": "remember_convention",
+            "arguments": "{\"topic\": \"git.commit_style\", \"content\": \"Commit message theo Conventional Commits (feat:, fix:, ...).\"}"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_3",
+      "content": "Đã lưu m3 `git.commit_style`."
+    },
+    {
+      "content": "Đã ghi nhớ: Tên field JSON dùng snake_case (ví dụ full_name).; Test viết bằng pytest, đặt trong thư mục tests/.; Commit message theo Conventional Commits (feat:, fix:, ...).",
+      "role": "assistant"
+    }
+  ]
+}

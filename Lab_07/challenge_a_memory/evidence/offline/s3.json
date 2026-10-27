@@ -1,0 +1,60 @@
+{
+  "session": "s3",
+  "injected_memory": "## Project memory (quy ước đang hiệu lực)\n- [m1] `api.json_case`: Tên field JSON dùng snake_case (ví dụ full_name). (lưu ở s1)\n- [m2] `testing.framework`: Test viết bằng pytest, đặt trong thư mục tests/. (lưu ở s1)\n- [m3] `git.commit_style`: Commit message theo Conventional Commits (feat:, fix:, ...). (lưu ở s1)",
+  "user": "Từ nay team đổi quy ước: tên field JSON dùng camelCase để khớp frontend. Các quy ước khác giữ nguyên.",
+  "answer": "Đã ghi nhớ: Tên field JSON dùng camelCase (ví dụ fullName).",
+  "trace": [
+    {
+      "step": 1,
+      "input_tokens": 498,
+      "tool_calls": [
+        "remember_convention"
+      ],
+      "tool_output_chars": 39
+    },
+    {
+      "step": 2,
+      "input_tokens": 592,
+      "tool_calls": []
+    }
+  ],
+  "usage": {
+    "input_tokens": 1090,
+    "output_tokens": 93,
+    "calls": 2,
+    "estimated": true
+  },
+  "messages": [
+    {
+      "role": "system",
+      "content": "Bạn là trợ lý lập trình cho dự án web \"TaskBoard\" (backend Python).\nMỗi session là một cuộc trò chuyện mới, bạn KHÔNG nhớ gì từ session trước ngoài phần Project memory bên dưới.\n\nQuy tắc dùng memory:\n1. Khi người dùng nêu một quy ước dự án mới, hoặc đổi một quy ước cũ, hãy gọi `remember_convention`\n   cho TỪNG quy ước. Dùng topic ngắn dạng `nhom.ten` (ví dụ `api.json_case`, `testing.framework`,\n   `git.commit_style`). Nếu là thay đổi quy ước đã có trong memory, dùng lại đúng topic đó và truyền `replaces_id`.\n2. Khi viết code, JSON hay commit message, phải tuân theo các quy ước trong Project memory.\n   Nếu memory chưa có quy ước liên quan, nói rõ là chưa có quy ước thay vì tự đoán.\n3. Project memory chỉ chứa quy ước đang hiệu lực. Khi được hỏi quy ước TRƯỚC ĐÂY, gọi `memory_history`.\n\n## Project memory (quy ước đang hiệu lực)\n- [m1] `api.json_case`: Tên field JSON dùng snake_case (ví dụ full_name). (lưu ở s1)\n- [m2] `testing.framework`: Test viết bằng pytest, đặt trong thư mục tests/. (lưu ở s1)\n- [m3] `git.commit_style`: Commit message theo Conventional Commits (feat:, fix:, ...). (lưu ở s1)"
+    },
+    {
+      "role": "user",
+      "content": "Từ nay team đổi quy ước: tên field JSON dùng camelCase để khớp frontend. Các quy ước khác giữ nguyên."
+    },
+    {
+      "role": "assistant",
+      "content": null,
+      "tool_calls": [
+        {
+          "id": "call_1",
+          "type": "function",
+          "function": {
+            "name": "remember_convention",
+            "arguments": "{\"topic\": \"api.json_case\", \"content\": \"Tên field JSON dùng camelCase (ví dụ fullName).\", \"replaces_id\": \"m1\"}"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_1",
+      "content": "Đã lưu m4 `api.json_case`, thay thế m1."
+    },
+    {
+      "content": "Đã ghi nhớ: Tên field JSON dùng camelCase (ví dụ fullName).",
+      "role": "assistant"
+    }
+  ]
+}

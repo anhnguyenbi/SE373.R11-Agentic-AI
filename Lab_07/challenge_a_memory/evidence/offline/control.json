@@ -1,0 +1,33 @@
+{
+  "session": "control",
+  "injected_memory": "## Project memory\n(memory bị tắt trong session này)",
+  "user": "Viết JSON response mẫu cho API GET /users/{id}, gồm id, họ tên đầy đủ và thời điểm tạo. Kèm commit message cho thay đổi này.",
+  "answer": "Memory chưa có quy ước đặt tên field JSON nên tôi chưa biết dùng kiểu nào. Bạn muốn dùng snake_case hay camelCase?",
+  "trace": [
+    {
+      "step": 1,
+      "input_tokens": 270,
+      "tool_calls": []
+    }
+  ],
+  "usage": {
+    "input_tokens": 270,
+    "output_tokens": 38,
+    "calls": 1,
+    "estimated": true
+  },
+  "messages": [
+    {
+      "role": "system",
+      "content": "Bạn là trợ lý lập trình cho dự án web \"TaskBoard\" (backend Python).\nMỗi session là một cuộc trò chuyện mới, bạn KHÔNG nhớ gì từ session trước ngoài phần Project memory bên dưới.\n\nQuy tắc dùng memory:\n1. Khi người dùng nêu một quy ước dự án mới, hoặc đổi một quy ước cũ, hãy gọi `remember_convention`\n   cho TỪNG quy ước. Dùng topic ngắn dạng `nhom.ten` (ví dụ `api.json_case`, `testing.framework`,\n   `git.commit_style`). Nếu là thay đổi quy ước đã có trong memory, dùng lại đúng topic đó và truyền `replaces_id`.\n2. Khi viết code, JSON hay commit message, phải tuân theo các quy ước trong Project memory.\n   Nếu memory chưa có quy ước liên quan, nói rõ là chưa có quy ước thay vì tự đoán.\n3. Project memory chỉ chứa quy ước đang hiệu lực. Khi được hỏi quy ước TRƯỚC ĐÂY, gọi `memory_history`.\n\n## Project memory\n(memory bị tắt trong session này)"
+    },
+    {
+      "role": "user",
+      "content": "Viết JSON response mẫu cho API GET /users/{id}, gồm id, họ tên đầy đủ và thời điểm tạo. Kèm commit message cho thay đổi này."
+    },
+    {
+      "content": "Memory chưa có quy ước đặt tên field JSON nên tôi chưa biết dùng kiểu nào. Bạn muốn dùng snake_case hay camelCase?",
+      "role": "assistant"
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "model": "scripted-offline",
+  "mode": "offline",
+  "budget_tokens": 24000,
+  "trigger_ratio": 0.7,
+  "compactions": [
+    {
+      "compaction": 1,
+      "evicted_messages": 8,
+      "context_tokens_before": 22788,
+      "context_tokens_after": 11161
+    },
+    {
+      "compaction": 2,
+      "evicted_messages": 4,
+      "context_tokens_before": 16865,
+      "context_tokens_after": 12123
+    },
+    {
+      "compaction": 3,
+      "evicted_messages": 4,
+      "context_tokens_before": 17691,
+      "context_tokens_after": 11548
+    }
+  ],
+  "summarizer_usage": {
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "calls": 0,
+    "estimated": true
+  },
+  "runs": {
+    "full": {
+      "input_tokens": 36540,
+      "estimated": true,
+      "messages": 34,
+      "facts": {
+        "loi_dang_dieu_tra": true,
+        "da_thu_nginx": true,
+        "da_thu_timeout": true,
+        "da_thu_memory_limit": true,
+        "test_tai_hien": true,
+        "buoc_tiep": true,
+        "rang_buoc_api": true,
+        "rang_buoc_deadline": true
+      },
+      "facts_kept": 8,
+      "facts_total": 8,
+      "answer": "(1) Lỗi: MemoryError trong image_service.resize_to_thumbnail (image_service.py:88) khi Image.open(...).convert('RGB') giải nén toàn bộ ảnh 48MP\n(2) Đã thử: tăng client_max_body_size lên 20m → vẫn 500; access log cho thấy upstream trả 500 chứ không phải 413, nên không phải do nginx.; tăng gunicorn --timeout từ 30 lên 120 → vẫn 500 sau khoảng 4 giây, không phải timeout.; tăng memory limit container từ 512Mi lên 1Gi → ảnh 8MB qua được nhưng ảnh 12MB vẫn lỗi, nên chỉ dời ngưỡng chứ không sửa gốc.\n(3) Ràng buộc: KHÔNG được đổi API public /api/photos (mobile app đang dùng); phải fix trước release 2.4 vào thứ Sáu\n(4) Bước tiếp: gọi img.draft('RGB', size) ngay sau Image.open để Pillow giảm độ phân giải lúc decode JPEG, rồi mới thumbnail(); giữ nguyên request/response của /api/photos. Sau đó chạy lại test_upload_large_photo và hạ memory limit về 512Mi để chắc fix thật. (file/test: image_service.py, tests/test_upload.py::test_upload_large_photo)"
+    },
+    "compacted": {
+      "input_tokens": 14029,
+      "estimated": true,
+      "messages": 19,
+      "facts": {
+        "loi_dang_dieu_tra": true,
+        "da_thu_nginx": true,
+        "da_thu_timeout": true,
+        "da_thu_memory_limit": true,
+        "test_tai_hien": true,
+        "buoc_tiep": true,
+        "rang_buoc_api": true,
+        "rang_buoc_deadline": true
+      },
+      "facts_kept": 8,
+      "facts_total": 8,
+      "answer": "(1) Lỗi: MemoryError trong image_service.resize_to_thumbnail (image_service.py:88) khi Image.open(...).convert('RGB') giải nén toàn bộ ảnh 48MP\n(2) Đã thử: tăng client_max_body_size lên 20m → vẫn 500; access log cho thấy upstream trả 500 chứ không phải 413, nên không phải do nginx.; tăng gunicorn --timeout từ 30 lên 120 → vẫn 500 sau khoảng 4 giây, không phải timeout.; tăng memory limit container từ 512Mi lên 1Gi → ảnh 8MB qua được nhưng ảnh 12MB vẫn lỗi, nên chỉ dời ngưỡng chứ không sửa gốc.\n(3) Ràng buộc: KHÔNG được đổi API public /api/photos (mobile app đang dùng); phải fix trước release 2.4 vào thứ Sáu\n(4) Bước tiếp: gọi img.draft('RGB', size) ngay sau Image.open để Pillow giảm độ phân giải lúc decode JPEG, rồi mới thumbnail(); giữ nguyên request/response của /api/photos. Sau đó chạy lại test_upload_large_photo và hạ memory limit về 512Mi để chắc fix thật. (file/test: image_service.py, tests/test_upload.py::test_upload_large_photo)"
+    },
+    "truncated": {
+      "input_tokens": 2531,
+      "estimated": true,
+      "messages": 10,
+      "facts": {
+        "loi_dang_dieu_tra": false,
+        "da_thu_nginx": false,
+        "da_thu_timeout": false,
+        "da_thu_memory_limit": false,
+        "test_tai_hien": true,
+        "buoc_tiep": true,
+        "rang_buoc_api": false,
+        "rang_buoc_deadline": false
+      },
+      "facts_kept": 2,
+      "facts_total": 8,
+      "answer": "(1) Lỗi: (không còn thông tin trong context)\n(2) Đã thử: (không còn thông tin trong context)\n(3) Ràng buộc: (không còn thông tin trong context)\n(4) Bước tiếp: gọi img.draft('RGB', size) ngay sau Image.open để Pillow giảm độ phân giải lúc decode JPEG, rồi mới thumbnail(); giữ nguyên request/response của /api/photos. Sau đó chạy lại test_upload_large_photo và hạ memory limit về 512Mi để chắc fix thật. (file/test: tests/test_upload.py::test_upload_large_photo)"
+    }
+  },
+  "reduction_percent": 61.61,
+  "passed": true
+}

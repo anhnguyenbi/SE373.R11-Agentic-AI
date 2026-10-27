@@ -1,0 +1,15 @@
+{
+  "model": "scripted-offline",
+  "mode": "offline",
+  "checks": {
+    "proof1_new_session_uses_snake_case": true,
+    "proof1_new_session_uses_conventional_commit": true,
+    "proof2_after_change_uses_camel_case": true,
+    "proof2_other_conventions_kept": true,
+    "old_convention_superseded_not_deleted": true,
+    "only_new_convention_injected_in_s4": true,
+    "history_answer_mentions_both": true
+  },
+  "passed": true,
+  "control_without_memory_used_camel_case": false
+}

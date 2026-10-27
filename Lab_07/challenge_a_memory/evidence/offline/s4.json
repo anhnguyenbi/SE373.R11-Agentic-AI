@@ -1,0 +1,33 @@
+{
+  "session": "s4",
+  "injected_memory": "## Project memory (quy ước đang hiệu lực)\n- [m2] `testing.framework`: Test viết bằng pytest, đặt trong thư mục tests/. (lưu ở s1)\n- [m3] `git.commit_style`: Commit message theo Conventional Commits (feat:, fix:, ...). (lưu ở s1)\n- [m4] `api.json_case`: Tên field JSON dùng camelCase (ví dụ fullName). (lưu ở s3, thay cho m1)",
+  "user": "Viết JSON response mẫu cho API GET /users/{id}, gồm id, họ tên đầy đủ và thời điểm tạo. Kèm commit message cho thay đổi này.",
+  "answer": "JSON response:\n```json\n{\n  \"id\": 42,\n  \"fullName\": \"Nguyen Van A\",\n  \"createdAt\": \"2026-10-27T10:00:00Z\"\n}\n```\nCommit message: `feat(user): trả về thông tin người dùng`",
+  "trace": [
+    {
+      "step": 1,
+      "input_tokens": 506,
+      "tool_calls": []
+    }
+  ],
+  "usage": {
+    "input_tokens": 506,
+    "output_tokens": 56,
+    "calls": 1,
+    "estimated": true
+  },
+  "messages": [
+    {
+      "role": "system",
+      "content": "Bạn là trợ lý lập trình cho dự án web \"TaskBoard\" (backend Python).\nMỗi session là một cuộc trò chuyện mới, bạn KHÔNG nhớ gì từ session trước ngoài phần Project memory bên dưới.\n\nQuy tắc dùng memory:\n1. Khi người dùng nêu một quy ước dự án mới, hoặc đổi một quy ước cũ, hãy gọi `remember_convention`\n   cho TỪNG quy ước. Dùng topic ngắn dạng `nhom.ten` (ví dụ `api.json_case`, `testing.framework`,\n   `git.commit_style`). Nếu là thay đổi quy ước đã có trong memory, dùng lại đúng topic đó và truyền `replaces_id`.\n2. Khi viết code, JSON hay commit message, phải tuân theo các quy ước trong Project memory.\n   Nếu memory chưa có quy ước liên quan, nói rõ là chưa có quy ước thay vì tự đoán.\n3. Project memory chỉ chứa quy ước đang hiệu lực. Khi được hỏi quy ước TRƯỚC ĐÂY, gọi `memory_history`.\n\n## Project memory (quy ước đang hiệu lực)\n- [m2] `testing.framework`: Test viết bằng pytest, đặt trong thư mục tests/. (lưu ở s1)\n- [m3] `git.commit_style`: Commit message theo Conventional Commits (feat:, fix:, ...). (lưu ở s1)\n- [m4] `api.json_case`: Tên field JSON dùng camelCase (ví dụ fullName). (lưu ở s3, thay cho m1)"
+    },
+    {
+      "role": "user",
+      "content": "Viết JSON response mẫu cho API GET /users/{id}, gồm id, họ tên đầy đủ và thời điểm tạo. Kèm commit message cho thay đổi này."
+    },
+    {
+      "content": "JSON response:\n```json\n{\n  \"id\": 42,\n  \"fullName\": \"Nguyen Van A\",\n  \"createdAt\": \"2026-10-27T10:00:00Z\"\n}\n```\nCommit message: `feat(user): trả về thông tin người dùng`",
+      "role": "assistant"
+    }
+  ]
+}

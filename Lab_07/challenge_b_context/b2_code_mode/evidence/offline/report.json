@@ -1,0 +1,119 @@
+{
+  "mode": "offline",
+  "expected": [
+    [
+      "E5000",
+      58
+    ],
+    [
+      "E2003",
+      52
+    ],
+    [
+      "E2210",
+      51
+    ]
+  ],
+  "log_bytes": 141121,
+  "runs": {
+    "raw": {
+      "correct": true,
+      "input_tokens_total": 130337,
+      "input_tokens_last_call": 37048,
+      "llm_calls": 8,
+      "estimated": true,
+      "raw_log_in_context": true,
+      "answer": "E5000: 58\nE2003: 52\nE2210: 51",
+      "trace": [
+        {
+          "step": 1,
+          "input_tokens": 196,
+          "tool_calls": [
+            "list_logs"
+          ],
+          "tool_output_chars": 129
+        },
+        {
+          "step": 2,
+          "input_tokens": 281,
+          "tool_calls": [
+            "read_log"
+          ],
+          "tool_output_chars": 22872
+        },
+        {
+          "step": 3,
+          "input_tokens": 6246,
+          "tool_calls": [
+            "read_log"
+          ],
+          "tool_output_chars": 23645
+        },
+        {
+          "step": 4,
+          "input_tokens": 12405,
+          "tool_calls": [
+            "read_log"
+          ],
+          "tool_output_chars": 23588
+        },
+        {
+          "step": 5,
+          "input_tokens": 18550,
+          "tool_calls": [
+            "read_log"
+          ],
+          "tool_output_chars": 23897
+        },
+        {
+          "step": 6,
+          "input_tokens": 24772,
+          "tool_calls": [
+            "read_log"
+          ],
+          "tool_output_chars": 23275
+        },
+        {
+          "step": 7,
+          "input_tokens": 30839,
+          "tool_calls": [
+            "read_log"
+          ],
+          "tool_output_chars": 23844
+        },
+        {
+          "step": 8,
+          "input_tokens": 37048,
+          "tool_calls": []
+        }
+      ]
+    },
+    "code": {
+      "correct": true,
+      "input_tokens_total": 701,
+      "input_tokens_last_call": 431,
+      "llm_calls": 2,
+      "estimated": true,
+      "raw_log_in_context": false,
+      "answer": "E5000: 58\nE2003: 52\nE2210: 51",
+      "trace": [
+        {
+          "step": 1,
+          "input_tokens": 270,
+          "tool_calls": [
+            "run_python"
+          ],
+          "tool_output_chars": 50
+        },
+        {
+          "step": 2,
+          "input_tokens": 431,
+          "tool_calls": []
+        }
+      ]
+    }
+  },
+  "model": "scripted-offline",
+  "reduction_percent": 99.46,
+  "passed": true
+}

@@ -1,0 +1,23 @@
+{
+  "bang_chung": [
+    "[2026-10-24T09:01:55Z] [41] [ERROR] Error handling request /api/photos"
+  ],
+  "da_thu": [
+    {
+      "cach": "tăng client_max_body_size lên 20m",
+      "ket_qua": "vẫn 500; access log cho thấy upstream trả 500 chứ không phải 413, nên không phải do nginx."
+    },
+    {
+      "cach": "tăng gunicorn --timeout từ 30 lên 120",
+      "ket_qua": "vẫn 500 sau khoảng 4 giây, không phải timeout."
+    }
+  ],
+  "rang_buoc": [
+    "KHÔNG được đổi API public /api/photos (mobile app đang dùng)",
+    "phải fix trước release 2.4 vào thứ Sáu"
+  ],
+  "file_lien_quan": [],
+  "muc_tieu": "Người dùng báo POST /api/photos trả 500 khi upload ảnh khoảng 8MB trở lên",
+  "loi_dang_dieu_tra": "",
+  "buoc_tiep": ""
+}

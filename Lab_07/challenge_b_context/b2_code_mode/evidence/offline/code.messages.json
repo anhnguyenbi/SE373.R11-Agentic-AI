@@ -1,0 +1,33 @@
+[
+ {
+  "role": "system",
+  "content": "Bạn là agent phân tích log ở chế độ Code Mode. Bạn KHÔNG đọc file trực tiếp; hãy dùng run_python để chạy một script Python trong thư mục logs (cwd), xử lý toàn bộ file và CHỈ in kết quả cuối cùng, gọn. Tuyệt đối không in dòng log thô. Mỗi dòng log có dạng: '<timestamp> <service> <LEVEL> code=<CODE> req=... latency_ms=... msg=\"...\"'."
+ },
+ {
+  "role": "user",
+  "content": "Trong thư mục logs có nhiều file log dịch vụ. Hãy tìm 3 mã lỗi (trường code=...) xuất hiện nhiều nhất trên các dòng mức ERROR, tính gộp tất cả các file, kèm số lần xuất hiện. Trả lời theo dạng 'E1234: <số lần>', mỗi mã một dòng, xếp giảm dần."
+ },
+ {
+  "role": "assistant",
+  "content": null,
+  "tool_calls": [
+   {
+    "id": "call_1",
+    "type": "function",
+    "function": {
+     "name": "run_python",
+     "arguments": "{\"code\": \"import collections, glob, re\\ncounts = collections.Counter()\\nfor path in glob.glob('*.log'):\\n    with open(path, encoding='utf-8') as f:\\n        for line in f:\\n            m = re.match(r'\\\\S+ \\\\S+ ERROR code=(\\\\S+)', line)\\n            if m:\\n                counts[m.group(1)] += 1\\nfor code, n in counts.most_common(3):\\n    print(f'{code}: {n}')\\n\"}"
+    }
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "call_1",
+  "content": "exit_code=0\nstdout:\nE5000: 58\nE2003: 52\nE2210: 51\n"
+ },
+ {
+  "content": "E5000: 58\nE2003: 52\nE2210: 51",
+  "role": "assistant"
+ }
+]
